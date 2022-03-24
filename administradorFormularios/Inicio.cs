@@ -61,14 +61,12 @@ namespace administradorFormularios
         private void btnListarProveedores_Click(object sender, EventArgs e)
         {
            
-            llamadosFormularios.abrirFormularioHijo(new Proveedores.ListarProveedores(), ref panelFomularios);
-            ocultarSubMenu();
+            llamadosFormularios.abrirFormularioHijo(new Proveedores.ListarProveedores(), ref panelFomularios);            
         }
 
         private void btnRegistrarProveedores_Click(object sender, EventArgs e)
         {
-            llamadosFormularios.abrirFormularioHijo(new Proveedores.RegistrarProveedor(), ref panelFomularios);
-            ocultarSubMenu();
+            llamadosFormularios.abrirFormularioHijo(new Proveedores.RegistrarProveedor(), ref panelFomularios);            
         }
 
         private void btnGastos_Click(object sender, EventArgs e)
@@ -81,7 +79,6 @@ namespace administradorFormularios
             /*
             * Codigo para visualizar los formularios
             * */
-            ocultarSubMenu();
         }
 
         private void btnRegistrarGasto_Click(object sender, EventArgs e)
@@ -89,7 +86,6 @@ namespace administradorFormularios
             /*
             * Codigo para visualizar los formularios
             * */
-            ocultarSubMenu();
         }
 
         private void btnNotasCambio_Click(object sender, EventArgs e)
@@ -102,7 +98,6 @@ namespace administradorFormularios
             /*
             * Codigo para visualizar los formularios
             * */
-            ocultarSubMenu();
         }
 
         private void btnRegistrarNotas_Click(object sender, EventArgs e)
@@ -110,7 +105,6 @@ namespace administradorFormularios
             /*
             * Codigo para visualizar los formularios
             * */
-            ocultarSubMenu();
         }
 
         private void btnUsuario_Click(object sender, EventArgs e)
@@ -123,7 +117,6 @@ namespace administradorFormularios
             /*
             * Codigo para visualizar los formularios
             * */
-            ocultarSubMenu();
         }
 
         private void btnRegistrarUsuario_Click(object sender, EventArgs e)
@@ -131,7 +124,7 @@ namespace administradorFormularios
             /*
             * Codigo para visualizar los formularios
             * */
-            ocultarSubMenu();
+
         }
     }
 }

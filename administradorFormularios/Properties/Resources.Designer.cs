@@ -63,6 +63,106 @@ namespace administradorFormularios.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_añadir_usuario_masculino_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-añadir-usuario-masculino-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_costo_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-costo-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_derechos_de_los_usuarios_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-derechos-de-los-usuarios-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_insertar_página_24 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-insertar-página-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_insertar_página_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-insertar-página-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_lista_de_ingredientes_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-lista-de-ingredientes-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_lista_de_ingredientes_502 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-lista-de-ingredientes-502", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_lista_resumen_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-lista-resumen-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_nota_de_crédito_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-nota-de-crédito-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_proveedor_50 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-proveedor-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap LogoAzur {
             get {
                 object obj = ResourceManager.GetObject("LogoAzur", resourceCulture);
