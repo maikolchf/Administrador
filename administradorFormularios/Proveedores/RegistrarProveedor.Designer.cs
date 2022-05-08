@@ -28,113 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.btnGuardarProveedor = new FontAwesome.Sharp.IconButton();
             this.btnLimpiarCampos = new FontAwesome.Sharp.IconButton();
-            this.panel1.SuspendLayout();
+            this.pnlFormularioProveedores = new System.Windows.Forms.Panel();
+            this.cbxEstadoProveedor = new System.Windows.Forms.ComboBox();
+            this.lblEstadoProveedor = new MaterialSkin.Controls.MaterialLabel();
+            this.chkGastosFijo = new MaterialSkin.Controls.MaterialCheckBox();
+            this.lblProveedorGasto = new MaterialSkin.Controls.MaterialLabel();
+            this.btnCedulaProveedor = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.lblCedulaProveedor = new MaterialSkin.Controls.MaterialLabel();
+            this.btnTelefonoProveedor = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.lblTelefonoProveedor = new MaterialSkin.Controls.MaterialLabel();
+            this.btnNombreProveedor = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            this.pnlGridProveedores = new System.Windows.Forms.Panel();
+            this.dtProveedores = new System.Windows.Forms.DataGridView();
+            this.pnlFormularioProveedores.SuspendLayout();
+            this.pnlGridProveedores.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtProveedores)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.listBox1);
-            this.panel1.Controls.Add(this.textBox3);
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(518, 242);
-            this.panel1.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(28, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(77, 21);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Nombre:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(28, 87);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(81, 21);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Telefono:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(28, 185);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(61, 21);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Estado";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(28, 137);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(177, 21);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Cedula Juridica/Fisica:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(245, 26);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(243, 20);
-            this.textBox1.TabIndex = 4;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.Location = new System.Drawing.Point(245, 80);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(243, 20);
-            this.textBox2.TabIndex = 5;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox3.Location = new System.Drawing.Point(245, 134);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(243, 20);
-            this.textBox3.TabIndex = 6;
-            // 
-            // listBox1
-            // 
-            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(245, 185);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(243, 17);
-            this.listBox1.TabIndex = 7;
             // 
             // btnGuardarProveedor
             // 
@@ -145,7 +57,7 @@
             this.btnGuardarProveedor.IconColor = System.Drawing.Color.Black;
             this.btnGuardarProveedor.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnGuardarProveedor.IconSize = 50;
-            this.btnGuardarProveedor.Location = new System.Drawing.Point(560, 73);
+            this.btnGuardarProveedor.Location = new System.Drawing.Point(562, 183);
             this.btnGuardarProveedor.Name = "btnGuardarProveedor";
             this.btnGuardarProveedor.Size = new System.Drawing.Size(95, 57);
             this.btnGuardarProveedor.TabIndex = 1;
@@ -159,40 +71,227 @@
             this.btnLimpiarCampos.IconChar = FontAwesome.Sharp.IconChar.Eraser;
             this.btnLimpiarCampos.IconColor = System.Drawing.Color.Black;
             this.btnLimpiarCampos.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnLimpiarCampos.Location = new System.Drawing.Point(560, 146);
+            this.btnLimpiarCampos.Location = new System.Drawing.Point(441, 183);
             this.btnLimpiarCampos.Name = "btnLimpiarCampos";
             this.btnLimpiarCampos.Size = new System.Drawing.Size(95, 57);
             this.btnLimpiarCampos.TabIndex = 2;
             this.btnLimpiarCampos.UseVisualStyleBackColor = true;
             // 
+            // pnlFormularioProveedores
+            // 
+            this.pnlFormularioProveedores.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pnlFormularioProveedores.BackColor = System.Drawing.Color.White;
+            this.pnlFormularioProveedores.Controls.Add(this.cbxEstadoProveedor);
+            this.pnlFormularioProveedores.Controls.Add(this.lblEstadoProveedor);
+            this.pnlFormularioProveedores.Controls.Add(this.chkGastosFijo);
+            this.pnlFormularioProveedores.Controls.Add(this.lblProveedorGasto);
+            this.pnlFormularioProveedores.Controls.Add(this.btnCedulaProveedor);
+            this.pnlFormularioProveedores.Controls.Add(this.lblCedulaProveedor);
+            this.pnlFormularioProveedores.Controls.Add(this.btnTelefonoProveedor);
+            this.pnlFormularioProveedores.Controls.Add(this.lblTelefonoProveedor);
+            this.pnlFormularioProveedores.Controls.Add(this.btnNombreProveedor);
+            this.pnlFormularioProveedores.Controls.Add(this.materialLabel1);
+            this.pnlFormularioProveedores.Controls.Add(this.btnLimpiarCampos);
+            this.pnlFormularioProveedores.Controls.Add(this.btnGuardarProveedor);
+            this.pnlFormularioProveedores.Location = new System.Drawing.Point(12, 12);
+            this.pnlFormularioProveedores.Name = "pnlFormularioProveedores";
+            this.pnlFormularioProveedores.Size = new System.Drawing.Size(679, 243);
+            this.pnlFormularioProveedores.TabIndex = 0;
+            // 
+            // cbxEstadoProveedor
+            // 
+            this.cbxEstadoProveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbxEstadoProveedor.FormattingEnabled = true;
+            this.cbxEstadoProveedor.Location = new System.Drawing.Point(101, 127);
+            this.cbxEstadoProveedor.Name = "cbxEstadoProveedor";
+            this.cbxEstadoProveedor.Size = new System.Drawing.Size(216, 21);
+            this.cbxEstadoProveedor.TabIndex = 12;
+            // 
+            // lblEstadoProveedor
+            // 
+            this.lblEstadoProveedor.AutoSize = true;
+            this.lblEstadoProveedor.Depth = 0;
+            this.lblEstadoProveedor.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblEstadoProveedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblEstadoProveedor.Location = new System.Drawing.Point(18, 130);
+            this.lblEstadoProveedor.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblEstadoProveedor.Name = "lblEstadoProveedor";
+            this.lblEstadoProveedor.Size = new System.Drawing.Size(60, 19);
+            this.lblEstadoProveedor.TabIndex = 11;
+            this.lblEstadoProveedor.Text = "Estado:";
+            // 
+            // chkGastosFijo
+            // 
+            this.chkGastosFijo.AutoSize = true;
+            this.chkGastosFijo.Depth = 0;
+            this.chkGastosFijo.Font = new System.Drawing.Font("Roboto", 10F);
+            this.chkGastosFijo.Location = new System.Drawing.Point(459, 71);
+            this.chkGastosFijo.Margin = new System.Windows.Forms.Padding(0);
+            this.chkGastosFijo.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.chkGastosFijo.MouseState = MaterialSkin.MouseState.HOVER;
+            this.chkGastosFijo.Name = "chkGastosFijo";
+            this.chkGastosFijo.Ripple = true;
+            this.chkGastosFijo.Size = new System.Drawing.Size(30, 30);
+            this.chkGastosFijo.TabIndex = 10;
+            this.chkGastosFijo.Text = " ";
+            this.chkGastosFijo.UseVisualStyleBackColor = true;
+            // 
+            // lblProveedorGasto
+            // 
+            this.lblProveedorGasto.AutoSize = true;
+            this.lblProveedorGasto.Depth = 0;
+            this.lblProveedorGasto.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblProveedorGasto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblProveedorGasto.Location = new System.Drawing.Point(358, 79);
+            this.lblProveedorGasto.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblProveedorGasto.Name = "lblProveedorGasto";
+            this.lblProveedorGasto.Size = new System.Drawing.Size(98, 19);
+            this.lblProveedorGasto.TabIndex = 9;
+            this.lblProveedorGasto.Text = "Es gasto fijo:";
+            // 
+            // btnCedulaProveedor
+            // 
+            this.btnCedulaProveedor.Depth = 0;
+            this.btnCedulaProveedor.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
+            this.btnCedulaProveedor.Hint = "";
+            this.btnCedulaProveedor.Location = new System.Drawing.Point(441, 25);
+            this.btnCedulaProveedor.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnCedulaProveedor.Name = "btnCedulaProveedor";
+            this.btnCedulaProveedor.PasswordChar = '\0';
+            this.btnCedulaProveedor.SelectedText = "";
+            this.btnCedulaProveedor.SelectionLength = 0;
+            this.btnCedulaProveedor.SelectionStart = 0;
+            this.btnCedulaProveedor.Size = new System.Drawing.Size(216, 23);
+            this.btnCedulaProveedor.TabIndex = 8;
+            this.btnCedulaProveedor.UseSystemPasswordChar = false;
+            // 
+            // lblCedulaProveedor
+            // 
+            this.lblCedulaProveedor.AutoSize = true;
+            this.lblCedulaProveedor.Depth = 0;
+            this.lblCedulaProveedor.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblCedulaProveedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblCedulaProveedor.Location = new System.Drawing.Point(358, 25);
+            this.lblCedulaProveedor.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblCedulaProveedor.Name = "lblCedulaProveedor";
+            this.lblCedulaProveedor.Size = new System.Drawing.Size(59, 19);
+            this.lblCedulaProveedor.TabIndex = 7;
+            this.lblCedulaProveedor.Text = "Cedula:";
+            // 
+            // btnTelefonoProveedor
+            // 
+            this.btnTelefonoProveedor.Depth = 0;
+            this.btnTelefonoProveedor.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
+            this.btnTelefonoProveedor.Hint = "";
+            this.btnTelefonoProveedor.Location = new System.Drawing.Point(101, 75);
+            this.btnTelefonoProveedor.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnTelefonoProveedor.Name = "btnTelefonoProveedor";
+            this.btnTelefonoProveedor.PasswordChar = '\0';
+            this.btnTelefonoProveedor.SelectedText = "";
+            this.btnTelefonoProveedor.SelectionLength = 0;
+            this.btnTelefonoProveedor.SelectionStart = 0;
+            this.btnTelefonoProveedor.Size = new System.Drawing.Size(216, 23);
+            this.btnTelefonoProveedor.TabIndex = 6;
+            this.btnTelefonoProveedor.UseSystemPasswordChar = false;
+            // 
+            // lblTelefonoProveedor
+            // 
+            this.lblTelefonoProveedor.AutoSize = true;
+            this.lblTelefonoProveedor.Depth = 0;
+            this.lblTelefonoProveedor.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblTelefonoProveedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblTelefonoProveedor.Location = new System.Drawing.Point(18, 75);
+            this.lblTelefonoProveedor.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblTelefonoProveedor.Name = "lblTelefonoProveedor";
+            this.lblTelefonoProveedor.Size = new System.Drawing.Size(73, 19);
+            this.lblTelefonoProveedor.TabIndex = 5;
+            this.lblTelefonoProveedor.Text = "Telefono:";
+            // 
+            // btnNombreProveedor
+            // 
+            this.btnNombreProveedor.Depth = 0;
+            this.btnNombreProveedor.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
+            this.btnNombreProveedor.Hint = "";
+            this.btnNombreProveedor.Location = new System.Drawing.Point(101, 21);
+            this.btnNombreProveedor.MouseState = MaterialSkin.MouseState.HOVER;
+            this.btnNombreProveedor.Name = "btnNombreProveedor";
+            this.btnNombreProveedor.PasswordChar = '\0';
+            this.btnNombreProveedor.SelectedText = "";
+            this.btnNombreProveedor.SelectionLength = 0;
+            this.btnNombreProveedor.SelectionStart = 0;
+            this.btnNombreProveedor.Size = new System.Drawing.Size(216, 23);
+            this.btnNombreProveedor.TabIndex = 4;
+            this.btnNombreProveedor.UseSystemPasswordChar = false;
+            // 
+            // materialLabel1
+            // 
+            this.materialLabel1.AutoSize = true;
+            this.materialLabel1.Depth = 0;
+            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 11F);
+            this.materialLabel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.materialLabel1.Location = new System.Drawing.Point(18, 21);
+            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel1.Name = "materialLabel1";
+            this.materialLabel1.Size = new System.Drawing.Size(67, 19);
+            this.materialLabel1.TabIndex = 3;
+            this.materialLabel1.Text = "Nombre:";
+            // 
+            // pnlGridProveedores
+            // 
+            this.pnlGridProveedores.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.pnlGridProveedores.Controls.Add(this.dtProveedores);
+            this.pnlGridProveedores.Location = new System.Drawing.Point(13, 262);
+            this.pnlGridProveedores.Name = "pnlGridProveedores";
+            this.pnlGridProveedores.Size = new System.Drawing.Size(678, 358);
+            this.pnlGridProveedores.TabIndex = 1;
+            // 
+            // dtProveedores
+            // 
+            this.dtProveedores.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtProveedores.BackgroundColor = System.Drawing.Color.White;
+            this.dtProveedores.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dtProveedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtProveedores.Location = new System.Drawing.Point(3, 3);
+            this.dtProveedores.Name = "dtProveedores";
+            this.dtProveedores.Size = new System.Drawing.Size(672, 352);
+            this.dtProveedores.TabIndex = 0;
+            // 
             // RegistrarProveedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(703, 632);
-            this.Controls.Add(this.btnLimpiarCampos);
-            this.Controls.Add(this.btnGuardarProveedor);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnlGridProveedores);
+            this.Controls.Add(this.pnlFormularioProveedores);
             this.Name = "RegistrarProveedor";
             this.Text = "RegistrarProveedor";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pnlFormularioProveedores.ResumeLayout(false);
+            this.pnlFormularioProveedores.PerformLayout();
+            this.pnlGridProveedores.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dtProveedores)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private FontAwesome.Sharp.IconButton btnGuardarProveedor;
         private FontAwesome.Sharp.IconButton btnLimpiarCampos;
+        private System.Windows.Forms.Panel pnlFormularioProveedores;
+        private System.Windows.Forms.ComboBox cbxEstadoProveedor;
+        private MaterialSkin.Controls.MaterialLabel lblEstadoProveedor;
+        private MaterialSkin.Controls.MaterialCheckBox chkGastosFijo;
+        private MaterialSkin.Controls.MaterialLabel lblProveedorGasto;
+        private MaterialSkin.Controls.MaterialSingleLineTextField btnCedulaProveedor;
+        private MaterialSkin.Controls.MaterialLabel lblCedulaProveedor;
+        private MaterialSkin.Controls.MaterialSingleLineTextField btnTelefonoProveedor;
+        private MaterialSkin.Controls.MaterialLabel lblTelefonoProveedor;
+        private MaterialSkin.Controls.MaterialSingleLineTextField btnNombreProveedor;
+        private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private System.Windows.Forms.Panel pnlGridProveedores;
+        private System.Windows.Forms.DataGridView dtProveedores;
     }
 }

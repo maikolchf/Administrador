@@ -26,12 +26,12 @@ namespace administradorFormularios
        
         private void btnGastos_Click(object sender, EventArgs e)
         {
-            
+            llamadosFormularios.abrirFormularioHijo(new Gastos.RegistrarGastos(), ref panelFomularios);
         }
         
         private void btnNotasCambio_Click(object sender, EventArgs e)
         {
-            
+            llamadosFormularios.abrirFormularioHijo(new NotasCambio.RegistroProductos(), ref panelFomularios);
         }
        
 
