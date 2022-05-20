@@ -9,7 +9,7 @@ using AdministradorEntidades.Modelo;
 namespace administradorDAL
 {
     public class ProveedoresDal
-    {        
+    {
         public Respuesta<Proveedor> Insertar(Proveedor proveedor)
         {
             Respuesta<Proveedor> respuesta = new Respuesta<Proveedor>();
@@ -26,11 +26,21 @@ namespace administradorDAL
                         ProveedorEstado = proveedor.ProveedorEstado,
                         ProveedorTelefono = proveedor.ProveedorTelefono
                     };
-                    dbContexto.Proveedores.Add(proveedorNuevo);
-                    dbContexto.SaveChanges();
+                    if (proveedor.ProveedorId == 0)
+                    {
+                        dbContexto.Proveedores.Add(proveedorNuevo);
+                        dbContexto.SaveChanges();
+                        respuesta.HayError = false;
+                        respuesta.Mensaje = "Resgistrado con exito";
+                    }
+                    else
+                    {
+                        respuesta = Modificar(proveedorNuevo);
+
+                    }
+                    respuesta.ObjetoRespuesta = proveedor;
                 }
-                respuesta.HayError = false;
-                respuesta.Mensaje = "Resgistrado con exito";
+
             }
             catch (Exception oEx)
             {
@@ -57,12 +67,13 @@ namespace administradorDAL
                                                      ProveedorTelefono = x.ProveedorTelefono,
                                                      ProveedorGastoFijo = x.ProveedorGastoFijo,
                                                      ProveedorEstado = x.ProveedorEstado,
-                                                     Estado = (from y in dbContexto.Estados select new Estado
-                                                     {
-                                                         EstadoId = y.EstadoId,
-                                                         EstadoCodigo = y.EstadoCodigo,
-                                                         EstadoDescripcion = y.EstadoDescripcion
-                                                     }).ToList().Where(e => e.EstadoCodigo == x.ProveedorEstado).FirstOrDefault()
+                                                     Estado = (from y in dbContexto.Estados
+                                                               select new Estado
+                                                               {
+                                                                   EstadoId = y.EstadoId,
+                                                                   EstadoCodigo = y.EstadoCodigo,
+                                                                   EstadoDescripcion = y.EstadoDescripcion
+                                                               }).ToList().Where(e => e.EstadoCodigo == x.ProveedorEstado).FirstOrDefault()
                                                  }).ToList();
                     respuesta.HayError = false;
                     respuesta.Mensaje = "Exito";
@@ -73,6 +84,41 @@ namespace administradorDAL
                 respuesta.HayError = true;
                 respuesta.Mensaje = oEx.Message;
                 respuesta.ObjetoRespuesta = new List<Proveedor>();
+            }
+            return respuesta;
+        }
+
+        private Respuesta<Proveedor> Modificar(Proveedores proveedorMod)
+        {
+            Respuesta<Proveedor> respuesta = new Respuesta<Proveedor>();
+            try
+            {
+                using (AdministradorAzurEntities dbContexto = new AdministradorAzurEntities())
+                {
+                    var proveedor = (from x in dbContexto.Proveedores
+                                     where x.ProveedorId == proveedorMod.ProveedorId
+                                     select x).FirstOrDefault();
+                    if (proveedor != null)
+                    {
+                        proveedor.ProveedorId = proveedorMod.ProveedorId;
+                        proveedor.ProveedorNombre = proveedorMod.ProveedorNombre;
+                        proveedor.ProveedorCedula = proveedorMod.ProveedorCedula;
+                        proveedor.ProveedorTelefono = proveedorMod.ProveedorTelefono;
+                        proveedor.ProveedorGastoFijo = proveedorMod.ProveedorGastoFijo;
+                        proveedor.ProveedorEstado = proveedorMod.ProveedorEstado;                        
+
+                        dbContexto.Entry(proveedor).CurrentValues.SetValues(proveedor);
+                        dbContexto.SaveChanges();
+                    }
+                    respuesta.HayError = false;
+                    respuesta.Mensaje = "Modificado con exito";
+                }
+            }
+            catch (Exception oEx)
+            {
+                respuesta.HayError = true;
+                respuesta.Mensaje = oEx.Message;
+                respuesta.ObjetoRespuesta = new Proveedor();
             }
             return respuesta;
         }

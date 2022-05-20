@@ -35,14 +35,15 @@
             this.lblEstadoProveedor = new MaterialSkin.Controls.MaterialLabel();
             this.chkGastosFijo = new MaterialSkin.Controls.MaterialCheckBox();
             this.lblProveedorGasto = new MaterialSkin.Controls.MaterialLabel();
-            this.btnCedulaProveedor = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.txtCedulaProveedor = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.lblCedulaProveedor = new MaterialSkin.Controls.MaterialLabel();
-            this.btnTelefonoProveedor = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.txtTelefonoProveedor = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.lblTelefonoProveedor = new MaterialSkin.Controls.MaterialLabel();
-            this.btnNombreProveedor = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.txtNombreProveedor = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.pnlGridProveedores = new System.Windows.Forms.Panel();
             this.dtProveedores = new System.Windows.Forms.DataGridView();
+            this.lblProveedorId = new MaterialSkin.Controls.MaterialLabel();
             this.pnlFormularioProveedores.SuspendLayout();
             this.pnlGridProveedores.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtProveedores)).BeginInit();
@@ -52,17 +53,18 @@
             // 
             this.pnlFormularioProveedores.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pnlFormularioProveedores.BackColor = System.Drawing.Color.White;
+            this.pnlFormularioProveedores.Controls.Add(this.lblProveedorId);
             this.pnlFormularioProveedores.Controls.Add(this.btnLimpiarProveedor);
             this.pnlFormularioProveedores.Controls.Add(this.btnGuardarProveedor);
             this.pnlFormularioProveedores.Controls.Add(this.cbxEstadoProveedor);
             this.pnlFormularioProveedores.Controls.Add(this.lblEstadoProveedor);
             this.pnlFormularioProveedores.Controls.Add(this.chkGastosFijo);
             this.pnlFormularioProveedores.Controls.Add(this.lblProveedorGasto);
-            this.pnlFormularioProveedores.Controls.Add(this.btnCedulaProveedor);
+            this.pnlFormularioProveedores.Controls.Add(this.txtCedulaProveedor);
             this.pnlFormularioProveedores.Controls.Add(this.lblCedulaProveedor);
-            this.pnlFormularioProveedores.Controls.Add(this.btnTelefonoProveedor);
+            this.pnlFormularioProveedores.Controls.Add(this.txtTelefonoProveedor);
             this.pnlFormularioProveedores.Controls.Add(this.lblTelefonoProveedor);
-            this.pnlFormularioProveedores.Controls.Add(this.btnNombreProveedor);
+            this.pnlFormularioProveedores.Controls.Add(this.txtNombreProveedor);
             this.pnlFormularioProveedores.Controls.Add(this.materialLabel1);
             this.pnlFormularioProveedores.Location = new System.Drawing.Point(12, 12);
             this.pnlFormularioProveedores.Name = "pnlFormularioProveedores";
@@ -83,6 +85,7 @@
             this.btnLimpiarProveedor.Size = new System.Drawing.Size(75, 59);
             this.btnLimpiarProveedor.TabIndex = 14;
             this.btnLimpiarProveedor.UseVisualStyleBackColor = true;
+            this.btnLimpiarProveedor.Click += new System.EventHandler(this.btnLimpiarProveedor_Click);
             // 
             // btnGuardarProveedor
             // 
@@ -151,21 +154,21 @@
             this.lblProveedorGasto.TabIndex = 9;
             this.lblProveedorGasto.Text = "Es gasto fijo:";
             // 
-            // btnCedulaProveedor
+            // txtCedulaProveedor
             // 
-            this.btnCedulaProveedor.Depth = 0;
-            this.btnCedulaProveedor.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
-            this.btnCedulaProveedor.Hint = "";
-            this.btnCedulaProveedor.Location = new System.Drawing.Point(441, 25);
-            this.btnCedulaProveedor.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnCedulaProveedor.Name = "btnCedulaProveedor";
-            this.btnCedulaProveedor.PasswordChar = '\0';
-            this.btnCedulaProveedor.SelectedText = "";
-            this.btnCedulaProveedor.SelectionLength = 0;
-            this.btnCedulaProveedor.SelectionStart = 0;
-            this.btnCedulaProveedor.Size = new System.Drawing.Size(216, 23);
-            this.btnCedulaProveedor.TabIndex = 8;
-            this.btnCedulaProveedor.UseSystemPasswordChar = false;
+            this.txtCedulaProveedor.Depth = 0;
+            this.txtCedulaProveedor.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
+            this.txtCedulaProveedor.Hint = "";
+            this.txtCedulaProveedor.Location = new System.Drawing.Point(441, 25);
+            this.txtCedulaProveedor.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtCedulaProveedor.Name = "txtCedulaProveedor";
+            this.txtCedulaProveedor.PasswordChar = '\0';
+            this.txtCedulaProveedor.SelectedText = "";
+            this.txtCedulaProveedor.SelectionLength = 0;
+            this.txtCedulaProveedor.SelectionStart = 0;
+            this.txtCedulaProveedor.Size = new System.Drawing.Size(216, 23);
+            this.txtCedulaProveedor.TabIndex = 8;
+            this.txtCedulaProveedor.UseSystemPasswordChar = false;
             // 
             // lblCedulaProveedor
             // 
@@ -180,21 +183,21 @@
             this.lblCedulaProveedor.TabIndex = 7;
             this.lblCedulaProveedor.Text = "Cedula:";
             // 
-            // btnTelefonoProveedor
+            // txtTelefonoProveedor
             // 
-            this.btnTelefonoProveedor.Depth = 0;
-            this.btnTelefonoProveedor.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
-            this.btnTelefonoProveedor.Hint = "";
-            this.btnTelefonoProveedor.Location = new System.Drawing.Point(101, 75);
-            this.btnTelefonoProveedor.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnTelefonoProveedor.Name = "btnTelefonoProveedor";
-            this.btnTelefonoProveedor.PasswordChar = '\0';
-            this.btnTelefonoProveedor.SelectedText = "";
-            this.btnTelefonoProveedor.SelectionLength = 0;
-            this.btnTelefonoProveedor.SelectionStart = 0;
-            this.btnTelefonoProveedor.Size = new System.Drawing.Size(216, 23);
-            this.btnTelefonoProveedor.TabIndex = 6;
-            this.btnTelefonoProveedor.UseSystemPasswordChar = false;
+            this.txtTelefonoProveedor.Depth = 0;
+            this.txtTelefonoProveedor.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
+            this.txtTelefonoProveedor.Hint = "";
+            this.txtTelefonoProveedor.Location = new System.Drawing.Point(101, 75);
+            this.txtTelefonoProveedor.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtTelefonoProveedor.Name = "txtTelefonoProveedor";
+            this.txtTelefonoProveedor.PasswordChar = '\0';
+            this.txtTelefonoProveedor.SelectedText = "";
+            this.txtTelefonoProveedor.SelectionLength = 0;
+            this.txtTelefonoProveedor.SelectionStart = 0;
+            this.txtTelefonoProveedor.Size = new System.Drawing.Size(216, 23);
+            this.txtTelefonoProveedor.TabIndex = 6;
+            this.txtTelefonoProveedor.UseSystemPasswordChar = false;            
             // 
             // lblTelefonoProveedor
             // 
@@ -209,21 +212,21 @@
             this.lblTelefonoProveedor.TabIndex = 5;
             this.lblTelefonoProveedor.Text = "Telefono:";
             // 
-            // btnNombreProveedor
+            // txtNombreProveedor
             // 
-            this.btnNombreProveedor.Depth = 0;
-            this.btnNombreProveedor.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
-            this.btnNombreProveedor.Hint = "";
-            this.btnNombreProveedor.Location = new System.Drawing.Point(101, 21);
-            this.btnNombreProveedor.MouseState = MaterialSkin.MouseState.HOVER;
-            this.btnNombreProveedor.Name = "btnNombreProveedor";
-            this.btnNombreProveedor.PasswordChar = '\0';
-            this.btnNombreProveedor.SelectedText = "";
-            this.btnNombreProveedor.SelectionLength = 0;
-            this.btnNombreProveedor.SelectionStart = 0;
-            this.btnNombreProveedor.Size = new System.Drawing.Size(216, 23);
-            this.btnNombreProveedor.TabIndex = 4;
-            this.btnNombreProveedor.UseSystemPasswordChar = false;
+            this.txtNombreProveedor.Depth = 0;
+            this.txtNombreProveedor.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
+            this.txtNombreProveedor.Hint = "";
+            this.txtNombreProveedor.Location = new System.Drawing.Point(101, 21);
+            this.txtNombreProveedor.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtNombreProveedor.Name = "txtNombreProveedor";
+            this.txtNombreProveedor.PasswordChar = '\0';
+            this.txtNombreProveedor.SelectedText = "";
+            this.txtNombreProveedor.SelectionLength = 0;
+            this.txtNombreProveedor.SelectionStart = 0;
+            this.txtNombreProveedor.Size = new System.Drawing.Size(216, 23);
+            this.txtNombreProveedor.TabIndex = 4;
+            this.txtNombreProveedor.UseSystemPasswordChar = false;
             // 
             // materialLabel1
             // 
@@ -263,6 +266,20 @@
             this.dtProveedores.Name = "dtProveedores";
             this.dtProveedores.Size = new System.Drawing.Size(672, 352);
             this.dtProveedores.TabIndex = 0;
+            this.dtProveedores.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SeleccionarRegistro);
+            // 
+            // lblProveedorId
+            // 
+            this.lblProveedorId.AutoSize = true;
+            this.lblProveedorId.Depth = 0;
+            this.lblProveedorId.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblProveedorId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblProveedorId.Location = new System.Drawing.Point(362, 134);
+            this.lblProveedorId.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblProveedorId.Name = "lblProveedorId";
+            this.lblProveedorId.Size = new System.Drawing.Size(0, 19);
+            this.lblProveedorId.TabIndex = 15;
+            this.lblProveedorId.Visible = false;
             // 
             // RegistrarProveedor
             // 
@@ -288,15 +305,16 @@
         private MaterialSkin.Controls.MaterialLabel lblEstadoProveedor;
         private MaterialSkin.Controls.MaterialCheckBox chkGastosFijo;
         private MaterialSkin.Controls.MaterialLabel lblProveedorGasto;
-        private MaterialSkin.Controls.MaterialSingleLineTextField btnCedulaProveedor;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtCedulaProveedor;
         private MaterialSkin.Controls.MaterialLabel lblCedulaProveedor;
-        private MaterialSkin.Controls.MaterialSingleLineTextField btnTelefonoProveedor;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtTelefonoProveedor;
         private MaterialSkin.Controls.MaterialLabel lblTelefonoProveedor;
-        private MaterialSkin.Controls.MaterialSingleLineTextField btnNombreProveedor;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtNombreProveedor;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private System.Windows.Forms.Panel pnlGridProveedores;
         private System.Windows.Forms.DataGridView dtProveedores;
         private FontAwesome.Sharp.IconButton btnLimpiarProveedor;
         private FontAwesome.Sharp.IconButton btnGuardarProveedor;
+        private MaterialSkin.Controls.MaterialLabel lblProveedorId;
     }
 }
