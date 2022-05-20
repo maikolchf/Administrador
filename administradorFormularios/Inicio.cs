@@ -31,7 +31,7 @@ namespace administradorFormularios
         
         private void btnNotasCambio_Click(object sender, EventArgs e)
         {
-            llamadosFormularios.abrirFormularioHijo(new NotasCambio.RegistroProductos(), ref panelFomularios);
+            llamadosFormularios.abrirFormularioHijo(new NotasCambio.RegistroNotasCambio(), ref panelFomularios);
         }
        
 
@@ -39,6 +39,10 @@ namespace administradorFormularios
         {
             
         }
-       
+
+        private void panelFomularios_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace administradorFormularios.NotasCambio
 {
-    public partial class RegistroProductos : Form
+    public partial class RegistroNotasCambio : Form
     {
-        public RegistroProductos()
+        public RegistroNotasCambio()
         {
             InitializeComponent();
-        }
-
-        private void materialSingleLineTextField1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

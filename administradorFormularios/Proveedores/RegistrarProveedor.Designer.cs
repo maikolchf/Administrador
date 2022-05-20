@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnGuardarProveedor = new FontAwesome.Sharp.IconButton();
-            this.btnLimpiarCampos = new FontAwesome.Sharp.IconButton();
             this.pnlFormularioProveedores = new System.Windows.Forms.Panel();
+            this.btnLimpiarProveedor = new FontAwesome.Sharp.IconButton();
+            this.btnGuardarProveedor = new FontAwesome.Sharp.IconButton();
             this.cbxEstadoProveedor = new System.Windows.Forms.ComboBox();
             this.lblEstadoProveedor = new MaterialSkin.Controls.MaterialLabel();
             this.chkGastosFijo = new MaterialSkin.Controls.MaterialCheckBox();
@@ -48,39 +48,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtProveedores)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnGuardarProveedor
-            // 
-            this.btnGuardarProveedor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGuardarProveedor.FlatAppearance.BorderSize = 0;
-            this.btnGuardarProveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardarProveedor.IconChar = FontAwesome.Sharp.IconChar.Save;
-            this.btnGuardarProveedor.IconColor = System.Drawing.Color.Black;
-            this.btnGuardarProveedor.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnGuardarProveedor.IconSize = 50;
-            this.btnGuardarProveedor.Location = new System.Drawing.Point(562, 183);
-            this.btnGuardarProveedor.Name = "btnGuardarProveedor";
-            this.btnGuardarProveedor.Size = new System.Drawing.Size(95, 57);
-            this.btnGuardarProveedor.TabIndex = 1;
-            this.btnGuardarProveedor.UseVisualStyleBackColor = true;
-            // 
-            // btnLimpiarCampos
-            // 
-            this.btnLimpiarCampos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLimpiarCampos.FlatAppearance.BorderSize = 0;
-            this.btnLimpiarCampos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLimpiarCampos.IconChar = FontAwesome.Sharp.IconChar.Eraser;
-            this.btnLimpiarCampos.IconColor = System.Drawing.Color.Black;
-            this.btnLimpiarCampos.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnLimpiarCampos.Location = new System.Drawing.Point(441, 183);
-            this.btnLimpiarCampos.Name = "btnLimpiarCampos";
-            this.btnLimpiarCampos.Size = new System.Drawing.Size(95, 57);
-            this.btnLimpiarCampos.TabIndex = 2;
-            this.btnLimpiarCampos.UseVisualStyleBackColor = true;
-            // 
             // pnlFormularioProveedores
             // 
             this.pnlFormularioProveedores.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pnlFormularioProveedores.BackColor = System.Drawing.Color.White;
+            this.pnlFormularioProveedores.Controls.Add(this.btnLimpiarProveedor);
+            this.pnlFormularioProveedores.Controls.Add(this.btnGuardarProveedor);
             this.pnlFormularioProveedores.Controls.Add(this.cbxEstadoProveedor);
             this.pnlFormularioProveedores.Controls.Add(this.lblEstadoProveedor);
             this.pnlFormularioProveedores.Controls.Add(this.chkGastosFijo);
@@ -91,12 +64,41 @@
             this.pnlFormularioProveedores.Controls.Add(this.lblTelefonoProveedor);
             this.pnlFormularioProveedores.Controls.Add(this.btnNombreProveedor);
             this.pnlFormularioProveedores.Controls.Add(this.materialLabel1);
-            this.pnlFormularioProveedores.Controls.Add(this.btnLimpiarCampos);
-            this.pnlFormularioProveedores.Controls.Add(this.btnGuardarProveedor);
             this.pnlFormularioProveedores.Location = new System.Drawing.Point(12, 12);
             this.pnlFormularioProveedores.Name = "pnlFormularioProveedores";
             this.pnlFormularioProveedores.Size = new System.Drawing.Size(679, 243);
             this.pnlFormularioProveedores.TabIndex = 0;
+            // 
+            // btnLimpiarProveedor
+            // 
+            this.btnLimpiarProveedor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLimpiarProveedor.FlatAppearance.BorderSize = 0;
+            this.btnLimpiarProveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLimpiarProveedor.IconChar = FontAwesome.Sharp.IconChar.Eraser;
+            this.btnLimpiarProveedor.IconColor = System.Drawing.Color.Black;
+            this.btnLimpiarProveedor.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnLimpiarProveedor.IconSize = 50;
+            this.btnLimpiarProveedor.Location = new System.Drawing.Point(582, 172);
+            this.btnLimpiarProveedor.Name = "btnLimpiarProveedor";
+            this.btnLimpiarProveedor.Size = new System.Drawing.Size(75, 59);
+            this.btnLimpiarProveedor.TabIndex = 14;
+            this.btnLimpiarProveedor.UseVisualStyleBackColor = true;
+            // 
+            // btnGuardarProveedor
+            // 
+            this.btnGuardarProveedor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGuardarProveedor.FlatAppearance.BorderSize = 0;
+            this.btnGuardarProveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardarProveedor.IconChar = FontAwesome.Sharp.IconChar.Save;
+            this.btnGuardarProveedor.IconColor = System.Drawing.Color.Black;
+            this.btnGuardarProveedor.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnGuardarProveedor.IconSize = 50;
+            this.btnGuardarProveedor.Location = new System.Drawing.Point(501, 172);
+            this.btnGuardarProveedor.Name = "btnGuardarProveedor";
+            this.btnGuardarProveedor.Size = new System.Drawing.Size(75, 59);
+            this.btnGuardarProveedor.TabIndex = 13;
+            this.btnGuardarProveedor.UseVisualStyleBackColor = true;
+            this.btnGuardarProveedor.Click += new System.EventHandler(this.btnGuardarProveedor_Click);
             // 
             // cbxEstadoProveedor
             // 
@@ -113,7 +115,7 @@
             this.lblEstadoProveedor.Depth = 0;
             this.lblEstadoProveedor.Font = new System.Drawing.Font("Roboto", 11F);
             this.lblEstadoProveedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblEstadoProveedor.Location = new System.Drawing.Point(18, 130);
+            this.lblEstadoProveedor.Location = new System.Drawing.Point(18, 129);
             this.lblEstadoProveedor.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblEstadoProveedor.Name = "lblEstadoProveedor";
             this.lblEstadoProveedor.Size = new System.Drawing.Size(60, 19);
@@ -247,12 +249,16 @@
             // 
             // dtProveedores
             // 
+            this.dtProveedores.AllowUserToAddRows = false;
             this.dtProveedores.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtProveedores.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtProveedores.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dtProveedores.BackgroundColor = System.Drawing.Color.White;
             this.dtProveedores.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtProveedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtProveedores.Cursor = System.Windows.Forms.Cursors.Default;
             this.dtProveedores.Location = new System.Drawing.Point(3, 3);
             this.dtProveedores.Name = "dtProveedores";
             this.dtProveedores.Size = new System.Drawing.Size(672, 352);
@@ -277,9 +283,6 @@
         }
 
         #endregion
-
-        private FontAwesome.Sharp.IconButton btnGuardarProveedor;
-        private FontAwesome.Sharp.IconButton btnLimpiarCampos;
         private System.Windows.Forms.Panel pnlFormularioProveedores;
         private System.Windows.Forms.ComboBox cbxEstadoProveedor;
         private MaterialSkin.Controls.MaterialLabel lblEstadoProveedor;
@@ -293,5 +296,7 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private System.Windows.Forms.Panel pnlGridProveedores;
         private System.Windows.Forms.DataGridView dtProveedores;
+        private FontAwesome.Sharp.IconButton btnLimpiarProveedor;
+        private FontAwesome.Sharp.IconButton btnGuardarProveedor;
     }
 }

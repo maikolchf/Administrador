@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdministradorCompartidas", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdministradorFormularios", "administradorFormularios\AdministradorFormularios.csproj", "{99CEF799-838E-4EBD-8ADC-B64928F3C661}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "AdministradorDB", "AdministradorDB\AdministradorDB.sqlproj", "{3032102D-5F16-4678-9556-C4D9811C38C9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,12 @@ Global
 		{99CEF799-838E-4EBD-8ADC-B64928F3C661}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99CEF799-838E-4EBD-8ADC-B64928F3C661}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99CEF799-838E-4EBD-8ADC-B64928F3C661}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3032102D-5F16-4678-9556-C4D9811C38C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3032102D-5F16-4678-9556-C4D9811C38C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3032102D-5F16-4678-9556-C4D9811C38C9}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{3032102D-5F16-4678-9556-C4D9811C38C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3032102D-5F16-4678-9556-C4D9811C38C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3032102D-5F16-4678-9556-C4D9811C38C9}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

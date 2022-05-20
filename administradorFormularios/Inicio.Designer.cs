@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.panelIcono = new System.Windows.Forms.Panel();
-            this.panelFomularios = new System.Windows.Forms.Panel();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.btnUsuario = new FontAwesome.Sharp.IconButton();
             this.btnNotasCambio = new FontAwesome.Sharp.IconButton();
             this.btnGastos = new FontAwesome.Sharp.IconButton();
             this.btnProveedores = new FontAwesome.Sharp.IconButton();
             this.btnGraficos = new FontAwesome.Sharp.IconButton();
+            this.panelIcono = new System.Windows.Forms.Panel();
+            this.panelFomularios = new System.Windows.Forms.Panel();
             this.panelMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,22 +56,6 @@
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(238, 671);
             this.panelMenu.TabIndex = 0;
-            // 
-            // panelIcono
-            // 
-            this.panelIcono.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelIcono.Location = new System.Drawing.Point(0, 0);
-            this.panelIcono.Name = "panelIcono";
-            this.panelIcono.Size = new System.Drawing.Size(238, 107);
-            this.panelIcono.TabIndex = 0;
-            // 
-            // panelFomularios
-            // 
-            this.panelFomularios.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelFomularios.Location = new System.Drawing.Point(238, 0);
-            this.panelFomularios.Name = "panelFomularios";
-            this.panelFomularios.Size = new System.Drawing.Size(719, 671);
-            this.panelFomularios.TabIndex = 1;
             // 
             // iconButton1
             // 
@@ -191,6 +175,23 @@
             this.btnGraficos.Text = "Graficos";
             this.btnGraficos.UseVisualStyleBackColor = true;
             // 
+            // panelIcono
+            // 
+            this.panelIcono.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelIcono.Location = new System.Drawing.Point(0, 0);
+            this.panelIcono.Name = "panelIcono";
+            this.panelIcono.Size = new System.Drawing.Size(238, 107);
+            this.panelIcono.TabIndex = 0;
+            // 
+            // panelFomularios
+            // 
+            this.panelFomularios.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelFomularios.Location = new System.Drawing.Point(238, 0);
+            this.panelFomularios.Name = "panelFomularios";
+            this.panelFomularios.Size = new System.Drawing.Size(719, 671);
+            this.panelFomularios.TabIndex = 1;
+            this.panelFomularios.Paint += new System.Windows.Forms.PaintEventHandler(this.panelFomularios_Paint);
+            // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -198,7 +199,7 @@
             this.ClientSize = new System.Drawing.Size(957, 671);
             this.Controls.Add(this.panelFomularios);
             this.Controls.Add(this.panelMenu);
-            this.MinimumSize = new System.Drawing.Size(900, 600);
+            this.MinimumSize = new System.Drawing.Size(973, 710);
             this.Name = "Inicio";
             this.Text = "Inicio";
             this.panelMenu.ResumeLayout(false);

@@ -29,9 +29,11 @@
         private void InitializeComponent()
         {
             this.pnlFormularioGasto = new System.Windows.Forms.Panel();
+            this.btnLimpiarGasto = new FontAwesome.Sharp.IconButton();
+            this.btnGuardarGasto = new FontAwesome.Sharp.IconButton();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.lblEstadoGasto = new MaterialSkin.Controls.MaterialLabel();
             this.txtMontoGasto = new System.Windows.Forms.TextBox();
-            this.btnLimpiarGastos = new FontAwesome.Sharp.IconButton();
-            this.btnGuardaGasto = new FontAwesome.Sharp.IconButton();
             this.txtDetalleGasto = new System.Windows.Forms.TextBox();
             this.lblDetalleGasto = new MaterialSkin.Controls.MaterialLabel();
             this.lblNontoGasto = new MaterialSkin.Controls.MaterialLabel();
@@ -41,8 +43,6 @@
             this.lblNombreProvGasto = new MaterialSkin.Controls.MaterialLabel();
             this.pnlGridgastos = new System.Windows.Forms.Panel();
             this.dtGastos = new System.Windows.Forms.DataGridView();
-            this.lblEstadoGasto = new MaterialSkin.Controls.MaterialLabel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.pnlFormularioGasto.SuspendLayout();
             this.pnlGridgastos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGastos)).BeginInit();
@@ -51,11 +51,11 @@
             // pnlFormularioGasto
             // 
             this.pnlFormularioGasto.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pnlFormularioGasto.Controls.Add(this.btnLimpiarGasto);
+            this.pnlFormularioGasto.Controls.Add(this.btnGuardarGasto);
             this.pnlFormularioGasto.Controls.Add(this.comboBox1);
             this.pnlFormularioGasto.Controls.Add(this.lblEstadoGasto);
             this.pnlFormularioGasto.Controls.Add(this.txtMontoGasto);
-            this.pnlFormularioGasto.Controls.Add(this.btnLimpiarGastos);
-            this.pnlFormularioGasto.Controls.Add(this.btnGuardaGasto);
             this.pnlFormularioGasto.Controls.Add(this.txtDetalleGasto);
             this.pnlFormularioGasto.Controls.Add(this.lblDetalleGasto);
             this.pnlFormularioGasto.Controls.Add(this.lblNontoGasto);
@@ -68,6 +68,58 @@
             this.pnlFormularioGasto.Size = new System.Drawing.Size(679, 242);
             this.pnlFormularioGasto.TabIndex = 0;
             // 
+            // btnLimpiarGasto
+            // 
+            this.btnLimpiarGasto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLimpiarGasto.FlatAppearance.BorderSize = 0;
+            this.btnLimpiarGasto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLimpiarGasto.IconChar = FontAwesome.Sharp.IconChar.Eraser;
+            this.btnLimpiarGasto.IconColor = System.Drawing.Color.Black;
+            this.btnLimpiarGasto.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnLimpiarGasto.IconSize = 50;
+            this.btnLimpiarGasto.Location = new System.Drawing.Point(592, 171);
+            this.btnLimpiarGasto.Name = "btnLimpiarGasto";
+            this.btnLimpiarGasto.Size = new System.Drawing.Size(75, 59);
+            this.btnLimpiarGasto.TabIndex = 14;
+            this.btnLimpiarGasto.UseVisualStyleBackColor = true;
+            // 
+            // btnGuardarGasto
+            // 
+            this.btnGuardarGasto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGuardarGasto.FlatAppearance.BorderSize = 0;
+            this.btnGuardarGasto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardarGasto.IconChar = FontAwesome.Sharp.IconChar.Save;
+            this.btnGuardarGasto.IconColor = System.Drawing.Color.Black;
+            this.btnGuardarGasto.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnGuardarGasto.IconSize = 50;
+            this.btnGuardarGasto.Location = new System.Drawing.Point(511, 171);
+            this.btnGuardarGasto.Name = "btnGuardarGasto";
+            this.btnGuardarGasto.Size = new System.Drawing.Size(75, 59);
+            this.btnGuardarGasto.TabIndex = 13;
+            this.btnGuardarGasto.UseVisualStyleBackColor = true;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(181, 154);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(200, 21);
+            this.comboBox1.TabIndex = 11;
+            // 
+            // lblEstadoGasto
+            // 
+            this.lblEstadoGasto.AutoSize = true;
+            this.lblEstadoGasto.Depth = 0;
+            this.lblEstadoGasto.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblEstadoGasto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblEstadoGasto.Location = new System.Drawing.Point(15, 156);
+            this.lblEstadoGasto.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblEstadoGasto.Name = "lblEstadoGasto";
+            this.lblEstadoGasto.Size = new System.Drawing.Size(60, 19);
+            this.lblEstadoGasto.TabIndex = 10;
+            this.lblEstadoGasto.Text = "Estado:";
+            // 
             // txtMontoGasto
             // 
             this.txtMontoGasto.Location = new System.Drawing.Point(181, 111);
@@ -76,36 +128,6 @@
             this.txtMontoGasto.Name = "txtMontoGasto";
             this.txtMontoGasto.Size = new System.Drawing.Size(200, 23);
             this.txtMontoGasto.TabIndex = 9;
-            // 
-            // btnLimpiarGastos
-            // 
-            this.btnLimpiarGastos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLimpiarGastos.FlatAppearance.BorderSize = 0;
-            this.btnLimpiarGastos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLimpiarGastos.IconChar = FontAwesome.Sharp.IconChar.Eraser;
-            this.btnLimpiarGastos.IconColor = System.Drawing.Color.Black;
-            this.btnLimpiarGastos.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnLimpiarGastos.IconSize = 50;
-            this.btnLimpiarGastos.Location = new System.Drawing.Point(572, 173);
-            this.btnLimpiarGastos.Name = "btnLimpiarGastos";
-            this.btnLimpiarGastos.Size = new System.Drawing.Size(95, 57);
-            this.btnLimpiarGastos.TabIndex = 8;
-            this.btnLimpiarGastos.UseVisualStyleBackColor = true;
-            // 
-            // btnGuardaGasto
-            // 
-            this.btnGuardaGasto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGuardaGasto.FlatAppearance.BorderSize = 0;
-            this.btnGuardaGasto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardaGasto.IconChar = FontAwesome.Sharp.IconChar.Save;
-            this.btnGuardaGasto.IconColor = System.Drawing.Color.Black;
-            this.btnGuardaGasto.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnGuardaGasto.IconSize = 50;
-            this.btnGuardaGasto.Location = new System.Drawing.Point(471, 173);
-            this.btnGuardaGasto.Name = "btnGuardaGasto";
-            this.btnGuardaGasto.Size = new System.Drawing.Size(95, 57);
-            this.btnGuardaGasto.TabIndex = 7;
-            this.btnGuardaGasto.UseVisualStyleBackColor = true;
             // 
             // txtDetalleGasto
             // 
@@ -136,7 +158,7 @@
             this.lblNontoGasto.Depth = 0;
             this.lblNontoGasto.Font = new System.Drawing.Font("Roboto", 11F);
             this.lblNontoGasto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblNontoGasto.Location = new System.Drawing.Point(19, 113);
+            this.lblNontoGasto.Location = new System.Drawing.Point(15, 113);
             this.lblNontoGasto.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblNontoGasto.Name = "lblNontoGasto";
             this.lblNontoGasto.Size = new System.Drawing.Size(57, 19);
@@ -201,33 +223,13 @@
             this.dtGastos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtGastos.BackgroundColor = System.Drawing.Color.White;
+            this.dtGastos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtGastos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGastos.Location = new System.Drawing.Point(3, 3);
             this.dtGastos.Name = "dtGastos";
             this.dtGastos.Size = new System.Drawing.Size(672, 354);
             this.dtGastos.TabIndex = 0;
-            // 
-            // lblEstadoGasto
-            // 
-            this.lblEstadoGasto.AutoSize = true;
-            this.lblEstadoGasto.Depth = 0;
-            this.lblEstadoGasto.Font = new System.Drawing.Font("Roboto", 11F);
-            this.lblEstadoGasto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblEstadoGasto.Location = new System.Drawing.Point(23, 157);
-            this.lblEstadoGasto.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblEstadoGasto.Name = "lblEstadoGasto";
-            this.lblEstadoGasto.Size = new System.Drawing.Size(60, 19);
-            this.lblEstadoGasto.TabIndex = 10;
-            this.lblEstadoGasto.Text = "Estado:";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(181, 154);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(200, 21);
-            this.comboBox1.TabIndex = 11;
             // 
             // RegistrarGastos
             // 
@@ -258,11 +260,11 @@
         private MaterialSkin.Controls.MaterialLabel lblNontoGasto;
         private System.Windows.Forms.TextBox txtDetalleGasto;
         private MaterialSkin.Controls.MaterialLabel lblDetalleGasto;
-        private FontAwesome.Sharp.IconButton btnGuardaGasto;
-        private FontAwesome.Sharp.IconButton btnLimpiarGastos;
         private System.Windows.Forms.DataGridView dtGastos;
         private System.Windows.Forms.TextBox txtMontoGasto;
         private System.Windows.Forms.ComboBox comboBox1;
         private MaterialSkin.Controls.MaterialLabel lblEstadoGasto;
+        private FontAwesome.Sharp.IconButton btnLimpiarGasto;
+        private FontAwesome.Sharp.IconButton btnGuardarGasto;
     }
 }
