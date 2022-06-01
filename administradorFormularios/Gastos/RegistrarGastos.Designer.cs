@@ -31,9 +31,8 @@
             this.pnlFormularioGasto = new System.Windows.Forms.Panel();
             this.btnLimpiarGasto = new FontAwesome.Sharp.IconButton();
             this.btnGuardarGasto = new FontAwesome.Sharp.IconButton();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cbxGastoEstado = new System.Windows.Forms.ComboBox();
             this.lblEstadoGasto = new MaterialSkin.Controls.MaterialLabel();
-            this.txtMontoGasto = new System.Windows.Forms.TextBox();
             this.txtDetalleGasto = new System.Windows.Forms.TextBox();
             this.lblDetalleGasto = new MaterialSkin.Controls.MaterialLabel();
             this.lblNontoGasto = new MaterialSkin.Controls.MaterialLabel();
@@ -43,6 +42,7 @@
             this.lblNombreProvGasto = new MaterialSkin.Controls.MaterialLabel();
             this.pnlGridgastos = new System.Windows.Forms.Panel();
             this.dtGastos = new System.Windows.Forms.DataGridView();
+            this.txtMontoGasto = new System.Windows.Forms.TextBox();
             this.pnlFormularioGasto.SuspendLayout();
             this.pnlGridgastos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGastos)).BeginInit();
@@ -53,7 +53,7 @@
             this.pnlFormularioGasto.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pnlFormularioGasto.Controls.Add(this.btnLimpiarGasto);
             this.pnlFormularioGasto.Controls.Add(this.btnGuardarGasto);
-            this.pnlFormularioGasto.Controls.Add(this.comboBox1);
+            this.pnlFormularioGasto.Controls.Add(this.cbxGastoEstado);
             this.pnlFormularioGasto.Controls.Add(this.lblEstadoGasto);
             this.pnlFormularioGasto.Controls.Add(this.txtMontoGasto);
             this.pnlFormularioGasto.Controls.Add(this.txtDetalleGasto);
@@ -98,14 +98,15 @@
             this.btnGuardarGasto.TabIndex = 13;
             this.btnGuardarGasto.UseVisualStyleBackColor = true;
             // 
-            // comboBox1
+            // cbxGastoEstado
             // 
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(181, 154);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(200, 21);
-            this.comboBox1.TabIndex = 11;
+            this.cbxGastoEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxGastoEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbxGastoEstado.FormattingEnabled = true;
+            this.cbxGastoEstado.Location = new System.Drawing.Point(181, 154);
+            this.cbxGastoEstado.Name = "cbxGastoEstado";
+            this.cbxGastoEstado.Size = new System.Drawing.Size(200, 21);
+            this.cbxGastoEstado.TabIndex = 11;
             // 
             // lblEstadoGasto
             // 
@@ -120,15 +121,6 @@
             this.lblEstadoGasto.TabIndex = 10;
             this.lblEstadoGasto.Text = "Estado:";
             // 
-            // txtMontoGasto
-            // 
-            this.txtMontoGasto.Location = new System.Drawing.Point(181, 111);
-            this.txtMontoGasto.MaxLength = 30;
-            this.txtMontoGasto.Multiline = true;
-            this.txtMontoGasto.Name = "txtMontoGasto";
-            this.txtMontoGasto.Size = new System.Drawing.Size(200, 23);
-            this.txtMontoGasto.TabIndex = 9;
-            // 
             // txtDetalleGasto
             // 
             this.txtDetalleGasto.BackColor = System.Drawing.Color.White;
@@ -137,7 +129,6 @@
             this.txtDetalleGasto.Name = "txtDetalleGasto";
             this.txtDetalleGasto.Size = new System.Drawing.Size(248, 88);
             this.txtDetalleGasto.TabIndex = 6;
-            this.txtDetalleGasto.TextChanged += new System.EventHandler(this.txtDetalleGasto_TextChanged);
             // 
             // lblDetalleGasto
             // 
@@ -164,7 +155,6 @@
             this.lblNontoGasto.Size = new System.Drawing.Size(57, 19);
             this.lblNontoGasto.TabIndex = 3;
             this.lblNontoGasto.Text = "Monto:";
-            this.lblNontoGasto.Click += new System.EventHandler(this.materialLabel1_Click);
             // 
             // dtpFechaVenciGasto
             // 
@@ -172,7 +162,6 @@
             this.dtpFechaVenciGasto.Name = "dtpFechaVenciGasto";
             this.dtpFechaVenciGasto.Size = new System.Drawing.Size(200, 20);
             this.dtpFechaVenciGasto.TabIndex = 2;
-            this.dtpFechaVenciGasto.ValueChanged += new System.EventHandler(this.dtpFechaVenciGasto_ValueChanged);
             // 
             // lblFechaVenciGasto
             // 
@@ -231,6 +220,16 @@
             this.dtGastos.Size = new System.Drawing.Size(672, 354);
             this.dtGastos.TabIndex = 0;
             // 
+            // txtMontoGasto
+            // 
+            this.txtMontoGasto.Location = new System.Drawing.Point(181, 111);
+            this.txtMontoGasto.MaxLength = 30;
+            this.txtMontoGasto.Multiline = true;
+            this.txtMontoGasto.Name = "txtMontoGasto";
+            this.txtMontoGasto.Size = new System.Drawing.Size(200, 23);
+            this.txtMontoGasto.TabIndex = 9;
+            this.txtMontoGasto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMontoGasto_KeyPress);
+            // 
             // RegistrarGastos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -261,10 +260,10 @@
         private System.Windows.Forms.TextBox txtDetalleGasto;
         private MaterialSkin.Controls.MaterialLabel lblDetalleGasto;
         private System.Windows.Forms.DataGridView dtGastos;
-        private System.Windows.Forms.TextBox txtMontoGasto;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbxGastoEstado;
         private MaterialSkin.Controls.MaterialLabel lblEstadoGasto;
         private FontAwesome.Sharp.IconButton btnLimpiarGasto;
         private FontAwesome.Sharp.IconButton btnGuardarGasto;
+        private System.Windows.Forms.TextBox txtMontoGasto;
     }
 }

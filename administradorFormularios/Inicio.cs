@@ -8,12 +8,11 @@ namespace administradorFormularios
 {
     public partial class Inicio : Form
     {
-        private VariablesGlobales variablesGlobales = new VariablesGlobales();
         private EstadosBL estadosBL = new EstadosBL();
         public Inicio()
         {
             InitializeComponent();
-            variablesGlobales.estados = estadosBL.Obtener().ObjetoRespuesta;
+            VariablesGlobales.estados = estadosBL.Obtener().ObjetoRespuesta;
         }       
         administradorCompartidas.LlamadosFormularios llamadosFormularios = new LlamadosFormularios();       
 
@@ -41,6 +40,6 @@ namespace administradorFormularios
         private void panelFomularios_Paint(object sender, PaintEventArgs e)
         {
 
-        }
+        }       
     }
 }

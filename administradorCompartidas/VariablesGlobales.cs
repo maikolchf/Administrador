@@ -9,6 +9,7 @@ namespace administradorCompartidas
 {
     public  class VariablesGlobales
     {
-        public List<Combobox> estados = new List<Combobox>();
+        public static List<Estado> estados = new List<Estado>();
+
     }
 }

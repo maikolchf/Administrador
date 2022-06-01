@@ -10,6 +10,7 @@ namespace AdministradorEntidades.Entidades
     {
         public int EstadoId { get; set; }
         public string EstadoCodigo { get; set; }
-        public string EstadoDescripcion { get; set; }
+        public string EstadoDescripcion { get; set; }        
+       
     }
 }

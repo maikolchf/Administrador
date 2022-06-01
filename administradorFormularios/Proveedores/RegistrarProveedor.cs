@@ -12,11 +12,10 @@ namespace administradorFormularios.Proveedores
         private ProveedoresBL proveedoresBL = new ProveedoresBL();
         private EstadosBL estadosBL = new EstadosBL();
         private FuncionesCompartidas funcionesCompartidas = new FuncionesCompartidas();
-        private VariablesGlobales variablesGlobales = new VariablesGlobales();
         public RegistrarProveedor()
         {
             InitializeComponent();            
-            funcionesCompartidas.RellenarCombobox(ref cbxEstadoProveedor, variablesGlobales.estados);
+            funcionesCompartidas.RellenarComboboxEstados(ref cbxEstadoProveedor, VariablesGlobales.estados);
             List<Proveedor> proveedores = proveedoresBL.Obtener().ObjetoRespuesta;
             RellenarGrid(ref dtProveedores, proveedores);
             
@@ -129,6 +128,6 @@ namespace administradorFormularios.Proveedores
         private void txtTelefonoProveedor_KeyPress(object sender, KeyPressEventArgs e)
         {
             funcionesCompartidas.TextBoxNumeros(ref e);
-        }
+        }        
     }
 }

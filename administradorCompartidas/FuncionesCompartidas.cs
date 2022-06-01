@@ -10,18 +10,31 @@ namespace administradorCompartidas
 {
     public class FuncionesCompartidas
     {
-        public void RellenarCombobox(ref ComboBox combobox, List<Combobox> items)
+        public void RellenarComboboxEstados(ref ComboBox combobox, List<Estado> items)
         {
-            combobox.Items.Clear();
-            foreach (var item in items)
-            {
-                combobox.Items.Add(item.texto);
-            }
+            combobox.DataSource = items;
+            combobox.ValueMember = "EstadoCodigo";
+            combobox.DisplayMember = "EstadoDescripcion";
+        }
+
+        public void RellenarComboboxProveedor(ref ComboBox combobox, List<Proveedor> items)
+        {
+            combobox.DataSource = items;
+            combobox.ValueMember = "ProveedorId";
+            combobox.DisplayMember = "ProveedorNombre";
         }
 
         public void TextBoxNumeros(ref KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        public void TextBoxNumerosDecimales(ref KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
             {
                 e.Handled = true;
             }

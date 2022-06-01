@@ -10,18 +10,19 @@ namespace administradorDAL
 {
     public class EstadosDal
     {
-        public Respuesta<List<Combobox>> Obtener()
+        public Respuesta<List<Estado>> Obtener()
         {
-            Respuesta<List<Combobox>> respuesta = new Respuesta<List<Combobox>>();
+            Respuesta<List<Estado>> respuesta = new Respuesta<List<Estado>>();
             try
             {
                 using (AdministradorAzurEntities dbContexto = new AdministradorAzurEntities())
                 {
                     respuesta.ObjetoRespuesta = (from x in dbContexto.Estados
-                                                 select new Combobox
+                                                 select new Estado
                                                  {
-                                                     index = x.EstadoCodigo,
-                                                     texto = x.EstadoDescripcion
+                                                     EstadoCodigo = x.EstadoCodigo,
+                                                     EstadoDescripcion = x.EstadoDescripcion,
+                                                     EstadoId = x.EstadoId                                                    
                                                  }).ToList();
 
                     respuesta.HayError = false;
@@ -32,7 +33,7 @@ namespace administradorDAL
             {
                 respuesta.HayError = true;
                 respuesta.Mensaje = oEx.Message;
-                respuesta.ObjetoRespuesta = new List<Combobox>();
+                respuesta.ObjetoRespuesta = new List<Estado>();
             }
             return respuesta;
         }

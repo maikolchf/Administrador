@@ -124,6 +124,7 @@
             this.cbxEstadoProveedor.Name = "cbxEstadoProveedor";
             this.cbxEstadoProveedor.Size = new System.Drawing.Size(216, 21);
             this.cbxEstadoProveedor.TabIndex = 12;
+            this.cbxEstadoProveedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             // 
             // lblEstadoProveedor
             // 

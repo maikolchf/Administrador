@@ -11,9 +11,9 @@ namespace AdministradorBL
     public class EstadosBL
     {
         private EstadosDal estadosDal = new EstadosDal();
-        public Respuesta<List<Combobox>> Obtener()
+        public Respuesta<List<Estado>> Obtener()
         {
-            Respuesta<List<Combobox>> respuesta = new Respuesta<List<Combobox>>();
+            Respuesta<List<Estado>> respuesta = new Respuesta<List<Estado>>();
             respuesta =  estadosDal.Obtener();
             return respuesta;
         }
