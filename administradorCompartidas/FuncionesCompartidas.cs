@@ -18,6 +18,13 @@ namespace administradorCompartidas
                 combobox.Items.Add(item.texto);
             }
         }
-                
-    }
+
+        public void TextBoxNumeros(ref KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+    }    
 }

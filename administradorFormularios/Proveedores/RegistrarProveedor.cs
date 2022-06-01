@@ -4,7 +4,6 @@ using System.Windows.Forms;
 using AdministradorEntidades.Entidades;
 using administradorCompartidas;
 using System.Collections.Generic;
-using administradorCompartidas;
 
 namespace administradorFormularios.Proveedores
 {
@@ -12,13 +11,12 @@ namespace administradorFormularios.Proveedores
     {
         private ProveedoresBL proveedoresBL = new ProveedoresBL();
         private EstadosBL estadosBL = new EstadosBL();
-        private FuncionesCompartidas funcionesCompartidas = new FuncionesCompartidas();        
+        private FuncionesCompartidas funcionesCompartidas = new FuncionesCompartidas();
+        private VariablesGlobales variablesGlobales = new VariablesGlobales();
         public RegistrarProveedor()
         {
-            InitializeComponent();
-            List<Combobox> estados = estadosBL.Obtener().ObjetoRespuesta;
-            funcionesCompartidas.RellenarCombobox(ref cbxEstadoProveedor, estados);
-
+            InitializeComponent();            
+            funcionesCompartidas.RellenarCombobox(ref cbxEstadoProveedor, variablesGlobales.estados);
             List<Proveedor> proveedores = proveedoresBL.Obtener().ObjetoRespuesta;
             RellenarGrid(ref dtProveedores, proveedores);
             
@@ -121,6 +119,16 @@ namespace administradorFormularios.Proveedores
                 return true;
             }
             return false;
+        }
+
+        private void txtCedulaProveedor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            funcionesCompartidas.TextBoxNumeros(ref e);
+        }
+
+        private void txtTelefonoProveedor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            funcionesCompartidas.TextBoxNumeros(ref e);
         }
     }
 }

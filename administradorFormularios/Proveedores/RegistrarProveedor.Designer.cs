@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.pnlFormularioProveedores = new System.Windows.Forms.Panel();
+            this.lblProveedorId = new MaterialSkin.Controls.MaterialLabel();
             this.btnLimpiarProveedor = new FontAwesome.Sharp.IconButton();
             this.btnGuardarProveedor = new FontAwesome.Sharp.IconButton();
             this.cbxEstadoProveedor = new System.Windows.Forms.ComboBox();
@@ -43,7 +44,6 @@
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.pnlGridProveedores = new System.Windows.Forms.Panel();
             this.dtProveedores = new System.Windows.Forms.DataGridView();
-            this.lblProveedorId = new MaterialSkin.Controls.MaterialLabel();
             this.pnlFormularioProveedores.SuspendLayout();
             this.pnlGridProveedores.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtProveedores)).BeginInit();
@@ -70,6 +70,19 @@
             this.pnlFormularioProveedores.Name = "pnlFormularioProveedores";
             this.pnlFormularioProveedores.Size = new System.Drawing.Size(679, 243);
             this.pnlFormularioProveedores.TabIndex = 0;
+            // 
+            // lblProveedorId
+            // 
+            this.lblProveedorId.AutoSize = true;
+            this.lblProveedorId.Depth = 0;
+            this.lblProveedorId.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblProveedorId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblProveedorId.Location = new System.Drawing.Point(362, 134);
+            this.lblProveedorId.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblProveedorId.Name = "lblProveedorId";
+            this.lblProveedorId.Size = new System.Drawing.Size(0, 19);
+            this.lblProveedorId.TabIndex = 15;
+            this.lblProveedorId.Visible = false;
             // 
             // btnLimpiarProveedor
             // 
@@ -169,6 +182,7 @@
             this.txtCedulaProveedor.Size = new System.Drawing.Size(216, 23);
             this.txtCedulaProveedor.TabIndex = 8;
             this.txtCedulaProveedor.UseSystemPasswordChar = false;
+            this.txtCedulaProveedor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCedulaProveedor_KeyPress);
             // 
             // lblCedulaProveedor
             // 
@@ -197,7 +211,8 @@
             this.txtTelefonoProveedor.SelectionStart = 0;
             this.txtTelefonoProveedor.Size = new System.Drawing.Size(216, 23);
             this.txtTelefonoProveedor.TabIndex = 6;
-            this.txtTelefonoProveedor.UseSystemPasswordChar = false;            
+            this.txtTelefonoProveedor.UseSystemPasswordChar = false;
+            this.txtTelefonoProveedor.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTelefonoProveedor_KeyPress);
             // 
             // lblTelefonoProveedor
             // 
@@ -267,19 +282,6 @@
             this.dtProveedores.Size = new System.Drawing.Size(672, 352);
             this.dtProveedores.TabIndex = 0;
             this.dtProveedores.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SeleccionarRegistro);
-            // 
-            // lblProveedorId
-            // 
-            this.lblProveedorId.AutoSize = true;
-            this.lblProveedorId.Depth = 0;
-            this.lblProveedorId.Font = new System.Drawing.Font("Roboto", 11F);
-            this.lblProveedorId.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblProveedorId.Location = new System.Drawing.Point(362, 134);
-            this.lblProveedorId.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblProveedorId.Name = "lblProveedorId";
-            this.lblProveedorId.Size = new System.Drawing.Size(0, 19);
-            this.lblProveedorId.TabIndex = 15;
-            this.lblProveedorId.Visible = false;
             // 
             // RegistrarProveedor
             // 
