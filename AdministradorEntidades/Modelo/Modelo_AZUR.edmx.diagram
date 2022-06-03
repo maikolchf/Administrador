@@ -8,6 +8,8 @@
         <EntityTypeShape EntityType="AdministradorAzurModel.Proveedores" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AdministradorAzurModel.Estados" Width="1.5" PointX="0.75" PointY="4" />
         <AssociationConnector Association="AdministradorAzurModel.Proveedor_FK_Estado" />
+        <EntityTypeShape EntityType="AdministradorAzurModel.Gastos" Width="1.5" PointX="3.375" PointY="0.75" />
+        <AssociationConnector Association="AdministradorAzurModel.Gasto_FK_Estado" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

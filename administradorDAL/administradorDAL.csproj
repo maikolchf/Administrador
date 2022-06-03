@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EstadosDal.cs" />
+    <Compile Include="GastosDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProveedoresDal.cs" />
   </ItemGroup>

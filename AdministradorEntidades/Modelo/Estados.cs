@@ -18,6 +18,7 @@ namespace AdministradorEntidades.Modelo
         public Estados()
         {
             this.Proveedores = new HashSet<Proveedores>();
+            this.Gastos = new HashSet<Gastos>();
         }
     
         public int EstadoId { get; set; }
@@ -26,5 +27,7 @@ namespace AdministradorEntidades.Modelo
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Proveedores> Proveedores { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Gastos> Gastos { get; set; }
     }
 }

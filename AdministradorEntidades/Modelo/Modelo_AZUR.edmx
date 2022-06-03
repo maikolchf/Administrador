@@ -13,6 +13,17 @@
           <Property Name="EstadoCodigo" Type="varchar" MaxLength="2" Nullable="false" />
           <Property Name="EstadoDescripcion" Type="varchar" MaxLength="30" Nullable="false" />
         </EntityType>
+        <EntityType Name="Gastos">
+          <Key>
+            <PropertyRef Name="GastoId" />
+          </Key>
+          <Property Name="GastoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Consecutivo" Type="varchar" MaxLength="35" Nullable="false" />
+          <Property Name="FechaVencimiento" Type="date" Nullable="false" />
+          <Property Name="Monto" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="2" Nullable="false" />
+        </EntityType>
         <EntityType Name="Proveedores">
           <Key>
             <PropertyRef Name="ProveedorId" />
@@ -24,6 +35,18 @@
           <Property Name="ProveedorGastoFijo" Type="bit" Nullable="false" />
           <Property Name="ProveedorEstado" Type="varchar" MaxLength="2" Nullable="false" />
         </EntityType>
+        <Association Name="Gasto_FK_Estado">
+          <End Role="Estados" Type="Self.Estados" Multiplicity="1" />
+          <End Role="Gastos" Type="Self.Gastos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="EstadoCodigo" />
+            </Principal>
+            <Dependent Role="Gastos">
+              <PropertyRef Name="Estado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="Proveedor_FK_Estado">
           <End Role="Estados" Type="Self.Estados" Multiplicity="1" />
           <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="*" />
@@ -38,7 +61,12 @@
         </Association>
         <EntityContainer Name="AdministradorAzurModelStoreContainer">
           <EntitySet Name="Estados" EntityType="Self.Estados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gastos" EntityType="Self.Gastos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Proveedores" EntityType="Self.Proveedores" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="Gasto_FK_Estado" Association="Self.Gasto_FK_Estado">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Gastos" EntitySet="Gastos" />
+          </AssociationSet>
           <AssociationSet Name="Proveedor_FK_Estado" Association="Self.Proveedor_FK_Estado">
             <End Role="Estados" EntitySet="Estados" />
             <End Role="Proveedores" EntitySet="Proveedores" />
@@ -67,6 +95,11 @@
             <End Role="Estados" EntitySet="Estados" />
             <End Role="Proveedores" EntitySet="Proveedores" />
           </AssociationSet>
+          <EntitySet Name="Gastos" EntityType="AdministradorAzurModel.Gastos" />
+          <AssociationSet Name="Gasto_FK_Estado" Association="AdministradorAzurModel.Gasto_FK_Estado">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Gastos" EntitySet="Gastos" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Estados">
           <Key>
@@ -76,6 +109,7 @@
           <Property Name="EstadoCodigo" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
           <Property Name="EstadoDescripcion" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Proveedores" Relationship="AdministradorAzurModel.Proveedor_FK_Estado" FromRole="Estados" ToRole="Proveedores" />
+          <NavigationProperty Name="Gastos" Relationship="AdministradorAzurModel.Gasto_FK_Estado" FromRole="Estados" ToRole="Gastos" />
         </EntityType>
         <Association Name="Proveedor_FK_Estado">
           <End Type="AdministradorAzurModel.Estados" Role="Estados" Multiplicity="1" />
@@ -86,6 +120,30 @@
             </Principal>
             <Dependent Role="Proveedores">
               <PropertyRef Name="ProveedorEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Gastos">
+          <Key>
+            <PropertyRef Name="GastoId" />
+          </Key>
+          <Property Name="GastoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Consecutivo" Type="String" Nullable="false" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="FechaVencimiento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Monto" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Estados" Relationship="AdministradorAzurModel.Gasto_FK_Estado" FromRole="Gastos" ToRole="Estados" />
+        </EntityType>
+        <Association Name="Gasto_FK_Estado">
+          <End Type="AdministradorAzurModel.Estados" Role="Estados" Multiplicity="1" />
+          <End Type="AdministradorAzurModel.Gastos" Role="Gastos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="EstadoCodigo" />
+            </Principal>
+            <Dependent Role="Gastos">
+              <PropertyRef Name="Estado" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -113,6 +171,18 @@
                 <ScalarProperty Name="EstadoDescripcion" ColumnName="EstadoDescripcion" />
                 <ScalarProperty Name="EstadoCodigo" ColumnName="EstadoCodigo" />
                 <ScalarProperty Name="EstadoId" ColumnName="EstadoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gastos">
+            <EntityTypeMapping TypeName="AdministradorAzurModel.Gastos">
+              <MappingFragment StoreEntitySet="Gastos">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Monto" ColumnName="Monto" />
+                <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+                <ScalarProperty Name="Consecutivo" ColumnName="Consecutivo" />
+                <ScalarProperty Name="GastoId" ColumnName="GastoId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

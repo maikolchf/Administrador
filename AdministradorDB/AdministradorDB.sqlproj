@@ -61,5 +61,6 @@
   <ItemGroup>
     <Build Include="Tablas\Proveedores.sql" />
     <Build Include="Tablas\Estados.sql" />
+    <Build Include="Tablas\Gastos.sql" />
   </ItemGroup>
 </Project>

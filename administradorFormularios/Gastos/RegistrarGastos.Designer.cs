@@ -29,10 +29,12 @@
         private void InitializeComponent()
         {
             this.pnlFormularioGasto = new System.Windows.Forms.Panel();
+            this.lblConsecutivoGasto = new MaterialSkin.Controls.MaterialLabel();
             this.btnLimpiarGasto = new FontAwesome.Sharp.IconButton();
             this.btnGuardarGasto = new FontAwesome.Sharp.IconButton();
             this.cbxGastoEstado = new System.Windows.Forms.ComboBox();
             this.lblEstadoGasto = new MaterialSkin.Controls.MaterialLabel();
+            this.txtMontoGasto = new System.Windows.Forms.TextBox();
             this.txtDetalleGasto = new System.Windows.Forms.TextBox();
             this.lblDetalleGasto = new MaterialSkin.Controls.MaterialLabel();
             this.lblNontoGasto = new MaterialSkin.Controls.MaterialLabel();
@@ -42,7 +44,7 @@
             this.lblNombreProvGasto = new MaterialSkin.Controls.MaterialLabel();
             this.pnlGridgastos = new System.Windows.Forms.Panel();
             this.dtGastos = new System.Windows.Forms.DataGridView();
-            this.txtMontoGasto = new System.Windows.Forms.TextBox();
+            this.txtConsecutivoGasto = new System.Windows.Forms.TextBox();
             this.pnlFormularioGasto.SuspendLayout();
             this.pnlGridgastos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGastos)).BeginInit();
@@ -51,6 +53,8 @@
             // pnlFormularioGasto
             // 
             this.pnlFormularioGasto.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pnlFormularioGasto.Controls.Add(this.txtConsecutivoGasto);
+            this.pnlFormularioGasto.Controls.Add(this.lblConsecutivoGasto);
             this.pnlFormularioGasto.Controls.Add(this.btnLimpiarGasto);
             this.pnlFormularioGasto.Controls.Add(this.btnGuardarGasto);
             this.pnlFormularioGasto.Controls.Add(this.cbxGastoEstado);
@@ -65,8 +69,21 @@
             this.pnlFormularioGasto.Controls.Add(this.lblNombreProvGasto);
             this.pnlFormularioGasto.Location = new System.Drawing.Point(12, 12);
             this.pnlFormularioGasto.Name = "pnlFormularioGasto";
-            this.pnlFormularioGasto.Size = new System.Drawing.Size(679, 242);
+            this.pnlFormularioGasto.Size = new System.Drawing.Size(679, 246);
             this.pnlFormularioGasto.TabIndex = 0;
+            // 
+            // lblConsecutivoGasto
+            // 
+            this.lblConsecutivoGasto.AutoSize = true;
+            this.lblConsecutivoGasto.Depth = 0;
+            this.lblConsecutivoGasto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.lblConsecutivoGasto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblConsecutivoGasto.Location = new System.Drawing.Point(15, 64);
+            this.lblConsecutivoGasto.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblConsecutivoGasto.Name = "lblConsecutivoGasto";
+            this.lblConsecutivoGasto.Size = new System.Drawing.Size(95, 18);
+            this.lblConsecutivoGasto.TabIndex = 15;
+            this.lblConsecutivoGasto.Text = "Consecutivo:";
             // 
             // btnLimpiarGasto
             // 
@@ -80,7 +97,7 @@
             this.btnLimpiarGasto.Location = new System.Drawing.Point(592, 171);
             this.btnLimpiarGasto.Name = "btnLimpiarGasto";
             this.btnLimpiarGasto.Size = new System.Drawing.Size(75, 59);
-            this.btnLimpiarGasto.TabIndex = 14;
+            this.btnLimpiarGasto.TabIndex = 8;
             this.btnLimpiarGasto.UseVisualStyleBackColor = true;
             // 
             // btnGuardarGasto
@@ -95,7 +112,7 @@
             this.btnGuardarGasto.Location = new System.Drawing.Point(511, 171);
             this.btnGuardarGasto.Name = "btnGuardarGasto";
             this.btnGuardarGasto.Size = new System.Drawing.Size(75, 59);
-            this.btnGuardarGasto.TabIndex = 13;
+            this.btnGuardarGasto.TabIndex = 7;
             this.btnGuardarGasto.UseVisualStyleBackColor = true;
             // 
             // cbxGastoEstado
@@ -103,23 +120,34 @@
             this.cbxGastoEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxGastoEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbxGastoEstado.FormattingEnabled = true;
-            this.cbxGastoEstado.Location = new System.Drawing.Point(181, 154);
+            this.cbxGastoEstado.Location = new System.Drawing.Point(180, 188);
+            this.cbxGastoEstado.MaxDropDownItems = 5;
             this.cbxGastoEstado.Name = "cbxGastoEstado";
-            this.cbxGastoEstado.Size = new System.Drawing.Size(200, 21);
+            this.cbxGastoEstado.Size = new System.Drawing.Size(201, 21);
             this.cbxGastoEstado.TabIndex = 11;
             // 
             // lblEstadoGasto
             // 
             this.lblEstadoGasto.AutoSize = true;
             this.lblEstadoGasto.Depth = 0;
-            this.lblEstadoGasto.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblEstadoGasto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.lblEstadoGasto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblEstadoGasto.Location = new System.Drawing.Point(15, 156);
+            this.lblEstadoGasto.Location = new System.Drawing.Point(15, 190);
             this.lblEstadoGasto.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblEstadoGasto.Name = "lblEstadoGasto";
-            this.lblEstadoGasto.Size = new System.Drawing.Size(60, 19);
+            this.lblEstadoGasto.Size = new System.Drawing.Size(59, 18);
             this.lblEstadoGasto.TabIndex = 10;
             this.lblEstadoGasto.Text = "Estado:";
+            // 
+            // txtMontoGasto
+            // 
+            this.txtMontoGasto.Location = new System.Drawing.Point(180, 141);
+            this.txtMontoGasto.MaxLength = 30;
+            this.txtMontoGasto.Multiline = true;
+            this.txtMontoGasto.Name = "txtMontoGasto";
+            this.txtMontoGasto.Size = new System.Drawing.Size(201, 23);
+            this.txtMontoGasto.TabIndex = 4;
+            this.txtMontoGasto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMontoGasto_KeyPress);
             // 
             // txtDetalleGasto
             // 
@@ -134,12 +162,12 @@
             // 
             this.lblDetalleGasto.AutoSize = true;
             this.lblDetalleGasto.Depth = 0;
-            this.lblDetalleGasto.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblDetalleGasto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.lblDetalleGasto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblDetalleGasto.Location = new System.Drawing.Point(415, 22);
             this.lblDetalleGasto.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblDetalleGasto.Name = "lblDetalleGasto";
-            this.lblDetalleGasto.Size = new System.Drawing.Size(60, 19);
+            this.lblDetalleGasto.Size = new System.Drawing.Size(57, 18);
             this.lblDetalleGasto.TabIndex = 5;
             this.lblDetalleGasto.Text = "Detalle:";
             // 
@@ -147,32 +175,33 @@
             // 
             this.lblNontoGasto.AutoSize = true;
             this.lblNontoGasto.Depth = 0;
-            this.lblNontoGasto.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblNontoGasto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.lblNontoGasto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblNontoGasto.Location = new System.Drawing.Point(15, 113);
+            this.lblNontoGasto.Location = new System.Drawing.Point(15, 145);
             this.lblNontoGasto.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblNontoGasto.Name = "lblNontoGasto";
-            this.lblNontoGasto.Size = new System.Drawing.Size(57, 19);
+            this.lblNontoGasto.Size = new System.Drawing.Size(55, 18);
             this.lblNontoGasto.TabIndex = 3;
             this.lblNontoGasto.Text = "Monto:";
             // 
             // dtpFechaVenciGasto
             // 
-            this.dtpFechaVenciGasto.Location = new System.Drawing.Point(181, 64);
+            this.dtpFechaVenciGasto.CalendarForeColor = System.Drawing.Color.White;
+            this.dtpFechaVenciGasto.Location = new System.Drawing.Point(180, 102);
             this.dtpFechaVenciGasto.Name = "dtpFechaVenciGasto";
-            this.dtpFechaVenciGasto.Size = new System.Drawing.Size(200, 20);
-            this.dtpFechaVenciGasto.TabIndex = 2;
+            this.dtpFechaVenciGasto.Size = new System.Drawing.Size(201, 20);
+            this.dtpFechaVenciGasto.TabIndex = 3;
             // 
             // lblFechaVenciGasto
             // 
             this.lblFechaVenciGasto.AutoSize = true;
             this.lblFechaVenciGasto.Depth = 0;
-            this.lblFechaVenciGasto.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblFechaVenciGasto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.lblFechaVenciGasto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblFechaVenciGasto.Location = new System.Drawing.Point(15, 66);
+            this.lblFechaVenciGasto.Location = new System.Drawing.Point(15, 104);
             this.lblFechaVenciGasto.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblFechaVenciGasto.Name = "lblFechaVenciGasto";
-            this.lblFechaVenciGasto.Size = new System.Drawing.Size(159, 19);
+            this.lblFechaVenciGasto.Size = new System.Drawing.Size(156, 18);
             this.lblFechaVenciGasto.TabIndex = 2;
             this.lblFechaVenciGasto.Text = "Fecha de vencimiento:";
             // 
@@ -189,12 +218,12 @@
             // 
             this.lblNombreProvGasto.AutoSize = true;
             this.lblNombreProvGasto.Depth = 0;
-            this.lblNombreProvGasto.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblNombreProvGasto.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.lblNombreProvGasto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblNombreProvGasto.Location = new System.Drawing.Point(15, 24);
             this.lblNombreProvGasto.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblNombreProvGasto.Name = "lblNombreProvGasto";
-            this.lblNombreProvGasto.Size = new System.Drawing.Size(138, 19);
+            this.lblNombreProvGasto.Size = new System.Drawing.Size(137, 18);
             this.lblNombreProvGasto.TabIndex = 0;
             this.lblNombreProvGasto.Text = "Nombre proveedor:";
             // 
@@ -202,9 +231,9 @@
             // 
             this.pnlGridgastos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.pnlGridgastos.Controls.Add(this.dtGastos);
-            this.pnlGridgastos.Location = new System.Drawing.Point(13, 260);
+            this.pnlGridgastos.Location = new System.Drawing.Point(13, 264);
             this.pnlGridgastos.Name = "pnlGridgastos";
-            this.pnlGridgastos.Size = new System.Drawing.Size(678, 360);
+            this.pnlGridgastos.Size = new System.Drawing.Size(678, 356);
             this.pnlGridgastos.TabIndex = 1;
             // 
             // dtGastos
@@ -217,18 +246,18 @@
             this.dtGastos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGastos.Location = new System.Drawing.Point(3, 3);
             this.dtGastos.Name = "dtGastos";
-            this.dtGastos.Size = new System.Drawing.Size(672, 354);
+            this.dtGastos.Size = new System.Drawing.Size(672, 350);
             this.dtGastos.TabIndex = 0;
             // 
-            // txtMontoGasto
+            // txtConsecutivoGasto
             // 
-            this.txtMontoGasto.Location = new System.Drawing.Point(181, 111);
-            this.txtMontoGasto.MaxLength = 30;
-            this.txtMontoGasto.Multiline = true;
-            this.txtMontoGasto.Name = "txtMontoGasto";
-            this.txtMontoGasto.Size = new System.Drawing.Size(200, 23);
-            this.txtMontoGasto.TabIndex = 9;
-            this.txtMontoGasto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMontoGasto_KeyPress);
+            this.txtConsecutivoGasto.BackColor = System.Drawing.SystemColors.Window;
+            this.txtConsecutivoGasto.Location = new System.Drawing.Point(181, 60);
+            this.txtConsecutivoGasto.MaxLength = 30;
+            this.txtConsecutivoGasto.Multiline = true;
+            this.txtConsecutivoGasto.Name = "txtConsecutivoGasto";
+            this.txtConsecutivoGasto.Size = new System.Drawing.Size(200, 23);
+            this.txtConsecutivoGasto.TabIndex = 2;
             // 
             // RegistrarGastos
             // 
@@ -265,5 +294,7 @@
         private FontAwesome.Sharp.IconButton btnLimpiarGasto;
         private FontAwesome.Sharp.IconButton btnGuardarGasto;
         private System.Windows.Forms.TextBox txtMontoGasto;
+        private MaterialSkin.Controls.MaterialLabel lblConsecutivoGasto;
+        private System.Windows.Forms.TextBox txtConsecutivoGasto;
     }
 }
