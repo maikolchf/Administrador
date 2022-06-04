@@ -20,7 +20,7 @@ namespace administradorCompartidas
         public void RellenarComboboxProveedor(ref ComboBox combobox, List<Proveedor> items)
         {
             combobox.DataSource = items;
-            combobox.ValueMember = "ProveedorId";
+            combobox.ValueMember = "ProveedorCodigo";
             combobox.DisplayMember = "ProveedorNombre";
         }
 
@@ -38,6 +38,7 @@ namespace administradorCompartidas
             {
                 e.Handled = true;
             }
-        }
+        }       
+        
     }    
 }

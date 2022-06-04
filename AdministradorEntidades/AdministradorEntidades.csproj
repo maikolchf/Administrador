@@ -166,7 +166,6 @@
     </None>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="Modelo\Modelo_AZUR.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

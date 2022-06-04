@@ -15,6 +15,7 @@ namespace AdministradorEntidades.Modelo
     public partial class Gastos
     {
         public int GastoId { get; set; }
+        public string Proveedor { get; set; }
         public string Consecutivo { get; set; }
         public System.DateTime FechaVencimiento { get; set; }
         public decimal Monto { get; set; }
@@ -22,5 +23,6 @@ namespace AdministradorEntidades.Modelo
         public string Estado { get; set; }
     
         public virtual Estados Estados { get; set; }
+        public virtual Proveedores Proveedores { get; set; }
     }
 }

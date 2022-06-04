@@ -44,6 +44,8 @@
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.pnlGridProveedores = new System.Windows.Forms.Panel();
             this.dtProveedores = new System.Windows.Forms.DataGridView();
+            this.lblCodigoProveedor = new MaterialSkin.Controls.MaterialLabel();
+            this.txtProveedorCodigo = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.pnlFormularioProveedores.SuspendLayout();
             this.pnlGridProveedores.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtProveedores)).BeginInit();
@@ -53,6 +55,8 @@
             // 
             this.pnlFormularioProveedores.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pnlFormularioProveedores.BackColor = System.Drawing.Color.White;
+            this.pnlFormularioProveedores.Controls.Add(this.txtProveedorCodigo);
+            this.pnlFormularioProveedores.Controls.Add(this.lblCodigoProveedor);
             this.pnlFormularioProveedores.Controls.Add(this.lblProveedorId);
             this.pnlFormularioProveedores.Controls.Add(this.btnLimpiarProveedor);
             this.pnlFormularioProveedores.Controls.Add(this.btnGuardarProveedor);
@@ -118,13 +122,13 @@
             // 
             // cbxEstadoProveedor
             // 
+            this.cbxEstadoProveedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxEstadoProveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbxEstadoProveedor.FormattingEnabled = true;
             this.cbxEstadoProveedor.Location = new System.Drawing.Point(101, 127);
             this.cbxEstadoProveedor.Name = "cbxEstadoProveedor";
             this.cbxEstadoProveedor.Size = new System.Drawing.Size(216, 21);
             this.cbxEstadoProveedor.TabIndex = 12;
-            this.cbxEstadoProveedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             // 
             // lblEstadoProveedor
             // 
@@ -284,6 +288,35 @@
             this.dtProveedores.TabIndex = 0;
             this.dtProveedores.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SeleccionarRegistro);
             // 
+            // lblCodigoProveedor
+            // 
+            this.lblCodigoProveedor.AutoSize = true;
+            this.lblCodigoProveedor.Depth = 0;
+            this.lblCodigoProveedor.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblCodigoProveedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblCodigoProveedor.Location = new System.Drawing.Point(358, 129);
+            this.lblCodigoProveedor.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblCodigoProveedor.Name = "lblCodigoProveedor";
+            this.lblCodigoProveedor.Size = new System.Drawing.Size(61, 19);
+            this.lblCodigoProveedor.TabIndex = 16;
+            this.lblCodigoProveedor.Text = "Codigo:";
+            // 
+            // txtProveedorCodigo
+            // 
+            this.txtProveedorCodigo.Depth = 0;
+            this.txtProveedorCodigo.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
+            this.txtProveedorCodigo.Hint = "";
+            this.txtProveedorCodigo.Location = new System.Drawing.Point(441, 125);
+            this.txtProveedorCodigo.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtProveedorCodigo.Name = "txtProveedorCodigo";
+            this.txtProveedorCodigo.PasswordChar = '\0';
+            this.txtProveedorCodigo.SelectedText = "";
+            this.txtProveedorCodigo.SelectionLength = 0;
+            this.txtProveedorCodigo.SelectionStart = 0;
+            this.txtProveedorCodigo.Size = new System.Drawing.Size(216, 23);
+            this.txtProveedorCodigo.TabIndex = 17;
+            this.txtProveedorCodigo.UseSystemPasswordChar = false;
+            // 
             // RegistrarProveedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -319,5 +352,7 @@
         private FontAwesome.Sharp.IconButton btnLimpiarProveedor;
         private FontAwesome.Sharp.IconButton btnGuardarProveedor;
         private MaterialSkin.Controls.MaterialLabel lblProveedorId;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtProveedorCodigo;
+        private MaterialSkin.Controls.MaterialLabel lblCodigoProveedor;
     }
 }

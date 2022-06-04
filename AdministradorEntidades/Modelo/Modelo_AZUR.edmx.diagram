@@ -4,12 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ab208f0f737543578cfb57c27db7b251" Name="Diagram1">
-        <EntityTypeShape EntityType="AdministradorAzurModel.Proveedores" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AdministradorAzurModel.Estados" Width="1.5" PointX="0.75" PointY="4" />
-        <AssociationConnector Association="AdministradorAzurModel.Proveedor_FK_Estado" />
-        <EntityTypeShape EntityType="AdministradorAzurModel.Gastos" Width="1.5" PointX="3.375" PointY="0.75" />
-        <AssociationConnector Association="AdministradorAzurModel.Gasto_FK_Estado" />
+      <Diagram DiagramId="8ff678cfd6b14990aaa18a82a718e2c4" Name="Diagram1">
+        <EntityTypeShape EntityType="AdministradorAzurModel.Estados" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdministradorAzurModel.Gastos" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdministradorAzurModel.Proveedores" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <AssociationConnector Association="AdministradorAzurModel.Gasto_FK_Estado" ManuallyRouted="false" />
+        <AssociationConnector Association="AdministradorAzurModel.Proveedor_FK_Estado" ManuallyRouted="false" />
+        <AssociationConnector Association="AdministradorAzurModel.Gasto_FK_Proveedor" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

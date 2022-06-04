@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using administradorCompartidas;
 using AdministradorEntidades.Entidades;
 using AdministradorEntidades.Modelo;
 
@@ -10,6 +11,7 @@ namespace administradorDAL
 {
     public class ProveedoresDal
     {
+        FuncionesCompartidas FuncionesCompartidas = new FuncionesCompartidas();
         public Respuesta<Proveedor> Insertar(Proveedor proveedor)
         {
             Respuesta<Proveedor> respuesta = new Respuesta<Proveedor>();
@@ -24,7 +26,8 @@ namespace administradorDAL
                         ProveedorCedula = proveedor.ProveedorCedula,
                         ProveedorGastoFijo = proveedor.ProveedorGastoFijo,
                         ProveedorEstado = proveedor.ProveedorEstado,
-                        ProveedorTelefono = proveedor.ProveedorTelefono
+                        ProveedorTelefono = proveedor.ProveedorTelefono,
+                        ProveedorCodigo = proveedor.ProveedorCodigo
                     };
                     if (proveedor.ProveedorId == 0)
                     {
@@ -67,6 +70,7 @@ namespace administradorDAL
                                                      ProveedorTelefono = x.ProveedorTelefono,
                                                      ProveedorGastoFijo = x.ProveedorGastoFijo,
                                                      ProveedorEstado = x.ProveedorEstado,
+                                                     ProveedorCodigo = x.ProveedorCodigo,
                                                      Estado = (from y in dbContexto.Estados
                                                                select new Estado
                                                                {
@@ -105,7 +109,8 @@ namespace administradorDAL
                         proveedor.ProveedorCedula = proveedorMod.ProveedorCedula;
                         proveedor.ProveedorTelefono = proveedorMod.ProveedorTelefono;
                         proveedor.ProveedorGastoFijo = proveedorMod.ProveedorGastoFijo;
-                        proveedor.ProveedorEstado = proveedorMod.ProveedorEstado;                        
+                        proveedor.ProveedorEstado = proveedorMod.ProveedorEstado;
+                        proveedor.ProveedorCodigo = proveedorMod.ProveedorCodigo;
 
                         dbContexto.Entry(proveedor).CurrentValues.SetValues(proveedor);
                         dbContexto.SaveChanges();

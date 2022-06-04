@@ -24,7 +24,8 @@ namespace administradorDAL
                         Descripcion = gasto.Detalle,
                         FechaVencimiento = gasto.FechaVencimiento,
                         Estado = gasto.CodigoEstado,
-                        Monto = gasto.Monto
+                        Monto = gasto.Monto,
+                        Proveedor = gasto.CodigoProveedor,
                     };
                     if (gasto.GastoId == 0)
                     {
@@ -63,6 +64,7 @@ namespace administradorDAL
                                                      Consecutivo = x.Consecutivo,
                                                      Detalle = x.Descripcion,
                                                      Monto = x.Monto,
+                                                     CodigoProveedor = x.Proveedor,
                                                      CodigoEstado = x.Estado,
                                                      FechaVencimiento = x.FechaVencimiento,
                                                      Estado = (from y in dbContexto.Estados
@@ -71,7 +73,19 @@ namespace administradorDAL
                                                                    EstadoId = y.EstadoId,
                                                                    EstadoCodigo = y.EstadoCodigo,
                                                                    EstadoDescripcion = y.EstadoDescripcion
-                                                               }).ToList().Where(e => e.EstadoCodigo == x.Estado).FirstOrDefault()
+                                                               }).ToList().Where(e => e.EstadoCodigo == x.Estado).FirstOrDefault(),
+                                                     
+                                                     Proveedor = (from p in dbContexto.Proveedores
+                                                                  select new Proveedor
+                                                                  {
+                                                                      ProveedorId = p.ProveedorId,
+                                                                      ProveedorCedula = p.ProveedorCedula,
+                                                                      ProveedorTelefono = p.ProveedorTelefono,
+                                                                      ProveedorGastoFijo = p.ProveedorGastoFijo,
+                                                                      ProveedorEstado = p.ProveedorEstado,
+                                                                      ProveedorNombre = p.ProveedorNombre,
+                                                                      ProveedorCodigo = p.ProveedorCodigo
+                                                                  }).ToList().Where(j => j.ProveedorCodigo == x.Proveedor).FirstOrDefault()
                                                  }).ToList();
                     respuesta.HayError = false;
                     respuesta.Mensaje = "Exito";
@@ -104,6 +118,7 @@ namespace administradorDAL
                         gasto.FechaVencimiento = gastoMod.FechaVencimiento;
                         gasto.Estado = gastoMod.CodigoEstado;
                         gasto.Monto = gastoMod.Monto;
+                        gasto.Proveedor = gastoMod.CodigoProveedor;
 
                         dbContexto.Entry(gasto).CurrentValues.SetValues(gasto);
                         dbContexto.SaveChanges();

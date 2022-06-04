@@ -25,8 +25,8 @@ namespace AdministradorEntidades.Modelo
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Proveedores> Proveedores { get; set; }
         public virtual DbSet<Estados> Estados { get; set; }
         public virtual DbSet<Gastos> Gastos { get; set; }
+        public virtual DbSet<Proveedores> Proveedores { get; set; }
     }
 }

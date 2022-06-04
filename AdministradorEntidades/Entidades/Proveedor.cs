@@ -12,6 +12,7 @@ namespace AdministradorEntidades.Entidades
         public int ProveedorId { get; set; }
         
         public string ProveedorNombre { get; set; }
+        public string ProveedorCodigo { get; set; }
         
         public string ProveedorCedula { get; set; }
         

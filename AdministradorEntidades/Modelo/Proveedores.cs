@@ -14,13 +14,22 @@ namespace AdministradorEntidades.Modelo
     
     public partial class Proveedores
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Proveedores()
+        {
+            this.Gastos = new HashSet<Gastos>();
+        }
+    
         public int ProveedorId { get; set; }
         public string ProveedorNombre { get; set; }
+        public string ProveedorCodigo { get; set; }
         public string ProveedorCedula { get; set; }
         public string ProveedorTelefono { get; set; }
         public bool ProveedorGastoFijo { get; set; }
         public string ProveedorEstado { get; set; }
     
         public virtual Estados Estados { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Gastos> Gastos { get; set; }
     }
 }

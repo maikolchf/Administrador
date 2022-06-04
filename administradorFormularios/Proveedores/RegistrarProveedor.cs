@@ -12,6 +12,7 @@ namespace administradorFormularios.Proveedores
         private ProveedoresBL proveedoresBL = new ProveedoresBL();
         private EstadosBL estadosBL = new EstadosBL();
         private FuncionesCompartidas funcionesCompartidas = new FuncionesCompartidas();
+        private List<Proveedor> lstProveedores = new List<Proveedor>();
         public RegistrarProveedor()
         {
             InitializeComponent();            
@@ -32,8 +33,10 @@ namespace administradorFormularios.Proveedores
                     ProveedorCedula = txtCedulaProveedor.Text,
                     ProveedorTelefono = txtTelefonoProveedor.Text,
                     ProveedorGastoFijo = chkGastosFijo.Checked,
-                    ProveedorEstado = cbxEstadoProveedor.Text == "Activo" ? "A" : "E"
-                };
+                    ProveedorEstado = cbxEstadoProveedor.SelectedValue.ToString(),
+                    ProveedorCodigo = lstProveedores.Find(x => x.ProveedorId == Convert.ToInt32(lblProveedorId.Text == "" ? "0" : lblProveedorId.Text))?.ProveedorCodigo 
+                                        ?? txtProveedorCodigo.Text
+                };                
 
                 var respuesta = proveedoresBL.Insertar(proveedor);
                 if (!respuesta.HayError)
@@ -58,8 +61,9 @@ namespace administradorFormularios.Proveedores
 
         private void RellenarGrid(ref DataGridView vista, List<Proveedor> lista)
         {
+            lstProveedores = lista;
             vista.Rows.Clear();
-            vista.ColumnCount = 6;            
+            vista.ColumnCount = 7;            
             vista.Columns[0].Name = "Nombre";
             vista.Columns[1].Name = "Telefono";
             vista.Columns[2].Name = "Cedula";
@@ -68,6 +72,7 @@ namespace administradorFormularios.Proveedores
             vista.Columns[5].Name = "Id";
 
             vista.Columns[5].Visible = false;
+            vista.Columns[6].Visible = false;
 
             foreach (var item in lista)
             {
@@ -77,7 +82,8 @@ namespace administradorFormularios.Proveedores
                      $"{item.ProveedorCedula}",
                      $"{(item.ProveedorGastoFijo == true ? Constantes.valores.Si : Constantes.valores.No)}",
                      $"{item.Estado.EstadoDescripcion}",
-                     $"{item.ProveedorId}"
+                     $"{item.ProveedorId}",
+                     $"{item.ProveedorCodigo}",
                 };
                 vista.Rows.Add(row);
             }            
@@ -91,6 +97,9 @@ namespace administradorFormularios.Proveedores
             txtTelefonoProveedor.Text = String.Empty;
             chkGastosFijo.Checked = false;
             cbxEstadoProveedor.SelectedIndex = -1;
+            txtProveedorCodigo.Text = String.Empty;
+
+            txtProveedorCodigo.Enabled = true;
         }
 
         private void btnLimpiarProveedor_Click(object sender, EventArgs e)
@@ -99,13 +108,15 @@ namespace administradorFormularios.Proveedores
         }
 
         private void SeleccionarRegistro(object sender, DataGridViewCellEventArgs e)
-        {            
+        {
+            txtProveedorCodigo.Enabled = false;
             txtNombreProveedor.Text = dtProveedores.CurrentRow.Cells[0].Value.ToString();
             txtTelefonoProveedor.Text = dtProveedores.CurrentRow.Cells[1].Value.ToString();
             txtCedulaProveedor.Text = dtProveedores.CurrentRow.Cells[2].Value.ToString();
             chkGastosFijo.Checked = dtProveedores.CurrentRow.Cells[3].Value.ToString() == Constantes.valores.Si ? true : false;
             cbxEstadoProveedor.Text = dtProveedores.CurrentRow.Cells[4].Value.ToString();
             lblProveedorId.Text = dtProveedores.CurrentRow.Cells[5].Value.ToString();
+            txtProveedorCodigo.Text = dtProveedores.CurrentRow.Cells[6].Value.ToString();
         }
 
         private bool ValidarCamposVacios()
