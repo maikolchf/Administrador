@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32210.308
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "administradorDAL", "administradorDAL\administradorDAL.csproj", "{96374609-45C9-49A9-B6D3-E4FFE320664B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdministradorDAL", "administradorDAL\AdministradorDAL.csproj", "{96374609-45C9-49A9-B6D3-E4FFE320664B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdministradorBL", "AdministradorBL\AdministradorBL.csproj", "{229A7C56-1947-479E-97CC-C4CF81559199}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdministradorEntidades", "AdministradorEntidades\AdministradorEntidades.csproj", "{27589D8D-099C-405C-B0C5-8C27C6F4D1A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "administradorCompartidas", "administradorCompartidas\administradorCompartidas.csproj", "{500DD9DB-2759-4BC2-99E1-88E94BBBF54A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdministradorCompartidas", "administradorCompartidas\AdministradorCompartidas.csproj", "{500DD9DB-2759-4BC2-99E1-88E94BBBF54A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "administradorFormularios", "administradorFormularios\administradorFormularios.csproj", "{99CEF799-838E-4EBD-8ADC-B64928F3C661}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdministradorFormularios", "administradorFormularios\AdministradorFormularios.csproj", "{99CEF799-838E-4EBD-8ADC-B64928F3C661}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "AdministradorDB", "AdministradorDB\AdministradorDB.sqlproj", "{3032102D-5F16-4678-9556-C4D9811C38C9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,12 @@ Global
 		{99CEF799-838E-4EBD-8ADC-B64928F3C661}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99CEF799-838E-4EBD-8ADC-B64928F3C661}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99CEF799-838E-4EBD-8ADC-B64928F3C661}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3032102D-5F16-4678-9556-C4D9811C38C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3032102D-5F16-4678-9556-C4D9811C38C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3032102D-5F16-4678-9556-C4D9811C38C9}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{3032102D-5F16-4678-9556-C4D9811C38C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3032102D-5F16-4678-9556-C4D9811C38C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3032102D-5F16-4678-9556-C4D9811C38C9}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

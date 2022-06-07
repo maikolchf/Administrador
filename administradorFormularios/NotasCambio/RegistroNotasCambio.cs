@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace administradorFormularios.Proveedores
+namespace administradorFormularios.NotasCambio
 {
-    public partial class ListarProveedores : Form
+    public partial class RegistroNotasCambio : Form
     {
-        public ListarProveedores()
+        public RegistroNotasCambio()
         {
             InitializeComponent();
         }
