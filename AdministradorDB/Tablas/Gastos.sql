@@ -4,7 +4,7 @@
 	Proveedor VARCHAR(10) NOT NULL,
 	Consecutivo VARCHAR(35) NOT NULL,
 	FechaVencimiento DATE NOT NULL,
-	Monto DECIMAL NOT NULL,
+	Monto DECIMAL(18,2) NOT NULL,
 	Descripcion VARCHAR(250) NOT NULL,
 	Estado VARCHAR(2) NOT NULL,
 	CONSTRAINT Gasto_FK_Estado FOREIGN KEY (Estado)

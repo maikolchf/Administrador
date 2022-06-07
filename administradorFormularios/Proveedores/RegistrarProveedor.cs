@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using AdministradorEntidades.Entidades;
 using administradorCompartidas;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace administradorFormularios.Proveedores
 {
@@ -16,7 +17,9 @@ namespace administradorFormularios.Proveedores
         public RegistrarProveedor()
         {
             InitializeComponent();            
-            funcionesCompartidas.RellenarComboboxEstados(ref cbxEstadoProveedor, VariablesGlobales.estados);
+            funcionesCompartidas.RellenarComboboxEstados(ref cbxEstadoProveedor, VariablesGlobales.estados.Where(x => 
+                                                            x.EstadoCodigo == Constantes.EstadosDefaul.Activo ||
+                                                            x.EstadoCodigo == Constantes.EstadosDefaul.Eliminado).ToList());
             List<Proveedor> proveedores = proveedoresBL.Obtener().ObjetoRespuesta;
             RellenarGrid(ref dtProveedores, proveedores);
             

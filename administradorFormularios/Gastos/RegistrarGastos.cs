@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using AdministradorBL;
 using AdministradorEntidades.Entidades;
+using System.Globalization;
 
 namespace administradorFormularios.Gastos
 {
@@ -22,7 +23,9 @@ namespace administradorFormularios.Gastos
         public RegistrarGastos()
         {
             InitializeComponent();
-            funcionesCompartidas.RellenarComboboxEstados(ref cbxGastoEstado, VariablesGlobales.estados);
+            funcionesCompartidas.RellenarComboboxEstados(ref cbxGastoEstado, VariablesGlobales.estados.Where(x => 
+                                                            x.EstadoCodigo == Constantes.EstadosGastos.Pendiente ||
+                                                            x.EstadoCodigo == Constantes.EstadosGastos.Cancelado).ToList());
             rellenarComboboxProveedores();
             List<Gasto> gastos = gastosBL.Obtener().ObjetoRespuesta;
             RellenarGrid(ref dtGastos, gastos);
@@ -34,23 +37,29 @@ namespace administradorFormularios.Gastos
             funcionesCompartidas.TextBoxNumerosDecimales(ref e);
         }
 
+        private void txtConsecutivoGasto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            funcionesCompartidas.TextBoxNumeros(ref e);
+        }
+
         private void btnGuardarGasto_Click(object sender, EventArgs e)
         {
             if (ValidarCamposVacios())
-            {                
+            {
+                
                 Gasto gasto = new Gasto()
                 {
                     GastoId = Convert.ToInt32((lblIdGasto.Text == "" ? "0" : lblIdGasto.Text)),
                     Consecutivo = txtConsecutivoGasto.Text,
                     Detalle = txtDetalleGasto.Text,
-                    Monto = Convert.ToDecimal(txtMontoGasto.Text),
+                    Monto = funcionesCompartidas.FomatoMonedaMonto(txtMontoGasto.Text),
                     CodigoEstado = cbxGastoEstado.SelectedValue.ToString(),
                     CodigoProveedor = cbxProveedorGasto.SelectedValue.ToString(),
                     FechaVencimiento = dtpFechaVenciGasto.Value
                     
                 };
 
-                if (gasto.GastoId != 0)
+                if (gasto.GastoId == 0)
                 {
                     if (lstGastos.Exists(x => x.Consecutivo == gasto.Consecutivo) && 
                         lstGastos.Exists(x => x.CodigoProveedor == gasto.CodigoProveedor))
@@ -79,6 +88,11 @@ namespace administradorFormularios.Gastos
                 MessageBox.Show("Debe de rellenar todos los campos");
             }
         }
+
+        private void txtMontoGasto_Leave(object sender, EventArgs e)
+        {
+            txtMontoGasto.Text = funcionesCompartidas.FormatoMontoMoneda(txtMontoGasto.Text);
+        }
         private void btnLimpiarGasto_Click(object sender, EventArgs e)
         {
             LimpiarCampos();
@@ -86,11 +100,10 @@ namespace administradorFormularios.Gastos
 
         private bool ValidarCamposVacios()
         {
-            if (txtConsecutivoGasto.Text.Trim() != "" &&
-               txtDetalleGasto.Text.Trim() != "" &&
+            if (txtConsecutivoGasto.Text.Trim() != "" &&               
                txtMontoGasto.Text.Trim() != "" &&
-               cbxGastoEstado.SelectedIndex != -1 &&
-               cbxProveedorGasto.SelectedIndex != -1)
+               cbxGastoEstado.SelectedValue != null &&
+               cbxProveedorGasto.SelectedValue != null)
             {
                 return true;
             }
@@ -98,6 +111,9 @@ namespace administradorFormularios.Gastos
         }
         private void LimpiarCampos()
         {
+            btnHabilitarCons.Visible = false;
+            txtConsecutivoGasto.Enabled = true;
+
             lblIdGasto.Text = "0";
             txtConsecutivoGasto.Text = String.Empty;
             txtMontoGasto.Text = String.Empty;
@@ -105,6 +121,8 @@ namespace administradorFormularios.Gastos
             cbxProveedorGasto.SelectedIndex = 0;
             cbxGastoEstado.SelectedIndex = 0;
             dtpFechaVenciGasto.Value = DateTime.Now;
+            cbxProveedorGasto.SelectedValue = "";
+            cbxGastoEstado.SelectedValue = "";
         }
         private void RellenarGrid(ref DataGridView vista, List<Gasto> lista)
         {
@@ -127,8 +145,8 @@ namespace administradorFormularios.Gastos
                 string[] row =
                 {    $"{item.Consecutivo}",
                      $"{item.Proveedor.ProveedorNombre}",
-                     $"{item.FechaVencimiento}",
-                     $"{item.Monto}",
+                     $"{item.FechaVencimiento.ToString("dd/MM/yyyy")}",
+                     $"{funcionesCompartidas.FormatoMontoMoneda(item.Monto.ToString())}",
                      $"{item.Detalle}",
                      $"{item.Estado.EstadoDescripcion}",
                      $"{item.GastoId}",
@@ -158,9 +176,13 @@ namespace administradorFormularios.Gastos
         }
 
         private void SeleccionarRegistro(object sender, DataGridViewCellEventArgs e)
-        {            
+        {
+            btnHabilitarCons.Visible = true;
+            txtConsecutivoGasto.Enabled = false;
+
+            var ss = Convert.ToDateTime(dtGastos.CurrentRow.Cells[2].Value.ToString());
             txtConsecutivoGasto.Text = dtGastos.CurrentRow.Cells[0].Value.ToString();
-            //dtpFechaVenciGasto.Value = (DateTime)dtGastos.CurrentRow.Cells[2].Value;
+            dtpFechaVenciGasto.Value = Convert.ToDateTime(dtGastos.CurrentRow.Cells[2].Value.ToString());
             txtMontoGasto.Text = dtGastos.CurrentRow.Cells[3].Value.ToString();
             txtDetalleGasto.Text = dtGastos.CurrentRow.Cells[4].Value.ToString();
             lblIdGasto.Text = dtGastos.CurrentRow.Cells[6].Value.ToString();
@@ -168,6 +190,18 @@ namespace administradorFormularios.Gastos
             cbxGastoEstado.SelectedValue = dtGastos.CurrentRow.Cells[8].Value.ToString();
         }
 
+        private void btnHabilitarCons_Click(object sender, EventArgs e)
+        {
+            const string message = "¿Desea modificar el consecutivo?"           ;           
+            var result = MessageBox.Show(message,"Aviso",
+                                         MessageBoxButtons.YesNo,
+                                         MessageBoxIcon.Question);
+            
+            if (result == DialogResult.Yes)
+                txtConsecutivoGasto.Enabled = true;            
 
+            if (result == DialogResult.No)
+                txtConsecutivoGasto.Enabled = false;
+        }
     }
 }
