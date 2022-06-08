@@ -20,15 +20,16 @@ namespace administradorFormularios.Gastos
         private GastosBL gastosBL = new GastosBL();
         private ProveedoresBL proveedoresBL = new ProveedoresBL();
         private List<Gasto> lstGastos = new List<Gasto>();
+        private int paginaSeleccionada = 0;
+        private decimal totalPaginas = 0;
         public RegistrarGastos()
         {
             InitializeComponent();
             funcionesCompartidas.RellenarComboboxEstados(ref cbxGastoEstado, VariablesGlobales.estados.Where(x => 
                                                             x.EstadoCodigo == Constantes.EstadosGastos.Pendiente ||
                                                             x.EstadoCodigo == Constantes.EstadosGastos.Cancelado).ToList());
-            rellenarComboboxProveedores();
-            List<Gasto> gastos = gastosBL.Obtener().ObjetoRespuesta;
-            RellenarGrid(ref dtGastos, gastos);
+            rellenarComboboxProveedores();            
+            RellenarGrid(ref dtGastos);
 
         }                          
 
@@ -74,8 +75,7 @@ namespace administradorFormularios.Gastos
                 {
                     MessageBox.Show(respuesta.Mensaje);
                     LimpiarCampos();
-                    List<Gasto> gastos = gastosBL.Obtener().ObjetoRespuesta;
-                    RellenarGrid(ref dtGastos, gastos);
+                    RellenarGrid(ref dtGastos , 0);
                 }
                 else
                 {
@@ -124,9 +124,17 @@ namespace administradorFormularios.Gastos
             cbxProveedorGasto.SelectedValue = "";
             cbxGastoEstado.SelectedValue = "";
         }
-        private void RellenarGrid(ref DataGridView vista, List<Gasto> lista)
+        private void RellenarGrid(ref DataGridView vista, int paginaSeleccionada = 0)
         {
-            lstGastos = lista;
+            int CantidadRegistros = 25;
+
+            List<Gasto> lista = gastosBL.Obtener().ObjetoRespuesta;
+
+            decimal totalRegistro = lista.Count();
+            totalPaginas = Math.Ceiling(totalRegistro / (decimal)CantidadRegistros);
+
+            lstGastos = lista;           
+
             vista.Rows.Clear();
             vista.ColumnCount = 9;
             vista.Columns[0].Name = "Consecutivo";
@@ -139,8 +147,8 @@ namespace administradorFormularios.Gastos
             vista.Columns[6].Visible = false;
             vista.Columns[7].Visible = false;
             vista.Columns[8].Visible = false;
-
-            foreach (var item in lista)
+   
+            foreach (var item in lista.OrderBy(x => x.GastoId).Skip((paginaSeleccionada * CantidadRegistros)).Take(CantidadRegistros).ToList())
             {
                 string[] row =
                 {    $"{item.Consecutivo}",
@@ -202,6 +210,34 @@ namespace administradorFormularios.Gastos
 
             if (result == DialogResult.No)
                 txtConsecutivoGasto.Enabled = false;
+        }
+
+        private void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            paginaSeleccionada += 1;
+
+            if (paginaSeleccionada >= totalPaginas)
+            {
+                paginaSeleccionada -= 1;
+                return;
+            }
+
+
+            RellenarGrid(ref dtGastos, paginaSeleccionada);
+            lblPaginaGasto.Text = (int.Parse(lblPaginaGasto.Text) + 1).ToString();
+        }
+
+        private void btnAtras_Click(object sender, EventArgs e)
+        {
+            paginaSeleccionada -= 1;
+
+            if (paginaSeleccionada < 0)
+            {
+                paginaSeleccionada += 1;
+                return;
+            }
+            RellenarGrid(ref dtGastos, paginaSeleccionada);
+            lblPaginaGasto.Text = (int.Parse(lblPaginaGasto.Text) - 1).ToString();
         }
     }
 }

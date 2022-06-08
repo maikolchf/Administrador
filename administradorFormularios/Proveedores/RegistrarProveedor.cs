@@ -14,14 +14,15 @@ namespace administradorFormularios.Proveedores
         private EstadosBL estadosBL = new EstadosBL();
         private FuncionesCompartidas funcionesCompartidas = new FuncionesCompartidas();
         private List<Proveedor> lstProveedores = new List<Proveedor>();
+        private int paginaSeleccionada = 0;
+        private decimal totalPaginas = 0;
         public RegistrarProveedor()
         {
             InitializeComponent();            
             funcionesCompartidas.RellenarComboboxEstados(ref cbxEstadoProveedor, VariablesGlobales.estados.Where(x => 
                                                             x.EstadoCodigo == Constantes.EstadosDefaul.Activo ||
-                                                            x.EstadoCodigo == Constantes.EstadosDefaul.Eliminado).ToList());
-            List<Proveedor> proveedores = proveedoresBL.Obtener().ObjetoRespuesta;
-            RellenarGrid(ref dtProveedores, proveedores);
+                                                            x.EstadoCodigo == Constantes.EstadosDefaul.Eliminado).ToList());           
+            RellenarGrid(ref dtProveedores);
             
         }       
 
@@ -46,8 +47,7 @@ namespace administradorFormularios.Proveedores
                 {
                     MessageBox.Show(respuesta.Mensaje);
                     LimpiarCampos();
-                    List<Proveedor> proveedores = proveedoresBL.Obtener().ObjetoRespuesta;
-                    RellenarGrid(ref dtProveedores, proveedores);
+                    RellenarGrid(ref dtProveedores);
                 }
                 else
                 {
@@ -62,9 +62,16 @@ namespace administradorFormularios.Proveedores
             
         }        
 
-        private void RellenarGrid(ref DataGridView vista, List<Proveedor> lista)
+        private void RellenarGrid(ref DataGridView vista, int paginaSeleccionada = 0)
         {
+
+            int CantidadRegistros = 25;
+            List<Proveedor> lista = proveedoresBL.Obtener().ObjetoRespuesta;
+
             lstProveedores = lista;
+            decimal totalRegistro = lista.Count();
+            totalPaginas = Math.Ceiling(totalRegistro / (decimal)CantidadRegistros);
+
             vista.Rows.Clear();
             vista.ColumnCount = 7;            
             vista.Columns[0].Name = "Nombre";
@@ -77,7 +84,7 @@ namespace administradorFormularios.Proveedores
             vista.Columns[5].Visible = false;
             vista.Columns[6].Visible = false;
 
-            foreach (var item in lista)
+            foreach (var item in lista.OrderBy(x => x.ProveedorId).Skip((paginaSeleccionada * CantidadRegistros)).Take(CantidadRegistros).ToList())
             {
                 string[] row = 
                 {    $"{item.ProveedorNombre}", 
@@ -142,6 +149,34 @@ namespace administradorFormularios.Proveedores
         private void txtTelefonoProveedor_KeyPress(object sender, KeyPressEventArgs e)
         {
             funcionesCompartidas.TextBoxNumeros(ref e);
-        }        
+        }
+
+        private void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            paginaSeleccionada += 1;
+
+            if (paginaSeleccionada >= totalPaginas)
+            {
+                paginaSeleccionada -= 1;
+                return;
+            }
+
+
+            RellenarGrid(ref dtProveedores, paginaSeleccionada);
+            lblPaginaProveedor.Text = (int.Parse(lblPaginaProveedor.Text) + 1).ToString();
+        }
+
+        private void btnAtras_Click(object sender, EventArgs e)
+        {
+            paginaSeleccionada -= 1;
+
+            if (paginaSeleccionada < 0)
+            {
+                paginaSeleccionada += 1;
+                return;
+            }
+            RellenarGrid(ref dtProveedores, paginaSeleccionada);
+            lblPaginaProveedor.Text = (int.Parse(lblPaginaProveedor.Text) - 1).ToString();
+        }
     }
 }
