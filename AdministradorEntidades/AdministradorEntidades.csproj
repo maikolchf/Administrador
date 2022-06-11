@@ -124,6 +124,9 @@
     <Compile Include="Entidades\Combobox.cs" />
     <Compile Include="Entidades\Estado.cs" />
     <Compile Include="Entidades\Gasto.cs" />
+    <Compile Include="Entidades\NotaCambio.cs" />
+    <Compile Include="Entidades\ProductoBodega.cs" />
+    <Compile Include="Entidades\ProductoNC.cs" />
     <Compile Include="Entidades\Proveedor.cs" />
     <Compile Include="Entidades\Respuesta.cs" />
     <Compile Include="Modelo\Estados.cs">
@@ -146,6 +149,15 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Modelo_AZUR.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\NotasCambio.cs">
+      <DependentUpon>Modelo_AZUR.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\ProductosBodega.cs">
+      <DependentUpon>Modelo_AZUR.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\ProductosNC.cs">
+      <DependentUpon>Modelo_AZUR.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Proveedores.cs">
       <DependentUpon>Modelo_AZUR.tt</DependentUpon>

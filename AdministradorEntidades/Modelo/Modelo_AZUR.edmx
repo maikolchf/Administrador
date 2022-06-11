@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="AdministradorAzurModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="AdministradorAzurModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Estados">
           <Key>
             <PropertyRef Name="EstadoCodigo" />
@@ -21,9 +21,41 @@
           <Property Name="Proveedor" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="Consecutivo" Type="varchar" MaxLength="35" Nullable="false" />
           <Property Name="FechaVencimiento" Type="date" Nullable="false" />
-          <Property Name="Monto" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Monto" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Descripcion" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="Estado" Type="varchar" MaxLength="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NotasCambio">
+          <Key>
+            <PropertyRef Name="IdNC" />
+          </Key>
+          <Property Name="IdNC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ConsecutivoNC" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="FechaEmisionNC" Type="date" Nullable="false" />
+          <Property Name="CodProveedorNC" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="MontoNC" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="IdFacturaAplicada" Type="int" Nullable="false" />
+          <Property Name="EstadoNC" Type="varchar" MaxLength="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductosBodega">
+          <Key>
+            <PropertyRef Name="IdProducto" />
+          </Key>
+          <Property Name="IdProducto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CodigoProducto" Type="varchar" MaxLength="35" Nullable="false" />
+          <Property Name="NombreProducto" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="CantidadProducto" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductosNC">
+          <Key>
+            <PropertyRef Name="IdProductoNC" />
+          </Key>
+          <Property Name="IdProductoNC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdNC" Type="int" Nullable="false" />
+          <Property Name="IdProducto" Type="int" Nullable="false" />
+          <Property Name="CantidadProdNC" Type="int" Nullable="false" />
+          <Property Name="DescripcionProdNC" Type="int" Nullable="false" />
+          <Property Name="PrecioProdNC" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="Proveedores">
           <Key>
@@ -61,6 +93,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="ProductoNC_FK_NotaCambio">
+          <End Role="NotasCambio" Type="Self.NotasCambio" Multiplicity="1" />
+          <End Role="ProductosNC" Type="Self.ProductosNC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NotasCambio">
+              <PropertyRef Name="IdNC" />
+            </Principal>
+            <Dependent Role="ProductosNC">
+              <PropertyRef Name="IdNC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductoNC_FK_ProductoBodega">
+          <End Role="ProductosBodega" Type="Self.ProductosBodega" Multiplicity="1" />
+          <End Role="ProductosNC" Type="Self.ProductosNC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductosBodega">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="ProductosNC">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="Proveedor_FK_Estado">
           <End Role="Estados" Type="Self.Estados" Multiplicity="1" />
           <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="*" />
@@ -76,6 +132,9 @@
         <EntityContainer Name="AdministradorAzurModelStoreContainer">
           <EntitySet Name="Estados" EntityType="Self.Estados" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gastos" EntityType="Self.Gastos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NotasCambio" EntityType="Self.NotasCambio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductosBodega" EntityType="Self.ProductosBodega" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductosNC" EntityType="Self.ProductosNC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Proveedores" EntityType="Self.Proveedores" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="Gasto_FK_Estado" Association="Self.Gasto_FK_Estado">
             <End Role="Estados" EntitySet="Estados" />
@@ -85,13 +144,20 @@
             <End Role="Proveedores" EntitySet="Proveedores" />
             <End Role="Gastos" EntitySet="Gastos" />
           </AssociationSet>
+          <AssociationSet Name="ProductoNC_FK_NotaCambio" Association="Self.ProductoNC_FK_NotaCambio">
+            <End Role="NotasCambio" EntitySet="NotasCambio" />
+            <End Role="ProductosNC" EntitySet="ProductosNC" />
+          </AssociationSet>
+          <AssociationSet Name="ProductoNC_FK_ProductoBodega" Association="Self.ProductoNC_FK_ProductoBodega">
+            <End Role="ProductosBodega" EntitySet="ProductosBodega" />
+            <End Role="ProductosNC" EntitySet="ProductosNC" />
+          </AssociationSet>
           <AssociationSet Name="Proveedor_FK_Estado" Association="Self.Proveedor_FK_Estado">
             <End Role="Estados" EntitySet="Estados" />
             <End Role="Proveedores" EntitySet="Proveedores" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AdministradorAzurModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -113,7 +179,7 @@
           <Property Name="Proveedor" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Consecutivo" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="FechaVencimiento" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Monto" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="Monto" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="Descripcion" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Estado" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Estados" Relationship="Self.Gasto_FK_Estado" FromRole="Gastos" ToRole="Estados" />
@@ -185,7 +251,78 @@
             <End Role="Proveedores" EntitySet="Proveedores" />
             <End Role="Gastos" EntitySet="Gastos" />
           </AssociationSet>
+          <EntitySet Name="NotasCambio" EntityType="AdministradorAzurModel.NotasCambio" />
+          <EntitySet Name="ProductosBodega" EntityType="AdministradorAzurModel.ProductosBodega" />
+          <EntitySet Name="ProductosNC" EntityType="AdministradorAzurModel.ProductosNC" />
+          <AssociationSet Name="ProductoNC_FK_NotaCambio" Association="AdministradorAzurModel.ProductoNC_FK_NotaCambio">
+            <End Role="NotasCambio" EntitySet="NotasCambio" />
+            <End Role="ProductosNC" EntitySet="ProductosNC" />
+          </AssociationSet>
+          <AssociationSet Name="ProductoNC_FK_ProductoBodega" Association="AdministradorAzurModel.ProductoNC_FK_ProductoBodega">
+            <End Role="ProductosBodega" EntitySet="ProductosBodega" />
+            <End Role="ProductosNC" EntitySet="ProductosNC" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="NotasCambio">
+          <Key>
+            <PropertyRef Name="IdNC" />
+          </Key>
+          <Property Name="IdNC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConsecutivoNC" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="FechaEmisionNC" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="CodProveedorNC" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="MontoNC" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="IdFacturaAplicada" Type="Int32" Nullable="false" />
+          <Property Name="EstadoNC" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ProductosNC" Relationship="AdministradorAzurModel.ProductoNC_FK_NotaCambio" FromRole="NotasCambio" ToRole="ProductosNC" />
+        </EntityType>
+        <EntityType Name="ProductosBodega">
+          <Key>
+            <PropertyRef Name="IdProducto" />
+          </Key>
+          <Property Name="IdProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodigoProducto" Type="String" Nullable="false" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="NombreProducto" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="CantidadProducto" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ProductosNC" Relationship="AdministradorAzurModel.ProductoNC_FK_ProductoBodega" FromRole="ProductosBodega" ToRole="ProductosNC" />
+        </EntityType>
+        <EntityType Name="ProductosNC">
+          <Key>
+            <PropertyRef Name="IdProductoNC" />
+          </Key>
+          <Property Name="IdProductoNC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdNC" Type="Int32" Nullable="false" />
+          <Property Name="IdProducto" Type="Int32" Nullable="false" />
+          <Property Name="CantidadProdNC" Type="Int32" Nullable="false" />
+          <Property Name="DescripcionProdNC" Type="Int32" Nullable="false" />
+          <Property Name="PrecioProdNC" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="NotasCambio" Relationship="AdministradorAzurModel.ProductoNC_FK_NotaCambio" FromRole="ProductosNC" ToRole="NotasCambio" />
+          <NavigationProperty Name="ProductosBodega" Relationship="AdministradorAzurModel.ProductoNC_FK_ProductoBodega" FromRole="ProductosNC" ToRole="ProductosBodega" />
+        </EntityType>
+        <Association Name="ProductoNC_FK_NotaCambio">
+          <End Type="AdministradorAzurModel.NotasCambio" Role="NotasCambio" Multiplicity="1" />
+          <End Type="AdministradorAzurModel.ProductosNC" Role="ProductosNC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NotasCambio">
+              <PropertyRef Name="IdNC" />
+            </Principal>
+            <Dependent Role="ProductosNC">
+              <PropertyRef Name="IdNC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ProductoNC_FK_ProductoBodega">
+          <End Type="AdministradorAzurModel.ProductosBodega" Role="ProductosBodega" Multiplicity="1" />
+          <End Type="AdministradorAzurModel.ProductosNC" Role="ProductosNC" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductosBodega">
+              <PropertyRef Name="IdProducto" />
+            </Principal>
+            <Dependent Role="ProductosNC">
+              <PropertyRef Name="IdProducto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -224,6 +361,41 @@
                 <ScalarProperty Name="ProveedorTelefono" ColumnName="ProveedorTelefono" />
                 <ScalarProperty Name="ProveedorGastoFijo" ColumnName="ProveedorGastoFijo" />
                 <ScalarProperty Name="ProveedorEstado" ColumnName="ProveedorEstado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NotasCambio">
+            <EntityTypeMapping TypeName="AdministradorAzurModel.NotasCambio">
+              <MappingFragment StoreEntitySet="NotasCambio">
+                <ScalarProperty Name="EstadoNC" ColumnName="EstadoNC" />
+                <ScalarProperty Name="IdFacturaAplicada" ColumnName="IdFacturaAplicada" />
+                <ScalarProperty Name="MontoNC" ColumnName="MontoNC" />
+                <ScalarProperty Name="CodProveedorNC" ColumnName="CodProveedorNC" />
+                <ScalarProperty Name="FechaEmisionNC" ColumnName="FechaEmisionNC" />
+                <ScalarProperty Name="ConsecutivoNC" ColumnName="ConsecutivoNC" />
+                <ScalarProperty Name="IdNC" ColumnName="IdNC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductosBodega">
+            <EntityTypeMapping TypeName="AdministradorAzurModel.ProductosBodega">
+              <MappingFragment StoreEntitySet="ProductosBodega">
+                <ScalarProperty Name="CantidadProducto" ColumnName="CantidadProducto" />
+                <ScalarProperty Name="NombreProducto" ColumnName="NombreProducto" />
+                <ScalarProperty Name="CodigoProducto" ColumnName="CodigoProducto" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductosNC">
+            <EntityTypeMapping TypeName="AdministradorAzurModel.ProductosNC">
+              <MappingFragment StoreEntitySet="ProductosNC">
+                <ScalarProperty Name="PrecioProdNC" ColumnName="PrecioProdNC" />
+                <ScalarProperty Name="DescripcionProdNC" ColumnName="DescripcionProdNC" />
+                <ScalarProperty Name="CantidadProdNC" ColumnName="CantidadProdNC" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+                <ScalarProperty Name="IdNC" ColumnName="IdNC" />
+                <ScalarProperty Name="IdProductoNC" ColumnName="IdProductoNC" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

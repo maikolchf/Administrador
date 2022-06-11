@@ -1,0 +1,10 @@
+﻿CREATE TABLE [dbo].[NotasCambio]
+(
+	IdNC INT NOT NULL PRIMARY KEY IDENTITY (1,1),
+	ConsecutivoNC VARCHAR(30) NOT NULL,
+	FechaEmisionNC	DATE NOT NULL,
+	CodProveedorNC	VARCHAR(10) NOT NULL,
+	MontoNC			DECIMAL(18,2) NOT NULL,
+	IdFacturaAplicada	INT NOT NULL,
+	EstadoNC			VARCHAR(2) NOT NULL
+)

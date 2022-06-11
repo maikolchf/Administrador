@@ -62,5 +62,7 @@ namespace administradorCompartidas
 
             return monto;
         }
+
+
     }    
 }

@@ -99,6 +99,7 @@
             this.btnGuardarProducto.Size = new System.Drawing.Size(75, 59);
             this.btnGuardarProducto.TabIndex = 11;
             this.btnGuardarProducto.UseVisualStyleBackColor = true;
+            this.btnGuardarProducto.Click += new System.EventHandler(this.btnGuardarProducto_Click);
             // 
             // txtDescripcionProducto
             // 

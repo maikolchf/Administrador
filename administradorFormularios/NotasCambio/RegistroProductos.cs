@@ -26,5 +26,10 @@ namespace administradorFormularios.NotasCambio
         {
 
         }
+
+        private void btnGuardarProducto_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
