@@ -125,6 +125,7 @@
     <Compile Include="Entidades\Estado.cs" />
     <Compile Include="Entidades\Gasto.cs" />
     <Compile Include="Entidades\NotaCambio.cs" />
+    <Compile Include="Entidades\Producto.cs" />
     <Compile Include="Entidades\ProductoBodega.cs" />
     <Compile Include="Entidades\ProductoNC.cs" />
     <Compile Include="Entidades\Proveedor.cs" />

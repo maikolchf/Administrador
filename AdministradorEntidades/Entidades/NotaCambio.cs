@@ -16,5 +16,7 @@ namespace AdministradorEntidades.Entidades
         public int IdFacturaAplicada { get; set; }
         public string EstadoNC { get; set; }
         public List<ProductoNC> ltsProductoNC { get; set; } 
+        public Proveedor Proveedor { get; set; }
+        public Estado Estado { get; set; }
     }
 }

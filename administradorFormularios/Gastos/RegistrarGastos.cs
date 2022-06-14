@@ -56,8 +56,7 @@ namespace administradorFormularios.Gastos
                     Monto = funcionesCompartidas.FomatoMonedaMonto(txtMontoGasto.Text),
                     CodigoEstado = cbxGastoEstado.SelectedValue.ToString(),
                     CodigoProveedor = cbxProveedorGasto.SelectedValue.ToString(),
-                    FechaVencimiento = dtpFechaVenciGasto.Value
-                    
+                    FechaVencimiento = dtpFechaVenciGasto.Value                   
                 };
 
                 if (gasto.GastoId == 0)

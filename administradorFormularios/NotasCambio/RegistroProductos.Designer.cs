@@ -68,7 +68,6 @@
             this.PnlFormularioProductos.Name = "PnlFormularioProductos";
             this.PnlFormularioProductos.Size = new System.Drawing.Size(679, 265);
             this.PnlFormularioProductos.TabIndex = 0;
-            this.PnlFormularioProductos.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // btnLimpiarProducto
             // 
@@ -146,6 +145,8 @@
             this.txtPrecioProductos.Size = new System.Drawing.Size(214, 23);
             this.txtPrecioProductos.TabIndex = 7;
             this.txtPrecioProductos.UseSystemPasswordChar = false;
+            this.txtPrecioProductos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioProductos_KeyPress);
+            this.txtPrecioProductos.Leave += new System.EventHandler(this.txtPrecioProductos_Leave);
             // 
             // lblPrecioProducto
             // 
@@ -174,6 +175,7 @@
             this.txtCantidadProductos.Size = new System.Drawing.Size(214, 23);
             this.txtCantidadProductos.TabIndex = 5;
             this.txtCantidadProductos.UseSystemPasswordChar = false;
+            this.txtCantidadProductos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantidadProductos_KeyPress);
             // 
             // lblCantidadProductos
             // 
@@ -240,13 +242,18 @@
             // 
             // dtProductos
             // 
+            this.dtProductos.AllowUserToAddRows = false;
             this.dtProductos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtProductos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dtProductos.BackgroundColor = System.Drawing.Color.White;
             this.dtProductos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtProductos.GridColor = System.Drawing.Color.White;
             this.dtProductos.Location = new System.Drawing.Point(3, 3);
+            this.dtProductos.MultiSelect = false;
             this.dtProductos.Name = "dtProductos";
             this.dtProductos.Size = new System.Drawing.Size(672, 330);
             this.dtProductos.TabIndex = 0;

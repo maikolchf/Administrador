@@ -46,15 +46,15 @@
             this.cbxProveedorGasto = new System.Windows.Forms.ComboBox();
             this.lblNombreProvGasto = new MaterialSkin.Controls.MaterialLabel();
             this.pnlGridgastos = new System.Windows.Forms.Panel();
-            this.dtGastos = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnAtras = new FontAwesome.Sharp.IconButton();
-            this.btnSiguiente = new FontAwesome.Sharp.IconButton();
             this.lblPaginaGasto = new System.Windows.Forms.Label();
+            this.btnSiguiente = new FontAwesome.Sharp.IconButton();
+            this.btnAtras = new FontAwesome.Sharp.IconButton();
+            this.dtGastos = new System.Windows.Forms.DataGridView();
             this.pnlFormularioGasto.SuspendLayout();
             this.pnlGridgastos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtGastos)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGastos)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlFormularioGasto
@@ -298,22 +298,6 @@
             this.pnlGridgastos.Size = new System.Drawing.Size(678, 356);
             this.pnlGridgastos.TabIndex = 1;
             // 
-            // dtGastos
-            // 
-            this.dtGastos.AllowUserToAddRows = false;
-            this.dtGastos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtGastos.BackgroundColor = System.Drawing.Color.White;
-            this.dtGastos.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dtGastos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtGastos.Location = new System.Drawing.Point(3, 3);
-            this.dtGastos.MultiSelect = false;
-            this.dtGastos.Name = "dtGastos";
-            this.dtGastos.Size = new System.Drawing.Size(672, 311);
-            this.dtGastos.TabIndex = 0;
-            this.dtGastos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SeleccionarRegistro);
-            // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -326,21 +310,15 @@
             this.panel1.Size = new System.Drawing.Size(672, 33);
             this.panel1.TabIndex = 1;
             // 
-            // btnAtras
+            // lblPaginaGasto
             // 
-            this.btnAtras.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAtras.FlatAppearance.BorderSize = 0;
-            this.btnAtras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAtras.IconChar = FontAwesome.Sharp.IconChar.ArrowLeft;
-            this.btnAtras.IconColor = System.Drawing.Color.Black;
-            this.btnAtras.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnAtras.IconSize = 25;
-            this.btnAtras.Location = new System.Drawing.Point(3, 3);
-            this.btnAtras.Name = "btnAtras";
-            this.btnAtras.Size = new System.Drawing.Size(65, 27);
-            this.btnAtras.TabIndex = 0;
-            this.btnAtras.UseVisualStyleBackColor = true;
-            this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
+            this.lblPaginaGasto.AutoSize = true;
+            this.lblPaginaGasto.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPaginaGasto.Location = new System.Drawing.Point(323, 5);
+            this.lblPaginaGasto.Name = "lblPaginaGasto";
+            this.lblPaginaGasto.Size = new System.Drawing.Size(24, 25);
+            this.lblPaginaGasto.TabIndex = 0;
+            this.lblPaginaGasto.Text = "1";
             // 
             // btnSiguiente
             // 
@@ -358,15 +336,39 @@
             this.btnSiguiente.UseVisualStyleBackColor = true;
             this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
             // 
-            // lblPaginaGasto
+            // btnAtras
             // 
-            this.lblPaginaGasto.AutoSize = true;
-            this.lblPaginaGasto.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPaginaGasto.Location = new System.Drawing.Point(323, 5);
-            this.lblPaginaGasto.Name = "lblPaginaGasto";
-            this.lblPaginaGasto.Size = new System.Drawing.Size(24, 25);
-            this.lblPaginaGasto.TabIndex = 0;
-            this.lblPaginaGasto.Text = "1";
+            this.btnAtras.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAtras.FlatAppearance.BorderSize = 0;
+            this.btnAtras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAtras.IconChar = FontAwesome.Sharp.IconChar.ArrowLeft;
+            this.btnAtras.IconColor = System.Drawing.Color.Black;
+            this.btnAtras.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnAtras.IconSize = 25;
+            this.btnAtras.Location = new System.Drawing.Point(3, 3);
+            this.btnAtras.Name = "btnAtras";
+            this.btnAtras.Size = new System.Drawing.Size(65, 27);
+            this.btnAtras.TabIndex = 0;
+            this.btnAtras.UseVisualStyleBackColor = true;
+            this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
+            // 
+            // dtGastos
+            // 
+            this.dtGastos.AllowUserToAddRows = false;
+            this.dtGastos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtGastos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtGastos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dtGastos.BackgroundColor = System.Drawing.Color.White;
+            this.dtGastos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dtGastos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtGastos.Location = new System.Drawing.Point(3, 3);
+            this.dtGastos.MultiSelect = false;
+            this.dtGastos.Name = "dtGastos";
+            this.dtGastos.Size = new System.Drawing.Size(672, 311);
+            this.dtGastos.TabIndex = 0;
+            this.dtGastos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SeleccionarRegistro);
             // 
             // RegistrarGastos
             // 
@@ -381,9 +383,9 @@
             this.pnlFormularioGasto.ResumeLayout(false);
             this.pnlFormularioGasto.PerformLayout();
             this.pnlGridgastos.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dtGastos)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtGastos)).EndInit();
             this.ResumeLayout(false);
 
         }

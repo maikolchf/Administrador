@@ -27,5 +27,22 @@ namespace AdministradorBL
             }
             return respuesta;
         }
+
+        public Respuesta<List<NotaCambio>> Obtener()
+        {
+            Respuesta<List<NotaCambio>> respuesta = new Respuesta<List<NotaCambio>>();
+            try
+            {
+                notasCambioDal = new NotasCambioDal();
+                respuesta = notasCambioDal.Obtener();
+            }
+            catch (Exception oEx)
+            {
+                respuesta.HayError = true;
+                respuesta.Mensaje = oEx.Message;
+                respuesta.ObjetoRespuesta = new List<NotaCambio>();
+            }
+            return respuesta;
+        }
     }
 }

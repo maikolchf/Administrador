@@ -25,6 +25,12 @@ namespace administradorCompartidas
             public const string Activo = "A";
             public const string Eliminado = "E";
         }
-        
+
+        public struct EstadosNC
+        {
+            public const string No_Aplicada = "NP";
+            public const string Aplicada = "AP";
+        }
+
     }
 }
