@@ -12,7 +12,7 @@ namespace AdministradorEntidades.Entidades
         public int IdNC { get; set; }
         public int IdProducto { get; set; }
         public int CantidadProdNC { get; set; }
-        public int DescripcionProdNC { get; set; }
+        public string DescripcionProdNC { get; set; }
         public decimal PrecioProdNC { get; set; }
         public ProductoBodega ProductoBodega { get; set; }
     }

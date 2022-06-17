@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AdministradorEntidades.Modelo;
 
 namespace AdministradorEntidades.Entidades
 {
@@ -18,5 +19,7 @@ namespace AdministradorEntidades.Entidades
         public List<ProductoNC> ltsProductoNC { get; set; } 
         public Proveedor Proveedor { get; set; }
         public Estado Estado { get; set; }
+
+        public List<Producto> ltsProductos { get; set; }
     }
 }

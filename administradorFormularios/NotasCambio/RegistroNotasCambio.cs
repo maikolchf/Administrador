@@ -19,7 +19,7 @@ namespace administradorFormularios.NotasCambio
         private FuncionesCompartidas funcionesCompartidas = new FuncionesCompartidas();
         private NotasCambioBL notasCambioBL = new NotasCambioBL();
         private List<NotaCambio> lstNotacambios = new List<NotaCambio>();
-        private List<Producto> lstProductos = new List<Producto>();
+        private List<Producto> ltsProductos = new List<Producto>();
         private int paginaSeleccionada = 0;
         private decimal totalPaginas = 0;
         public RegistroNotasCambio()
@@ -35,8 +35,7 @@ namespace administradorFormularios.NotasCambio
         private void btnGuardarNC_Click(object sender, EventArgs e)
         {
             if (ValidarCamposVacios())
-            {
-                var ssss = lstProductos;
+            {                
                 //logica para registrar o modificar
                 NotaCambio notaCambio = new NotaCambio
                 {
@@ -46,7 +45,8 @@ namespace administradorFormularios.NotasCambio
                     MontoNC = funcionesCompartidas.FomatoMonedaMonto(txtMontoNC.Text),
                     FechaEmisionNC = dtFechaEmisionNC.Value,
                     EstadoNC = cbxEstado.SelectedValue.ToString(),
-                    IdFacturaAplicada = 0
+                    IdFacturaAplicada = 0,
+                    ltsProductos = ltsProductos
                 };
 
                 var respuesta = notasCambioBL.Insertar(notaCambio);
@@ -69,6 +69,11 @@ namespace administradorFormularios.NotasCambio
             }
         }
 
+        private void btnProductosNC_Click(object sender, EventArgs e)
+        {
+            RegistroProductos registroProductos = new RegistroProductos(ref ltsProductos);
+            registroProductos.Show();
+        }
         private void LimpiarCampos()
         {
             lblIdNC.Text = string.Empty;
@@ -118,13 +123,7 @@ namespace administradorFormularios.NotasCambio
         private void txtMontoNC_Leave(object sender, EventArgs e)
         {
             txtMontoNC.Text = funcionesCompartidas.FormatoMontoMoneda(txtMontoNC.Text);
-        }
-
-        private void btnProductosNC_Click(object sender, EventArgs e)
-        {
-            RegistroProductos registroProductos = new RegistroProductos( ref lstProductos);
-            registroProductos.Show();
-        }
+        }        
 
         private void btnLimpiarNC_Click(object sender, EventArgs e)
         {

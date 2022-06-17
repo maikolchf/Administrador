@@ -18,6 +18,23 @@ namespace AdministradorBL
             {
                 notasCambioDal = new NotasCambioDal();
                 respuesta = notasCambioDal.Insertar(notaCambio);
+
+                if (!respuesta.HayError)
+                {
+                    notaCambio.ltsProductos.ForEach(x =>
+                    {
+                        x.IdNC = notaCambio.IdNC;
+                    });
+                    ProductoBodegaDal productoBodegaDal =  new ProductoBodegaDal();
+                    var resProductoBodega =  productoBodegaDal.Insertar(notaCambio);                   
+
+                    if (!resProductoBodega.HayError)
+                    {
+                        ProductoNCDal productoNCDal = new ProductoNCDal();
+                        respuesta = productoNCDal.Insertar(notaCambio);
+                    }
+
+                }
             }
             catch (Exception oEx)
             {
