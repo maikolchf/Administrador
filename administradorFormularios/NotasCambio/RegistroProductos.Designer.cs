@@ -43,6 +43,7 @@
             this.lblCodigoProducto = new MaterialSkin.Controls.MaterialLabel();
             this.pnlGripProductos = new System.Windows.Forms.Panel();
             this.dtProductos = new System.Windows.Forms.DataGridView();
+            this.lblIdProductosNC = new System.Windows.Forms.Label();
             this.PnlFormularioProductos.SuspendLayout();
             this.pnlGripProductos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtProductos)).BeginInit();
@@ -52,6 +53,7 @@
             // 
             this.PnlFormularioProductos.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.PnlFormularioProductos.BackColor = System.Drawing.Color.White;
+            this.PnlFormularioProductos.Controls.Add(this.lblIdProductosNC);
             this.PnlFormularioProductos.Controls.Add(this.btnLimpiarProducto);
             this.PnlFormularioProductos.Controls.Add(this.btnGuardarProducto);
             this.PnlFormularioProductos.Controls.Add(this.txtDescripcionProducto);
@@ -257,6 +259,16 @@
             this.dtProductos.Name = "dtProductos";
             this.dtProductos.Size = new System.Drawing.Size(672, 330);
             this.dtProductos.TabIndex = 0;
+            this.dtProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SeleccionarRegistro);
+            // 
+            // lblIdProductosNC
+            // 
+            this.lblIdProductosNC.AutoSize = true;
+            this.lblIdProductosNC.Location = new System.Drawing.Point(79, 226);
+            this.lblIdProductosNC.Name = "lblIdProductosNC";
+            this.lblIdProductosNC.Size = new System.Drawing.Size(0, 13);
+            this.lblIdProductosNC.TabIndex = 13;
+            this.lblIdProductosNC.Visible = false;
             // 
             // RegistroProductos
             // 
@@ -293,5 +305,6 @@
         private MaterialSkin.Controls.MaterialLabel lblCantidadProductos;
         private System.Windows.Forms.Panel pnlGripProductos;
         private System.Windows.Forms.DataGridView dtProductos;
+        private System.Windows.Forms.Label lblIdProductosNC;
     }
 }

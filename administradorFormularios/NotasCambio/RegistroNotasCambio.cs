@@ -35,7 +35,7 @@ namespace administradorFormularios.NotasCambio
         private void btnGuardarNC_Click(object sender, EventArgs e)
         {
             if (ValidarCamposVacios())
-            {                
+            {                                
                 //logica para registrar o modificar
                 NotaCambio notaCambio = new NotaCambio
                 {
@@ -48,6 +48,12 @@ namespace administradorFormularios.NotasCambio
                     IdFacturaAplicada = 0,
                     ltsProductos = ltsProductos
                 };
+
+                if (lstNotacambios.Exists(x => x.IdNC == notaCambio.IdNC))
+                {
+                    var notaCambioOld = lstNotacambios.Find(x => x.IdNC == notaCambio.IdNC);
+                    notaCambio.ltsProductoNC = notaCambioOld.ltsProductoNC;                    
+                }
 
                 var respuesta = notasCambioBL.Insertar(notaCambio);
                 if (!respuesta.HayError)
@@ -70,7 +76,7 @@ namespace administradorFormularios.NotasCambio
         }
 
         private void btnProductosNC_Click(object sender, EventArgs e)
-        {
+         {
             RegistroProductos registroProductos = new RegistroProductos(ref ltsProductos);
             registroProductos.Show();
         }
@@ -83,6 +89,7 @@ namespace administradorFormularios.NotasCambio
             dtFechaEmisionNC.Value = DateTime.Now;
             cbxEstado.SelectedValue = string.Empty;
             cbxFacturaAplicada.SelectedValue = string.Empty;
+            ltsProductos = new List<Producto>();
         }
 
         private void rellenarComboboxProveedores()
@@ -182,6 +189,25 @@ namespace administradorFormularios.NotasCambio
             cbxEstado.SelectedValue = dtNotasCambio.CurrentRow.Cells[7].Value.ToString();
             cbxFacturaAplicada.SelectedValue = dtNotasCambio.CurrentRow.Cells[8].Value;
             lblIdNC.Text = dtNotasCambio.CurrentRow.Cells[9].Value.ToString();
+
+            if (!string.IsNullOrEmpty(lblIdNC.Text))
+            {
+                List<ProductoNC> productoNCs = lstNotacambios.Find(item => item.IdNC == Convert.ToInt32(lblIdNC.Text)).ltsProductoNC;
+                ltsProductos.Clear();
+                productoNCs.ForEach(item => {
+                    Producto producto = new Producto
+                    {
+                        idProducto = item.IdProducto,
+                        Cantidad = item.CantidadProdNC,
+                        Codigo = item.ProductoBodega.CodigoProducto,
+                        Destalle = item.DescripcionProdNC,
+                        Nombre = item.ProductoBodega.NombreProducto,
+                        IdNC = item.IdNC,
+                        Precio = item.PrecioProdNC
+                    };
+                    ltsProductos.Add(producto);
+                });
+            }
         }
     }
 }

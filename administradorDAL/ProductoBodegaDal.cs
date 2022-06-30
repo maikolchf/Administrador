@@ -13,6 +13,8 @@ namespace administradorDAL
         public Respuesta<List<Producto>> Insertar(NotaCambio notaCambio)
         {
             Respuesta<List<Producto>> respuesta = new Respuesta<List<Producto>>();
+            List<ProductosBodega> productosInsertar = new List<ProductosBodega>();
+            List<ProductosBodega> productosActualizar = new List<ProductosBodega>();
             try
             {
                 using (AdministradorAzurEntities dbContexto = new AdministradorAzurEntities())
@@ -28,8 +30,24 @@ namespace administradorDAL
                             CantidadProducto = item.Cantidad
                         };
                         ltsProductoBodega.Add(productoBodega);
-                    }                    
-                    dbContexto.ProductosBodega.AddRange(ltsProductoBodega);
+                    }
+
+                    var lstProductos = (from prod in dbContexto.ProductosBodega
+                                        select prod).ToList();
+
+                    IdentificarProductos(ref productosInsertar, ref productosActualizar, lstProductos, ltsProductoBodega);
+
+                    if (productosInsertar.Count > 0)
+                    {
+                        dbContexto.ProductosBodega.AddRange(productosInsertar);
+                    }
+
+                    if (productosActualizar.Count > 0)
+                    {
+                        ActualizarCantidadesProductos(lstProductos, ref productosActualizar);
+                        dbContexto.Entry(productosActualizar).CurrentValues.SetValues(productosActualizar);
+                    }
+                    
                     dbContexto.SaveChanges();
 
                     ltsProductos.ForEach(produc =>
@@ -56,6 +74,45 @@ namespace administradorDAL
             }
             return respuesta;
         }
-    }
+        private void IdentificarProductos(ref List<ProductosBodega> nuevos, ref List<ProductosBodega> actualizar, List<ProductosBodega> lstProductos, List<ProductosBodega> nuevosProductos)
+        {            
+            foreach (ProductosBodega producto in lstProductos)
+            {
+                if (nuevosProductos.Exists(x => x.CodigoProducto.Equals(producto.CodigoProducto)))
+                {
+                    actualizar.Add(producto);
+                }                
+            }
+            
+            foreach (ProductosBodega producto in actualizar)
+            {                
+                 
+            }
+        }
+
+        private void ActualizarCantidadesProductos(List<ProductosBodega> lstProductos, ref List<ProductosBodega> productosActualizar)
+        {
+            foreach ( var prod in lstProductos)
+            {
+                foreach (var prodAct in productosActualizar)
+                {
+                    if (prod.CodigoProducto == prodAct.CodigoProducto)
+                    {
+                        if (prod.CantidadProducto > prodAct.CantidadProducto)
+                        {
+                            int cantNueva = prod.CantidadProducto - prodAct.CantidadProducto;
+                            prodAct.CantidadProducto = cantNueva;
+                        }
+
+                        if (prod.CantidadProducto < prodAct.CantidadProducto)
+                        {
+                            int cantNueva = prodAct.CantidadProducto - prod.CantidadProducto;
+                            prodAct.CantidadProducto = cantNueva;
+                        }
+                    }
+                }
+            }
+        }
+    }   
 }
 
