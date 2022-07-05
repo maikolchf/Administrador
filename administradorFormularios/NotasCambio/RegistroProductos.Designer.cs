@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.PnlFormularioProductos = new System.Windows.Forms.Panel();
+            this.lblIdProducto = new System.Windows.Forms.Label();
+            this.lblIdProductoNC = new System.Windows.Forms.Label();
+            this.lblIdProductosNC = new System.Windows.Forms.Label();
             this.btnLimpiarProducto = new FontAwesome.Sharp.IconButton();
             this.btnGuardarProducto = new FontAwesome.Sharp.IconButton();
             this.txtDescripcionProducto = new System.Windows.Forms.TextBox();
@@ -43,7 +46,6 @@
             this.lblCodigoProducto = new MaterialSkin.Controls.MaterialLabel();
             this.pnlGripProductos = new System.Windows.Forms.Panel();
             this.dtProductos = new System.Windows.Forms.DataGridView();
-            this.lblIdProductosNC = new System.Windows.Forms.Label();
             this.PnlFormularioProductos.SuspendLayout();
             this.pnlGripProductos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtProductos)).BeginInit();
@@ -53,6 +55,8 @@
             // 
             this.PnlFormularioProductos.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.PnlFormularioProductos.BackColor = System.Drawing.Color.White;
+            this.PnlFormularioProductos.Controls.Add(this.lblIdProducto);
+            this.PnlFormularioProductos.Controls.Add(this.lblIdProductoNC);
             this.PnlFormularioProductos.Controls.Add(this.lblIdProductosNC);
             this.PnlFormularioProductos.Controls.Add(this.btnLimpiarProducto);
             this.PnlFormularioProductos.Controls.Add(this.btnGuardarProducto);
@@ -70,6 +74,33 @@
             this.PnlFormularioProductos.Name = "PnlFormularioProductos";
             this.PnlFormularioProductos.Size = new System.Drawing.Size(679, 265);
             this.PnlFormularioProductos.TabIndex = 0;
+            // 
+            // lblIdProducto
+            // 
+            this.lblIdProducto.AutoSize = true;
+            this.lblIdProducto.Location = new System.Drawing.Point(369, 224);
+            this.lblIdProducto.Name = "lblIdProducto";
+            this.lblIdProducto.Size = new System.Drawing.Size(0, 13);
+            this.lblIdProducto.TabIndex = 15;
+            this.lblIdProducto.Visible = false;
+            // 
+            // lblIdProductoNC
+            // 
+            this.lblIdProductoNC.AutoSize = true;
+            this.lblIdProductoNC.Location = new System.Drawing.Point(288, 226);
+            this.lblIdProductoNC.Name = "lblIdProductoNC";
+            this.lblIdProductoNC.Size = new System.Drawing.Size(0, 13);
+            this.lblIdProductoNC.TabIndex = 14;
+            this.lblIdProductoNC.Visible = false;
+            // 
+            // lblIdProductosNC
+            // 
+            this.lblIdProductosNC.AutoSize = true;
+            this.lblIdProductosNC.Location = new System.Drawing.Point(79, 226);
+            this.lblIdProductosNC.Name = "lblIdProductosNC";
+            this.lblIdProductosNC.Size = new System.Drawing.Size(0, 13);
+            this.lblIdProductosNC.TabIndex = 13;
+            this.lblIdProductosNC.Visible = false;
             // 
             // btnLimpiarProducto
             // 
@@ -219,6 +250,7 @@
             this.txtCodigoProducto.Size = new System.Drawing.Size(214, 23);
             this.txtCodigoProducto.TabIndex = 1;
             this.txtCodigoProducto.UseSystemPasswordChar = false;
+            this.txtCodigoProducto.TextChanged += new System.EventHandler(this.BuscarProducto);
             // 
             // lblCodigoProducto
             // 
@@ -261,15 +293,6 @@
             this.dtProductos.TabIndex = 0;
             this.dtProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SeleccionarRegistro);
             // 
-            // lblIdProductosNC
-            // 
-            this.lblIdProductosNC.AutoSize = true;
-            this.lblIdProductosNC.Location = new System.Drawing.Point(79, 226);
-            this.lblIdProductosNC.Name = "lblIdProductosNC";
-            this.lblIdProductosNC.Size = new System.Drawing.Size(0, 13);
-            this.lblIdProductosNC.TabIndex = 13;
-            this.lblIdProductosNC.Visible = false;
-            // 
             // RegistroProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -306,5 +329,7 @@
         private System.Windows.Forms.Panel pnlGripProductos;
         private System.Windows.Forms.DataGridView dtProductos;
         private System.Windows.Forms.Label lblIdProductosNC;
+        private System.Windows.Forms.Label lblIdProductoNC;
+        private System.Windows.Forms.Label lblIdProducto;
     }
 }

@@ -18,6 +18,9 @@ namespace administradorDAL
                 using (AdministradorAzurEntities dbContexto = new AdministradorAzurEntities())
                 {
                     List<ProductosNC> ltsProductosNC = new List<ProductosNC>();
+                    List<ProductosNC> ltsProductosNCNuevos = new List<ProductosNC>();
+                    List<ProductosNC> ltsProductosNCActualizar = new List<ProductosNC>();
+
                     notaCambio.ltsProductos.ForEach(item =>
                     {
                         ProductosNC productoNC = new ProductosNC
@@ -26,12 +29,27 @@ namespace administradorDAL
                             DescripcionProdNC = item.Destalle,
                             IdNC = notaCambio.IdNC,
                             IdProducto = item.idProducto,
-                            PrecioProdNC = item.Precio                            
+                            PrecioProdNC = item.Precio,
+                            IdProductoNC = item.idProductoNC
                         };
                         ltsProductosNC.Add(productoNC);
                     });
 
-                    dbContexto.ProductosNC.AddRange(ltsProductosNC);
+                    IdentificarProdcutosNC(ref ltsProductosNCNuevos, ref ltsProductosNCActualizar, ltsProductosNC);
+
+                    if (ltsProductosNCNuevos.Count > 0)
+                    {
+                        dbContexto.ProductosNC.AddRange(ltsProductosNC);
+                    }
+
+                    if (ltsProductosNCActualizar.Count > 0)
+                    {
+                        ltsProductosNCActualizar.ForEach(prod =>
+                        {
+                            dbContexto.Entry(prod).CurrentValues.SetValues(prod);
+                        });
+                    }
+                    
                     dbContexto.SaveChanges();
 
                     List<ProductoNC> productoNCs = new List<ProductoNC>();
@@ -65,5 +83,19 @@ namespace administradorDAL
             return respuesta;
         }
 
+        private void IdentificarProdcutosNC(ref List<ProductosNC> productosInsertar, ref List<ProductosNC> productosActualizar, List<ProductosNC> productosNC)
+        {
+            foreach(ProductosNC item in productosNC)
+            {
+                if (item.IdProductoNC.Equals(0))
+                {
+                    productosInsertar.Add(item);
+                }
+                else
+                {
+                    productosActualizar.Add(item);
+                }
+            };
+        }
     }
 }

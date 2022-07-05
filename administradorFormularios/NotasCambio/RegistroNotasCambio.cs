@@ -197,6 +197,7 @@ namespace administradorFormularios.NotasCambio
                 productoNCs.ForEach(item => {
                     Producto producto = new Producto
                     {
+                        idProductoNC = item.IdProductoNC,
                         idProducto = item.IdProducto,
                         Cantidad = item.CantidadProdNC,
                         Codigo = item.ProductoBodega.CodigoProducto,

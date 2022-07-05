@@ -8,6 +8,7 @@ namespace AdministradorEntidades.Entidades
 {
     public class Producto
     {
+        public int idProductoNC { get; set; }
         public int idProducto { get; set; } 
         public int IdNC { get; set; }
         public string Codigo { get; set; }

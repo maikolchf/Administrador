@@ -1,4 +1,5 @@
-﻿using administradorCompartidas;
+﻿using AdministradorBL;
+using administradorCompartidas;
 using AdministradorEntidades.Entidades;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace administradorFormularios.NotasCambio
     public partial class RegistroProductos : Form
     {
         private List<Producto> lstProductos;
-        private List<ProductoNC> lstProductoNCs;
+        private ProductoBodegaBL productoBodegaBL;
         private FuncionesCompartidas funcionesCompartidas = new FuncionesCompartidas();
         public RegistroProductos(ref List<Producto> _lstProductos)
         {
@@ -31,17 +32,19 @@ namespace administradorFormularios.NotasCambio
             {
                 Producto producto = new Producto
                 {
-                    IdNC = Convert.ToInt32(lblIdProductosNC.Text),
+                    idProductoNC = funcionesCompartidas.ConvertirStringAInt(lblIdProductoNC.Text),
+                    IdNC = funcionesCompartidas.ConvertirStringAInt(lblIdProductosNC.Text),
                     Codigo = txtCodigoProducto.Text,
-                    Cantidad = Convert.ToInt32(txtCantidadProductos.Text),
+                    Cantidad = funcionesCompartidas.ConvertirStringAInt(txtCantidadProductos.Text),
                     Destalle = txtDescripcionProducto.Text,
                     Nombre = txtNombreProducto.Text,
-                    Precio = funcionesCompartidas.FomatoMonedaMonto(txtPrecioProductos.Text)
+                    Precio = funcionesCompartidas.FomatoMonedaMonto(txtPrecioProductos.Text),
+                    idProducto = funcionesCompartidas.ConvertirStringAInt(lblIdProducto.Text)
                 };
 
-                if (lstProductos.Exists(x => x.IdNC == producto.IdNC))
+                if (lstProductos.Exists(x => x.Codigo == producto.Codigo))
                 {
-                    var prodEliminar = lstProductos.Find(x => x.IdNC == producto.IdNC);
+                    var prodEliminar = lstProductos.Find(x => x.Codigo == producto.Codigo);
                     lstProductos.Remove(prodEliminar);
 
                 }
@@ -83,13 +86,15 @@ namespace administradorFormularios.NotasCambio
             //lstGasto = lista;
 
             vista.Rows.Clear();
-            vista.ColumnCount = 6;
+            vista.ColumnCount = 8;
             vista.Columns[0].Name = "Codigo";
             vista.Columns[1].Name = "Nombre producto";
             vista.Columns[2].Name = "Precio";
             vista.Columns[3].Name = "Cantidad";
             vista.Columns[4].Name = "Detalle";
             vista.Columns[5].Visible = false;
+            vista.Columns[6].Visible = false;
+            vista.Columns[7].Visible = false;
 
             foreach (var item in lista)
             {
@@ -99,7 +104,9 @@ namespace administradorFormularios.NotasCambio
                      $"{funcionesCompartidas.FormatoMontoMoneda(item.Precio.ToString())}",
                      $"{item.Cantidad}",
                      $"{item.Destalle}",
-                     $"{item.IdNC}"
+                     $"{item.IdNC}",
+                     $"{item.idProductoNC}",
+                     $"{item.idProducto}"
                 };
                 vista.Rows.Add(row);
             }
@@ -113,6 +120,8 @@ namespace administradorFormularios.NotasCambio
             txtCantidadProductos.Text = dtProductos.CurrentRow.Cells[3].Value.ToString();
             txtDescripcionProducto.Text = dtProductos.CurrentRow.Cells[4].Value.ToString();
             lblIdProductosNC.Text = dtProductos.CurrentRow.Cells[5].Value.ToString();
+            lblIdProductoNC.Text = dtProductos.CurrentRow.Cells[6].Value.ToString();
+            lblIdProducto.Text = dtProductos.CurrentRow.Cells[7].Value.ToString();
         }
 
         private void txtPrecioProductos_KeyPress(object sender, KeyPressEventArgs e)
@@ -130,6 +139,25 @@ namespace administradorFormularios.NotasCambio
             txtPrecioProductos.Text = funcionesCompartidas.FormatoMontoMoneda(txtPrecioProductos.Text);
         }
 
-        
+        private void BuscarProducto(object sender, EventArgs e)
+        {
+            string codigo = txtCodigoProducto.Text;
+            productoBodegaBL = new ProductoBodegaBL();
+            Respuesta<ProductoBodega> respuesta = new Respuesta<ProductoBodega>();
+
+            respuesta = productoBodegaBL.obtener(new ProductoBodega { CodigoProducto = codigo });
+
+            if (!respuesta.HayError && respuesta.ObjetoRespuesta != null)
+            {
+                txtNombreProducto.Text = respuesta.ObjetoRespuesta.NombreProducto;
+                lblIdProducto.Text = respuesta.ObjetoRespuesta.IdProducto.ToString();
+            }
+            else
+            {
+                txtNombreProducto.Text = string.Empty;
+                lblIdProducto.Text = string.Empty;
+            }
+
+        }
     }
 }
