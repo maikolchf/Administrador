@@ -43,6 +43,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,6 +54,8 @@
   <ItemGroup>
     <Compile Include="EstadosBL.cs" />
     <Compile Include="GastosBL.cs" />
+    <Compile Include="NotasCambioBL.cs" />
+    <Compile Include="ProductoBodegaBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProveedoresBL.cs" />
   </ItemGroup>

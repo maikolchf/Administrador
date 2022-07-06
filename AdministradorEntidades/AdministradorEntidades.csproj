@@ -124,31 +124,44 @@
     <Compile Include="Entidades\Combobox.cs" />
     <Compile Include="Entidades\Estado.cs" />
     <Compile Include="Entidades\Gasto.cs" />
+    <Compile Include="Entidades\NotaCambio.cs" />
+    <Compile Include="Entidades\Producto.cs" />
+    <Compile Include="Entidades\ProductoBodega.cs" />
+    <Compile Include="Entidades\ProductoNC.cs" />
     <Compile Include="Entidades\Proveedor.cs" />
     <Compile Include="Entidades\Respuesta.cs" />
+    <Compile Include="Modelo\AdministradorAzur.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AdministradorAzur.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\AdministradorAzur.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AdministradorAzur.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\AdministradorAzur.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AdministradorAzur.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Modelo\Estados.cs">
-      <DependentUpon>Modelo_AZUR.tt</DependentUpon>
+      <DependentUpon>AdministradorAzur.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Gastos.cs">
-      <DependentUpon>Modelo_AZUR.tt</DependentUpon>
+      <DependentUpon>AdministradorAzur.tt</DependentUpon>
     </Compile>
-    <Compile Include="Modelo\Modelo_AZUR.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Modelo_AZUR.Context.tt</DependentUpon>
+    <Compile Include="Modelo\NotasCambio.cs">
+      <DependentUpon>AdministradorAzur.tt</DependentUpon>
     </Compile>
-    <Compile Include="Modelo\Modelo_AZUR.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Modelo_AZUR.tt</DependentUpon>
+    <Compile Include="Modelo\ProductosBodega.cs">
+      <DependentUpon>AdministradorAzur.tt</DependentUpon>
     </Compile>
-    <Compile Include="Modelo\Modelo_AZUR.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Modelo_AZUR.edmx</DependentUpon>
+    <Compile Include="Modelo\ProductosNC.cs">
+      <DependentUpon>AdministradorAzur.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Proveedores.cs">
-      <DependentUpon>Modelo_AZUR.tt</DependentUpon>
+      <DependentUpon>AdministradorAzur.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -157,25 +170,26 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="Modelo\Modelo_AZUR.edmx">
+    <EntityDeploy Include="Modelo\AdministradorAzur.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Modelo_AZUR.Designer.cs</LastGenOutput>
+      <LastGenOutput>AdministradorAzur.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Modelo\Modelo_AZUR.edmx.diagram">
-      <DependentUpon>Modelo_AZUR.edmx</DependentUpon>
+    <None Include="Modelo\AdministradorAzur.edmx.diagram">
+      <DependentUpon>AdministradorAzur.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Content Include="Modelo\Modelo_AZUR.Context.tt">
+    <Content Include="Modelo\AdministradorAzur.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Modelo_AZUR.edmx</DependentUpon>
-      <LastGenOutput>Modelo_AZUR.Context.cs</LastGenOutput>
+      <DependentUpon>AdministradorAzur.edmx</DependentUpon>
+      <LastGenOutput>AdministradorAzur.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Modelo\Modelo_AZUR.tt">
+    <Content Include="Modelo\AdministradorAzur.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Modelo_AZUR.edmx</DependentUpon>
-      <LastGenOutput>Modelo_AZUR.cs</LastGenOutput>
+      <DependentUpon>AdministradorAzur.edmx</DependentUpon>
+      <LastGenOutput>AdministradorAzur.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

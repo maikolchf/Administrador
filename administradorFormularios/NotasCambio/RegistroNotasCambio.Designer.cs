@@ -29,10 +29,15 @@
         private void InitializeComponent()
         {
             this.pnlFormularioRegistroNC = new System.Windows.Forms.Panel();
+            this.btnProductosNC = new FontAwesome.Sharp.IconButton();
+            this.cbxEstado = new System.Windows.Forms.ComboBox();
+            this.lblEstado = new MaterialSkin.Controls.MaterialLabel();
+            this.cbxFacturaAplicada = new System.Windows.Forms.ComboBox();
+            this.lblFacturaAplicada = new MaterialSkin.Controls.MaterialLabel();
             this.btnLimpiarNC = new FontAwesome.Sharp.IconButton();
             this.btnGuardarNC = new FontAwesome.Sharp.IconButton();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.cbProveedorNC = new System.Windows.Forms.ComboBox();
+            this.dtFechaEmisionNC = new System.Windows.Forms.DateTimePicker();
+            this.cbxProveedorNC = new System.Windows.Forms.ComboBox();
             this.txtMontoNC = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.txtConsecutivoNC = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.lblMontoNC = new MaterialSkin.Controls.MaterialLabel();
@@ -40,16 +45,26 @@
             this.lblNombreProveedor = new MaterialSkin.Controls.MaterialLabel();
             this.lblConsecutivoNC = new MaterialSkin.Controls.MaterialLabel();
             this.pnGridNC = new System.Windows.Forms.Panel();
+            this.dtNotasCambio = new System.Windows.Forms.DataGridView();
+            this.lblIdNC = new System.Windows.Forms.Label();
             this.pnlFormularioRegistroNC.SuspendLayout();
+            this.pnGridNC.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtNotasCambio)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlFormularioRegistroNC
             // 
             this.pnlFormularioRegistroNC.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pnlFormularioRegistroNC.Controls.Add(this.lblIdNC);
+            this.pnlFormularioRegistroNC.Controls.Add(this.btnProductosNC);
+            this.pnlFormularioRegistroNC.Controls.Add(this.cbxEstado);
+            this.pnlFormularioRegistroNC.Controls.Add(this.lblEstado);
+            this.pnlFormularioRegistroNC.Controls.Add(this.cbxFacturaAplicada);
+            this.pnlFormularioRegistroNC.Controls.Add(this.lblFacturaAplicada);
             this.pnlFormularioRegistroNC.Controls.Add(this.btnLimpiarNC);
             this.pnlFormularioRegistroNC.Controls.Add(this.btnGuardarNC);
-            this.pnlFormularioRegistroNC.Controls.Add(this.dateTimePicker1);
-            this.pnlFormularioRegistroNC.Controls.Add(this.cbProveedorNC);
+            this.pnlFormularioRegistroNC.Controls.Add(this.dtFechaEmisionNC);
+            this.pnlFormularioRegistroNC.Controls.Add(this.cbxProveedorNC);
             this.pnlFormularioRegistroNC.Controls.Add(this.txtMontoNC);
             this.pnlFormularioRegistroNC.Controls.Add(this.txtConsecutivoNC);
             this.pnlFormularioRegistroNC.Controls.Add(this.lblMontoNC);
@@ -58,8 +73,71 @@
             this.pnlFormularioRegistroNC.Controls.Add(this.lblConsecutivoNC);
             this.pnlFormularioRegistroNC.Location = new System.Drawing.Point(12, 12);
             this.pnlFormularioRegistroNC.Name = "pnlFormularioRegistroNC";
-            this.pnlFormularioRegistroNC.Size = new System.Drawing.Size(679, 179);
+            this.pnlFormularioRegistroNC.Size = new System.Drawing.Size(679, 235);
             this.pnlFormularioRegistroNC.TabIndex = 0;
+            // 
+            // btnProductosNC
+            // 
+            this.btnProductosNC.FlatAppearance.BorderSize = 0;
+            this.btnProductosNC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProductosNC.Flip = FontAwesome.Sharp.FlipOrientation.Horizontal;
+            this.btnProductosNC.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProductosNC.IconChar = FontAwesome.Sharp.IconChar.PlusCircle;
+            this.btnProductosNC.IconColor = System.Drawing.Color.Black;
+            this.btnProductosNC.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnProductosNC.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnProductosNC.Location = new System.Drawing.Point(23, 173);
+            this.btnProductosNC.Name = "btnProductosNC";
+            this.btnProductosNC.Size = new System.Drawing.Size(201, 49);
+            this.btnProductosNC.TabIndex = 11;
+            this.btnProductosNC.Text = "Registrar productos";
+            this.btnProductosNC.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnProductosNC.UseVisualStyleBackColor = true;
+            this.btnProductosNC.Click += new System.EventHandler(this.btnProductosNC_Click);
+            // 
+            // cbxEstado
+            // 
+            this.cbxEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbxEstado.FormattingEnabled = true;
+            this.cbxEstado.Location = new System.Drawing.Point(127, 127);
+            this.cbxEstado.Name = "cbxEstado";
+            this.cbxEstado.Size = new System.Drawing.Size(197, 21);
+            this.cbxEstado.TabIndex = 5;
+            // 
+            // lblEstado
+            // 
+            this.lblEstado.AutoSize = true;
+            this.lblEstado.Depth = 0;
+            this.lblEstado.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblEstado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblEstado.Location = new System.Drawing.Point(19, 126);
+            this.lblEstado.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblEstado.Name = "lblEstado";
+            this.lblEstado.Size = new System.Drawing.Size(60, 19);
+            this.lblEstado.TabIndex = 9;
+            this.lblEstado.Text = "Estado:";
+            // 
+            // cbxFacturaAplicada
+            // 
+            this.cbxFacturaAplicada.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbxFacturaAplicada.FormattingEnabled = true;
+            this.cbxFacturaAplicada.Location = new System.Drawing.Point(466, 126);
+            this.cbxFacturaAplicada.Name = "cbxFacturaAplicada";
+            this.cbxFacturaAplicada.Size = new System.Drawing.Size(204, 21);
+            this.cbxFacturaAplicada.TabIndex = 6;
+            // 
+            // lblFacturaAplicada
+            // 
+            this.lblFacturaAplicada.AutoSize = true;
+            this.lblFacturaAplicada.Depth = 0;
+            this.lblFacturaAplicada.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblFacturaAplicada.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblFacturaAplicada.Location = new System.Drawing.Point(337, 125);
+            this.lblFacturaAplicada.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblFacturaAplicada.Name = "lblFacturaAplicada";
+            this.lblFacturaAplicada.Size = new System.Drawing.Size(123, 19);
+            this.lblFacturaAplicada.TabIndex = 7;
+            this.lblFacturaAplicada.Text = "Factura aplicada:";
             // 
             // btnLimpiarNC
             // 
@@ -70,11 +148,12 @@
             this.btnLimpiarNC.IconColor = System.Drawing.Color.Black;
             this.btnLimpiarNC.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnLimpiarNC.IconSize = 50;
-            this.btnLimpiarNC.Location = new System.Drawing.Point(595, 115);
+            this.btnLimpiarNC.Location = new System.Drawing.Point(595, 173);
             this.btnLimpiarNC.Name = "btnLimpiarNC";
             this.btnLimpiarNC.Size = new System.Drawing.Size(75, 59);
-            this.btnLimpiarNC.TabIndex = 14;
+            this.btnLimpiarNC.TabIndex = 8;
             this.btnLimpiarNC.UseVisualStyleBackColor = true;
+            this.btnLimpiarNC.Click += new System.EventHandler(this.btnLimpiarNC_Click);
             // 
             // btnGuardarNC
             // 
@@ -85,27 +164,28 @@
             this.btnGuardarNC.IconColor = System.Drawing.Color.Black;
             this.btnGuardarNC.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnGuardarNC.IconSize = 50;
-            this.btnGuardarNC.Location = new System.Drawing.Point(514, 115);
+            this.btnGuardarNC.Location = new System.Drawing.Point(514, 173);
             this.btnGuardarNC.Name = "btnGuardarNC";
             this.btnGuardarNC.Size = new System.Drawing.Size(75, 59);
-            this.btnGuardarNC.TabIndex = 13;
+            this.btnGuardarNC.TabIndex = 7;
             this.btnGuardarNC.UseVisualStyleBackColor = true;
+            this.btnGuardarNC.Click += new System.EventHandler(this.btnGuardarNC_Click);
             // 
-            // dateTimePicker1
+            // dtFechaEmisionNC
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(520, 17);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(150, 20);
-            this.dateTimePicker1.TabIndex = 7;
+            this.dtFechaEmisionNC.Location = new System.Drawing.Point(520, 17);
+            this.dtFechaEmisionNC.Name = "dtFechaEmisionNC";
+            this.dtFechaEmisionNC.Size = new System.Drawing.Size(150, 20);
+            this.dtFechaEmisionNC.TabIndex = 3;
             // 
-            // cbProveedorNC
+            // cbxProveedorNC
             // 
-            this.cbProveedorNC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbProveedorNC.FormattingEnabled = true;
-            this.cbProveedorNC.Location = new System.Drawing.Point(127, 68);
-            this.cbProveedorNC.Name = "cbProveedorNC";
-            this.cbProveedorNC.Size = new System.Drawing.Size(204, 21);
-            this.cbProveedorNC.TabIndex = 6;
+            this.cbxProveedorNC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbxProveedorNC.FormattingEnabled = true;
+            this.cbxProveedorNC.Location = new System.Drawing.Point(127, 68);
+            this.cbxProveedorNC.Name = "cbxProveedorNC";
+            this.cbxProveedorNC.Size = new System.Drawing.Size(204, 21);
+            this.cbxProveedorNC.TabIndex = 2;
             // 
             // txtMontoNC
             // 
@@ -119,8 +199,10 @@
             this.txtMontoNC.SelectionLength = 0;
             this.txtMontoNC.SelectionStart = 0;
             this.txtMontoNC.Size = new System.Drawing.Size(150, 23);
-            this.txtMontoNC.TabIndex = 5;
+            this.txtMontoNC.TabIndex = 4;
             this.txtMontoNC.UseSystemPasswordChar = false;
+            this.txtMontoNC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMontoNC_KeyPress);
+            this.txtMontoNC.Leave += new System.EventHandler(this.txtMontoNC_Leave);
             // 
             // txtConsecutivoNC
             // 
@@ -134,7 +216,7 @@
             this.txtConsecutivoNC.SelectionLength = 0;
             this.txtConsecutivoNC.SelectionStart = 0;
             this.txtConsecutivoNC.Size = new System.Drawing.Size(204, 23);
-            this.txtConsecutivoNC.TabIndex = 4;
+            this.txtConsecutivoNC.TabIndex = 1;
             this.txtConsecutivoNC.UseSystemPasswordChar = false;
             // 
             // lblMontoNC
@@ -191,12 +273,40 @@
             // 
             // pnGridNC
             // 
-            this.pnGridNC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnGridNC.Location = new System.Drawing.Point(12, 197);
+            this.pnGridNC.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.pnGridNC.Controls.Add(this.dtNotasCambio);
+            this.pnGridNC.Location = new System.Drawing.Point(12, 253);
             this.pnGridNC.Name = "pnGridNC";
-            this.pnGridNC.Size = new System.Drawing.Size(679, 423);
+            this.pnGridNC.Size = new System.Drawing.Size(679, 367);
             this.pnGridNC.TabIndex = 1;
+            // 
+            // dtNotasCambio
+            // 
+            this.dtNotasCambio.AllowUserToAddRows = false;
+            this.dtNotasCambio.AllowUserToDeleteRows = false;
+            this.dtNotasCambio.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtNotasCambio.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtNotasCambio.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dtNotasCambio.BackgroundColor = System.Drawing.Color.White;
+            this.dtNotasCambio.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dtNotasCambio.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtNotasCambio.GridColor = System.Drawing.Color.White;
+            this.dtNotasCambio.Location = new System.Drawing.Point(3, 3);
+            this.dtNotasCambio.Name = "dtNotasCambio";
+            this.dtNotasCambio.Size = new System.Drawing.Size(673, 361);
+            this.dtNotasCambio.TabIndex = 0;
+            this.dtNotasCambio.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SeleccionarRegistro);
+            // 
+            // lblIdNC
+            // 
+            this.lblIdNC.AutoSize = true;
+            this.lblIdNC.Location = new System.Drawing.Point(387, 173);
+            this.lblIdNC.Name = "lblIdNC";
+            this.lblIdNC.Size = new System.Drawing.Size(0, 13);
+            this.lblIdNC.TabIndex = 12;
+            this.lblIdNC.Visible = false;
             // 
             // RegistroNotasCambio
             // 
@@ -210,6 +320,8 @@
             this.Text = "RegistroNotasCambio";
             this.pnlFormularioRegistroNC.ResumeLayout(false);
             this.pnlFormularioRegistroNC.PerformLayout();
+            this.pnGridNC.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dtNotasCambio)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -217,8 +329,8 @@
         #endregion
 
         private System.Windows.Forms.Panel pnlFormularioRegistroNC;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.ComboBox cbProveedorNC;
+        private System.Windows.Forms.DateTimePicker dtFechaEmisionNC;
+        private System.Windows.Forms.ComboBox cbxProveedorNC;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtMontoNC;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtConsecutivoNC;
         private MaterialSkin.Controls.MaterialLabel lblMontoNC;
@@ -228,5 +340,12 @@
         private FontAwesome.Sharp.IconButton btnLimpiarNC;
         private FontAwesome.Sharp.IconButton btnGuardarNC;
         private System.Windows.Forms.Panel pnGridNC;
+        private System.Windows.Forms.ComboBox cbxEstado;
+        private MaterialSkin.Controls.MaterialLabel lblEstado;
+        private System.Windows.Forms.ComboBox cbxFacturaAplicada;
+        private MaterialSkin.Controls.MaterialLabel lblFacturaAplicada;
+        private FontAwesome.Sharp.IconButton btnProductosNC;
+        private System.Windows.Forms.DataGridView dtNotasCambio;
+        private System.Windows.Forms.Label lblIdNC;
     }
 }

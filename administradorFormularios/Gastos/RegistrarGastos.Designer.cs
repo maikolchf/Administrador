@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.pnlFormularioGasto = new System.Windows.Forms.Panel();
+            this.btnHabilitarCons = new FontAwesome.Sharp.IconButton();
+            this.txtMontoGasto = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.txtConsecutivoGasto = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.lblIdGasto = new System.Windows.Forms.Label();
             this.lblConsecutivoGasto = new MaterialSkin.Controls.MaterialLabel();
             this.btnLimpiarGasto = new FontAwesome.Sharp.IconButton();
@@ -43,12 +46,14 @@
             this.cbxProveedorGasto = new System.Windows.Forms.ComboBox();
             this.lblNombreProvGasto = new MaterialSkin.Controls.MaterialLabel();
             this.pnlGridgastos = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblPaginaGasto = new System.Windows.Forms.Label();
+            this.btnSiguiente = new FontAwesome.Sharp.IconButton();
+            this.btnAtras = new FontAwesome.Sharp.IconButton();
             this.dtGastos = new System.Windows.Forms.DataGridView();
-            this.txtConsecutivoGasto = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.txtMontoGasto = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.btnHabilitarCons = new FontAwesome.Sharp.IconButton();
             this.pnlFormularioGasto.SuspendLayout();
             this.pnlGridgastos.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGastos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,6 +80,55 @@
             this.pnlFormularioGasto.Name = "pnlFormularioGasto";
             this.pnlFormularioGasto.Size = new System.Drawing.Size(679, 246);
             this.pnlFormularioGasto.TabIndex = 0;
+            // 
+            // btnHabilitarCons
+            // 
+            this.btnHabilitarCons.FlatAppearance.BorderSize = 0;
+            this.btnHabilitarCons.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHabilitarCons.IconChar = FontAwesome.Sharp.IconChar.Pen;
+            this.btnHabilitarCons.IconColor = System.Drawing.Color.Black;
+            this.btnHabilitarCons.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnHabilitarCons.IconSize = 15;
+            this.btnHabilitarCons.Location = new System.Drawing.Point(387, 59);
+            this.btnHabilitarCons.Name = "btnHabilitarCons";
+            this.btnHabilitarCons.Size = new System.Drawing.Size(26, 23);
+            this.btnHabilitarCons.TabIndex = 19;
+            this.btnHabilitarCons.UseVisualStyleBackColor = true;
+            this.btnHabilitarCons.Visible = false;
+            this.btnHabilitarCons.Click += new System.EventHandler(this.btnHabilitarCons_Click);
+            // 
+            // txtMontoGasto
+            // 
+            this.txtMontoGasto.Depth = 0;
+            this.txtMontoGasto.Hint = "";
+            this.txtMontoGasto.Location = new System.Drawing.Point(181, 140);
+            this.txtMontoGasto.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtMontoGasto.Name = "txtMontoGasto";
+            this.txtMontoGasto.PasswordChar = '\0';
+            this.txtMontoGasto.SelectedText = "";
+            this.txtMontoGasto.SelectionLength = 0;
+            this.txtMontoGasto.SelectionStart = 0;
+            this.txtMontoGasto.Size = new System.Drawing.Size(200, 23);
+            this.txtMontoGasto.TabIndex = 18;
+            this.txtMontoGasto.UseSystemPasswordChar = false;
+            this.txtMontoGasto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMontoGasto_KeyPress);
+            this.txtMontoGasto.Leave += new System.EventHandler(this.txtMontoGasto_Leave);
+            // 
+            // txtConsecutivoGasto
+            // 
+            this.txtConsecutivoGasto.Depth = 0;
+            this.txtConsecutivoGasto.Hint = "";
+            this.txtConsecutivoGasto.Location = new System.Drawing.Point(181, 59);
+            this.txtConsecutivoGasto.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtConsecutivoGasto.Name = "txtConsecutivoGasto";
+            this.txtConsecutivoGasto.PasswordChar = '\0';
+            this.txtConsecutivoGasto.SelectedText = "";
+            this.txtConsecutivoGasto.SelectionLength = 0;
+            this.txtConsecutivoGasto.SelectionStart = 0;
+            this.txtConsecutivoGasto.Size = new System.Drawing.Size(200, 23);
+            this.txtConsecutivoGasto.TabIndex = 17;
+            this.txtConsecutivoGasto.UseSystemPasswordChar = false;
+            this.txtConsecutivoGasto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtConsecutivoGasto_KeyPress);
             // 
             // lblIdGasto
             // 
@@ -237,11 +291,66 @@
             // pnlGridgastos
             // 
             this.pnlGridgastos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.pnlGridgastos.Controls.Add(this.panel1);
             this.pnlGridgastos.Controls.Add(this.dtGastos);
             this.pnlGridgastos.Location = new System.Drawing.Point(13, 264);
             this.pnlGridgastos.Name = "pnlGridgastos";
             this.pnlGridgastos.Size = new System.Drawing.Size(678, 356);
             this.pnlGridgastos.TabIndex = 1;
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.lblPaginaGasto);
+            this.panel1.Controls.Add(this.btnSiguiente);
+            this.panel1.Controls.Add(this.btnAtras);
+            this.panel1.Location = new System.Drawing.Point(3, 320);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(672, 33);
+            this.panel1.TabIndex = 1;
+            // 
+            // lblPaginaGasto
+            // 
+            this.lblPaginaGasto.AutoSize = true;
+            this.lblPaginaGasto.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPaginaGasto.Location = new System.Drawing.Point(323, 5);
+            this.lblPaginaGasto.Name = "lblPaginaGasto";
+            this.lblPaginaGasto.Size = new System.Drawing.Size(24, 25);
+            this.lblPaginaGasto.TabIndex = 0;
+            this.lblPaginaGasto.Text = "1";
+            // 
+            // btnSiguiente
+            // 
+            this.btnSiguiente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSiguiente.FlatAppearance.BorderSize = 0;
+            this.btnSiguiente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSiguiente.IconChar = FontAwesome.Sharp.IconChar.ArrowRight;
+            this.btnSiguiente.IconColor = System.Drawing.Color.Black;
+            this.btnSiguiente.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnSiguiente.IconSize = 25;
+            this.btnSiguiente.Location = new System.Drawing.Point(604, 3);
+            this.btnSiguiente.Name = "btnSiguiente";
+            this.btnSiguiente.Size = new System.Drawing.Size(65, 27);
+            this.btnSiguiente.TabIndex = 1;
+            this.btnSiguiente.UseVisualStyleBackColor = true;
+            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
+            // 
+            // btnAtras
+            // 
+            this.btnAtras.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAtras.FlatAppearance.BorderSize = 0;
+            this.btnAtras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAtras.IconChar = FontAwesome.Sharp.IconChar.ArrowLeft;
+            this.btnAtras.IconColor = System.Drawing.Color.Black;
+            this.btnAtras.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnAtras.IconSize = 25;
+            this.btnAtras.Location = new System.Drawing.Point(3, 3);
+            this.btnAtras.Name = "btnAtras";
+            this.btnAtras.Size = new System.Drawing.Size(65, 27);
+            this.btnAtras.TabIndex = 0;
+            this.btnAtras.UseVisualStyleBackColor = true;
+            this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
             // 
             // dtGastos
             // 
@@ -249,64 +358,17 @@
             this.dtGastos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtGastos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtGastos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dtGastos.BackgroundColor = System.Drawing.Color.White;
             this.dtGastos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtGastos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtGastos.Location = new System.Drawing.Point(3, 3);
             this.dtGastos.MultiSelect = false;
             this.dtGastos.Name = "dtGastos";
-            this.dtGastos.Size = new System.Drawing.Size(672, 350);
+            this.dtGastos.Size = new System.Drawing.Size(672, 311);
             this.dtGastos.TabIndex = 0;
             this.dtGastos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SeleccionarRegistro);
-            // 
-            // txtConsecutivoGasto
-            // 
-            this.txtConsecutivoGasto.Depth = 0;
-            this.txtConsecutivoGasto.Hint = "";
-            this.txtConsecutivoGasto.Location = new System.Drawing.Point(181, 59);
-            this.txtConsecutivoGasto.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtConsecutivoGasto.Name = "txtConsecutivoGasto";
-            this.txtConsecutivoGasto.PasswordChar = '\0';
-            this.txtConsecutivoGasto.SelectedText = "";
-            this.txtConsecutivoGasto.SelectionLength = 0;
-            this.txtConsecutivoGasto.SelectionStart = 0;
-            this.txtConsecutivoGasto.Size = new System.Drawing.Size(200, 23);
-            this.txtConsecutivoGasto.TabIndex = 17;
-            this.txtConsecutivoGasto.UseSystemPasswordChar = false;
-            this.txtConsecutivoGasto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtConsecutivoGasto_KeyPress);
-            // 
-            // txtMontoGasto
-            // 
-            this.txtMontoGasto.Depth = 0;
-            this.txtMontoGasto.Hint = "";
-            this.txtMontoGasto.Location = new System.Drawing.Point(181, 140);
-            this.txtMontoGasto.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtMontoGasto.Name = "txtMontoGasto";
-            this.txtMontoGasto.PasswordChar = '\0';
-            this.txtMontoGasto.SelectedText = "";
-            this.txtMontoGasto.SelectionLength = 0;
-            this.txtMontoGasto.SelectionStart = 0;
-            this.txtMontoGasto.Size = new System.Drawing.Size(200, 23);
-            this.txtMontoGasto.TabIndex = 18;
-            this.txtMontoGasto.UseSystemPasswordChar = false;
-            this.txtMontoGasto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMontoGasto_KeyPress);
-            this.txtMontoGasto.Leave += new System.EventHandler(this.txtMontoGasto_Leave);
-            // 
-            // btnHabilitarCons
-            // 
-            this.btnHabilitarCons.FlatAppearance.BorderSize = 0;
-            this.btnHabilitarCons.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnHabilitarCons.IconChar = FontAwesome.Sharp.IconChar.Pen;
-            this.btnHabilitarCons.IconColor = System.Drawing.Color.Black;
-            this.btnHabilitarCons.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnHabilitarCons.IconSize = 15;
-            this.btnHabilitarCons.Location = new System.Drawing.Point(387, 59);
-            this.btnHabilitarCons.Name = "btnHabilitarCons";
-            this.btnHabilitarCons.Size = new System.Drawing.Size(26, 23);
-            this.btnHabilitarCons.TabIndex = 19;
-            this.btnHabilitarCons.UseVisualStyleBackColor = true;
-            this.btnHabilitarCons.Visible = false;
-            this.btnHabilitarCons.Click += new System.EventHandler(this.btnHabilitarCons_Click);
             // 
             // RegistrarGastos
             // 
@@ -321,6 +383,8 @@
             this.pnlFormularioGasto.ResumeLayout(false);
             this.pnlFormularioGasto.PerformLayout();
             this.pnlGridgastos.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtGastos)).EndInit();
             this.ResumeLayout(false);
 
@@ -347,5 +411,9 @@
         private MaterialSkin.Controls.MaterialSingleLineTextField txtMontoGasto;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtConsecutivoGasto;
         private FontAwesome.Sharp.IconButton btnHabilitarCons;
+        private System.Windows.Forms.Panel panel1;
+        private FontAwesome.Sharp.IconButton btnSiguiente;
+        private FontAwesome.Sharp.IconButton btnAtras;
+        private System.Windows.Forms.Label lblPaginaGasto;
     }
 }

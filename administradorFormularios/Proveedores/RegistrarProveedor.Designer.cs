@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.pnlFormularioProveedores = new System.Windows.Forms.Panel();
+            this.txtProveedorCodigo = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.lblCodigoProveedor = new MaterialSkin.Controls.MaterialLabel();
             this.lblProveedorId = new MaterialSkin.Controls.MaterialLabel();
             this.btnLimpiarProveedor = new FontAwesome.Sharp.IconButton();
             this.btnGuardarProveedor = new FontAwesome.Sharp.IconButton();
@@ -44,11 +46,14 @@
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.pnlGridProveedores = new System.Windows.Forms.Panel();
             this.dtProveedores = new System.Windows.Forms.DataGridView();
-            this.lblCodigoProveedor = new MaterialSkin.Controls.MaterialLabel();
-            this.txtProveedorCodigo = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblPaginaProveedor = new System.Windows.Forms.Label();
+            this.btnSiguiente = new FontAwesome.Sharp.IconButton();
+            this.btnAtras = new FontAwesome.Sharp.IconButton();
             this.pnlFormularioProveedores.SuspendLayout();
             this.pnlGridProveedores.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtProveedores)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlFormularioProveedores
@@ -74,6 +79,35 @@
             this.pnlFormularioProveedores.Name = "pnlFormularioProveedores";
             this.pnlFormularioProveedores.Size = new System.Drawing.Size(679, 243);
             this.pnlFormularioProveedores.TabIndex = 0;
+            // 
+            // txtProveedorCodigo
+            // 
+            this.txtProveedorCodigo.Depth = 0;
+            this.txtProveedorCodigo.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
+            this.txtProveedorCodigo.Hint = "";
+            this.txtProveedorCodigo.Location = new System.Drawing.Point(441, 125);
+            this.txtProveedorCodigo.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtProveedorCodigo.Name = "txtProveedorCodigo";
+            this.txtProveedorCodigo.PasswordChar = '\0';
+            this.txtProveedorCodigo.SelectedText = "";
+            this.txtProveedorCodigo.SelectionLength = 0;
+            this.txtProveedorCodigo.SelectionStart = 0;
+            this.txtProveedorCodigo.Size = new System.Drawing.Size(216, 23);
+            this.txtProveedorCodigo.TabIndex = 17;
+            this.txtProveedorCodigo.UseSystemPasswordChar = false;
+            // 
+            // lblCodigoProveedor
+            // 
+            this.lblCodigoProveedor.AutoSize = true;
+            this.lblCodigoProveedor.Depth = 0;
+            this.lblCodigoProveedor.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblCodigoProveedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblCodigoProveedor.Location = new System.Drawing.Point(358, 129);
+            this.lblCodigoProveedor.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblCodigoProveedor.Name = "lblCodigoProveedor";
+            this.lblCodigoProveedor.Size = new System.Drawing.Size(61, 19);
+            this.lblCodigoProveedor.TabIndex = 16;
+            this.lblCodigoProveedor.Text = "Codigo:";
             // 
             // lblProveedorId
             // 
@@ -264,6 +298,7 @@
             // pnlGridProveedores
             // 
             this.pnlGridProveedores.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.pnlGridProveedores.Controls.Add(this.panel1);
             this.pnlGridProveedores.Controls.Add(this.dtProveedores);
             this.pnlGridProveedores.Location = new System.Drawing.Point(13, 262);
             this.pnlGridProveedores.Name = "pnlGridProveedores";
@@ -284,38 +319,63 @@
             this.dtProveedores.Cursor = System.Windows.Forms.Cursors.Default;
             this.dtProveedores.Location = new System.Drawing.Point(3, 3);
             this.dtProveedores.Name = "dtProveedores";
-            this.dtProveedores.Size = new System.Drawing.Size(672, 352);
+            this.dtProveedores.Size = new System.Drawing.Size(672, 313);
             this.dtProveedores.TabIndex = 0;
             this.dtProveedores.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SeleccionarRegistro);
             // 
-            // lblCodigoProveedor
+            // panel1
             // 
-            this.lblCodigoProveedor.AutoSize = true;
-            this.lblCodigoProveedor.Depth = 0;
-            this.lblCodigoProveedor.Font = new System.Drawing.Font("Roboto", 11F);
-            this.lblCodigoProveedor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblCodigoProveedor.Location = new System.Drawing.Point(358, 129);
-            this.lblCodigoProveedor.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblCodigoProveedor.Name = "lblCodigoProveedor";
-            this.lblCodigoProveedor.Size = new System.Drawing.Size(61, 19);
-            this.lblCodigoProveedor.TabIndex = 16;
-            this.lblCodigoProveedor.Text = "Codigo:";
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.lblPaginaProveedor);
+            this.panel1.Controls.Add(this.btnSiguiente);
+            this.panel1.Controls.Add(this.btnAtras);
+            this.panel1.Location = new System.Drawing.Point(3, 322);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(672, 33);
+            this.panel1.TabIndex = 2;
             // 
-            // txtProveedorCodigo
+            // lblPaginaProveedor
             // 
-            this.txtProveedorCodigo.Depth = 0;
-            this.txtProveedorCodigo.Font = new System.Drawing.Font("Microsoft YaHei", 12F);
-            this.txtProveedorCodigo.Hint = "";
-            this.txtProveedorCodigo.Location = new System.Drawing.Point(441, 125);
-            this.txtProveedorCodigo.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtProveedorCodigo.Name = "txtProveedorCodigo";
-            this.txtProveedorCodigo.PasswordChar = '\0';
-            this.txtProveedorCodigo.SelectedText = "";
-            this.txtProveedorCodigo.SelectionLength = 0;
-            this.txtProveedorCodigo.SelectionStart = 0;
-            this.txtProveedorCodigo.Size = new System.Drawing.Size(216, 23);
-            this.txtProveedorCodigo.TabIndex = 17;
-            this.txtProveedorCodigo.UseSystemPasswordChar = false;
+            this.lblPaginaProveedor.AutoSize = true;
+            this.lblPaginaProveedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPaginaProveedor.Location = new System.Drawing.Point(325, 5);
+            this.lblPaginaProveedor.Name = "lblPaginaProveedor";
+            this.lblPaginaProveedor.Size = new System.Drawing.Size(24, 25);
+            this.lblPaginaProveedor.TabIndex = 0;
+            this.lblPaginaProveedor.Text = "1";
+            // 
+            // btnSiguiente
+            // 
+            this.btnSiguiente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSiguiente.FlatAppearance.BorderSize = 0;
+            this.btnSiguiente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSiguiente.IconChar = FontAwesome.Sharp.IconChar.ArrowRight;
+            this.btnSiguiente.IconColor = System.Drawing.Color.Black;
+            this.btnSiguiente.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnSiguiente.IconSize = 25;
+            this.btnSiguiente.Location = new System.Drawing.Point(604, 3);
+            this.btnSiguiente.Name = "btnSiguiente";
+            this.btnSiguiente.Size = new System.Drawing.Size(65, 27);
+            this.btnSiguiente.TabIndex = 1;
+            this.btnSiguiente.UseVisualStyleBackColor = true;
+            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
+            // 
+            // btnAtras
+            // 
+            this.btnAtras.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAtras.FlatAppearance.BorderSize = 0;
+            this.btnAtras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAtras.IconChar = FontAwesome.Sharp.IconChar.ArrowLeft;
+            this.btnAtras.IconColor = System.Drawing.Color.Black;
+            this.btnAtras.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnAtras.IconSize = 25;
+            this.btnAtras.Location = new System.Drawing.Point(3, 3);
+            this.btnAtras.Name = "btnAtras";
+            this.btnAtras.Size = new System.Drawing.Size(65, 27);
+            this.btnAtras.TabIndex = 0;
+            this.btnAtras.UseVisualStyleBackColor = true;
+            this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
             // 
             // RegistrarProveedor
             // 
@@ -331,6 +391,8 @@
             this.pnlFormularioProveedores.PerformLayout();
             this.pnlGridProveedores.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtProveedores)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -354,5 +416,9 @@
         private MaterialSkin.Controls.MaterialLabel lblProveedorId;
         private MaterialSkin.Controls.MaterialSingleLineTextField txtProveedorCodigo;
         private MaterialSkin.Controls.MaterialLabel lblCodigoProveedor;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblPaginaProveedor;
+        private FontAwesome.Sharp.IconButton btnSiguiente;
+        private FontAwesome.Sharp.IconButton btnAtras;
     }
 }

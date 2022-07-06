@@ -27,6 +27,9 @@ namespace AdministradorEntidades.Modelo
     
         public virtual DbSet<Estados> Estados { get; set; }
         public virtual DbSet<Gastos> Gastos { get; set; }
+        public virtual DbSet<NotasCambio> NotasCambio { get; set; }
+        public virtual DbSet<ProductosBodega> ProductosBodega { get; set; }
+        public virtual DbSet<ProductosNC> ProductosNC { get; set; }
         public virtual DbSet<Proveedores> Proveedores { get; set; }
     }
 }

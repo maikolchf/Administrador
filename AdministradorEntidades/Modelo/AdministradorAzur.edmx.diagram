@@ -4,13 +4,18 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8ff678cfd6b14990aaa18a82a718e2c4" Name="Diagram1">
+      <Diagram DiagramId="eeb08a4073284e829d015863adc68a39" Name="Diagram1">
         <EntityTypeShape EntityType="AdministradorAzurModel.Estados" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="AdministradorAzurModel.Gastos" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdministradorAzurModel.NotasCambio" Width="1.5" PointX="2.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdministradorAzurModel.ProductosBodega" Width="1.5" PointX="2.75" PointY="10.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AdministradorAzurModel.ProductosNC" Width="1.5" PointX="5" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="AdministradorAzurModel.Proveedores" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
         <AssociationConnector Association="AdministradorAzurModel.Gasto_FK_Estado" ManuallyRouted="false" />
         <AssociationConnector Association="AdministradorAzurModel.Proveedor_FK_Estado" ManuallyRouted="false" />
         <AssociationConnector Association="AdministradorAzurModel.Gasto_FK_Proveedor" ManuallyRouted="false" />
+        <AssociationConnector Association="AdministradorAzurModel.ProductoNC_FK_NotaCambio" ManuallyRouted="false" />
+        <AssociationConnector Association="AdministradorAzurModel.ProductoNC_FK_ProductoBodega" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

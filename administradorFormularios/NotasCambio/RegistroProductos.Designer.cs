@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.PnlFormularioProductos = new System.Windows.Forms.Panel();
+            this.lblIdProducto = new System.Windows.Forms.Label();
+            this.lblIdProductoNC = new System.Windows.Forms.Label();
+            this.lblIdProductosNC = new System.Windows.Forms.Label();
             this.btnLimpiarProducto = new FontAwesome.Sharp.IconButton();
             this.btnGuardarProducto = new FontAwesome.Sharp.IconButton();
             this.txtDescripcionProducto = new System.Windows.Forms.TextBox();
@@ -52,6 +55,9 @@
             // 
             this.PnlFormularioProductos.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.PnlFormularioProductos.BackColor = System.Drawing.Color.White;
+            this.PnlFormularioProductos.Controls.Add(this.lblIdProducto);
+            this.PnlFormularioProductos.Controls.Add(this.lblIdProductoNC);
+            this.PnlFormularioProductos.Controls.Add(this.lblIdProductosNC);
             this.PnlFormularioProductos.Controls.Add(this.btnLimpiarProducto);
             this.PnlFormularioProductos.Controls.Add(this.btnGuardarProducto);
             this.PnlFormularioProductos.Controls.Add(this.txtDescripcionProducto);
@@ -68,7 +74,33 @@
             this.PnlFormularioProductos.Name = "PnlFormularioProductos";
             this.PnlFormularioProductos.Size = new System.Drawing.Size(679, 265);
             this.PnlFormularioProductos.TabIndex = 0;
-            this.PnlFormularioProductos.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // lblIdProducto
+            // 
+            this.lblIdProducto.AutoSize = true;
+            this.lblIdProducto.Location = new System.Drawing.Point(369, 224);
+            this.lblIdProducto.Name = "lblIdProducto";
+            this.lblIdProducto.Size = new System.Drawing.Size(0, 13);
+            this.lblIdProducto.TabIndex = 15;
+            this.lblIdProducto.Visible = false;
+            // 
+            // lblIdProductoNC
+            // 
+            this.lblIdProductoNC.AutoSize = true;
+            this.lblIdProductoNC.Location = new System.Drawing.Point(288, 226);
+            this.lblIdProductoNC.Name = "lblIdProductoNC";
+            this.lblIdProductoNC.Size = new System.Drawing.Size(0, 13);
+            this.lblIdProductoNC.TabIndex = 14;
+            this.lblIdProductoNC.Visible = false;
+            // 
+            // lblIdProductosNC
+            // 
+            this.lblIdProductosNC.AutoSize = true;
+            this.lblIdProductosNC.Location = new System.Drawing.Point(79, 226);
+            this.lblIdProductosNC.Name = "lblIdProductosNC";
+            this.lblIdProductosNC.Size = new System.Drawing.Size(0, 13);
+            this.lblIdProductosNC.TabIndex = 13;
+            this.lblIdProductosNC.Visible = false;
             // 
             // btnLimpiarProducto
             // 
@@ -99,6 +131,7 @@
             this.btnGuardarProducto.Size = new System.Drawing.Size(75, 59);
             this.btnGuardarProducto.TabIndex = 11;
             this.btnGuardarProducto.UseVisualStyleBackColor = true;
+            this.btnGuardarProducto.Click += new System.EventHandler(this.btnGuardarProducto_Click);
             // 
             // txtDescripcionProducto
             // 
@@ -145,6 +178,8 @@
             this.txtPrecioProductos.Size = new System.Drawing.Size(214, 23);
             this.txtPrecioProductos.TabIndex = 7;
             this.txtPrecioProductos.UseSystemPasswordChar = false;
+            this.txtPrecioProductos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioProductos_KeyPress);
+            this.txtPrecioProductos.Leave += new System.EventHandler(this.txtPrecioProductos_Leave);
             // 
             // lblPrecioProducto
             // 
@@ -173,6 +208,7 @@
             this.txtCantidadProductos.Size = new System.Drawing.Size(214, 23);
             this.txtCantidadProductos.TabIndex = 5;
             this.txtCantidadProductos.UseSystemPasswordChar = false;
+            this.txtCantidadProductos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantidadProductos_KeyPress);
             // 
             // lblCantidadProductos
             // 
@@ -214,6 +250,7 @@
             this.txtCodigoProducto.Size = new System.Drawing.Size(214, 23);
             this.txtCodigoProducto.TabIndex = 1;
             this.txtCodigoProducto.UseSystemPasswordChar = false;
+            this.txtCodigoProducto.TextChanged += new System.EventHandler(this.BuscarProducto);
             // 
             // lblCodigoProducto
             // 
@@ -239,16 +276,22 @@
             // 
             // dtProductos
             // 
+            this.dtProductos.AllowUserToAddRows = false;
             this.dtProductos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtProductos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dtProductos.BackgroundColor = System.Drawing.Color.White;
             this.dtProductos.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtProductos.GridColor = System.Drawing.Color.White;
             this.dtProductos.Location = new System.Drawing.Point(3, 3);
+            this.dtProductos.MultiSelect = false;
             this.dtProductos.Name = "dtProductos";
             this.dtProductos.Size = new System.Drawing.Size(672, 330);
             this.dtProductos.TabIndex = 0;
+            this.dtProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SeleccionarRegistro);
             // 
             // RegistroProductos
             // 
@@ -285,5 +328,8 @@
         private MaterialSkin.Controls.MaterialLabel lblCantidadProductos;
         private System.Windows.Forms.Panel pnlGripProductos;
         private System.Windows.Forms.DataGridView dtProductos;
+        private System.Windows.Forms.Label lblIdProductosNC;
+        private System.Windows.Forms.Label lblIdProductoNC;
+        private System.Windows.Forms.Label lblIdProducto;
     }
 }

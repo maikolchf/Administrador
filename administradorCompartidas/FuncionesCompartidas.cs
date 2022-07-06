@@ -62,5 +62,10 @@ namespace administradorCompartidas
 
             return monto;
         }
+
+        public int ConvertirStringAInt(string valor)
+        {
+            return string.IsNullOrEmpty(valor) ? 0 : Convert.ToInt32(valor);
+        }
     }    
 }
