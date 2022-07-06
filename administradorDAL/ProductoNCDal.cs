@@ -33,23 +33,29 @@ namespace administradorDAL
                             IdProductoNC = item.idProductoNC
                         };
                         ltsProductosNC.Add(productoNC);
-                    });
+                    });                    
 
                     IdentificarProdcutosNC(ref ltsProductosNCNuevos, ref ltsProductosNCActualizar, ltsProductosNC);
 
                     if (ltsProductosNCNuevos.Count > 0)
                     {
-                        dbContexto.ProductosNC.AddRange(ltsProductosNC);
+                        dbContexto.ProductosNC.AddRange(ltsProductosNCNuevos);
                     }
 
                     if (ltsProductosNCActualizar.Count > 0)
                     {
-                        ltsProductosNCActualizar.ForEach(prod =>
+                        ltsProductosNCActualizar.ForEach(item =>
                         {
-                            dbContexto.Entry(prod).CurrentValues.SetValues(prod);
+                            ProductosNC prod = (from p in dbContexto.ProductosNC
+                                                where p.IdProductoNC.Equals(item.IdProductoNC)
+                                                select p).FirstOrDefault();
+                            prod.CantidadProdNC = item.CantidadProdNC;
+                            prod.PrecioProdNC = item.PrecioProdNC;
+
+                            dbContexto.Entry<ProductosNC>(prod).CurrentValues.SetValues(prod);
                         });
                     }
-                    
+
                     dbContexto.SaveChanges();
 
                     List<ProductoNC> productoNCs = new List<ProductoNC>();
