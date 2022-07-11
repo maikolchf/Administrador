@@ -19,6 +19,7 @@ namespace AdministradorEntidades.Modelo
         {
             this.Gastos = new HashSet<Gastos>();
             this.Proveedores = new HashSet<Proveedores>();
+            this.Facturas = new HashSet<Facturas>();
         }
     
         public int EstadoId { get; set; }
@@ -29,5 +30,7 @@ namespace AdministradorEntidades.Modelo
         public virtual ICollection<Gastos> Gastos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Proveedores> Proveedores { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Facturas> Facturas { get; set; }
     }
 }

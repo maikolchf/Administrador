@@ -65,5 +65,6 @@
     <Build Include="Tablas\NotasCambio.sql" />
     <Build Include="Tablas\ProductosBodega.sql" />
     <Build Include="Tablas\ProductosNC.sql" />
+    <Build Include="Tablas\Facturas.sql" />
   </ItemGroup>
 </Project>

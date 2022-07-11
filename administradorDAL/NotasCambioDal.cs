@@ -32,7 +32,7 @@ namespace administradorDAL
                         dbContexto.NotasCambio.Add(notaCambio);
                         dbContexto.SaveChanges();
                         respuesta.HayError = false;
-                        respuesta.Mensaje = "Resgistrado con exito";
+                        respuesta.Mensaje = "Registrado con exito";
                         notaCambioInsertar.IdNC = notaCambio.IdNC;
                     }
                     else

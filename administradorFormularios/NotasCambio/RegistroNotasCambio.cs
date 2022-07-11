@@ -16,7 +16,7 @@ namespace administradorFormularios.NotasCambio
     public partial class RegistroNotasCambio : Form
     {
         private ProveedoresBL proveedoresBL = new ProveedoresBL();
-        private FuncionesCompartidas funcionesCompartidas = new FuncionesCompartidas();
+        private FuncionesCompartidas funcionesCompartidas = new FuncionesCompartidas();        
         private NotasCambioBL notasCambioBL = new NotasCambioBL();
         private List<NotaCambio> lstNotacambios = new List<NotaCambio>();
         private List<Producto> ltsProductos = new List<Producto>();
@@ -209,6 +209,49 @@ namespace administradorFormularios.NotasCambio
                     ltsProductos.Add(producto);
                 });
             }
+        }
+
+        private void AplicarNotaCambio(object sender, EventArgs e)
+        {
+            string vEstado =  funcionesCompartidas.ValidarNull(cbxEstado.SelectedValue)   ? "" : cbxEstado.SelectedValue.ToString();
+
+            if (vEstado == Constantes.EstadosNC.Aplicada)
+            {
+                lblFacturaAplicada.Visible = true;
+                cbxFacturaAplicada.Visible = true;
+            }
+            else
+            {
+                lblFacturaAplicada.Visible = false;
+                cbxFacturaAplicada.Visible = false;
+            }
+        }
+
+        private void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            paginaSeleccionada += 1;
+
+            if (paginaSeleccionada >= totalPaginas)
+            {
+                paginaSeleccionada -= 1;
+                return;
+            }
+
+            RellenarGrid(ref dtNotasCambio, paginaSeleccionada);
+            lblPaginaGasto.Text = (int.Parse(lblPaginaGasto.Text) + 1).ToString();
+        }
+
+        private void btnAtras_Click(object sender, EventArgs e)
+        {
+            paginaSeleccionada -= 1;
+
+            if (paginaSeleccionada < 0)
+            {
+                paginaSeleccionada += 1;
+                return;
+            }
+            RellenarGrid(ref dtNotasCambio, paginaSeleccionada);
+            lblPaginaGasto.Text = (int.Parse(lblPaginaGasto.Text) - 1).ToString();
         }
     }
 }

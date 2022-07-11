@@ -67,5 +67,10 @@ namespace administradorCompartidas
         {
             return string.IsNullOrEmpty(valor) ? 0 : Convert.ToInt32(valor);
         }
+
+        public bool ValidarNull (object valor)
+        {
+            return valor == null ? true : false;
+        }
     }    
 }

@@ -123,6 +123,7 @@
   <ItemGroup>
     <Compile Include="Entidades\Combobox.cs" />
     <Compile Include="Entidades\Estado.cs" />
+    <Compile Include="Entidades\Factura.cs" />
     <Compile Include="Entidades\Gasto.cs" />
     <Compile Include="Entidades\NotaCambio.cs" />
     <Compile Include="Entidades\Producto.cs" />
@@ -148,6 +149,9 @@
     <Compile Include="Modelo\Estados.cs">
       <DependentUpon>AdministradorAzur.tt</DependentUpon>
     </Compile>
+    <Compile Include="Modelo\Facturas.cs">
+      <DependentUpon>AdministradorAzur.tt</DependentUpon>
+    </Compile>
     <Compile Include="Modelo\Gastos.cs">
       <DependentUpon>AdministradorAzur.tt</DependentUpon>
     </Compile>
@@ -169,7 +173,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <EntityDeploy Include="Modelo\AdministradorAzur.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>AdministradorAzur.Designer.cs</LastGenOutput>
@@ -177,7 +180,6 @@
     <None Include="Modelo\AdministradorAzur.edmx.diagram">
       <DependentUpon>AdministradorAzur.edmx</DependentUpon>
     </None>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

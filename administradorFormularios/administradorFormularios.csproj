@@ -67,6 +67,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Facturas\RegistroFacturas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Facturas\RegistroFacturas.Designer.cs">
+      <DependentUpon>RegistroFacturas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gastos\RegistrarGastos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +105,9 @@
     <Compile Include="Proveedores\RegistrarProveedor.Designer.cs">
       <DependentUpon>RegistrarProveedor.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Facturas\RegistroFacturas.resx">
+      <DependentUpon>RegistroFacturas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Gastos\RegistrarGastos.resx">
       <DependentUpon>RegistrarGastos.cs</DependentUpon>
     </EmbeddedResource>

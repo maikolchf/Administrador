@@ -16,6 +16,9 @@
         <AssociationConnector Association="AdministradorAzurModel.Gasto_FK_Proveedor" ManuallyRouted="false" />
         <AssociationConnector Association="AdministradorAzurModel.ProductoNC_FK_NotaCambio" ManuallyRouted="false" />
         <AssociationConnector Association="AdministradorAzurModel.ProductoNC_FK_ProductoBodega" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="AdministradorAzurModel.Facturas" Width="1.5" PointX="8.25" PointY="5" />
+        <AssociationConnector Association="AdministradorAzurModel.Factura_FK_Estado" />
+        <AssociationConnector Association="AdministradorAzurModel.Factura_FK_Proveedor" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

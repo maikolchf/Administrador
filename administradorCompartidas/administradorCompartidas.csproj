@@ -64,10 +64,6 @@
     <Compile Include="VariablesGlobales.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\AdministradorEntidades\AdministradorEntidades.csproj">
       <Project>{27589D8D-099C-405C-B0C5-8C27C6F4D1A8}</Project>
       <Name>AdministradorEntidades</Name>

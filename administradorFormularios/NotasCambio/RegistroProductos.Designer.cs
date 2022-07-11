@@ -46,9 +46,14 @@
             this.lblCodigoProducto = new MaterialSkin.Controls.MaterialLabel();
             this.pnlGripProductos = new System.Windows.Forms.Panel();
             this.dtProductos = new System.Windows.Forms.DataGridView();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblPaginaGasto = new System.Windows.Forms.Label();
+            this.btnSiguiente = new FontAwesome.Sharp.IconButton();
+            this.btnAtras = new FontAwesome.Sharp.IconButton();
             this.PnlFormularioProductos.SuspendLayout();
             this.pnlGripProductos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtProductos)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // PnlFormularioProductos
@@ -116,6 +121,7 @@
             this.btnLimpiarProducto.Size = new System.Drawing.Size(75, 59);
             this.btnLimpiarProducto.TabIndex = 12;
             this.btnLimpiarProducto.UseVisualStyleBackColor = true;
+            this.btnLimpiarProducto.Click += new System.EventHandler(this.btnLimpiarProducto_Click);
             // 
             // btnGuardarProducto
             // 
@@ -268,6 +274,7 @@
             // pnlGripProductos
             // 
             this.pnlGripProductos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.pnlGripProductos.Controls.Add(this.panel1);
             this.pnlGripProductos.Controls.Add(this.dtProductos);
             this.pnlGripProductos.Location = new System.Drawing.Point(13, 284);
             this.pnlGripProductos.Name = "pnlGripProductos";
@@ -289,9 +296,63 @@
             this.dtProductos.Location = new System.Drawing.Point(3, 3);
             this.dtProductos.MultiSelect = false;
             this.dtProductos.Name = "dtProductos";
-            this.dtProductos.Size = new System.Drawing.Size(672, 330);
+            this.dtProductos.Size = new System.Drawing.Size(672, 291);
             this.dtProductos.TabIndex = 0;
             this.dtProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SeleccionarRegistro);
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.lblPaginaGasto);
+            this.panel1.Controls.Add(this.btnSiguiente);
+            this.panel1.Controls.Add(this.btnAtras);
+            this.panel1.Location = new System.Drawing.Point(3, 300);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(672, 33);
+            this.panel1.TabIndex = 3;
+            // 
+            // lblPaginaGasto
+            // 
+            this.lblPaginaGasto.AutoSize = true;
+            this.lblPaginaGasto.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPaginaGasto.Location = new System.Drawing.Point(323, 5);
+            this.lblPaginaGasto.Name = "lblPaginaGasto";
+            this.lblPaginaGasto.Size = new System.Drawing.Size(24, 25);
+            this.lblPaginaGasto.TabIndex = 0;
+            this.lblPaginaGasto.Text = "1";
+            // 
+            // btnSiguiente
+            // 
+            this.btnSiguiente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSiguiente.FlatAppearance.BorderSize = 0;
+            this.btnSiguiente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSiguiente.IconChar = FontAwesome.Sharp.IconChar.ArrowRight;
+            this.btnSiguiente.IconColor = System.Drawing.Color.Black;
+            this.btnSiguiente.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnSiguiente.IconSize = 25;
+            this.btnSiguiente.Location = new System.Drawing.Point(604, 3);
+            this.btnSiguiente.Name = "btnSiguiente";
+            this.btnSiguiente.Size = new System.Drawing.Size(65, 27);
+            this.btnSiguiente.TabIndex = 1;
+            this.btnSiguiente.UseVisualStyleBackColor = true;
+            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
+            // 
+            // btnAtras
+            // 
+            this.btnAtras.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAtras.FlatAppearance.BorderSize = 0;
+            this.btnAtras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAtras.IconChar = FontAwesome.Sharp.IconChar.ArrowLeft;
+            this.btnAtras.IconColor = System.Drawing.Color.Black;
+            this.btnAtras.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnAtras.IconSize = 25;
+            this.btnAtras.Location = new System.Drawing.Point(3, 3);
+            this.btnAtras.Name = "btnAtras";
+            this.btnAtras.Size = new System.Drawing.Size(65, 27);
+            this.btnAtras.TabIndex = 0;
+            this.btnAtras.UseVisualStyleBackColor = true;
+            this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
             // 
             // RegistroProductos
             // 
@@ -307,6 +368,8 @@
             this.PnlFormularioProductos.PerformLayout();
             this.pnlGripProductos.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dtProductos)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -331,5 +394,9 @@
         private System.Windows.Forms.Label lblIdProductosNC;
         private System.Windows.Forms.Label lblIdProductoNC;
         private System.Windows.Forms.Label lblIdProducto;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblPaginaGasto;
+        private FontAwesome.Sharp.IconButton btnSiguiente;
+        private FontAwesome.Sharp.IconButton btnAtras;
     }
 }

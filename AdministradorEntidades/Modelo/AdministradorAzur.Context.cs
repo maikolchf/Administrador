@@ -31,5 +31,6 @@ namespace AdministradorEntidades.Modelo
         public virtual DbSet<ProductosBodega> ProductosBodega { get; set; }
         public virtual DbSet<ProductosNC> ProductosNC { get; set; }
         public virtual DbSet<Proveedores> Proveedores { get; set; }
+        public virtual DbSet<Facturas> Facturas { get; set; }
     }
 }

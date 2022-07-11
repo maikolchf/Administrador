@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="AdministradorAzurModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="AdministradorAzurModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Estados">
           <Key>
             <PropertyRef Name="EstadoCodigo" />
@@ -12,6 +12,17 @@
           <Property Name="EstadoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="EstadoCodigo" Type="varchar" MaxLength="2" Nullable="false" />
           <Property Name="EstadoDescripcion" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Facturas">
+          <Key>
+            <PropertyRef Name="FacturaId" />
+          </Key>
+          <Property Name="FacturaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProveedorFactura" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="ConsecutivoFactura" Type="varchar" MaxLength="35" Nullable="false" />
+          <Property Name="MontoFactura" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="FechaRegistro" Type="date" Nullable="false" />
+          <Property Name="EstadoFactura" Type="varchar" MaxLength="2" Nullable="false" />
         </EntityType>
         <EntityType Name="Gastos">
           <Key>
@@ -69,6 +80,30 @@
           <Property Name="ProveedorGastoFijo" Type="bit" Nullable="false" />
           <Property Name="ProveedorEstado" Type="varchar" MaxLength="2" Nullable="false" />
         </EntityType>
+        <Association Name="Factura_FK_Estado">
+          <End Role="Estados" Type="Self.Estados" Multiplicity="1" />
+          <End Role="Facturas" Type="Self.Facturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="EstadoCodigo" />
+            </Principal>
+            <Dependent Role="Facturas">
+              <PropertyRef Name="EstadoFactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Factura_FK_Proveedor">
+          <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="1" />
+          <End Role="Facturas" Type="Self.Facturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedores">
+              <PropertyRef Name="ProveedorCodigo" />
+            </Principal>
+            <Dependent Role="Facturas">
+              <PropertyRef Name="ProveedorFactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="Gasto_FK_Estado">
           <End Role="Estados" Type="Self.Estados" Multiplicity="1" />
           <End Role="Gastos" Type="Self.Gastos" Multiplicity="*" />
@@ -131,11 +166,20 @@
         </Association>
         <EntityContainer Name="AdministradorAzurModelStoreContainer">
           <EntitySet Name="Estados" EntityType="Self.Estados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Facturas" EntityType="Self.Facturas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gastos" EntityType="Self.Gastos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NotasCambio" EntityType="Self.NotasCambio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductosBodega" EntityType="Self.ProductosBodega" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductosNC" EntityType="Self.ProductosNC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Proveedores" EntityType="Self.Proveedores" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="Factura_FK_Estado" Association="Self.Factura_FK_Estado">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Facturas" EntitySet="Facturas" />
+          </AssociationSet>
+          <AssociationSet Name="Factura_FK_Proveedor" Association="Self.Factura_FK_Proveedor">
+            <End Role="Proveedores" EntitySet="Proveedores" />
+            <End Role="Facturas" EntitySet="Facturas" />
+          </AssociationSet>
           <AssociationSet Name="Gasto_FK_Estado" Association="Self.Gasto_FK_Estado">
             <End Role="Estados" EntitySet="Estados" />
             <End Role="Gastos" EntitySet="Gastos" />
@@ -157,8 +201,7 @@
             <End Role="Proveedores" EntitySet="Proveedores" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AdministradorAzurModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -171,6 +214,7 @@
           <Property Name="EstadoDescripcion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Gastos" Relationship="Self.Gasto_FK_Estado" FromRole="Estados" ToRole="Gastos" />
           <NavigationProperty Name="Proveedores" Relationship="Self.Proveedor_FK_Estado" FromRole="Estados" ToRole="Proveedores" />
+          <NavigationProperty Name="Facturas" Relationship="AdministradorAzurModel.Factura_FK_Estado" FromRole="Estados" ToRole="Facturas" />
         </EntityType>
         <EntityType Name="Gastos">
           <Key>
@@ -235,6 +279,7 @@
           <Property Name="ProveedorEstado" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Estados" Relationship="Self.Proveedor_FK_Estado" FromRole="Proveedores" ToRole="Estados" />
           <NavigationProperty Name="Gastos" Relationship="Self.Gasto_FK_Proveedor" FromRole="Proveedores" ToRole="Gastos" />
+          <NavigationProperty Name="Facturas" Relationship="AdministradorAzurModel.Factura_FK_Proveedor" FromRole="Proveedores" ToRole="Facturas" />
         </EntityType>
         <Association Name="Gasto_FK_Estado">
           <End Role="Estados" Type="Self.Estados" Multiplicity="1" />
@@ -323,7 +368,53 @@
             <End Role="ProductosBodega" EntitySet="ProductosBodega" />
             <End Role="ProductosNC" EntitySet="ProductosNC" />
           </AssociationSet>
+          <EntitySet Name="Facturas" EntityType="AdministradorAzurModel.Facturas" />
+          <AssociationSet Name="Factura_FK_Estado" Association="AdministradorAzurModel.Factura_FK_Estado">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Facturas" EntitySet="Facturas" />
+          </AssociationSet>
+          <AssociationSet Name="Factura_FK_Proveedor" Association="AdministradorAzurModel.Factura_FK_Proveedor">
+            <End Role="Proveedores" EntitySet="Proveedores" />
+            <End Role="Facturas" EntitySet="Facturas" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Facturas">
+          <Key>
+            <PropertyRef Name="FacturaId" />
+          </Key>
+          <Property Name="FacturaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProveedorFactura" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ConsecutivoFactura" Type="String" Nullable="false" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="MontoFactura" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EstadoFactura" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Estados" Relationship="AdministradorAzurModel.Factura_FK_Estado" FromRole="Facturas" ToRole="Estados" />
+          <NavigationProperty Name="Proveedores" Relationship="AdministradorAzurModel.Factura_FK_Proveedor" FromRole="Facturas" ToRole="Proveedores" />
+        </EntityType>
+        <Association Name="Factura_FK_Estado">
+          <End Type="AdministradorAzurModel.Estados" Role="Estados" Multiplicity="1" />
+          <End Type="AdministradorAzurModel.Facturas" Role="Facturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="EstadoCodigo" />
+            </Principal>
+            <Dependent Role="Facturas">
+              <PropertyRef Name="EstadoFactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Factura_FK_Proveedor">
+          <End Type="AdministradorAzurModel.Proveedores" Role="Proveedores" Multiplicity="1" />
+          <End Type="AdministradorAzurModel.Facturas" Role="Facturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedores">
+              <PropertyRef Name="ProveedorCodigo" />
+            </Principal>
+            <Dependent Role="Facturas">
+              <PropertyRef Name="ProveedorFactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -397,6 +488,18 @@
                 <ScalarProperty Name="ProveedorTelefono" ColumnName="ProveedorTelefono" />
                 <ScalarProperty Name="ProveedorGastoFijo" ColumnName="ProveedorGastoFijo" />
                 <ScalarProperty Name="ProveedorEstado" ColumnName="ProveedorEstado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Facturas">
+            <EntityTypeMapping TypeName="AdministradorAzurModel.Facturas">
+              <MappingFragment StoreEntitySet="Facturas">
+                <ScalarProperty Name="EstadoFactura" ColumnName="EstadoFactura" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="MontoFactura" ColumnName="MontoFactura" />
+                <ScalarProperty Name="ConsecutivoFactura" ColumnName="ConsecutivoFactura" />
+                <ScalarProperty Name="ProveedorFactura" ColumnName="ProveedorFactura" />
+                <ScalarProperty Name="FacturaId" ColumnName="FacturaId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

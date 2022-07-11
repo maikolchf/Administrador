@@ -18,6 +18,8 @@ namespace administradorFormularios.NotasCambio
         private List<Producto> lstProductos;
         private ProductoBodegaBL productoBodegaBL;
         private FuncionesCompartidas funcionesCompartidas = new FuncionesCompartidas();
+        private int paginaSeleccionada = 0;
+        private decimal totalPaginas = 0;
         public RegistroProductos(ref List<Producto> _lstProductos)
         {
             lstProductos = _lstProductos;
@@ -80,8 +82,8 @@ namespace administradorFormularios.NotasCambio
 
             List<Producto> lista = lstProductos;
 
-            //decimal totalRegistro = lista.Count();
-            //totalPaginas = Math.Ceiling(totalRegistro / (decimal)CantidadRegistros);
+            decimal totalRegistro = lista.Count();
+            totalPaginas = Math.Ceiling(totalRegistro / (decimal)CantidadRegistros);
 
             //lstGasto = lista;
 
@@ -96,7 +98,7 @@ namespace administradorFormularios.NotasCambio
             vista.Columns[6].Visible = false;
             vista.Columns[7].Visible = false;
 
-            foreach (var item in lista)
+            foreach (var item in lista.OrderBy(x => x.IdNC).Skip((paginaSeleccionada * CantidadRegistros)).Take(CantidadRegistros).ToList())
             {
                 string[] row =
                 {    $"{item.Codigo}",
@@ -158,6 +160,44 @@ namespace administradorFormularios.NotasCambio
                 lblIdProducto.Text = string.Empty;
             }
 
+        }
+
+        private void btnLimpiarProducto_Click(object sender, EventArgs e)
+        {
+            lblIdProductoNC.Text = "";
+            txtCodigoProducto.Text = "";
+            txtCantidadProductos.Text = "";
+            txtDescripcionProducto.Text = "";
+            txtNombreProducto.Text = "";
+            txtPrecioProductos.Text = "";
+            lblIdProducto.Text = "";
+        }
+
+        private void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            paginaSeleccionada += 1;
+
+            if (paginaSeleccionada >= totalPaginas)
+            {
+                paginaSeleccionada -= 1;
+                return;
+            }
+
+            RellenarGrid(ref dtProductos, paginaSeleccionada);
+            lblPaginaGasto.Text = (int.Parse(lblPaginaGasto.Text) + 1).ToString();
+        }
+
+        private void btnAtras_Click(object sender, EventArgs e)
+        {
+            paginaSeleccionada -= 1;
+
+            if (paginaSeleccionada < 0)
+            {
+                paginaSeleccionada += 1;
+                return;
+            }
+            RellenarGrid(ref dtProductos, paginaSeleccionada);
+            lblPaginaGasto.Text = (int.Parse(lblPaginaGasto.Text) - 1).ToString();
         }
     }
 }
