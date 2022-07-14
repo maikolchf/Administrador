@@ -46,15 +46,15 @@
             this.lblNombreProveedor = new MaterialSkin.Controls.MaterialLabel();
             this.lblConsecutivoNC = new MaterialSkin.Controls.MaterialLabel();
             this.pnGridNC = new System.Windows.Forms.Panel();
-            this.dtNotasCambio = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblPaginaGasto = new System.Windows.Forms.Label();
             this.btnSiguiente = new FontAwesome.Sharp.IconButton();
             this.btnAtras = new FontAwesome.Sharp.IconButton();
+            this.dtNotasCambio = new System.Windows.Forms.DataGridView();
             this.pnlFormularioRegistroNC.SuspendLayout();
             this.pnGridNC.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtNotasCambio)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtNotasCambio)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlFormularioRegistroNC
@@ -298,25 +298,6 @@
             this.pnGridNC.Size = new System.Drawing.Size(679, 367);
             this.pnGridNC.TabIndex = 1;
             // 
-            // dtNotasCambio
-            // 
-            this.dtNotasCambio.AllowUserToAddRows = false;
-            this.dtNotasCambio.AllowUserToDeleteRows = false;
-            this.dtNotasCambio.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtNotasCambio.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dtNotasCambio.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dtNotasCambio.BackgroundColor = System.Drawing.Color.White;
-            this.dtNotasCambio.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dtNotasCambio.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtNotasCambio.GridColor = System.Drawing.Color.White;
-            this.dtNotasCambio.Location = new System.Drawing.Point(3, 3);
-            this.dtNotasCambio.Name = "dtNotasCambio";
-            this.dtNotasCambio.Size = new System.Drawing.Size(673, 325);
-            this.dtNotasCambio.TabIndex = 0;
-            this.dtNotasCambio.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SeleccionarRegistro);
-            // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -371,6 +352,25 @@
             this.btnAtras.UseVisualStyleBackColor = true;
             this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
             // 
+            // dtNotasCambio
+            // 
+            this.dtNotasCambio.AllowUserToAddRows = false;
+            this.dtNotasCambio.AllowUserToDeleteRows = false;
+            this.dtNotasCambio.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtNotasCambio.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtNotasCambio.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dtNotasCambio.BackgroundColor = System.Drawing.Color.White;
+            this.dtNotasCambio.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dtNotasCambio.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtNotasCambio.GridColor = System.Drawing.Color.White;
+            this.dtNotasCambio.Location = new System.Drawing.Point(3, 3);
+            this.dtNotasCambio.Name = "dtNotasCambio";
+            this.dtNotasCambio.Size = new System.Drawing.Size(673, 325);
+            this.dtNotasCambio.TabIndex = 0;
+            this.dtNotasCambio.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SeleccionarRegistro);
+            // 
             // RegistroNotasCambio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -384,9 +384,9 @@
             this.pnlFormularioRegistroNC.ResumeLayout(false);
             this.pnlFormularioRegistroNC.PerformLayout();
             this.pnGridNC.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dtNotasCambio)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtNotasCambio)).EndInit();
             this.ResumeLayout(false);
 
         }

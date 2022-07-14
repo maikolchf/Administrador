@@ -71,6 +71,6 @@ namespace administradorCompartidas
         public bool ValidarNull (object valor)
         {
             return valor == null ? true : false;
-        }
+        }       
     }    
 }

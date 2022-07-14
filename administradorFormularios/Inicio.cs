@@ -29,17 +29,11 @@ namespace administradorFormularios
         private void btnNotasCambio_Click(object sender, EventArgs e)
         {
             llamadosFormularios.abrirFormularioHijo(new NotasCambio.RegistroNotasCambio(), ref panelFomularios);
-        }
-       
+        }             
 
-        private void btnUsuario_Click(object sender, EventArgs e)
+        private void btnFacturas_Click(object sender, EventArgs e)
         {
-            
+            llamadosFormularios.abrirFormularioHijo(new Facturas.RegistroFacturas(), ref panelFomularios);
         }
-
-        private void panelFomularios_Paint(object sender, PaintEventArgs e)
-        {
-
-        }       
     }
 }

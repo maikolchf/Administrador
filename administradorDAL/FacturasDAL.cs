@@ -18,18 +18,18 @@ namespace administradorDAL
 
                 using (AdministradorAzurEntities dbContexto = new AdministradorAzurEntities())
                 {
-                    if (!factura.FacturaId.Equals(0))
+                    if (factura.FacturaId.Equals(0))
                     {
                         dbContexto.Facturas.Add(factura.convertirObjetoInsertar(factura));
                         respuesta.Mensaje = "Registrado correctamente";
                     }
                     else
                     {
-                        dbContexto.Entry(factura.convertirObjetoInsertar(factura)).CurrentValues.SetValues(factura.convertirObjetoInsertar(factura));
+                        Modificar(factura);
                         respuesta.Mensaje = "Modificado correctamente";
                     }
                     dbContexto.SaveChanges();
-                    respuesta.HayError = true;
+                    respuesta.HayError = false;
                     respuesta.ObjetoRespuesta = factura;
                 }
                 
@@ -60,7 +60,27 @@ namespace administradorDAL
                                                      EstadoFactura = item.EstadoFactura,
                                                      FechaRegistro = item.FechaRegistro,
                                                      MontoFactura = item.MontoFactura,
-                                                     ProveedorFactura = item.ProveedorFactura
+                                                     ProveedorFactura = item.ProveedorFactura,
+                                                     Estado = (from E in dbContexto.Estados
+                                                               where E.EstadoCodigo == item.EstadoFactura
+                                                               select new Estado
+                                                               {
+                                                                   EstadoCodigo = E.EstadoCodigo,
+                                                                   EstadoId = E.EstadoId,
+                                                                   EstadoDescripcion = E.EstadoDescripcion
+                                                               }).FirstOrDefault(),
+                                                     Proveedor = (from P in dbContexto.Proveedores
+                                                                  where P.ProveedorCodigo == item.ProveedorFactura
+                                                                  select new Proveedor
+                                                                  {
+                                                                      ProveedorCodigo = P.ProveedorCodigo,
+                                                                      ProveedorId = P.ProveedorId,
+                                                                      ProveedorCedula = P.ProveedorNombre,
+                                                                      ProveedorGastoFijo = P.ProveedorGastoFijo,
+                                                                      ProveedorEstado = P.ProveedorEstado,
+                                                                      ProveedorNombre = P.ProveedorNombre,
+                                                                      ProveedorTelefono = P.ProveedorTelefono
+                                                                  }).FirstOrDefault()
                                                  }).ToList();
                     respuesta.HayError = false;
                 }
@@ -71,6 +91,41 @@ namespace administradorDAL
                 respuesta.HayError = true;
                 respuesta.Mensaje = oEx.Message;
                 respuesta.ObjetoRespuesta = new List<Factura>();
+            }
+            return respuesta;
+        }
+
+        private Respuesta<Factura> Modificar(Factura factura)
+        {
+            Respuesta<Factura> respuesta = new Respuesta<Factura>();
+            try
+            {
+                using (AdministradorAzurEntities dbContexto = new AdministradorAzurEntities())
+                {
+                    var facturas = (from x in dbContexto.Facturas
+                                     where x.FacturaId == factura.FacturaId
+                                     select x).FirstOrDefault();
+                    if (facturas != null)
+                    {
+                        facturas.FacturaId = factura.FacturaId;
+                        facturas.ConsecutivoFactura = factura.ConsecutivoFactura;
+                        facturas.MontoFactura = factura.MontoFactura;
+                        facturas.FechaRegistro = factura.FechaRegistro;
+                        facturas.EstadoFactura = factura.EstadoFactura;
+                        facturas.ProveedorFactura = factura.ProveedorFactura;
+
+                        dbContexto.Entry(facturas).CurrentValues.SetValues(facturas);
+                        dbContexto.SaveChanges();
+                    }
+                    respuesta.HayError = false;
+                    respuesta.Mensaje = "Modificado con exito";
+                }
+            }
+            catch (Exception oEx)
+            {
+                respuesta.HayError = true;
+                respuesta.Mensaje = oEx.Message;
+                respuesta.ObjetoRespuesta = new Factura();
             }
             return respuesta;
         }

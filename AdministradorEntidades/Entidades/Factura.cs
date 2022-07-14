@@ -16,6 +16,10 @@ namespace AdministradorEntidades.Entidades
         public System.DateTime FechaRegistro { get; set; }
         public string EstadoFactura { get; set; }
 
+        public Estado Estado { get; set; }
+
+        public Proveedor Proveedor { get; set; }
+
         public Facturas convertirObjetoInsertar(Factura factura)
         {
             Facturas vFactura = new Facturas();
@@ -26,6 +30,7 @@ namespace AdministradorEntidades.Entidades
                 vFactura.MontoFactura = factura.MontoFactura;
                 vFactura.EstadoFactura = factura.EstadoFactura;
                 vFactura.ProveedorFactura = factura.ProveedorFactura;
+                vFactura.FechaRegistro = factura.FechaRegistro;
 
             }
             catch (Exception oEx)
