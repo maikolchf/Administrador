@@ -52,6 +52,7 @@ namespace administradorFormularios.NotasCambio
                 }
 
                 lstProductos.Add(producto);
+                LimpiarCampos();
 
                 if (lstProductos.Count > 0)
                 {
@@ -162,15 +163,20 @@ namespace administradorFormularios.NotasCambio
 
         }
 
+        private void LimpiarCampos()
+        {
+            lblIdProductoNC.Text = string.Empty;
+            txtCodigoProducto.Text = string.Empty;
+            txtCantidadProductos.Text = string.Empty;
+            txtDescripcionProducto.Text = string.Empty;
+            txtNombreProducto.Text = string.Empty;
+            txtPrecioProductos.Text = string.Empty;
+            lblIdProducto.Text = string.Empty;
+        }
+
         private void btnLimpiarProducto_Click(object sender, EventArgs e)
         {
-            lblIdProductoNC.Text = "";
-            txtCodigoProducto.Text = "";
-            txtCantidadProductos.Text = "";
-            txtDescripcionProducto.Text = "";
-            txtNombreProducto.Text = "";
-            txtPrecioProductos.Text = "";
-            lblIdProducto.Text = "";
+            LimpiarCampos();
         }
 
         private void btnSiguiente_Click(object sender, EventArgs e)

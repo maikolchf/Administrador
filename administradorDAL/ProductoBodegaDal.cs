@@ -37,7 +37,11 @@ namespace administradorDAL
                     var lstProductos = (from prod in dbContexto.ProductosBodega
                                         select prod).ToList();
 
-                    IdentificarProductos(ref productosInsertar, ref productosActualizar, lstProductos, ltsProductoBodega);
+                    IdentificarProductos(ref productosInsertar, 
+                        ref productosActualizar, 
+                        lstProductos, 
+                        ltsProductoBodega, 
+                        notaCambio.IdFacturaAplicada.Equals(0) ? false : true);
 
                     if (productosInsertar.Count > 0)
                     {
@@ -46,7 +50,9 @@ namespace administradorDAL
 
                     if (productosActualizar.Count > 0)
                     {
-                        ActualizarCantidadesProductos(ltsProductoBodega, ref productosActualizar);
+                        ActualizarCantidadesProductos(ltsProductoBodega, 
+                            ref productosActualizar,
+                            notaCambio.IdFacturaAplicada.Equals(0) ? false : true);
                         productosActualizar.ForEach(item =>
                         {
                             dbContexto.Entry(item).CurrentValues.SetValues(item);
@@ -110,7 +116,7 @@ namespace administradorDAL
             return respuesta;
         }
         private void IdentificarProductos(ref List<ProductosBodega> nuevos, ref List<ProductosBodega> actualizar,
-            List<ProductosBodega> lstProductos, List<ProductosBodega> nuevosProductos)
+            List<ProductosBodega> lstProductos, List<ProductosBodega> nuevosProductos, bool facturaAPlicada = false)
         {
             foreach (ProductosBodega producto in lstProductos)
             {
@@ -126,18 +132,23 @@ namespace administradorDAL
                 {
                     if (producto.IdProducto.Equals(0))
                     {
+                        if (facturaAPlicada)
+                            producto.CantidadProducto = 0;
+
                         nuevos.Add(producto);
                     }
                 }
                 else
                 {
+                    if (facturaAPlicada)
+                        producto.CantidadProducto = 0;
                     nuevos.Add(producto);
                 }
 
             }
         }
 
-        private void ActualizarCantidadesProductos(List<ProductosBodega> lstProductos, ref List<ProductosBodega> productosActualizar)
+        private void ActualizarCantidadesProductos(List<ProductosBodega> lstProductos, ref List<ProductosBodega> productosActualizar, bool facturaAplicada = false)
         {
             foreach (var prod in lstProductos)
             {
@@ -145,17 +156,23 @@ namespace administradorDAL
                 {
                     if (prod.CodigoProducto == prodAct.CodigoProducto)
                     {
-                        if (prod.CantidadProducto > prodAct.CantidadProducto)
+                        if (facturaAplicada)
                         {
-                            int cantNueva = prod.CantidadProducto - prodAct.CantidadProducto;
-                            prodAct.CantidadProducto = prodAct.CantidadProducto + cantNueva;
-                        }
+                            prodAct.CantidadProducto = 0;
+                        }else
+                        {
+                            if (prod.CantidadProducto > prodAct.CantidadProducto)
+                            {
+                                int cantNueva = prod.CantidadProducto - prodAct.CantidadProducto;
+                                prodAct.CantidadProducto = prodAct.CantidadProducto + cantNueva;
+                            }
 
-                        if (prod.CantidadProducto < prodAct.CantidadProducto)
-                        {
-                            int cantNueva = prodAct.CantidadProducto - prod.CantidadProducto;
-                            prodAct.CantidadProducto = prodAct.CantidadProducto - cantNueva;
-                        }
+                            if (prod.CantidadProducto < prodAct.CantidadProducto)
+                            {
+                                int cantNueva = prodAct.CantidadProducto - prod.CantidadProducto;
+                                prodAct.CantidadProducto = prodAct.CantidadProducto - cantNueva;
+                            }
+                        }                       
                     }
                 }
             }

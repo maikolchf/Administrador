@@ -18,6 +18,7 @@ namespace administradorFormularios.NotasCambio
         private ProveedoresBL proveedoresBL = new ProveedoresBL();
         private FuncionesCompartidas funcionesCompartidas = new FuncionesCompartidas();        
         private NotasCambioBL notasCambioBL = new NotasCambioBL();
+        private FacturasBL facturasBL = new FacturasBL();
         private List<NotaCambio> lstNotacambios = new List<NotaCambio>();
         private List<Producto> ltsProductos = new List<Producto>();
         private int paginaSeleccionada = 0;
@@ -25,7 +26,8 @@ namespace administradorFormularios.NotasCambio
         public RegistroNotasCambio()
         {
             InitializeComponent();
-            rellenarComboboxProveedores();
+            RellenarComboboxProveedores();
+            RellemarComboboxFacturas();
             RellenarGrid(ref dtNotasCambio);
             funcionesCompartidas.RellenarComboboxEstados(ref cbxEstado, VariablesGlobales.estados.Where(x =>
                                                            x.EstadoCodigo == Constantes.EstadosNC.No_Aplicada ||
@@ -35,9 +37,11 @@ namespace administradorFormularios.NotasCambio
         private void btnGuardarNC_Click(object sender, EventArgs e)
         {
             if (ValidarCamposVacios())
-            {                                
+            {
+                //Validar factura aplicada                
+                int facturaAplicadaId = cbxFacturaAplicada.SelectedValue == null || cbxFacturaAplicada.SelectedValue.ToString() == "" ? 0: Convert.ToInt32(cbxFacturaAplicada.SelectedValue.ToString());
                 //logica para registrar o modificar
-                NotaCambio notaCambio = new NotaCambio
+               NotaCambio notaCambio = new NotaCambio
                 {
                     IdNC = Convert.ToInt32((lblIdNC.Text == "" ? "0" : lblIdNC.Text)),
                     ConsecutivoNC = txtConsecutivoNC.Text,
@@ -45,9 +49,14 @@ namespace administradorFormularios.NotasCambio
                     MontoNC = funcionesCompartidas.FomatoMonedaMonto(txtMontoNC.Text),
                     FechaEmisionNC = dtFechaEmisionNC.Value,
                     EstadoNC = cbxEstado.SelectedValue.ToString(),
-                    IdFacturaAplicada = 0,
+                    IdFacturaAplicada = facturaAplicadaId,
                     ltsProductos = ltsProductos
                 };
+
+                if (!notaCambio.EstadoNC.Equals(Constantes.EstadosNC.Aplicada))
+                {
+                    notaCambio.IdFacturaAplicada = 0;
+                }
 
                 if (lstNotacambios.Exists(x => x.IdNC == notaCambio.IdNC))
                 {
@@ -92,7 +101,7 @@ namespace administradorFormularios.NotasCambio
             ltsProductos = new List<Producto>();
         }
 
-        private void rellenarComboboxProveedores()
+        private void RellenarComboboxProveedores()
         {
             try
             {
@@ -108,6 +117,22 @@ namespace administradorFormularios.NotasCambio
                 throw oEx;
             }
 
+        }
+
+        private void RellemarComboboxFacturas()
+        {
+            try
+            {
+                var respuesta = facturasBL.Obtener(new Factura { EstadoFactura = "A"});
+                if (!respuesta.HayError && respuesta.ObjetoRespuesta != null && respuesta.ObjetoRespuesta.Count > 0)
+                {                    
+                    funcionesCompartidas.RellenarComboboxFactura(ref cbxFacturaAplicada, respuesta.ObjetoRespuesta);
+                }
+            }
+            catch (Exception oEx)
+            {
+                throw oEx;
+            }
         }
 
         private void txtMontoNC_KeyPress(object sender, KeyPressEventArgs e)
@@ -170,7 +195,8 @@ namespace administradorFormularios.NotasCambio
                      $"{item.FechaEmisionNC.ToString("dd/MM/yyyy")}",
                      $"{funcionesCompartidas.FormatoMontoMoneda(item.MontoNC.ToString())}",
                      $"{item.Estado.EstadoDescripcion}",
-                     $"{item.IdFacturaAplicada}",
+                     $"{item.Factura?.ConsecutivoFactura ?? string.Empty}",
+
                      $"{item.CodProveedorNC}",
                      $"{item.EstadoNC}",
                      $"{item.IdFacturaAplicada}",
@@ -186,8 +212,8 @@ namespace administradorFormularios.NotasCambio
             cbxProveedorNC.SelectedValue = dtNotasCambio.CurrentRow.Cells[6].Value.ToString();
             dtFechaEmisionNC.Value = Convert.ToDateTime(dtNotasCambio.CurrentRow.Cells[2].Value.ToString());
             txtMontoNC.Text = dtNotasCambio.CurrentRow.Cells[3].Value.ToString();
-            cbxEstado.SelectedValue = dtNotasCambio.CurrentRow.Cells[7].Value.ToString();
-            cbxFacturaAplicada.SelectedValue = dtNotasCambio.CurrentRow.Cells[8].Value;
+            cbxEstado.SelectedValue = dtNotasCambio.CurrentRow.Cells[7].Value.ToString();            
+            cbxFacturaAplicada.SelectedValue = Convert.ToInt32(dtNotasCambio.CurrentRow.Cells[8].Value);
             lblIdNC.Text = dtNotasCambio.CurrentRow.Cells[9].Value.ToString();
 
             if (!string.IsNullOrEmpty(lblIdNC.Text))

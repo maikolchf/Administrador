@@ -52,7 +52,8 @@ namespace administradorDAL
                 using (AdministradorAzurEntities dbContexto = new AdministradorAzurEntities())
                 {
                     respuesta.ObjetoRespuesta = (from item in dbContexto.Facturas
-                                                 where (item.FacturaId == factura.FacturaId || factura.FacturaId == 0)
+                                                 where (item.FacturaId == factura.FacturaId || factura.FacturaId == 0) &&
+                                                       (item.EstadoFactura == factura.EstadoFactura || factura.EstadoFactura == string.Empty || factura.EstadoFactura == null)
                                                  select new Factura
                                                  {
                                                      FacturaId = item.FacturaId,

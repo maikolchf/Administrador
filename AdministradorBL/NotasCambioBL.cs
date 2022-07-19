@@ -27,12 +27,13 @@ namespace AdministradorBL
                         notaCambio.ltsProductos.ForEach(x =>
                         {
                             x.IdNC = notaCambio.IdNC;
-                        });
+                        });                                                
+
                         ProductoBodegaDal productoBodegaDal = new ProductoBodegaDal();
                         var resProductoBodega = productoBodegaDal.Insertar(notaCambio);
 
                         if (!resProductoBodega.HayError)
-                        {
+                        {                            
                             ProductoNCDal productoNCDal = new ProductoNCDal();
                             respuesta = productoNCDal.Insertar(notaCambio);
                         }

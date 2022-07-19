@@ -26,6 +26,14 @@ namespace administradorCompartidas
             combobox.SelectedValue = "";
         }
 
+        public void RellenarComboboxFactura(ref ComboBox combobox, List<Factura> items)
+        {
+            combobox.DataSource = items;
+            combobox.ValueMember = "FacturaId";
+            combobox.DisplayMember = "cbxMostrar";
+            combobox.SelectedValue = "";
+        }
+
         public void TextBoxNumeros(ref KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))

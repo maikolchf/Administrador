@@ -21,5 +21,7 @@ namespace AdministradorEntidades.Entidades
         public Estado Estado { get; set; }
 
         public List<Producto> ltsProductos { get; set; }
+
+        public Factura Factura { get; set; }
     }
 }

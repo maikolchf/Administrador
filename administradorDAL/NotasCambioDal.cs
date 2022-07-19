@@ -70,6 +70,7 @@ namespace administradorDAL
                         notasCambio.CodProveedorNC = notaCambioMod.CodProveedorNC;
                         notasCambio.MontoNC = notaCambioMod.MontoNC;
                         notasCambio.EstadoNC = notaCambioMod.EstadoNC;
+                        notasCambio.IdFacturaAplicada = notaCambioMod.IdFacturaAplicada;
 
                         dbContexto.Entry(notasCambio).CurrentValues.SetValues(notasCambio);
                         dbContexto.SaveChanges();
@@ -133,7 +134,17 @@ namespace administradorDAL
                                                                                          IdProducto = p.IdProducto,
                                                                                          NombreProducto = p.NombreProducto
                                                                                      }).ToList().Where(k => k.IdProducto == y.IdProducto).FirstOrDefault()
-                                                               }).Where(e => e.IdNC == x.IdNC).ToList(),                                                     
+                                                               }).Where(e => e.IdNC == x.IdNC).ToList(), 
+                                                     Factura = (from f in dbContexto.Facturas
+                                                                select new Factura
+                                                                {
+                                                                    ConsecutivoFactura = f.ConsecutivoFactura,
+                                                                    EstadoFactura = f.EstadoFactura,
+                                                                    FacturaId = f.FacturaId,
+                                                                    FechaRegistro = f.FechaRegistro,
+                                                                    MontoFactura = f.MontoFactura,     
+                                                                    ProveedorFactura = f.ProveedorFactura
+                                                                }).Where(l => l.FacturaId.Equals(x.IdFacturaAplicada)).FirstOrDefault()
                                                  }).ToList();
                     respuesta.HayError = false;
                     respuesta.Mensaje = "Exito";

@@ -1,13 +1,14 @@
 ﻿using AdministradorEntidades.Modelo;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace AdministradorEntidades.Entidades
 {
-    public  class Factura
+    public class Factura
     {
         public int FacturaId { get; set; }
         public string ProveedorFactura { get; set; }
@@ -39,5 +40,12 @@ namespace AdministradorEntidades.Entidades
             }
             return vFactura;
         }
+
+        [NotMapped]
+        public string cbxMostrar { get => string.Format("{0} - {1}", this.ConsecutivoFactura, this.Proveedor?.ProveedorNombre ?? string.Empty); }
     }
-}
+        
+    }
+
+   
+
