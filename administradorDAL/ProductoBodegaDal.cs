@@ -37,10 +37,10 @@ namespace administradorDAL
                     var lstProductos = (from prod in dbContexto.ProductosBodega
                                         select prod).ToList();
 
-                    IdentificarProductos(ref productosInsertar, 
-                        ref productosActualizar, 
-                        lstProductos, 
-                        ltsProductoBodega, 
+                    IdentificarProductos(ref productosInsertar,
+                        ref productosActualizar,
+                        lstProductos,
+                        ltsProductoBodega,
                         notaCambio.IdFacturaAplicada.Equals(0) ? false : true);
 
                     if (productosInsertar.Count > 0)
@@ -50,8 +50,13 @@ namespace administradorDAL
 
                     if (productosActualizar.Count > 0)
                     {
-                        ActualizarCantidadesProductos(ltsProductoBodega, 
+                        List<ProductosNC> lstProductosNC = (from PNC in dbContexto.ProductosNC
+                                                            where PNC.IdNC != notaCambio.IdNC
+                                                            select PNC).ToList();
+
+                        ActualizarCantidadesProductos(ltsProductoBodega,
                             ref productosActualizar,
+                            lstProductosNC ?? new List<ProductosNC>(),
                             notaCambio.IdFacturaAplicada.Equals(0) ? false : true);
                         productosActualizar.ForEach(item =>
                         {
@@ -100,7 +105,7 @@ namespace administradorDAL
                                                      CantidadProducto = item.CantidadProducto,
                                                      CodigoProducto = item.CodigoProducto,
                                                      IdProducto = item.IdProducto,
-                                                     NombreProducto = item.NombreProducto                                                      
+                                                     NombreProducto = item.NombreProducto
                                                  }).Where(e => (productoBodega.CodigoProducto.Equals(null)
                                                    || (e.CodigoProducto.Equals(productoBodega.CodigoProducto))))
                                                    .FirstOrDefault();
@@ -148,7 +153,10 @@ namespace administradorDAL
             }
         }
 
-        private void ActualizarCantidadesProductos(List<ProductosBodega> lstProductos, ref List<ProductosBodega> productosActualizar, bool facturaAplicada = false)
+        private void ActualizarCantidadesProductos(List<ProductosBodega> lstProductos, 
+            ref List<ProductosBodega> productosActualizar, 
+            List<ProductosNC> lstProductosNC,
+            bool facturaAplicada = false)
         {
             foreach (var prod in lstProductos)
             {
@@ -158,21 +166,24 @@ namespace administradorDAL
                     {
                         if (facturaAplicada)
                         {
-                            prodAct.CantidadProducto = 0;
-                        }else
-                        {
-                            if (prod.CantidadProducto > prodAct.CantidadProducto)
-                            {
-                                int cantNueva = prod.CantidadProducto - prodAct.CantidadProducto;
-                                prodAct.CantidadProducto = prodAct.CantidadProducto + cantNueva;
-                            }
+                            var nuevaCantidad = lstProductosNC.Where(x => x.IdProducto == prod.IdProducto).Sum(p => p.CantidadProdNC);
 
-                            if (prod.CantidadProducto < prodAct.CantidadProducto)
+                            if (!nuevaCantidad.Equals(0))
                             {
-                                int cantNueva = prodAct.CantidadProducto - prod.CantidadProducto;
-                                prodAct.CantidadProducto = prodAct.CantidadProducto - cantNueva;
+                                prodAct.CantidadProducto = Math.Abs(nuevaCantidad - prod.CantidadProducto);
                             }
-                        }                       
+                            else
+                            {
+                                prodAct.CantidadProducto = 0;
+                            }
+                           
+                        }
+                        else
+                        {
+                            var nuevaCantidad = lstProductosNC.Where(x => x.IdProducto == prod.IdProducto).Sum(p => p.CantidadProdNC);
+
+                            prodAct.CantidadProducto = nuevaCantidad + prod.CantidadProducto;
+                        }
                     }
                 }
             }
