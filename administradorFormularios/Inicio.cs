@@ -35,5 +35,10 @@ namespace administradorFormularios
         {
             llamadosFormularios.abrirFormularioHijo(new Facturas.RegistroFacturas(), ref panelFomularios);
         }
+
+        private void btnProductosBodega_Click(object sender, EventArgs e)
+        {
+            llamadosFormularios.abrirFormularioHijo(new Productos.ProductosBodega(), ref panelFomularios);
+        }
     }
 }

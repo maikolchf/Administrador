@@ -188,6 +188,34 @@ namespace administradorDAL
                 }
             }
         }
+
+        public Respuesta<List<ProductoBodega>> ObtenerProductos()
+        {
+            Respuesta<List<ProductoBodega>> respuesta = new Respuesta<List<ProductoBodega>>();
+
+            try
+            {
+                using (AdministradorAzurEntities dbContexto = new AdministradorAzurEntities())
+                {
+                    respuesta.ObjetoRespuesta = (from item in dbContexto.ProductosBodega
+                                                 select new ProductoBodega
+                                                 {
+                                                     CantidadProducto = item.CantidadProducto,
+                                                     CodigoProducto = item.CodigoProducto,
+                                                     IdProducto = item.IdProducto,
+                                                     NombreProducto = item.NombreProducto
+                                                 }).ToList();
+                    respuesta.HayError = false;
+                }
+            }
+            catch (Exception oEx)
+            {
+                respuesta.HayError = true;
+                respuesta.Mensaje = oEx.Message;
+            }
+
+            return respuesta;
+        }
     }
 }
 

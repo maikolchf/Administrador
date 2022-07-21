@@ -17,5 +17,12 @@ namespace AdministradorBL
             respuesta = productoBodegaDAL.Obtener(productoBodega);            
             return respuesta;
         }
+
+        public Respuesta<List<ProductoBodega>> ObtenerProductos()
+        {
+            Respuesta<List<ProductoBodega>> respuesta = new Respuesta<List<ProductoBodega>>();
+            respuesta = productoBodegaDAL.ObtenerProductos();
+            return respuesta;
+        }
     }
 }
