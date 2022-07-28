@@ -158,6 +158,9 @@
     <Compile Include="Modelo\NotasCambio.cs">
       <DependentUpon>AdministradorAzur.tt</DependentUpon>
     </Compile>
+    <Compile Include="Modelo\Persmisos.cs">
+      <DependentUpon>AdministradorAzur.tt</DependentUpon>
+    </Compile>
     <Compile Include="Modelo\ProductosBodega.cs">
       <DependentUpon>AdministradorAzur.tt</DependentUpon>
     </Compile>
@@ -165,6 +168,12 @@
       <DependentUpon>AdministradorAzur.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo\Proveedores.cs">
+      <DependentUpon>AdministradorAzur.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Roles.cs">
+      <DependentUpon>AdministradorAzur.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Usuarios.cs">
       <DependentUpon>AdministradorAzur.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -177,6 +186,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>AdministradorAzur.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="App.Config" />
     <None Include="Modelo\AdministradorAzur.edmx.diagram">
       <DependentUpon>AdministradorAzur.edmx</DependentUpon>
     </None>

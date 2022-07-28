@@ -40,5 +40,15 @@ namespace administradorFormularios
         {
             llamadosFormularios.abrirFormularioHijo(new Productos.ProductosBodega(), ref panelFomularios);
         }
+
+        private void btnInicio_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPerfiles_Click(object sender, EventArgs e)
+        {
+            llamadosFormularios.abrirFormularioHijo(new Perfiles.Perfiles(), ref panelFomularios);
+        }
     }
 }
