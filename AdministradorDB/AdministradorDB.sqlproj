@@ -67,7 +67,7 @@
     <Build Include="Tablas\ProductosNC.sql" />
     <Build Include="Tablas\Facturas.sql" />
     <Build Include="Tablas\Roles.sql" />
-    <Build Include="Tablas\Persmisos.sql" />
+    <Build Include="Tablas\Permisos.sql" />
     <Build Include="Tablas\Usuarios.sql" />
   </ItemGroup>
 </Project>

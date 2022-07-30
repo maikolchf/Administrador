@@ -32,8 +32,8 @@ namespace AdministradorEntidades.Modelo
         public virtual DbSet<ProductosNC> ProductosNC { get; set; }
         public virtual DbSet<Proveedores> Proveedores { get; set; }
         public virtual DbSet<Facturas> Facturas { get; set; }
-        public virtual DbSet<Persmisos> Persmisos { get; set; }
         public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
+        public virtual DbSet<Permisos> Permisos { get; set; }
     }
 }

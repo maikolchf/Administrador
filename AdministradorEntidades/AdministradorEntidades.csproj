@@ -126,11 +126,13 @@
     <Compile Include="Entidades\Factura.cs" />
     <Compile Include="Entidades\Gasto.cs" />
     <Compile Include="Entidades\NotaCambio.cs" />
+    <Compile Include="Entidades\Permiso.cs" />
     <Compile Include="Entidades\Producto.cs" />
     <Compile Include="Entidades\ProductoBodega.cs" />
     <Compile Include="Entidades\ProductoNC.cs" />
     <Compile Include="Entidades\Proveedor.cs" />
     <Compile Include="Entidades\Respuesta.cs" />
+    <Compile Include="Entidades\Rol.cs" />
     <Compile Include="Modelo\AdministradorAzur.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -158,7 +160,7 @@
     <Compile Include="Modelo\NotasCambio.cs">
       <DependentUpon>AdministradorAzur.tt</DependentUpon>
     </Compile>
-    <Compile Include="Modelo\Persmisos.cs">
+    <Compile Include="Modelo\Permisos.cs">
       <DependentUpon>AdministradorAzur.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo\ProductosBodega.cs">

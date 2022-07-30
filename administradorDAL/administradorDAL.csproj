@@ -127,10 +127,12 @@
     <Compile Include="FacturasDAL.cs" />
     <Compile Include="GastosDal.cs" />
     <Compile Include="NotasCambioDal.cs" />
+    <Compile Include="PermisoDAL.cs" />
     <Compile Include="ProductoBodegaDal.cs" />
     <Compile Include="ProductoNCDal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProveedoresDal.cs" />
+    <Compile Include="RolDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\administradorCompartidas\AdministradorCompartidas.csproj">

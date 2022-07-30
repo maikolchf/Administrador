@@ -12,7 +12,7 @@ namespace AdministradorEntidades.Modelo
     using System;
     using System.Collections.Generic;
     
-    public partial class Persmisos
+    public partial class Permisos
     {
         public int PermisoId { get; set; }
         public int RolId { get; set; }

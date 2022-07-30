@@ -48,7 +48,7 @@
           <Property Name="IdFacturaAplicada" Type="int" Nullable="false" />
           <Property Name="EstadoNC" Type="varchar" MaxLength="2" Nullable="false" />
         </EntityType>
-        <EntityType Name="Persmisos">
+        <EntityType Name="Permisos">
           <Key>
             <PropertyRef Name="PermisoId" />
           </Key>
@@ -100,6 +100,7 @@
           </Key>
           <Property Name="RolId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NombreRol" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="EstadoRol" Type="varchar" MaxLength="1" Nullable="false" />
         </EntityType>
         <EntityType Name="Usuarios">
           <Key>
@@ -163,18 +164,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="Permisos_FK_Rol">
-          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
-          <End Role="Persmisos" Type="Self.Persmisos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Roles">
-              <PropertyRef Name="RolId" />
-            </Principal>
-            <Dependent Role="Persmisos">
-              <PropertyRef Name="RolId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="ProductoNC_FK_NotaCambio">
           <End Role="NotasCambio" Type="Self.NotasCambio" Multiplicity="1" />
           <End Role="ProductosNC" Type="Self.ProductosNC" Multiplicity="*" />
@@ -211,6 +200,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="Rol_FK_ermisos">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Permisos" Type="Self.Permisos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RolId" />
+            </Principal>
+            <Dependent Role="Permisos">
+              <PropertyRef Name="RolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="Usuarios_FK_Roles">
           <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
           <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
@@ -228,7 +229,7 @@
           <EntitySet Name="Facturas" EntityType="Self.Facturas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gastos" EntityType="Self.Gastos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NotasCambio" EntityType="Self.NotasCambio" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Persmisos" EntityType="Self.Persmisos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Permisos" EntityType="Self.Permisos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductosBodega" EntityType="Self.ProductosBodega" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductosNC" EntityType="Self.ProductosNC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Proveedores" EntityType="Self.Proveedores" Schema="dbo" store:Type="Tables" />
@@ -250,10 +251,6 @@
             <End Role="Proveedores" EntitySet="Proveedores" />
             <End Role="Gastos" EntitySet="Gastos" />
           </AssociationSet>
-          <AssociationSet Name="Permisos_FK_Rol" Association="Self.Permisos_FK_Rol">
-            <End Role="Roles" EntitySet="Roles" />
-            <End Role="Persmisos" EntitySet="Persmisos" />
-          </AssociationSet>
           <AssociationSet Name="ProductoNC_FK_NotaCambio" Association="Self.ProductoNC_FK_NotaCambio">
             <End Role="NotasCambio" EntitySet="NotasCambio" />
             <End Role="ProductosNC" EntitySet="ProductosNC" />
@@ -265,6 +262,10 @@
           <AssociationSet Name="Proveedor_FK_Estado" Association="Self.Proveedor_FK_Estado">
             <End Role="Estados" EntitySet="Estados" />
             <End Role="Proveedores" EntitySet="Proveedores" />
+          </AssociationSet>
+          <AssociationSet Name="Rol_FK_ermisos" Association="Self.Rol_FK_ermisos">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Permisos" EntitySet="Permisos" />
           </AssociationSet>
           <AssociationSet Name="Usuarios_FK_Roles" Association="Self.Usuarios_FK_Roles">
             <End Role="Roles" EntitySet="Roles" />
@@ -447,16 +448,16 @@
             <End Role="Proveedores" EntitySet="Proveedores" />
             <End Role="Facturas" EntitySet="Facturas" />
           </AssociationSet>
-          <EntitySet Name="Persmisos" EntityType="AdministradorAzurModel.Persmisos" />
           <EntitySet Name="Roles" EntityType="AdministradorAzurModel.Roles" />
           <EntitySet Name="Usuarios" EntityType="AdministradorAzurModel.Usuarios" />
-          <AssociationSet Name="Permisos_FK_Rol" Association="AdministradorAzurModel.Permisos_FK_Rol">
-            <End Role="Roles" EntitySet="Roles" />
-            <End Role="Persmisos" EntitySet="Persmisos" />
-          </AssociationSet>
           <AssociationSet Name="Usuarios_FK_Roles" Association="AdministradorAzurModel.Usuarios_FK_Roles">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <EntitySet Name="PermisosSet" EntityType="AdministradorAzurModel.Permisos" />
+          <AssociationSet Name="Rol_FK_ermisos1" Association="AdministradorAzurModel.Rol_FK_ermisos1">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Permisos" EntitySet="PermisosSet" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Facturas">
@@ -496,29 +497,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Persmisos">
-          <Key>
-            <PropertyRef Name="PermisoId" />
-          </Key>
-          <Property Name="PermisoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RolId" Type="Int32" Nullable="false" />
-          <Property Name="Inicio" Type="Boolean" Nullable="false" />
-          <Property Name="Proveedores" Type="Boolean" Nullable="false" />
-          <Property Name="Gastos" Type="Boolean" Nullable="false" />
-          <Property Name="NotasCambio" Type="Boolean" Nullable="false" />
-          <Property Name="Facturas" Type="Boolean" Nullable="false" />
-          <Property Name="Usuarios" Type="Boolean" Nullable="false" />
-          <Property Name="Perfiles" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Roles" Relationship="AdministradorAzurModel.Permisos_FK_Rol" FromRole="Persmisos" ToRole="Roles" />
-        </EntityType>
         <EntityType Name="Roles">
           <Key>
             <PropertyRef Name="RolId" />
           </Key>
           <Property Name="RolId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NombreRol" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Persmisos" Relationship="AdministradorAzurModel.Permisos_FK_Rol" FromRole="Roles" ToRole="Persmisos" />
           <NavigationProperty Name="Usuarios" Relationship="AdministradorAzurModel.Usuarios_FK_Roles" FromRole="Roles" ToRole="Usuarios" />
+          <NavigationProperty Name="Permisos" Relationship="AdministradorAzurModel.Rol_FK_ermisos1" FromRole="Roles" ToRole="Permisos" />
+          <Property Name="EstadoRol" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Usuarios">
           <Key>
@@ -535,18 +522,6 @@
           <Property Name="Usuario" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Roles" Relationship="AdministradorAzurModel.Usuarios_FK_Roles" FromRole="Usuarios" ToRole="Roles" />
         </EntityType>
-        <Association Name="Permisos_FK_Rol">
-          <End Type="AdministradorAzurModel.Roles" Role="Roles" Multiplicity="1" />
-          <End Type="AdministradorAzurModel.Persmisos" Role="Persmisos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Roles">
-              <PropertyRef Name="RolId" />
-            </Principal>
-            <Dependent Role="Persmisos">
-              <PropertyRef Name="RolId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="Usuarios_FK_Roles">
           <End Type="AdministradorAzurModel.Roles" Role="Roles" Multiplicity="1" />
           <End Type="AdministradorAzurModel.Usuarios" Role="Usuarios" Multiplicity="*" />
@@ -555,6 +530,33 @@
               <PropertyRef Name="RolId" />
             </Principal>
             <Dependent Role="Usuarios">
+              <PropertyRef Name="RolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Permisos">
+          <Key>
+            <PropertyRef Name="PermisoId" />
+          </Key>
+          <Property Name="PermisoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RolId" Type="Int32" Nullable="false" />
+          <Property Name="Inicio" Type="Boolean" Nullable="false" />
+          <Property Name="Proveedores" Type="Boolean" Nullable="false" />
+          <Property Name="Gastos" Type="Boolean" Nullable="false" />
+          <Property Name="NotasCambio" Type="Boolean" Nullable="false" />
+          <Property Name="Facturas" Type="Boolean" Nullable="false" />
+          <Property Name="Usuarios" Type="Boolean" Nullable="false" />
+          <Property Name="Perfiles" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Roles" Relationship="AdministradorAzurModel.Rol_FK_ermisos1" FromRole="Permisos" ToRole="Roles" />
+        </EntityType>
+        <Association Name="Rol_FK_ermisos1">
+          <End Type="AdministradorAzurModel.Roles" Role="Roles" Multiplicity="1" />
+          <End Type="AdministradorAzurModel.Permisos" Role="Permisos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RolId" />
+            </Principal>
+            <Dependent Role="Permisos">
               <PropertyRef Name="RolId" />
             </Dependent>
           </ReferentialConstraint>
@@ -647,24 +649,10 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Persmisos">
-            <EntityTypeMapping TypeName="AdministradorAzurModel.Persmisos">
-              <MappingFragment StoreEntitySet="Persmisos">
-                <ScalarProperty Name="Perfiles" ColumnName="Perfiles" />
-                <ScalarProperty Name="Usuarios" ColumnName="Usuarios" />
-                <ScalarProperty Name="Facturas" ColumnName="Facturas" />
-                <ScalarProperty Name="NotasCambio" ColumnName="NotasCambio" />
-                <ScalarProperty Name="Gastos" ColumnName="Gastos" />
-                <ScalarProperty Name="Proveedores" ColumnName="Proveedores" />
-                <ScalarProperty Name="Inicio" ColumnName="Inicio" />
-                <ScalarProperty Name="RolId" ColumnName="RolId" />
-                <ScalarProperty Name="PermisoId" ColumnName="PermisoId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Roles">
             <EntityTypeMapping TypeName="AdministradorAzurModel.Roles">
               <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="EstadoRol" ColumnName="EstadoRol" />
                 <ScalarProperty Name="NombreRol" ColumnName="NombreRol" />
                 <ScalarProperty Name="RolId" ColumnName="RolId" />
               </MappingFragment>
@@ -685,6 +673,21 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="PermisosSet">
+            <EntityTypeMapping TypeName="AdministradorAzurModel.Permisos">
+              <MappingFragment StoreEntitySet="Permisos">
+                <ScalarProperty Name="Perfiles" ColumnName="Perfiles" />
+                <ScalarProperty Name="Usuarios" ColumnName="Usuarios" />
+                <ScalarProperty Name="Facturas" ColumnName="Facturas" />
+                <ScalarProperty Name="NotasCambio" ColumnName="NotasCambio" />
+                <ScalarProperty Name="Gastos" ColumnName="Gastos" />
+                <ScalarProperty Name="Proveedores" ColumnName="Proveedores" />
+                <ScalarProperty Name="Inicio" ColumnName="Inicio" />
+                <ScalarProperty Name="RolId" ColumnName="RolId" />
+                <ScalarProperty Name="PermisoId" ColumnName="PermisoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -700,7 +703,7 @@
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
       </DesignerInfoPropertySet>
