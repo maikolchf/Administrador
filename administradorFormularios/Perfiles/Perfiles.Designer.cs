@@ -45,7 +45,7 @@
             this.chxProveedores = new MaterialSkin.Controls.MaterialCheckBox();
             this.chxInicio = new MaterialSkin.Controls.MaterialCheckBox();
             this.txtNombrePerfil = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlVistaGrid = new System.Windows.Forms.Panel();
             this.dgvPerfiles = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblPaginaPerfil = new System.Windows.Forms.Label();
@@ -53,7 +53,7 @@
             this.btnAtras = new FontAwesome.Sharp.IconButton();
             this.pnlFormularioPerfiles.SuspendLayout();
             this.pnlPermisosPerfil.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.pnlVistaGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPerfiles)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -307,15 +307,15 @@
             this.txtNombrePerfil.TabIndex = 1;
             this.txtNombrePerfil.UseSystemPasswordChar = false;
             // 
-            // panel1
+            // pnlVistaGrid
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.panel1.Controls.Add(this.dgvPerfiles);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(12, 294);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(679, 326);
-            this.panel1.TabIndex = 1;
+            this.pnlVistaGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.pnlVistaGrid.Controls.Add(this.dgvPerfiles);
+            this.pnlVistaGrid.Controls.Add(this.panel2);
+            this.pnlVistaGrid.Location = new System.Drawing.Point(12, 294);
+            this.pnlVistaGrid.Name = "pnlVistaGrid";
+            this.pnlVistaGrid.Size = new System.Drawing.Size(679, 326);
+            this.pnlVistaGrid.TabIndex = 1;
             // 
             // dgvPerfiles
             // 
@@ -396,7 +396,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(703, 632);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnlVistaGrid);
             this.Controls.Add(this.pnlFormularioPerfiles);
             this.Name = "Perfiles";
             this.Text = "Perfiles";
@@ -404,7 +404,7 @@
             this.pnlFormularioPerfiles.PerformLayout();
             this.pnlPermisosPerfil.ResumeLayout(false);
             this.pnlPermisosPerfil.PerformLayout();
-            this.panel1.ResumeLayout(false);
+            this.pnlVistaGrid.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPerfiles)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
@@ -426,7 +426,7 @@
         private MaterialSkin.Controls.MaterialCheckBox chxProveedores;
         private MaterialSkin.Controls.MaterialCheckBox chxInicio;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlVistaGrid;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label lblPaginaPerfil;
         private FontAwesome.Sharp.IconButton btnSiguiente;

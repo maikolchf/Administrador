@@ -115,6 +115,7 @@
           <Property Name="Telefono" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="Contrasenna" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="Usuario" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="1" Nullable="false" />
         </EntityType>
         <Association Name="Factura_FK_Estado">
           <End Role="Estados" Type="Self.Estados" Multiplicity="1" />
@@ -521,6 +522,7 @@
           <Property Name="Contrasenna" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="Usuario" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Roles" Relationship="AdministradorAzurModel.Usuarios_FK_Roles" FromRole="Usuarios" ToRole="Roles" />
+          <Property Name="Estado" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="Usuarios_FK_Roles">
           <End Type="AdministradorAzurModel.Roles" Role="Roles" Multiplicity="1" />
@@ -661,6 +663,7 @@
           <EntitySetMapping Name="Usuarios">
             <EntityTypeMapping TypeName="AdministradorAzurModel.Usuarios">
               <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
                 <ScalarProperty Name="Usuario" ColumnName="Usuario" />
                 <ScalarProperty Name="Contrasenna" ColumnName="Contrasenna" />
                 <ScalarProperty Name="Telefono" ColumnName="Telefono" />

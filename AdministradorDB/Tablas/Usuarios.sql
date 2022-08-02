@@ -9,5 +9,6 @@
 	Telefono VARCHAR(250) NOT NULL,
 	Contrasenna VARCHAR(250) NOT NULL,
 	Usuario VARCHAR(30) NOT NULL,
+	Estado VARCHAR(1) NOT NULL,
 	CONSTRAINT Usuarios_FK_Roles FOREIGN KEY (RolId) REFERENCES Roles (RolId)
 )

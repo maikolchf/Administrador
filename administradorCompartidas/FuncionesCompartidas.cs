@@ -34,6 +34,14 @@ namespace administradorCompartidas
             combobox.SelectedValue = "";
         }
 
+        public void RellenarComboboxRoles(ref ComboBox combobox, List<Rol> items)
+        {
+            combobox.DataSource = items;
+            combobox.ValueMember = "RolId";
+            combobox.DisplayMember = "NombreRol";
+            combobox.SelectedValue = "";
+        }
+
         public void TextBoxNumeros(ref KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))

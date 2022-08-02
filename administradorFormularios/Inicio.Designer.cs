@@ -30,7 +30,7 @@
         {
             this.panelMenu = new System.Windows.Forms.Panel();
             this.btnPerfiles = new FontAwesome.Sharp.IconButton();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.btlUsuarios = new FontAwesome.Sharp.IconButton();
             this.btnProductosBodega = new FontAwesome.Sharp.IconButton();
             this.btnFacturas = new FontAwesome.Sharp.IconButton();
             this.btnNotasCambio = new FontAwesome.Sharp.IconButton();
@@ -47,7 +47,7 @@
             this.panelMenu.AutoScroll = true;
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(97)))), ((int)(((byte)(147)))));
             this.panelMenu.Controls.Add(this.btnPerfiles);
-            this.panelMenu.Controls.Add(this.iconButton1);
+            this.panelMenu.Controls.Add(this.btlUsuarios);
             this.panelMenu.Controls.Add(this.btnProductosBodega);
             this.panelMenu.Controls.Add(this.btnFacturas);
             this.panelMenu.Controls.Add(this.btnNotasCambio);
@@ -81,24 +81,25 @@
             this.btnPerfiles.UseVisualStyleBackColor = true;
             this.btnPerfiles.Click += new System.EventHandler(this.btnPerfiles_Click);
             // 
-            // iconButton1
+            // btlUsuarios
             // 
-            this.iconButton1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iconButton1.FlatAppearance.BorderSize = 0;
-            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton1.ForeColor = System.Drawing.Color.White;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.User;
-            this.iconButton1.IconColor = System.Drawing.Color.White;
-            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.IconSize = 35;
-            this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton1.Location = new System.Drawing.Point(0, 407);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Size = new System.Drawing.Size(238, 50);
-            this.iconButton1.TabIndex = 12;
-            this.iconButton1.Text = "Usuarios";
-            this.iconButton1.UseVisualStyleBackColor = true;
+            this.btlUsuarios.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btlUsuarios.FlatAppearance.BorderSize = 0;
+            this.btlUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btlUsuarios.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btlUsuarios.ForeColor = System.Drawing.Color.White;
+            this.btlUsuarios.IconChar = FontAwesome.Sharp.IconChar.User;
+            this.btlUsuarios.IconColor = System.Drawing.Color.White;
+            this.btlUsuarios.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btlUsuarios.IconSize = 35;
+            this.btlUsuarios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btlUsuarios.Location = new System.Drawing.Point(0, 407);
+            this.btlUsuarios.Name = "btlUsuarios";
+            this.btlUsuarios.Size = new System.Drawing.Size(238, 50);
+            this.btlUsuarios.TabIndex = 12;
+            this.btlUsuarios.Text = "Usuarios";
+            this.btlUsuarios.UseVisualStyleBackColor = true;
+            this.btlUsuarios.Click += new System.EventHandler(this.btlUsuarios_Click);
             // 
             // btnProductosBodega
             // 
@@ -263,6 +264,6 @@
         private FontAwesome.Sharp.IconButton btnInicio;
         private FontAwesome.Sharp.IconButton btnProductosBodega;
         private FontAwesome.Sharp.IconButton btnPerfiles;
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private FontAwesome.Sharp.IconButton btlUsuarios;
     }
 }

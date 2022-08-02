@@ -50,5 +50,10 @@ namespace administradorFormularios
         {
             llamadosFormularios.abrirFormularioHijo(new Perfiles.Perfiles(), ref panelFomularios);
         }
+
+        private void btlUsuarios_Click(object sender, EventArgs e)
+        {
+            llamadosFormularios.abrirFormularioHijo(new Usuarios.Usuarios(), ref panelFomularios);
+        }
     }
 }

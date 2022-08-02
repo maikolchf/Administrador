@@ -23,6 +23,7 @@ namespace AdministradorEntidades.Modelo
         public string Telefono { get; set; }
         public string Contrasenna { get; set; }
         public string Usuario { get; set; }
+        public string Estado { get; set; }
     
         public virtual Roles Roles { get; set; }
     }
