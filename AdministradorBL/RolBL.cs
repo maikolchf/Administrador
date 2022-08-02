@@ -1,6 +1,7 @@
 ﻿using administradorDAL;
 using AdministradorEntidades.Entidades;
 using System;
+using System.Collections.Generic;
 using System.Transactions;
 
 namespace AdministradorBL
@@ -45,6 +46,11 @@ namespace AdministradorBL
                 }
             }
             return respuesta;
+        }
+
+        public Respuesta<List<Rol>> Obtener(Rol rol)
+        {
+            return rolDAL.Obtener(rol);
         }
     }
 }

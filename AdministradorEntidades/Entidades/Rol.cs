@@ -12,5 +12,6 @@ namespace AdministradorEntidades.Entidades
         public string NombreRol { get; set; }
         public string EstadoRol { get; set; }
         public Permiso Permisos { get; set; }
+        public Estado Estado { get; set; }
     }
 }

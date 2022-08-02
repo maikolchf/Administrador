@@ -75,7 +75,14 @@ namespace administradorDAL
                                                                      Perfiles = P.Perfiles,
                                                                      Proveedores = P.Proveedores,
                                                                      Usuarios = P.Usuarios
-                                                                 }).Where(i => i.RolId.Equals(R.RolId)).FirstOrDefault()
+                                                                 }).Where(i => i.RolId.Equals(R.RolId)).FirstOrDefault(),
+                                                     Estado = (from E in dbContexto.Estados
+                                                               select new Estado
+                                                               {
+                                                                   EstadoCodigo = E.EstadoCodigo,
+                                                                   EstadoDescripcion = E.EstadoDescripcion,
+                                                                   EstadoId = E.EstadoId
+                                                               }).Where(i => i.EstadoCodigo.Equals(R.EstadoRol)).FirstOrDefault()
                                                  }).Where(e => (filtro.RolId.Equals(0)
                                                    || (e.RolId.Equals(filtro.RolId))))
                                                  .ToList();

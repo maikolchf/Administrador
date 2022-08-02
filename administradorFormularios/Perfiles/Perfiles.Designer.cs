@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.pnlFormularioPerfiles = new System.Windows.Forms.Panel();
+            this.lblRolId = new System.Windows.Forms.Label();
             this.cbxEstadoPerfil = new System.Windows.Forms.ComboBox();
             this.lblEstadoPerfil = new MaterialSkin.Controls.MaterialLabel();
             this.btnLimpiarPerfil = new FontAwesome.Sharp.IconButton();
@@ -47,10 +48,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.dgvPerfiles = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.lblPaginaGasto = new System.Windows.Forms.Label();
+            this.lblPaginaPerfil = new System.Windows.Forms.Label();
             this.btnSiguiente = new FontAwesome.Sharp.IconButton();
             this.btnAtras = new FontAwesome.Sharp.IconButton();
-            this.lblRolId = new System.Windows.Forms.Label();
             this.pnlFormularioPerfiles.SuspendLayout();
             this.pnlPermisosPerfil.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -73,6 +73,15 @@
             this.pnlFormularioPerfiles.Name = "pnlFormularioPerfiles";
             this.pnlFormularioPerfiles.Size = new System.Drawing.Size(679, 276);
             this.pnlFormularioPerfiles.TabIndex = 0;
+            // 
+            // lblRolId
+            // 
+            this.lblRolId.AutoSize = true;
+            this.lblRolId.Location = new System.Drawing.Point(20, 247);
+            this.lblRolId.Name = "lblRolId";
+            this.lblRolId.Size = new System.Drawing.Size(0, 13);
+            this.lblRolId.TabIndex = 15;
+            this.lblRolId.Visible = false;
             // 
             // cbxEstadoPerfil
             // 
@@ -111,6 +120,7 @@
             this.btnLimpiarPerfil.Size = new System.Drawing.Size(75, 59);
             this.btnLimpiarPerfil.TabIndex = 12;
             this.btnLimpiarPerfil.UseVisualStyleBackColor = true;
+            this.btnLimpiarPerfil.Click += new System.EventHandler(this.btnLimpiarPerfil_Click);
             // 
             // btnGuardarPerfil
             // 
@@ -324,12 +334,13 @@
             this.dgvPerfiles.Name = "dgvPerfiles";
             this.dgvPerfiles.Size = new System.Drawing.Size(672, 281);
             this.dgvPerfiles.TabIndex = 3;
+            this.dgvPerfiles.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SeleccionarRegistro);
             // 
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.Controls.Add(this.lblPaginaGasto);
+            this.panel2.Controls.Add(this.lblPaginaPerfil);
             this.panel2.Controls.Add(this.btnSiguiente);
             this.panel2.Controls.Add(this.btnAtras);
             this.panel2.Location = new System.Drawing.Point(4, 290);
@@ -337,15 +348,15 @@
             this.panel2.Size = new System.Drawing.Size(672, 33);
             this.panel2.TabIndex = 2;
             // 
-            // lblPaginaGasto
+            // lblPaginaPerfil
             // 
-            this.lblPaginaGasto.AutoSize = true;
-            this.lblPaginaGasto.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPaginaGasto.Location = new System.Drawing.Point(323, 5);
-            this.lblPaginaGasto.Name = "lblPaginaGasto";
-            this.lblPaginaGasto.Size = new System.Drawing.Size(24, 25);
-            this.lblPaginaGasto.TabIndex = 0;
-            this.lblPaginaGasto.Text = "1";
+            this.lblPaginaPerfil.AutoSize = true;
+            this.lblPaginaPerfil.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPaginaPerfil.Location = new System.Drawing.Point(323, 5);
+            this.lblPaginaPerfil.Name = "lblPaginaPerfil";
+            this.lblPaginaPerfil.Size = new System.Drawing.Size(24, 25);
+            this.lblPaginaPerfil.TabIndex = 0;
+            this.lblPaginaPerfil.Text = "1";
             // 
             // btnSiguiente
             // 
@@ -361,6 +372,7 @@
             this.btnSiguiente.Size = new System.Drawing.Size(65, 27);
             this.btnSiguiente.TabIndex = 1;
             this.btnSiguiente.UseVisualStyleBackColor = true;
+            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
             // 
             // btnAtras
             // 
@@ -376,15 +388,7 @@
             this.btnAtras.Size = new System.Drawing.Size(65, 27);
             this.btnAtras.TabIndex = 0;
             this.btnAtras.UseVisualStyleBackColor = true;
-            // 
-            // lblRolId
-            // 
-            this.lblRolId.AutoSize = true;
-            this.lblRolId.Location = new System.Drawing.Point(20, 247);
-            this.lblRolId.Name = "lblRolId";
-            this.lblRolId.Size = new System.Drawing.Size(0, 13);
-            this.lblRolId.TabIndex = 15;
-            this.lblRolId.Visible = false;
+            this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
             // 
             // Perfiles
             // 
@@ -424,7 +428,7 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label lblPaginaGasto;
+        private System.Windows.Forms.Label lblPaginaPerfil;
         private FontAwesome.Sharp.IconButton btnSiguiente;
         private FontAwesome.Sharp.IconButton btnAtras;
         private System.Windows.Forms.DataGridView dgvPerfiles;
