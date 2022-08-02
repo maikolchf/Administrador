@@ -26,6 +26,22 @@ namespace administradorCompartidas
             combobox.SelectedValue = "";
         }
 
+        public void RellenarComboboxFactura(ref ComboBox combobox, List<Factura> items)
+        {
+            combobox.DataSource = items;
+            combobox.ValueMember = "FacturaId";
+            combobox.DisplayMember = "cbxMostrar";
+            combobox.SelectedValue = "";
+        }
+
+        public void RellenarComboboxRoles(ref ComboBox combobox, List<Rol> items)
+        {
+            combobox.DataSource = items;
+            combobox.ValueMember = "RolId";
+            combobox.DisplayMember = "NombreRol";
+            combobox.SelectedValue = "";
+        }
+
         public void TextBoxNumeros(ref KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
@@ -67,5 +83,10 @@ namespace administradorCompartidas
         {
             return string.IsNullOrEmpty(valor) ? 0 : Convert.ToInt32(valor);
         }
+
+        public bool ValidarNull (object valor)
+        {
+            return valor == null ? true : false;
+        }       
     }    
 }

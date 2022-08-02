@@ -29,12 +29,14 @@
         private void InitializeComponent()
         {
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
-            this.btnUsuario = new FontAwesome.Sharp.IconButton();
+            this.btnPerfiles = new FontAwesome.Sharp.IconButton();
+            this.btlUsuarios = new FontAwesome.Sharp.IconButton();
+            this.btnProductosBodega = new FontAwesome.Sharp.IconButton();
+            this.btnFacturas = new FontAwesome.Sharp.IconButton();
             this.btnNotasCambio = new FontAwesome.Sharp.IconButton();
             this.btnGastos = new FontAwesome.Sharp.IconButton();
             this.btnProveedores = new FontAwesome.Sharp.IconButton();
-            this.btnGraficos = new FontAwesome.Sharp.IconButton();
+            this.btnInicio = new FontAwesome.Sharp.IconButton();
             this.panelIcono = new System.Windows.Forms.Panel();
             this.panelFomularios = new System.Windows.Forms.Panel();
             this.panelMenu.SuspendLayout();
@@ -44,12 +46,14 @@
             // 
             this.panelMenu.AutoScroll = true;
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(97)))), ((int)(((byte)(147)))));
-            this.panelMenu.Controls.Add(this.iconButton1);
-            this.panelMenu.Controls.Add(this.btnUsuario);
+            this.panelMenu.Controls.Add(this.btnPerfiles);
+            this.panelMenu.Controls.Add(this.btlUsuarios);
+            this.panelMenu.Controls.Add(this.btnProductosBodega);
+            this.panelMenu.Controls.Add(this.btnFacturas);
             this.panelMenu.Controls.Add(this.btnNotasCambio);
             this.panelMenu.Controls.Add(this.btnGastos);
             this.panelMenu.Controls.Add(this.btnProveedores);
-            this.panelMenu.Controls.Add(this.btnGraficos);
+            this.panelMenu.Controls.Add(this.btnInicio);
             this.panelMenu.Controls.Add(this.panelIcono);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
@@ -57,44 +61,85 @@
             this.panelMenu.Size = new System.Drawing.Size(238, 671);
             this.panelMenu.TabIndex = 0;
             // 
-            // iconButton1
+            // btnPerfiles
             // 
-            this.iconButton1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iconButton1.FlatAppearance.BorderSize = 0;
-            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton1.ForeColor = System.Drawing.Color.White;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Truck;
-            this.iconButton1.IconColor = System.Drawing.Color.White;
-            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.IconSize = 35;
-            this.iconButton1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton1.Location = new System.Drawing.Point(0, 357);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Size = new System.Drawing.Size(238, 50);
-            this.iconButton1.TabIndex = 10;
-            this.iconButton1.Text = "Proveedores";
-            this.iconButton1.UseVisualStyleBackColor = true;
+            this.btnPerfiles.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnPerfiles.FlatAppearance.BorderSize = 0;
+            this.btnPerfiles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPerfiles.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPerfiles.ForeColor = System.Drawing.Color.White;
+            this.btnPerfiles.IconChar = FontAwesome.Sharp.IconChar.Wrench;
+            this.btnPerfiles.IconColor = System.Drawing.Color.White;
+            this.btnPerfiles.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnPerfiles.IconSize = 35;
+            this.btnPerfiles.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPerfiles.Location = new System.Drawing.Point(0, 457);
+            this.btnPerfiles.Name = "btnPerfiles";
+            this.btnPerfiles.Size = new System.Drawing.Size(238, 50);
+            this.btnPerfiles.TabIndex = 13;
+            this.btnPerfiles.Text = "Perfiles";
+            this.btnPerfiles.UseVisualStyleBackColor = true;
+            this.btnPerfiles.Click += new System.EventHandler(this.btnPerfiles_Click);
             // 
-            // btnUsuario
+            // btlUsuarios
             // 
-            this.btnUsuario.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnUsuario.FlatAppearance.BorderSize = 0;
-            this.btnUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUsuario.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUsuario.ForeColor = System.Drawing.Color.White;
-            this.btnUsuario.IconChar = FontAwesome.Sharp.IconChar.User;
-            this.btnUsuario.IconColor = System.Drawing.Color.White;
-            this.btnUsuario.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnUsuario.IconSize = 35;
-            this.btnUsuario.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUsuario.Location = new System.Drawing.Point(0, 307);
-            this.btnUsuario.Name = "btnUsuario";
-            this.btnUsuario.Size = new System.Drawing.Size(238, 50);
-            this.btnUsuario.TabIndex = 9;
-            this.btnUsuario.Text = "Usuarios";
-            this.btnUsuario.UseVisualStyleBackColor = true;
-            this.btnUsuario.Click += new System.EventHandler(this.btnUsuario_Click);
+            this.btlUsuarios.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btlUsuarios.FlatAppearance.BorderSize = 0;
+            this.btlUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btlUsuarios.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btlUsuarios.ForeColor = System.Drawing.Color.White;
+            this.btlUsuarios.IconChar = FontAwesome.Sharp.IconChar.User;
+            this.btlUsuarios.IconColor = System.Drawing.Color.White;
+            this.btlUsuarios.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btlUsuarios.IconSize = 35;
+            this.btlUsuarios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btlUsuarios.Location = new System.Drawing.Point(0, 407);
+            this.btlUsuarios.Name = "btlUsuarios";
+            this.btlUsuarios.Size = new System.Drawing.Size(238, 50);
+            this.btlUsuarios.TabIndex = 12;
+            this.btlUsuarios.Text = "Usuarios";
+            this.btlUsuarios.UseVisualStyleBackColor = true;
+            this.btlUsuarios.Click += new System.EventHandler(this.btlUsuarios_Click);
+            // 
+            // btnProductosBodega
+            // 
+            this.btnProductosBodega.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnProductosBodega.FlatAppearance.BorderSize = 0;
+            this.btnProductosBodega.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProductosBodega.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProductosBodega.ForeColor = System.Drawing.Color.White;
+            this.btnProductosBodega.IconChar = FontAwesome.Sharp.IconChar.Store;
+            this.btnProductosBodega.IconColor = System.Drawing.Color.White;
+            this.btnProductosBodega.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnProductosBodega.IconSize = 35;
+            this.btnProductosBodega.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnProductosBodega.Location = new System.Drawing.Point(0, 357);
+            this.btnProductosBodega.Name = "btnProductosBodega";
+            this.btnProductosBodega.Size = new System.Drawing.Size(238, 50);
+            this.btnProductosBodega.TabIndex = 11;
+            this.btnProductosBodega.Text = "  Productos en bodega";
+            this.btnProductosBodega.UseVisualStyleBackColor = true;
+            this.btnProductosBodega.Click += new System.EventHandler(this.btnProductosBodega_Click);
+            // 
+            // btnFacturas
+            // 
+            this.btnFacturas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnFacturas.FlatAppearance.BorderSize = 0;
+            this.btnFacturas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFacturas.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFacturas.ForeColor = System.Drawing.Color.White;
+            this.btnFacturas.IconChar = FontAwesome.Sharp.IconChar.TicketAlt;
+            this.btnFacturas.IconColor = System.Drawing.Color.White;
+            this.btnFacturas.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnFacturas.IconSize = 35;
+            this.btnFacturas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFacturas.Location = new System.Drawing.Point(0, 307);
+            this.btnFacturas.Name = "btnFacturas";
+            this.btnFacturas.Size = new System.Drawing.Size(238, 50);
+            this.btnFacturas.TabIndex = 10;
+            this.btnFacturas.Text = "Facturas";
+            this.btnFacturas.UseVisualStyleBackColor = true;
+            this.btnFacturas.Click += new System.EventHandler(this.btnFacturas_Click);
             // 
             // btnNotasCambio
             // 
@@ -156,24 +201,25 @@
             this.btnProveedores.UseVisualStyleBackColor = true;
             this.btnProveedores.Click += new System.EventHandler(this.btnProveedores_Click);
             // 
-            // btnGraficos
+            // btnInicio
             // 
-            this.btnGraficos.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnGraficos.FlatAppearance.BorderSize = 0;
-            this.btnGraficos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGraficos.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGraficos.ForeColor = System.Drawing.Color.White;
-            this.btnGraficos.IconChar = FontAwesome.Sharp.IconChar.ChartPie;
-            this.btnGraficos.IconColor = System.Drawing.Color.White;
-            this.btnGraficos.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnGraficos.IconSize = 35;
-            this.btnGraficos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGraficos.Location = new System.Drawing.Point(0, 107);
-            this.btnGraficos.Name = "btnGraficos";
-            this.btnGraficos.Size = new System.Drawing.Size(238, 50);
-            this.btnGraficos.TabIndex = 5;
-            this.btnGraficos.Text = "Graficos";
-            this.btnGraficos.UseVisualStyleBackColor = true;
+            this.btnInicio.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnInicio.FlatAppearance.BorderSize = 0;
+            this.btnInicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInicio.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInicio.ForeColor = System.Drawing.Color.White;
+            this.btnInicio.IconChar = FontAwesome.Sharp.IconChar.ListUl;
+            this.btnInicio.IconColor = System.Drawing.Color.White;
+            this.btnInicio.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnInicio.IconSize = 35;
+            this.btnInicio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInicio.Location = new System.Drawing.Point(0, 107);
+            this.btnInicio.Name = "btnInicio";
+            this.btnInicio.Size = new System.Drawing.Size(238, 50);
+            this.btnInicio.TabIndex = 5;
+            this.btnInicio.Text = "Inicio";
+            this.btnInicio.UseVisualStyleBackColor = true;
+            this.btnInicio.Click += new System.EventHandler(this.btnInicio_Click);
             // 
             // panelIcono
             // 
@@ -190,7 +236,6 @@
             this.panelFomularios.Name = "panelFomularios";
             this.panelFomularios.Size = new System.Drawing.Size(719, 671);
             this.panelFomularios.TabIndex = 1;
-            this.panelFomularios.Paint += new System.Windows.Forms.PaintEventHandler(this.panelFomularios_Paint);
             // 
             // Inicio
             // 
@@ -212,11 +257,13 @@
         private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.Panel panelIcono;
         private System.Windows.Forms.Panel panelFomularios;
-        private FontAwesome.Sharp.IconButton iconButton1;
-        private FontAwesome.Sharp.IconButton btnUsuario;
+        private FontAwesome.Sharp.IconButton btnFacturas;
         private FontAwesome.Sharp.IconButton btnNotasCambio;
         private FontAwesome.Sharp.IconButton btnGastos;
         private FontAwesome.Sharp.IconButton btnProveedores;
-        private FontAwesome.Sharp.IconButton btnGraficos;
+        private FontAwesome.Sharp.IconButton btnInicio;
+        private FontAwesome.Sharp.IconButton btnProductosBodega;
+        private FontAwesome.Sharp.IconButton btnPerfiles;
+        private FontAwesome.Sharp.IconButton btlUsuarios;
     }
 }

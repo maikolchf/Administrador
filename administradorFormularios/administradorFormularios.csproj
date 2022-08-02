@@ -54,6 +54,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -67,6 +68,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Facturas\RegistroFacturas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Facturas\RegistroFacturas.Designer.cs">
+      <DependentUpon>RegistroFacturas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gastos\RegistrarGastos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,6 +98,18 @@
     <Compile Include="NotasCambio\RegistroProductos.Designer.cs">
       <DependentUpon>RegistroProductos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Perfiles\Perfiles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Perfiles\Perfiles.Designer.cs">
+      <DependentUpon>Perfiles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Productos\ProductosBodega.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Productos\ProductosBodega.Designer.cs">
+      <DependentUpon>ProductosBodega.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proveedores\RegistrarProveedor.cs">
@@ -99,6 +118,15 @@
     <Compile Include="Proveedores\RegistrarProveedor.Designer.cs">
       <DependentUpon>RegistrarProveedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Usuarios\Usuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuarios\Usuarios.Designer.cs">
+      <DependentUpon>Usuarios.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Facturas\RegistroFacturas.resx">
+      <DependentUpon>RegistroFacturas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Gastos\RegistrarGastos.resx">
       <DependentUpon>RegistrarGastos.cs</DependentUpon>
     </EmbeddedResource>
@@ -110,6 +138,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NotasCambio\RegistroProductos.resx">
       <DependentUpon>RegistroProductos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Perfiles\Perfiles.resx">
+      <DependentUpon>Perfiles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Productos\ProductosBodega.resx">
+      <DependentUpon>ProductosBodega.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -123,6 +157,9 @@
     </Compile>
     <EmbeddedResource Include="Proveedores\RegistrarProveedor.resx">
       <DependentUpon>RegistrarProveedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuarios\Usuarios.resx">
+      <DependentUpon>Usuarios.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -155,6 +192,7 @@
       <Name>AdministradorEntidades</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

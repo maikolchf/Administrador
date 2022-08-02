@@ -12,27 +12,22 @@ namespace AdministradorEntidades.Modelo
     using System;
     using System.Collections.Generic;
     
-    public partial class Proveedores
+    public partial class Roles
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Proveedores()
+        public Roles()
         {
-            this.Gastos = new HashSet<Gastos>();
-            this.Facturas = new HashSet<Facturas>();
+            this.Usuarios = new HashSet<Usuarios>();
+            this.Permisos = new HashSet<Permisos>();
         }
     
-        public int ProveedorId { get; set; }
-        public string ProveedorNombre { get; set; }
-        public string ProveedorCodigo { get; set; }
-        public string ProveedorCedula { get; set; }
-        public string ProveedorTelefono { get; set; }
-        public bool ProveedorGastoFijo { get; set; }
-        public string ProveedorEstado { get; set; }
+        public int RolId { get; set; }
+        public string NombreRol { get; set; }
+        public string EstadoRol { get; set; }
     
-        public virtual Estados Estados { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Gastos> Gastos { get; set; }
+        public virtual ICollection<Usuarios> Usuarios { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Facturas> Facturas { get; set; }
+        public virtual ICollection<Permisos> Permisos { get; set; }
     }
 }

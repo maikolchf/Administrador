@@ -76,7 +76,7 @@ namespace administradorDAL
                     notaCambio.ltsProductoNC = productoNCs;
 
                     respuesta.HayError = false;
-                    respuesta.Mensaje = "Resgistrado con exito";
+                    respuesta.Mensaje = "Registrado con exito";
                     respuesta.ObjetoRespuesta = notaCambio;                                        
                 }
             }

@@ -123,13 +123,16 @@
   <ItemGroup>
     <Compile Include="Entidades\Combobox.cs" />
     <Compile Include="Entidades\Estado.cs" />
+    <Compile Include="Entidades\Factura.cs" />
     <Compile Include="Entidades\Gasto.cs" />
     <Compile Include="Entidades\NotaCambio.cs" />
+    <Compile Include="Entidades\Permiso.cs" />
     <Compile Include="Entidades\Producto.cs" />
     <Compile Include="Entidades\ProductoBodega.cs" />
     <Compile Include="Entidades\ProductoNC.cs" />
     <Compile Include="Entidades\Proveedor.cs" />
     <Compile Include="Entidades\Respuesta.cs" />
+    <Compile Include="Entidades\Rol.cs" />
     <Compile Include="Modelo\AdministradorAzur.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -148,10 +151,16 @@
     <Compile Include="Modelo\Estados.cs">
       <DependentUpon>AdministradorAzur.tt</DependentUpon>
     </Compile>
+    <Compile Include="Modelo\Facturas.cs">
+      <DependentUpon>AdministradorAzur.tt</DependentUpon>
+    </Compile>
     <Compile Include="Modelo\Gastos.cs">
       <DependentUpon>AdministradorAzur.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo\NotasCambio.cs">
+      <DependentUpon>AdministradorAzur.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Permisos.cs">
       <DependentUpon>AdministradorAzur.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo\ProductosBodega.cs">
@@ -163,21 +172,26 @@
     <Compile Include="Modelo\Proveedores.cs">
       <DependentUpon>AdministradorAzur.tt</DependentUpon>
     </Compile>
+    <Compile Include="Modelo\Roles.cs">
+      <DependentUpon>AdministradorAzur.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\Usuarios.cs">
+      <DependentUpon>AdministradorAzur.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <EntityDeploy Include="Modelo\AdministradorAzur.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>AdministradorAzur.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="App.Config" />
     <None Include="Modelo\AdministradorAzur.edmx.diagram">
       <DependentUpon>AdministradorAzur.edmx</DependentUpon>
     </None>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

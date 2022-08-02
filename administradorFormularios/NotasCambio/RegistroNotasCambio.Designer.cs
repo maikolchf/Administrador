@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.pnlFormularioRegistroNC = new System.Windows.Forms.Panel();
+            this.lblIdNC = new System.Windows.Forms.Label();
             this.btnProductosNC = new FontAwesome.Sharp.IconButton();
             this.cbxEstado = new System.Windows.Forms.ComboBox();
             this.lblEstado = new MaterialSkin.Controls.MaterialLabel();
@@ -45,10 +46,14 @@
             this.lblNombreProveedor = new MaterialSkin.Controls.MaterialLabel();
             this.lblConsecutivoNC = new MaterialSkin.Controls.MaterialLabel();
             this.pnGridNC = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblPaginaGasto = new System.Windows.Forms.Label();
+            this.btnSiguiente = new FontAwesome.Sharp.IconButton();
+            this.btnAtras = new FontAwesome.Sharp.IconButton();
             this.dtNotasCambio = new System.Windows.Forms.DataGridView();
-            this.lblIdNC = new System.Windows.Forms.Label();
             this.pnlFormularioRegistroNC.SuspendLayout();
             this.pnGridNC.SuspendLayout();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtNotasCambio)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,6 +80,15 @@
             this.pnlFormularioRegistroNC.Name = "pnlFormularioRegistroNC";
             this.pnlFormularioRegistroNC.Size = new System.Drawing.Size(679, 235);
             this.pnlFormularioRegistroNC.TabIndex = 0;
+            // 
+            // lblIdNC
+            // 
+            this.lblIdNC.AutoSize = true;
+            this.lblIdNC.Location = new System.Drawing.Point(387, 173);
+            this.lblIdNC.Name = "lblIdNC";
+            this.lblIdNC.Size = new System.Drawing.Size(0, 13);
+            this.lblIdNC.TabIndex = 12;
+            this.lblIdNC.Visible = false;
             // 
             // btnProductosNC
             // 
@@ -103,6 +117,7 @@
             this.cbxEstado.Name = "cbxEstado";
             this.cbxEstado.Size = new System.Drawing.Size(197, 21);
             this.cbxEstado.TabIndex = 5;
+            this.cbxEstado.SelectedIndexChanged += new System.EventHandler(this.AplicarNotaCambio);
             // 
             // lblEstado
             // 
@@ -125,6 +140,7 @@
             this.cbxFacturaAplicada.Name = "cbxFacturaAplicada";
             this.cbxFacturaAplicada.Size = new System.Drawing.Size(204, 21);
             this.cbxFacturaAplicada.TabIndex = 6;
+            this.cbxFacturaAplicada.Visible = false;
             // 
             // lblFacturaAplicada
             // 
@@ -138,6 +154,7 @@
             this.lblFacturaAplicada.Size = new System.Drawing.Size(123, 19);
             this.lblFacturaAplicada.TabIndex = 7;
             this.lblFacturaAplicada.Text = "Factura aplicada:";
+            this.lblFacturaAplicada.Visible = false;
             // 
             // btnLimpiarNC
             // 
@@ -274,11 +291,66 @@
             // pnGridNC
             // 
             this.pnGridNC.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.pnGridNC.Controls.Add(this.panel1);
             this.pnGridNC.Controls.Add(this.dtNotasCambio);
             this.pnGridNC.Location = new System.Drawing.Point(12, 253);
             this.pnGridNC.Name = "pnGridNC";
             this.pnGridNC.Size = new System.Drawing.Size(679, 367);
             this.pnGridNC.TabIndex = 1;
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.lblPaginaGasto);
+            this.panel1.Controls.Add(this.btnSiguiente);
+            this.panel1.Controls.Add(this.btnAtras);
+            this.panel1.Location = new System.Drawing.Point(4, 331);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(672, 33);
+            this.panel1.TabIndex = 2;
+            // 
+            // lblPaginaGasto
+            // 
+            this.lblPaginaGasto.AutoSize = true;
+            this.lblPaginaGasto.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPaginaGasto.Location = new System.Drawing.Point(323, 5);
+            this.lblPaginaGasto.Name = "lblPaginaGasto";
+            this.lblPaginaGasto.Size = new System.Drawing.Size(24, 25);
+            this.lblPaginaGasto.TabIndex = 0;
+            this.lblPaginaGasto.Text = "1";
+            // 
+            // btnSiguiente
+            // 
+            this.btnSiguiente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSiguiente.FlatAppearance.BorderSize = 0;
+            this.btnSiguiente.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSiguiente.IconChar = FontAwesome.Sharp.IconChar.ArrowRight;
+            this.btnSiguiente.IconColor = System.Drawing.Color.Black;
+            this.btnSiguiente.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnSiguiente.IconSize = 25;
+            this.btnSiguiente.Location = new System.Drawing.Point(604, 3);
+            this.btnSiguiente.Name = "btnSiguiente";
+            this.btnSiguiente.Size = new System.Drawing.Size(65, 27);
+            this.btnSiguiente.TabIndex = 1;
+            this.btnSiguiente.UseVisualStyleBackColor = true;
+            this.btnSiguiente.Click += new System.EventHandler(this.btnSiguiente_Click);
+            // 
+            // btnAtras
+            // 
+            this.btnAtras.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAtras.FlatAppearance.BorderSize = 0;
+            this.btnAtras.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAtras.IconChar = FontAwesome.Sharp.IconChar.ArrowLeft;
+            this.btnAtras.IconColor = System.Drawing.Color.Black;
+            this.btnAtras.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnAtras.IconSize = 25;
+            this.btnAtras.Location = new System.Drawing.Point(3, 3);
+            this.btnAtras.Name = "btnAtras";
+            this.btnAtras.Size = new System.Drawing.Size(65, 27);
+            this.btnAtras.TabIndex = 0;
+            this.btnAtras.UseVisualStyleBackColor = true;
+            this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
             // 
             // dtNotasCambio
             // 
@@ -295,18 +367,9 @@
             this.dtNotasCambio.GridColor = System.Drawing.Color.White;
             this.dtNotasCambio.Location = new System.Drawing.Point(3, 3);
             this.dtNotasCambio.Name = "dtNotasCambio";
-            this.dtNotasCambio.Size = new System.Drawing.Size(673, 361);
+            this.dtNotasCambio.Size = new System.Drawing.Size(673, 325);
             this.dtNotasCambio.TabIndex = 0;
             this.dtNotasCambio.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SeleccionarRegistro);
-            // 
-            // lblIdNC
-            // 
-            this.lblIdNC.AutoSize = true;
-            this.lblIdNC.Location = new System.Drawing.Point(387, 173);
-            this.lblIdNC.Name = "lblIdNC";
-            this.lblIdNC.Size = new System.Drawing.Size(0, 13);
-            this.lblIdNC.TabIndex = 12;
-            this.lblIdNC.Visible = false;
             // 
             // RegistroNotasCambio
             // 
@@ -321,6 +384,8 @@
             this.pnlFormularioRegistroNC.ResumeLayout(false);
             this.pnlFormularioRegistroNC.PerformLayout();
             this.pnGridNC.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtNotasCambio)).EndInit();
             this.ResumeLayout(false);
 
@@ -347,5 +412,9 @@
         private FontAwesome.Sharp.IconButton btnProductosNC;
         private System.Windows.Forms.DataGridView dtNotasCambio;
         private System.Windows.Forms.Label lblIdNC;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblPaginaGasto;
+        private FontAwesome.Sharp.IconButton btnSiguiente;
+        private FontAwesome.Sharp.IconButton btnAtras;
     }
 }

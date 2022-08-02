@@ -53,11 +53,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EstadosBL.cs" />
+    <Compile Include="FacturasBL.cs" />
     <Compile Include="GastosBL.cs" />
     <Compile Include="NotasCambioBL.cs" />
     <Compile Include="ProductoBodegaBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProveedoresBL.cs" />
+    <Compile Include="RolBL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\administradorDAL\AdministradorDAL.csproj">
@@ -68,10 +70,6 @@
       <Project>{27589D8D-099C-405C-B0C5-8C27C6F4D1A8}</Project>
       <Name>AdministradorEntidades</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

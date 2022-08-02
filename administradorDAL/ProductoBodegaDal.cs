@@ -37,7 +37,11 @@ namespace administradorDAL
                     var lstProductos = (from prod in dbContexto.ProductosBodega
                                         select prod).ToList();
 
-                    IdentificarProductos(ref productosInsertar, ref productosActualizar, lstProductos, ltsProductoBodega);
+                    IdentificarProductos(ref productosInsertar,
+                        ref productosActualizar,
+                        lstProductos,
+                        ltsProductoBodega,
+                        notaCambio.IdFacturaAplicada.Equals(0) ? false : true);
 
                     if (productosInsertar.Count > 0)
                     {
@@ -46,7 +50,14 @@ namespace administradorDAL
 
                     if (productosActualizar.Count > 0)
                     {
-                        ActualizarCantidadesProductos(ltsProductoBodega, ref productosActualizar);
+                        List<ProductosNC> lstProductosNC = (from PNC in dbContexto.ProductosNC
+                                                            where PNC.IdNC != notaCambio.IdNC
+                                                            select PNC).ToList();
+
+                        ActualizarCantidadesProductos(ltsProductoBodega,
+                            ref productosActualizar,
+                            lstProductosNC ?? new List<ProductosNC>(),
+                            notaCambio.IdFacturaAplicada.Equals(0) ? false : true);
                         productosActualizar.ForEach(item =>
                         {
                             dbContexto.Entry(item).CurrentValues.SetValues(item);
@@ -94,7 +105,7 @@ namespace administradorDAL
                                                      CantidadProducto = item.CantidadProducto,
                                                      CodigoProducto = item.CodigoProducto,
                                                      IdProducto = item.IdProducto,
-                                                     NombreProducto = item.NombreProducto                                                      
+                                                     NombreProducto = item.NombreProducto
                                                  }).Where(e => (productoBodega.CodigoProducto.Equals(null)
                                                    || (e.CodigoProducto.Equals(productoBodega.CodigoProducto))))
                                                    .FirstOrDefault();
@@ -110,7 +121,7 @@ namespace administradorDAL
             return respuesta;
         }
         private void IdentificarProductos(ref List<ProductosBodega> nuevos, ref List<ProductosBodega> actualizar,
-            List<ProductosBodega> lstProductos, List<ProductosBodega> nuevosProductos)
+            List<ProductosBodega> lstProductos, List<ProductosBodega> nuevosProductos, bool facturaAPlicada = false)
         {
             foreach (ProductosBodega producto in lstProductos)
             {
@@ -126,18 +137,26 @@ namespace administradorDAL
                 {
                     if (producto.IdProducto.Equals(0))
                     {
+                        if (facturaAPlicada)
+                            producto.CantidadProducto = 0;
+
                         nuevos.Add(producto);
                     }
                 }
                 else
                 {
+                    if (facturaAPlicada)
+                        producto.CantidadProducto = 0;
                     nuevos.Add(producto);
                 }
 
             }
         }
 
-        private void ActualizarCantidadesProductos(List<ProductosBodega> lstProductos, ref List<ProductosBodega> productosActualizar)
+        private void ActualizarCantidadesProductos(List<ProductosBodega> lstProductos, 
+            ref List<ProductosBodega> productosActualizar, 
+            List<ProductosNC> lstProductosNC,
+            bool facturaAplicada = false)
         {
             foreach (var prod in lstProductos)
             {
@@ -145,20 +164,57 @@ namespace administradorDAL
                 {
                     if (prod.CodigoProducto == prodAct.CodigoProducto)
                     {
-                        if (prod.CantidadProducto > prodAct.CantidadProducto)
+                        if (facturaAplicada)
                         {
-                            int cantNueva = prod.CantidadProducto - prodAct.CantidadProducto;
-                            prodAct.CantidadProducto = prodAct.CantidadProducto + cantNueva;
-                        }
+                            var nuevaCantidad = lstProductosNC.Where(x => x.IdProducto == prod.IdProducto).Sum(p => p.CantidadProdNC);
 
-                        if (prod.CantidadProducto < prodAct.CantidadProducto)
+                            if (!nuevaCantidad.Equals(0))
+                            {
+                                prodAct.CantidadProducto = Math.Abs(nuevaCantidad - prod.CantidadProducto);
+                            }
+                            else
+                            {
+                                prodAct.CantidadProducto = 0;
+                            }
+                           
+                        }
+                        else
                         {
-                            int cantNueva = prodAct.CantidadProducto - prod.CantidadProducto;
-                            prodAct.CantidadProducto = prodAct.CantidadProducto - cantNueva;
+                            var nuevaCantidad = lstProductosNC.Where(x => x.IdProducto == prod.IdProducto).Sum(p => p.CantidadProdNC);
+
+                            prodAct.CantidadProducto = nuevaCantidad + prod.CantidadProducto;
                         }
                     }
                 }
             }
+        }
+
+        public Respuesta<List<ProductoBodega>> ObtenerProductos()
+        {
+            Respuesta<List<ProductoBodega>> respuesta = new Respuesta<List<ProductoBodega>>();
+
+            try
+            {
+                using (AdministradorAzurEntities dbContexto = new AdministradorAzurEntities())
+                {
+                    respuesta.ObjetoRespuesta = (from item in dbContexto.ProductosBodega
+                                                 select new ProductoBodega
+                                                 {
+                                                     CantidadProducto = item.CantidadProducto,
+                                                     CodigoProducto = item.CodigoProducto,
+                                                     IdProducto = item.IdProducto,
+                                                     NombreProducto = item.NombreProducto
+                                                 }).ToList();
+                    respuesta.HayError = false;
+                }
+            }
+            catch (Exception oEx)
+            {
+                respuesta.HayError = true;
+                respuesta.Mensaje = oEx.Message;
+            }
+
+            return respuesta;
         }
     }
 }

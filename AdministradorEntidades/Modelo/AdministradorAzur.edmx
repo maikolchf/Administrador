@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="AdministradorAzurModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="AdministradorAzurModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Estados">
           <Key>
             <PropertyRef Name="EstadoCodigo" />
@@ -12,6 +12,17 @@
           <Property Name="EstadoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="EstadoCodigo" Type="varchar" MaxLength="2" Nullable="false" />
           <Property Name="EstadoDescripcion" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Facturas">
+          <Key>
+            <PropertyRef Name="FacturaId" />
+          </Key>
+          <Property Name="FacturaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProveedorFactura" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="ConsecutivoFactura" Type="varchar" MaxLength="35" Nullable="false" />
+          <Property Name="MontoFactura" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="FechaRegistro" Type="date" Nullable="false" />
+          <Property Name="EstadoFactura" Type="varchar" MaxLength="2" Nullable="false" />
         </EntityType>
         <EntityType Name="Gastos">
           <Key>
@@ -36,6 +47,20 @@
           <Property Name="MontoNC" Type="decimal" Precision="18" Scale="2" Nullable="false" />
           <Property Name="IdFacturaAplicada" Type="int" Nullable="false" />
           <Property Name="EstadoNC" Type="varchar" MaxLength="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Permisos">
+          <Key>
+            <PropertyRef Name="PermisoId" />
+          </Key>
+          <Property Name="PermisoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RolId" Type="int" Nullable="false" />
+          <Property Name="Inicio" Type="bit" Nullable="false" />
+          <Property Name="Proveedores" Type="bit" Nullable="false" />
+          <Property Name="Gastos" Type="bit" Nullable="false" />
+          <Property Name="NotasCambio" Type="bit" Nullable="false" />
+          <Property Name="Facturas" Type="bit" Nullable="false" />
+          <Property Name="Usuarios" Type="bit" Nullable="false" />
+          <Property Name="Perfiles" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductosBodega">
           <Key>
@@ -69,6 +94,53 @@
           <Property Name="ProveedorGastoFijo" Type="bit" Nullable="false" />
           <Property Name="ProveedorEstado" Type="varchar" MaxLength="2" Nullable="false" />
         </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="RolId" />
+          </Key>
+          <Property Name="RolId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreRol" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="EstadoRol" Type="varchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="UsuarioId" />
+          </Key>
+          <Property Name="UsuarioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RolId" Type="int" Nullable="false" />
+          <Property Name="NombreUsuario" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="PrimerApellido" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="SegundoApellido" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Correo" Type="varchar" MaxLength="350" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Contrasenna" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="Usuario" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <Association Name="Factura_FK_Estado">
+          <End Role="Estados" Type="Self.Estados" Multiplicity="1" />
+          <End Role="Facturas" Type="Self.Facturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="EstadoCodigo" />
+            </Principal>
+            <Dependent Role="Facturas">
+              <PropertyRef Name="EstadoFactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Factura_FK_Proveedor">
+          <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="1" />
+          <End Role="Facturas" Type="Self.Facturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedores">
+              <PropertyRef Name="ProveedorCodigo" />
+            </Principal>
+            <Dependent Role="Facturas">
+              <PropertyRef Name="ProveedorFactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="Gasto_FK_Estado">
           <End Role="Estados" Type="Self.Estados" Multiplicity="1" />
           <End Role="Gastos" Type="Self.Gastos" Multiplicity="*" />
@@ -129,13 +201,49 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="Rol_FK_ermisos">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Permisos" Type="Self.Permisos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RolId" />
+            </Principal>
+            <Dependent Role="Permisos">
+              <PropertyRef Name="RolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Usuarios_FK_Roles">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RolId" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="RolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="AdministradorAzurModelStoreContainer">
           <EntitySet Name="Estados" EntityType="Self.Estados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Facturas" EntityType="Self.Facturas" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Gastos" EntityType="Self.Gastos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NotasCambio" EntityType="Self.NotasCambio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Permisos" EntityType="Self.Permisos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductosBodega" EntityType="Self.ProductosBodega" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductosNC" EntityType="Self.ProductosNC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Proveedores" EntityType="Self.Proveedores" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="Factura_FK_Estado" Association="Self.Factura_FK_Estado">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Facturas" EntitySet="Facturas" />
+          </AssociationSet>
+          <AssociationSet Name="Factura_FK_Proveedor" Association="Self.Factura_FK_Proveedor">
+            <End Role="Proveedores" EntitySet="Proveedores" />
+            <End Role="Facturas" EntitySet="Facturas" />
+          </AssociationSet>
           <AssociationSet Name="Gasto_FK_Estado" Association="Self.Gasto_FK_Estado">
             <End Role="Estados" EntitySet="Estados" />
             <End Role="Gastos" EntitySet="Gastos" />
@@ -156,9 +264,16 @@
             <End Role="Estados" EntitySet="Estados" />
             <End Role="Proveedores" EntitySet="Proveedores" />
           </AssociationSet>
+          <AssociationSet Name="Rol_FK_ermisos" Association="Self.Rol_FK_ermisos">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Permisos" EntitySet="Permisos" />
+          </AssociationSet>
+          <AssociationSet Name="Usuarios_FK_Roles" Association="Self.Usuarios_FK_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AdministradorAzurModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -171,6 +286,7 @@
           <Property Name="EstadoDescripcion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Gastos" Relationship="Self.Gasto_FK_Estado" FromRole="Estados" ToRole="Gastos" />
           <NavigationProperty Name="Proveedores" Relationship="Self.Proveedor_FK_Estado" FromRole="Estados" ToRole="Proveedores" />
+          <NavigationProperty Name="Facturas" Relationship="AdministradorAzurModel.Factura_FK_Estado" FromRole="Estados" ToRole="Facturas" />
         </EntityType>
         <EntityType Name="Gastos">
           <Key>
@@ -235,6 +351,7 @@
           <Property Name="ProveedorEstado" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Estados" Relationship="Self.Proveedor_FK_Estado" FromRole="Proveedores" ToRole="Estados" />
           <NavigationProperty Name="Gastos" Relationship="Self.Gasto_FK_Proveedor" FromRole="Proveedores" ToRole="Gastos" />
+          <NavigationProperty Name="Facturas" Relationship="AdministradorAzurModel.Factura_FK_Proveedor" FromRole="Proveedores" ToRole="Facturas" />
         </EntityType>
         <Association Name="Gasto_FK_Estado">
           <End Role="Estados" Type="Self.Estados" Multiplicity="1" />
@@ -323,7 +440,129 @@
             <End Role="ProductosBodega" EntitySet="ProductosBodega" />
             <End Role="ProductosNC" EntitySet="ProductosNC" />
           </AssociationSet>
+          <EntitySet Name="Facturas" EntityType="AdministradorAzurModel.Facturas" />
+          <AssociationSet Name="Factura_FK_Estado" Association="AdministradorAzurModel.Factura_FK_Estado">
+            <End Role="Estados" EntitySet="Estados" />
+            <End Role="Facturas" EntitySet="Facturas" />
+          </AssociationSet>
+          <AssociationSet Name="Factura_FK_Proveedor" Association="AdministradorAzurModel.Factura_FK_Proveedor">
+            <End Role="Proveedores" EntitySet="Proveedores" />
+            <End Role="Facturas" EntitySet="Facturas" />
+          </AssociationSet>
+          <EntitySet Name="Roles" EntityType="AdministradorAzurModel.Roles" />
+          <EntitySet Name="Usuarios" EntityType="AdministradorAzurModel.Usuarios" />
+          <AssociationSet Name="Usuarios_FK_Roles" Association="AdministradorAzurModel.Usuarios_FK_Roles">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Usuarios" EntitySet="Usuarios" />
+          </AssociationSet>
+          <EntitySet Name="PermisosSet" EntityType="AdministradorAzurModel.Permisos" />
+          <AssociationSet Name="Rol_FK_ermisos1" Association="AdministradorAzurModel.Rol_FK_ermisos1">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="Permisos" EntitySet="PermisosSet" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Facturas">
+          <Key>
+            <PropertyRef Name="FacturaId" />
+          </Key>
+          <Property Name="FacturaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProveedorFactura" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ConsecutivoFactura" Type="String" Nullable="false" MaxLength="35" FixedLength="false" Unicode="false" />
+          <Property Name="MontoFactura" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="FechaRegistro" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EstadoFactura" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Estados" Relationship="AdministradorAzurModel.Factura_FK_Estado" FromRole="Facturas" ToRole="Estados" />
+          <NavigationProperty Name="Proveedores" Relationship="AdministradorAzurModel.Factura_FK_Proveedor" FromRole="Facturas" ToRole="Proveedores" />
+        </EntityType>
+        <Association Name="Factura_FK_Estado">
+          <End Type="AdministradorAzurModel.Estados" Role="Estados" Multiplicity="1" />
+          <End Type="AdministradorAzurModel.Facturas" Role="Facturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Estados">
+              <PropertyRef Name="EstadoCodigo" />
+            </Principal>
+            <Dependent Role="Facturas">
+              <PropertyRef Name="EstadoFactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Factura_FK_Proveedor">
+          <End Type="AdministradorAzurModel.Proveedores" Role="Proveedores" Multiplicity="1" />
+          <End Type="AdministradorAzurModel.Facturas" Role="Facturas" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedores">
+              <PropertyRef Name="ProveedorCodigo" />
+            </Principal>
+            <Dependent Role="Facturas">
+              <PropertyRef Name="ProveedorFactura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="RolId" />
+          </Key>
+          <Property Name="RolId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreRol" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Usuarios" Relationship="AdministradorAzurModel.Usuarios_FK_Roles" FromRole="Roles" ToRole="Usuarios" />
+          <NavigationProperty Name="Permisos" Relationship="AdministradorAzurModel.Rol_FK_ermisos1" FromRole="Roles" ToRole="Permisos" />
+          <Property Name="EstadoRol" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="UsuarioId" />
+          </Key>
+          <Property Name="UsuarioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RolId" Type="Int32" Nullable="false" />
+          <Property Name="NombreUsuario" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="PrimerApellido" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="SegundoApellido" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Correo" Type="String" Nullable="false" MaxLength="350" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Contrasenna" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="Usuario" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Roles" Relationship="AdministradorAzurModel.Usuarios_FK_Roles" FromRole="Usuarios" ToRole="Roles" />
+          <Property Name="Estado" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="Usuarios_FK_Roles">
+          <End Type="AdministradorAzurModel.Roles" Role="Roles" Multiplicity="1" />
+          <End Type="AdministradorAzurModel.Usuarios" Role="Usuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RolId" />
+            </Principal>
+            <Dependent Role="Usuarios">
+              <PropertyRef Name="RolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Permisos">
+          <Key>
+            <PropertyRef Name="PermisoId" />
+          </Key>
+          <Property Name="PermisoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RolId" Type="Int32" Nullable="false" />
+          <Property Name="Inicio" Type="Boolean" Nullable="false" />
+          <Property Name="Proveedores" Type="Boolean" Nullable="false" />
+          <Property Name="Gastos" Type="Boolean" Nullable="false" />
+          <Property Name="NotasCambio" Type="Boolean" Nullable="false" />
+          <Property Name="Facturas" Type="Boolean" Nullable="false" />
+          <Property Name="Usuarios" Type="Boolean" Nullable="false" />
+          <Property Name="Perfiles" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Roles" Relationship="AdministradorAzurModel.Rol_FK_ermisos1" FromRole="Permisos" ToRole="Roles" />
+        </EntityType>
+        <Association Name="Rol_FK_ermisos1">
+          <End Type="AdministradorAzurModel.Roles" Role="Roles" Multiplicity="1" />
+          <End Type="AdministradorAzurModel.Permisos" Role="Permisos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="RolId" />
+            </Principal>
+            <Dependent Role="Permisos">
+              <PropertyRef Name="RolId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -400,6 +639,58 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Facturas">
+            <EntityTypeMapping TypeName="AdministradorAzurModel.Facturas">
+              <MappingFragment StoreEntitySet="Facturas">
+                <ScalarProperty Name="EstadoFactura" ColumnName="EstadoFactura" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="MontoFactura" ColumnName="MontoFactura" />
+                <ScalarProperty Name="ConsecutivoFactura" ColumnName="ConsecutivoFactura" />
+                <ScalarProperty Name="ProveedorFactura" ColumnName="ProveedorFactura" />
+                <ScalarProperty Name="FacturaId" ColumnName="FacturaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="AdministradorAzurModel.Roles">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="EstadoRol" ColumnName="EstadoRol" />
+                <ScalarProperty Name="NombreRol" ColumnName="NombreRol" />
+                <ScalarProperty Name="RolId" ColumnName="RolId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="AdministradorAzurModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Contrasenna" ColumnName="Contrasenna" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+                <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+                <ScalarProperty Name="RolId" ColumnName="RolId" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PermisosSet">
+            <EntityTypeMapping TypeName="AdministradorAzurModel.Permisos">
+              <MappingFragment StoreEntitySet="Permisos">
+                <ScalarProperty Name="Perfiles" ColumnName="Perfiles" />
+                <ScalarProperty Name="Usuarios" ColumnName="Usuarios" />
+                <ScalarProperty Name="Facturas" ColumnName="Facturas" />
+                <ScalarProperty Name="NotasCambio" ColumnName="NotasCambio" />
+                <ScalarProperty Name="Gastos" ColumnName="Gastos" />
+                <ScalarProperty Name="Proveedores" ColumnName="Proveedores" />
+                <ScalarProperty Name="Inicio" ColumnName="Inicio" />
+                <ScalarProperty Name="RolId" ColumnName="RolId" />
+                <ScalarProperty Name="PermisoId" ColumnName="PermisoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -415,7 +706,7 @@
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
       </DesignerInfoPropertySet>
