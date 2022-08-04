@@ -133,6 +133,7 @@
     <Compile Include="Entidades\Proveedor.cs" />
     <Compile Include="Entidades\Respuesta.cs" />
     <Compile Include="Entidades\Rol.cs" />
+    <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Modelo\AdministradorAzur.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
