@@ -413,7 +413,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="AdministradorAzurEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="AdministradorAzurEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Estados" EntityType="Self.Estados" />
           <EntitySet Name="Gastos" EntityType="Self.Gastos" />
           <EntitySet Name="NotasCambio" EntityType="Self.NotasCambio" />
@@ -568,7 +568,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
     <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="AdministradorAzurModelStoreContainer" CdmEntityContainer="AdministradorAzurEntities2">
+  <EntityContainerMapping StorageEntityContainer="AdministradorAzurModelStoreContainer" CdmEntityContainer="AdministradorAzurEntities">
     <EntitySetMapping Name="Estados">
       <EntityTypeMapping TypeName="IsTypeOf(AdministradorAzurModel.Estados)">
         <MappingFragment StoreEntitySet="Estados">
