@@ -201,6 +201,7 @@
       <DependentUpon>AdministradorAzur.edmx</DependentUpon>
       <LastGenOutput>AdministradorAzur.Context.cs</LastGenOutput>
     </Content>
+    <Content Include="Modelo\AdministradorAzur.edmx.sql" />
     <Content Include="Modelo\AdministradorAzur.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>AdministradorAzur.edmx</DependentUpon>

@@ -4,276 +4,276 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="AdministradorAzurModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Estados">
-          <Key>
-            <PropertyRef Name="EstadoCodigo" />
-          </Key>
-          <Property Name="EstadoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="EstadoCodigo" Type="varchar" MaxLength="2" Nullable="false" />
-          <Property Name="EstadoDescripcion" Type="varchar" MaxLength="30" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Facturas">
-          <Key>
-            <PropertyRef Name="FacturaId" />
-          </Key>
-          <Property Name="FacturaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ProveedorFactura" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="ConsecutivoFactura" Type="varchar" MaxLength="35" Nullable="false" />
-          <Property Name="MontoFactura" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="FechaRegistro" Type="date" Nullable="false" />
-          <Property Name="EstadoFactura" Type="varchar" MaxLength="2" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Gastos">
-          <Key>
-            <PropertyRef Name="GastoId" />
-          </Key>
-          <Property Name="GastoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Proveedor" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="Consecutivo" Type="varchar" MaxLength="35" Nullable="false" />
-          <Property Name="FechaVencimiento" Type="date" Nullable="false" />
-          <Property Name="Monto" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="250" Nullable="false" />
-          <Property Name="Estado" Type="varchar" MaxLength="2" Nullable="false" />
-        </EntityType>
-        <EntityType Name="NotasCambio">
-          <Key>
-            <PropertyRef Name="IdNC" />
-          </Key>
-          <Property Name="IdNC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ConsecutivoNC" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="FechaEmisionNC" Type="date" Nullable="false" />
-          <Property Name="CodProveedorNC" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="MontoNC" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-          <Property Name="IdFacturaAplicada" Type="int" Nullable="false" />
-          <Property Name="EstadoNC" Type="varchar" MaxLength="2" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Permisos">
-          <Key>
-            <PropertyRef Name="PermisoId" />
-          </Key>
-          <Property Name="PermisoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="RolId" Type="int" Nullable="false" />
-          <Property Name="Inicio" Type="bit" Nullable="false" />
-          <Property Name="Proveedores" Type="bit" Nullable="false" />
-          <Property Name="Gastos" Type="bit" Nullable="false" />
-          <Property Name="NotasCambio" Type="bit" Nullable="false" />
-          <Property Name="Facturas" Type="bit" Nullable="false" />
-          <Property Name="Usuarios" Type="bit" Nullable="false" />
-          <Property Name="Perfiles" Type="bit" Nullable="false" />
-        </EntityType>
-        <EntityType Name="ProductosBodega">
-          <Key>
-            <PropertyRef Name="IdProducto" />
-          </Key>
-          <Property Name="IdProducto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CodigoProducto" Type="varchar" MaxLength="35" Nullable="false" />
-          <Property Name="NombreProducto" Type="varchar" MaxLength="250" Nullable="false" />
-          <Property Name="CantidadProducto" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="ProductosNC">
-          <Key>
-            <PropertyRef Name="IdProductoNC" />
-          </Key>
-          <Property Name="IdProductoNC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="IdNC" Type="int" Nullable="false" />
-          <Property Name="IdProducto" Type="int" Nullable="false" />
-          <Property Name="CantidadProdNC" Type="int" Nullable="false" />
-          <Property Name="DescripcionProdNC" Type="varchar" MaxLength="350" Nullable="false" />
-          <Property Name="PrecioProdNC" Type="decimal" Precision="18" Scale="2" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Proveedores">
-          <Key>
-            <PropertyRef Name="ProveedorCodigo" />
-          </Key>
-          <Property Name="ProveedorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ProveedorNombre" Type="varchar" MaxLength="35" Nullable="false" />
-          <Property Name="ProveedorCodigo" Type="varchar" MaxLength="10" Nullable="false" />
-          <Property Name="ProveedorCedula" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="ProveedorTelefono" Type="varchar" MaxLength="25" Nullable="false" />
-          <Property Name="ProveedorGastoFijo" Type="bit" Nullable="false" />
-          <Property Name="ProveedorEstado" Type="varchar" MaxLength="2" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Roles">
-          <Key>
-            <PropertyRef Name="RolId" />
-          </Key>
-          <Property Name="RolId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NombreRol" Type="varchar" MaxLength="250" Nullable="false" />
-          <Property Name="EstadoRol" Type="varchar" MaxLength="1" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Usuarios">
-          <Key>
-            <PropertyRef Name="UsuarioId" />
-          </Key>
-          <Property Name="UsuarioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="RolId" Type="int" Nullable="false" />
-          <Property Name="NombreUsuario" Type="varchar" MaxLength="250" Nullable="false" />
-          <Property Name="PrimerApellido" Type="varchar" MaxLength="250" Nullable="false" />
-          <Property Name="SegundoApellido" Type="varchar" MaxLength="250" Nullable="false" />
-          <Property Name="Correo" Type="varchar" MaxLength="350" Nullable="false" />
-          <Property Name="Telefono" Type="varchar" MaxLength="250" Nullable="false" />
-          <Property Name="Contrasenna" Type="varchar" MaxLength="250" Nullable="false" />
-          <Property Name="Usuario" Type="varchar" MaxLength="30" Nullable="false" />
-          <Property Name="Estado" Type="varchar" MaxLength="1" Nullable="false" />
-        </EntityType>
-        <Association Name="Factura_FK_Estado">
-          <End Role="Estados" Type="Self.Estados" Multiplicity="1" />
-          <End Role="Facturas" Type="Self.Facturas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Estados">
-              <PropertyRef Name="EstadoCodigo" />
-            </Principal>
-            <Dependent Role="Facturas">
-              <PropertyRef Name="EstadoFactura" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="Factura_FK_Proveedor">
-          <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="1" />
-          <End Role="Facturas" Type="Self.Facturas" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Proveedores">
-              <PropertyRef Name="ProveedorCodigo" />
-            </Principal>
-            <Dependent Role="Facturas">
-              <PropertyRef Name="ProveedorFactura" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="Gasto_FK_Estado">
-          <End Role="Estados" Type="Self.Estados" Multiplicity="1" />
-          <End Role="Gastos" Type="Self.Gastos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Estados">
-              <PropertyRef Name="EstadoCodigo" />
-            </Principal>
-            <Dependent Role="Gastos">
-              <PropertyRef Name="Estado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="Gasto_FK_Proveedor">
-          <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="1" />
-          <End Role="Gastos" Type="Self.Gastos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Proveedores">
-              <PropertyRef Name="ProveedorCodigo" />
-            </Principal>
-            <Dependent Role="Gastos">
-              <PropertyRef Name="Proveedor" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="ProductoNC_FK_NotaCambio">
-          <End Role="NotasCambio" Type="Self.NotasCambio" Multiplicity="1" />
-          <End Role="ProductosNC" Type="Self.ProductosNC" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NotasCambio">
-              <PropertyRef Name="IdNC" />
-            </Principal>
-            <Dependent Role="ProductosNC">
-              <PropertyRef Name="IdNC" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="ProductoNC_FK_ProductoBodega">
-          <End Role="ProductosBodega" Type="Self.ProductosBodega" Multiplicity="1" />
-          <End Role="ProductosNC" Type="Self.ProductosNC" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ProductosBodega">
-              <PropertyRef Name="IdProducto" />
-            </Principal>
-            <Dependent Role="ProductosNC">
-              <PropertyRef Name="IdProducto" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="Proveedor_FK_Estado">
-          <End Role="Estados" Type="Self.Estados" Multiplicity="1" />
-          <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Estados">
-              <PropertyRef Name="EstadoCodigo" />
-            </Principal>
-            <Dependent Role="Proveedores">
-              <PropertyRef Name="ProveedorEstado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="Rol_FK_ermisos">
-          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
-          <End Role="Permisos" Type="Self.Permisos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Roles">
-              <PropertyRef Name="RolId" />
-            </Principal>
-            <Dependent Role="Permisos">
-              <PropertyRef Name="RolId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="Usuarios_FK_Roles">
-          <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
-          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Roles">
-              <PropertyRef Name="RolId" />
-            </Principal>
-            <Dependent Role="Usuarios">
-              <PropertyRef Name="RolId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="AdministradorAzurModelStoreContainer">
-          <EntitySet Name="Estados" EntityType="Self.Estados" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Facturas" EntityType="Self.Facturas" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Gastos" EntityType="Self.Gastos" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="NotasCambio" EntityType="Self.NotasCambio" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Permisos" EntityType="Self.Permisos" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ProductosBodega" EntityType="Self.ProductosBodega" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ProductosNC" EntityType="Self.ProductosNC" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Proveedores" EntityType="Self.Proveedores" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="Factura_FK_Estado" Association="Self.Factura_FK_Estado">
-            <End Role="Estados" EntitySet="Estados" />
-            <End Role="Facturas" EntitySet="Facturas" />
-          </AssociationSet>
-          <AssociationSet Name="Factura_FK_Proveedor" Association="Self.Factura_FK_Proveedor">
-            <End Role="Proveedores" EntitySet="Proveedores" />
-            <End Role="Facturas" EntitySet="Facturas" />
-          </AssociationSet>
-          <AssociationSet Name="Gasto_FK_Estado" Association="Self.Gasto_FK_Estado">
-            <End Role="Estados" EntitySet="Estados" />
-            <End Role="Gastos" EntitySet="Gastos" />
-          </AssociationSet>
-          <AssociationSet Name="Gasto_FK_Proveedor" Association="Self.Gasto_FK_Proveedor">
-            <End Role="Proveedores" EntitySet="Proveedores" />
-            <End Role="Gastos" EntitySet="Gastos" />
-          </AssociationSet>
-          <AssociationSet Name="ProductoNC_FK_NotaCambio" Association="Self.ProductoNC_FK_NotaCambio">
-            <End Role="NotasCambio" EntitySet="NotasCambio" />
-            <End Role="ProductosNC" EntitySet="ProductosNC" />
-          </AssociationSet>
-          <AssociationSet Name="ProductoNC_FK_ProductoBodega" Association="Self.ProductoNC_FK_ProductoBodega">
-            <End Role="ProductosBodega" EntitySet="ProductosBodega" />
-            <End Role="ProductosNC" EntitySet="ProductosNC" />
-          </AssociationSet>
-          <AssociationSet Name="Proveedor_FK_Estado" Association="Self.Proveedor_FK_Estado">
-            <End Role="Estados" EntitySet="Estados" />
-            <End Role="Proveedores" EntitySet="Proveedores" />
-          </AssociationSet>
-          <AssociationSet Name="Rol_FK_ermisos" Association="Self.Rol_FK_ermisos">
-            <End Role="Roles" EntitySet="Roles" />
-            <End Role="Permisos" EntitySet="Permisos" />
-          </AssociationSet>
-          <AssociationSet Name="Usuarios_FK_Roles" Association="Self.Usuarios_FK_Roles">
-            <End Role="Roles" EntitySet="Roles" />
-            <End Role="Usuarios" EntitySet="Usuarios" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema></edmx:StorageModels>
+    <Schema Namespace="AdministradorAzurModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="AdministradorAzurModelStoreContainer">
+    <EntitySet Name="Estados" EntityType="AdministradorAzurModel.Store.Estados" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Gastos" EntityType="AdministradorAzurModel.Store.Gastos" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="NotasCambio" EntityType="AdministradorAzurModel.Store.NotasCambio" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductosBodega" EntityType="AdministradorAzurModel.Store.ProductosBodega" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ProductosNC" EntityType="AdministradorAzurModel.Store.ProductosNC" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Proveedores" EntityType="AdministradorAzurModel.Store.Proveedores" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Facturas" EntityType="AdministradorAzurModel.Store.Facturas" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Roles" EntityType="AdministradorAzurModel.Store.Roles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Usuarios" EntityType="AdministradorAzurModel.Store.Usuarios" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PermisosSet" EntityType="AdministradorAzurModel.Store.PermisosSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="Gasto_FK_Estado" Association="AdministradorAzurModel.Store.Gasto_FK_Estado">
+      <End Role="Estados" EntitySet="Estados" />
+      <End Role="Gastos" EntitySet="Gastos" />
+    </AssociationSet>
+    <AssociationSet Name="Proveedor_FK_Estado" Association="AdministradorAzurModel.Store.Proveedor_FK_Estado">
+      <End Role="Estados" EntitySet="Estados" />
+      <End Role="Proveedores" EntitySet="Proveedores" />
+    </AssociationSet>
+    <AssociationSet Name="Gasto_FK_Proveedor" Association="AdministradorAzurModel.Store.Gasto_FK_Proveedor">
+      <End Role="Proveedores" EntitySet="Proveedores" />
+      <End Role="Gastos" EntitySet="Gastos" />
+    </AssociationSet>
+    <AssociationSet Name="ProductoNC_FK_NotaCambio" Association="AdministradorAzurModel.Store.ProductoNC_FK_NotaCambio">
+      <End Role="NotasCambio" EntitySet="NotasCambio" />
+      <End Role="ProductosNC" EntitySet="ProductosNC" />
+    </AssociationSet>
+    <AssociationSet Name="ProductoNC_FK_ProductoBodega" Association="AdministradorAzurModel.Store.ProductoNC_FK_ProductoBodega">
+      <End Role="ProductosBodega" EntitySet="ProductosBodega" />
+      <End Role="ProductosNC" EntitySet="ProductosNC" />
+    </AssociationSet>
+    <AssociationSet Name="Factura_FK_Estado" Association="AdministradorAzurModel.Store.Factura_FK_Estado">
+      <End Role="Estados" EntitySet="Estados" />
+      <End Role="Facturas" EntitySet="Facturas" />
+    </AssociationSet>
+    <AssociationSet Name="Factura_FK_Proveedor" Association="AdministradorAzurModel.Store.Factura_FK_Proveedor">
+      <End Role="Proveedores" EntitySet="Proveedores" />
+      <End Role="Facturas" EntitySet="Facturas" />
+    </AssociationSet>
+    <AssociationSet Name="Usuarios_FK_Roles" Association="AdministradorAzurModel.Store.Usuarios_FK_Roles">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Usuarios" EntitySet="Usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="Rol_FK_ermisos1" Association="AdministradorAzurModel.Store.Rol_FK_ermisos1">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Permisos" EntitySet="PermisosSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Estados">
+    <Key>
+      <PropertyRef Name="EstadoCodigo" />
+    </Key>
+    <Property Name="EstadoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EstadoCodigo" Type="varchar" Nullable="false" MaxLength="2" />
+    <Property Name="EstadoDescripcion" Type="varchar" Nullable="false" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Gastos">
+    <Key>
+      <PropertyRef Name="GastoId" />
+    </Key>
+    <Property Name="GastoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Proveedor" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="Consecutivo" Type="varchar" Nullable="false" MaxLength="35" />
+    <Property Name="FechaVencimiento" Type="datetime" Nullable="false" />
+    <Property Name="Monto" Type="decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="Descripcion" Type="varchar" Nullable="false" MaxLength="250" />
+    <Property Name="Estado" Type="varchar" Nullable="false" MaxLength="2" />
+  </EntityType>
+  <EntityType Name="NotasCambio">
+    <Key>
+      <PropertyRef Name="IdNC" />
+    </Key>
+    <Property Name="IdNC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ConsecutivoNC" Type="varchar" Nullable="false" MaxLength="30" />
+    <Property Name="FechaEmisionNC" Type="datetime" Nullable="false" />
+    <Property Name="CodProveedorNC" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="MontoNC" Type="decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="IdFacturaAplicada" Type="int" Nullable="false" />
+    <Property Name="EstadoNC" Type="varchar" Nullable="false" MaxLength="2" />
+  </EntityType>
+  <EntityType Name="ProductosBodega">
+    <Key>
+      <PropertyRef Name="IdProducto" />
+    </Key>
+    <Property Name="IdProducto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CodigoProducto" Type="varchar" Nullable="false" MaxLength="35" />
+    <Property Name="NombreProducto" Type="varchar" Nullable="false" MaxLength="250" />
+    <Property Name="CantidadProducto" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductosNC">
+    <Key>
+      <PropertyRef Name="IdProductoNC" />
+    </Key>
+    <Property Name="IdProductoNC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdNC" Type="int" Nullable="false" />
+    <Property Name="IdProducto" Type="int" Nullable="false" />
+    <Property Name="CantidadProdNC" Type="int" Nullable="false" />
+    <Property Name="DescripcionProdNC" Type="varchar" Nullable="false" MaxLength="350" />
+    <Property Name="PrecioProdNC" Type="decimal" Nullable="false" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="Proveedores">
+    <Key>
+      <PropertyRef Name="ProveedorCodigo" />
+    </Key>
+    <Property Name="ProveedorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProveedorNombre" Type="varchar" Nullable="false" MaxLength="35" />
+    <Property Name="ProveedorCodigo" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="ProveedorCedula" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="ProveedorTelefono" Type="varchar" Nullable="false" MaxLength="25" />
+    <Property Name="ProveedorGastoFijo" Type="bit" Nullable="false" />
+    <Property Name="ProveedorEstado" Type="varchar" Nullable="false" MaxLength="2" />
+  </EntityType>
+  <EntityType Name="Facturas">
+    <Key>
+      <PropertyRef Name="FacturaId" />
+    </Key>
+    <Property Name="FacturaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProveedorFactura" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="ConsecutivoFactura" Type="varchar" Nullable="false" MaxLength="35" />
+    <Property Name="MontoFactura" Type="decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="FechaRegistro" Type="datetime" Nullable="false" />
+    <Property Name="EstadoFactura" Type="varchar" Nullable="false" MaxLength="2" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="RolId" />
+    </Key>
+    <Property Name="RolId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NombreRol" Type="varchar" Nullable="false" MaxLength="250" />
+    <Property Name="EstadoRol" Type="varchar" Nullable="false" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="UsuarioId" />
+    </Key>
+    <Property Name="UsuarioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RolId" Type="int" Nullable="false" />
+    <Property Name="NombreUsuario" Type="varchar" Nullable="false" MaxLength="250" />
+    <Property Name="PrimerApellido" Type="varchar" Nullable="false" MaxLength="250" />
+    <Property Name="SegundoApellido" Type="varchar" Nullable="false" MaxLength="250" />
+    <Property Name="Correo" Type="varchar" Nullable="false" MaxLength="350" />
+    <Property Name="Telefono" Type="varchar" Nullable="false" MaxLength="250" />
+    <Property Name="Contrasenna" Type="varchar" Nullable="false" MaxLength="250" />
+    <Property Name="Usuario" Type="varchar" Nullable="false" MaxLength="30" />
+    <Property Name="Estado" Type="varchar" Nullable="false" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="PermisosSet">
+    <Key>
+      <PropertyRef Name="PermisoId" />
+    </Key>
+    <Property Name="PermisoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RolId" Type="int" Nullable="false" />
+    <Property Name="Inicio" Type="bit" Nullable="false" />
+    <Property Name="Proveedores" Type="bit" Nullable="false" />
+    <Property Name="Gastos" Type="bit" Nullable="false" />
+    <Property Name="NotasCambio" Type="bit" Nullable="false" />
+    <Property Name="Facturas" Type="bit" Nullable="false" />
+    <Property Name="Usuarios" Type="bit" Nullable="false" />
+    <Property Name="Perfiles" Type="bit" Nullable="false" />
+  </EntityType>
+  <Association Name="Gasto_FK_Estado">
+    <End Role="Estados" Type="AdministradorAzurModel.Store.Estados" Multiplicity="1" />
+    <End Role="Gastos" Type="AdministradorAzurModel.Store.Gastos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estados">
+        <PropertyRef Name="EstadoCodigo" />
+      </Principal>
+      <Dependent Role="Gastos">
+        <PropertyRef Name="Estado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Proveedor_FK_Estado">
+    <End Role="Estados" Type="AdministradorAzurModel.Store.Estados" Multiplicity="1" />
+    <End Role="Proveedores" Type="AdministradorAzurModel.Store.Proveedores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estados">
+        <PropertyRef Name="EstadoCodigo" />
+      </Principal>
+      <Dependent Role="Proveedores">
+        <PropertyRef Name="ProveedorEstado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Gasto_FK_Proveedor">
+    <End Role="Proveedores" Type="AdministradorAzurModel.Store.Proveedores" Multiplicity="1" />
+    <End Role="Gastos" Type="AdministradorAzurModel.Store.Gastos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proveedores">
+        <PropertyRef Name="ProveedorCodigo" />
+      </Principal>
+      <Dependent Role="Gastos">
+        <PropertyRef Name="Proveedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductoNC_FK_NotaCambio">
+    <End Role="NotasCambio" Type="AdministradorAzurModel.Store.NotasCambio" Multiplicity="1" />
+    <End Role="ProductosNC" Type="AdministradorAzurModel.Store.ProductosNC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NotasCambio">
+        <PropertyRef Name="IdNC" />
+      </Principal>
+      <Dependent Role="ProductosNC">
+        <PropertyRef Name="IdNC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductoNC_FK_ProductoBodega">
+    <End Role="ProductosBodega" Type="AdministradorAzurModel.Store.ProductosBodega" Multiplicity="1" />
+    <End Role="ProductosNC" Type="AdministradorAzurModel.Store.ProductosNC" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductosBodega">
+        <PropertyRef Name="IdProducto" />
+      </Principal>
+      <Dependent Role="ProductosNC">
+        <PropertyRef Name="IdProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Factura_FK_Estado">
+    <End Role="Estados" Type="AdministradorAzurModel.Store.Estados" Multiplicity="1" />
+    <End Role="Facturas" Type="AdministradorAzurModel.Store.Facturas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Estados">
+        <PropertyRef Name="EstadoCodigo" />
+      </Principal>
+      <Dependent Role="Facturas">
+        <PropertyRef Name="EstadoFactura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Factura_FK_Proveedor">
+    <End Role="Proveedores" Type="AdministradorAzurModel.Store.Proveedores" Multiplicity="1" />
+    <End Role="Facturas" Type="AdministradorAzurModel.Store.Facturas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proveedores">
+        <PropertyRef Name="ProveedorCodigo" />
+      </Principal>
+      <Dependent Role="Facturas">
+        <PropertyRef Name="ProveedorFactura" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Usuarios_FK_Roles">
+    <End Role="Roles" Type="AdministradorAzurModel.Store.Roles" Multiplicity="1" />
+    <End Role="Usuarios" Type="AdministradorAzurModel.Store.Usuarios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="RolId" />
+      </Principal>
+      <Dependent Role="Usuarios">
+        <PropertyRef Name="RolId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Rol_FK_ermisos1">
+    <End Role="Roles" Type="AdministradorAzurModel.Store.Roles" Multiplicity="1" />
+    <End Role="Permisos" Type="AdministradorAzurModel.Store.PermisosSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="RolId" />
+      </Principal>
+      <Dependent Role="Permisos">
+        <PropertyRef Name="RolId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AdministradorAzurModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -455,10 +455,10 @@
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Usuarios" EntitySet="Usuarios" />
           </AssociationSet>
-          <EntitySet Name="PermisosSet" EntityType="AdministradorAzurModel.Permisos" />
+          <EntitySet Name="Permisos" EntityType="AdministradorAzurModel.Permisos" />
           <AssociationSet Name="Rol_FK_ermisos1" Association="AdministradorAzurModel.Rol_FK_ermisos1">
             <End Role="Roles" EntitySet="Roles" />
-            <End Role="Permisos" EntitySet="PermisosSet" />
+            <End Role="Permisos" EntitySet="Permisos" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Facturas">
@@ -567,133 +567,132 @@
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="AdministradorAzurModelStoreContainer" CdmEntityContainer="AdministradorAzurEntities2">
-          <EntitySetMapping Name="Estados">
-            <EntityTypeMapping TypeName="AdministradorAzurModel.Estados">
-              <MappingFragment StoreEntitySet="Estados">
-                <ScalarProperty Name="EstadoId" ColumnName="EstadoId" />
-                <ScalarProperty Name="EstadoCodigo" ColumnName="EstadoCodigo" />
-                <ScalarProperty Name="EstadoDescripcion" ColumnName="EstadoDescripcion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Gastos">
-            <EntityTypeMapping TypeName="AdministradorAzurModel.Gastos">
-              <MappingFragment StoreEntitySet="Gastos">
-                <ScalarProperty Name="GastoId" ColumnName="GastoId" />
-                <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
-                <ScalarProperty Name="Consecutivo" ColumnName="Consecutivo" />
-                <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
-                <ScalarProperty Name="Monto" ColumnName="Monto" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="NotasCambio">
-            <EntityTypeMapping TypeName="AdministradorAzurModel.NotasCambio">
-              <MappingFragment StoreEntitySet="NotasCambio">
-                <ScalarProperty Name="IdNC" ColumnName="IdNC" />
-                <ScalarProperty Name="ConsecutivoNC" ColumnName="ConsecutivoNC" />
-                <ScalarProperty Name="FechaEmisionNC" ColumnName="FechaEmisionNC" />
-                <ScalarProperty Name="CodProveedorNC" ColumnName="CodProveedorNC" />
-                <ScalarProperty Name="MontoNC" ColumnName="MontoNC" />
-                <ScalarProperty Name="IdFacturaAplicada" ColumnName="IdFacturaAplicada" />
-                <ScalarProperty Name="EstadoNC" ColumnName="EstadoNC" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ProductosBodega">
-            <EntityTypeMapping TypeName="AdministradorAzurModel.ProductosBodega">
-              <MappingFragment StoreEntitySet="ProductosBodega">
-                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
-                <ScalarProperty Name="CodigoProducto" ColumnName="CodigoProducto" />
-                <ScalarProperty Name="NombreProducto" ColumnName="NombreProducto" />
-                <ScalarProperty Name="CantidadProducto" ColumnName="CantidadProducto" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ProductosNC">
-            <EntityTypeMapping TypeName="AdministradorAzurModel.ProductosNC">
-              <MappingFragment StoreEntitySet="ProductosNC">
-                <ScalarProperty Name="IdProductoNC" ColumnName="IdProductoNC" />
-                <ScalarProperty Name="IdNC" ColumnName="IdNC" />
-                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
-                <ScalarProperty Name="CantidadProdNC" ColumnName="CantidadProdNC" />
-                <ScalarProperty Name="DescripcionProdNC" ColumnName="DescripcionProdNC" />
-                <ScalarProperty Name="PrecioProdNC" ColumnName="PrecioProdNC" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Proveedores">
-            <EntityTypeMapping TypeName="AdministradorAzurModel.Proveedores">
-              <MappingFragment StoreEntitySet="Proveedores">
-                <ScalarProperty Name="ProveedorId" ColumnName="ProveedorId" />
-                <ScalarProperty Name="ProveedorNombre" ColumnName="ProveedorNombre" />
-                <ScalarProperty Name="ProveedorCodigo" ColumnName="ProveedorCodigo" />
-                <ScalarProperty Name="ProveedorCedula" ColumnName="ProveedorCedula" />
-                <ScalarProperty Name="ProveedorTelefono" ColumnName="ProveedorTelefono" />
-                <ScalarProperty Name="ProveedorGastoFijo" ColumnName="ProveedorGastoFijo" />
-                <ScalarProperty Name="ProveedorEstado" ColumnName="ProveedorEstado" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Facturas">
-            <EntityTypeMapping TypeName="AdministradorAzurModel.Facturas">
-              <MappingFragment StoreEntitySet="Facturas">
-                <ScalarProperty Name="EstadoFactura" ColumnName="EstadoFactura" />
-                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
-                <ScalarProperty Name="MontoFactura" ColumnName="MontoFactura" />
-                <ScalarProperty Name="ConsecutivoFactura" ColumnName="ConsecutivoFactura" />
-                <ScalarProperty Name="ProveedorFactura" ColumnName="ProveedorFactura" />
-                <ScalarProperty Name="FacturaId" ColumnName="FacturaId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Roles">
-            <EntityTypeMapping TypeName="AdministradorAzurModel.Roles">
-              <MappingFragment StoreEntitySet="Roles">
-                <ScalarProperty Name="EstadoRol" ColumnName="EstadoRol" />
-                <ScalarProperty Name="NombreRol" ColumnName="NombreRol" />
-                <ScalarProperty Name="RolId" ColumnName="RolId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Usuarios">
-            <EntityTypeMapping TypeName="AdministradorAzurModel.Usuarios">
-              <MappingFragment StoreEntitySet="Usuarios">
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
-                <ScalarProperty Name="Contrasenna" ColumnName="Contrasenna" />
-                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-                <ScalarProperty Name="Correo" ColumnName="Correo" />
-                <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
-                <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
-                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
-                <ScalarProperty Name="RolId" ColumnName="RolId" />
-                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PermisosSet">
-            <EntityTypeMapping TypeName="AdministradorAzurModel.Permisos">
-              <MappingFragment StoreEntitySet="Permisos">
-                <ScalarProperty Name="Perfiles" ColumnName="Perfiles" />
-                <ScalarProperty Name="Usuarios" ColumnName="Usuarios" />
-                <ScalarProperty Name="Facturas" ColumnName="Facturas" />
-                <ScalarProperty Name="NotasCambio" ColumnName="NotasCambio" />
-                <ScalarProperty Name="Gastos" ColumnName="Gastos" />
-                <ScalarProperty Name="Proveedores" ColumnName="Proveedores" />
-                <ScalarProperty Name="Inicio" ColumnName="Inicio" />
-                <ScalarProperty Name="RolId" ColumnName="RolId" />
-                <ScalarProperty Name="PermisoId" ColumnName="PermisoId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AdministradorAzurModelStoreContainer" CdmEntityContainer="AdministradorAzurEntities2">
+    <EntitySetMapping Name="Estados">
+      <EntityTypeMapping TypeName="IsTypeOf(AdministradorAzurModel.Estados)">
+        <MappingFragment StoreEntitySet="Estados">
+          <ScalarProperty Name="EstadoCodigo" ColumnName="EstadoCodigo" />
+          <ScalarProperty Name="EstadoId" ColumnName="EstadoId" />
+          <ScalarProperty Name="EstadoDescripcion" ColumnName="EstadoDescripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Gastos">
+      <EntityTypeMapping TypeName="IsTypeOf(AdministradorAzurModel.Gastos)">
+        <MappingFragment StoreEntitySet="Gastos">
+          <ScalarProperty Name="GastoId" ColumnName="GastoId" />
+          <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+          <ScalarProperty Name="Consecutivo" ColumnName="Consecutivo" />
+          <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+          <ScalarProperty Name="Monto" ColumnName="Monto" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NotasCambio">
+      <EntityTypeMapping TypeName="IsTypeOf(AdministradorAzurModel.NotasCambio)">
+        <MappingFragment StoreEntitySet="NotasCambio">
+          <ScalarProperty Name="IdNC" ColumnName="IdNC" />
+          <ScalarProperty Name="ConsecutivoNC" ColumnName="ConsecutivoNC" />
+          <ScalarProperty Name="FechaEmisionNC" ColumnName="FechaEmisionNC" />
+          <ScalarProperty Name="CodProveedorNC" ColumnName="CodProveedorNC" />
+          <ScalarProperty Name="MontoNC" ColumnName="MontoNC" />
+          <ScalarProperty Name="IdFacturaAplicada" ColumnName="IdFacturaAplicada" />
+          <ScalarProperty Name="EstadoNC" ColumnName="EstadoNC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductosBodega">
+      <EntityTypeMapping TypeName="IsTypeOf(AdministradorAzurModel.ProductosBodega)">
+        <MappingFragment StoreEntitySet="ProductosBodega">
+          <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+          <ScalarProperty Name="CodigoProducto" ColumnName="CodigoProducto" />
+          <ScalarProperty Name="NombreProducto" ColumnName="NombreProducto" />
+          <ScalarProperty Name="CantidadProducto" ColumnName="CantidadProducto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductosNC">
+      <EntityTypeMapping TypeName="IsTypeOf(AdministradorAzurModel.ProductosNC)">
+        <MappingFragment StoreEntitySet="ProductosNC">
+          <ScalarProperty Name="IdProductoNC" ColumnName="IdProductoNC" />
+          <ScalarProperty Name="IdNC" ColumnName="IdNC" />
+          <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+          <ScalarProperty Name="CantidadProdNC" ColumnName="CantidadProdNC" />
+          <ScalarProperty Name="DescripcionProdNC" ColumnName="DescripcionProdNC" />
+          <ScalarProperty Name="PrecioProdNC" ColumnName="PrecioProdNC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Proveedores">
+      <EntityTypeMapping TypeName="IsTypeOf(AdministradorAzurModel.Proveedores)">
+        <MappingFragment StoreEntitySet="Proveedores">
+          <ScalarProperty Name="ProveedorCodigo" ColumnName="ProveedorCodigo" />
+          <ScalarProperty Name="ProveedorId" ColumnName="ProveedorId" />
+          <ScalarProperty Name="ProveedorNombre" ColumnName="ProveedorNombre" />
+          <ScalarProperty Name="ProveedorCedula" ColumnName="ProveedorCedula" />
+          <ScalarProperty Name="ProveedorTelefono" ColumnName="ProveedorTelefono" />
+          <ScalarProperty Name="ProveedorGastoFijo" ColumnName="ProveedorGastoFijo" />
+          <ScalarProperty Name="ProveedorEstado" ColumnName="ProveedorEstado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Facturas">
+      <EntityTypeMapping TypeName="IsTypeOf(AdministradorAzurModel.Facturas)">
+        <MappingFragment StoreEntitySet="Facturas">
+          <ScalarProperty Name="FacturaId" ColumnName="FacturaId" />
+          <ScalarProperty Name="ProveedorFactura" ColumnName="ProveedorFactura" />
+          <ScalarProperty Name="ConsecutivoFactura" ColumnName="ConsecutivoFactura" />
+          <ScalarProperty Name="MontoFactura" ColumnName="MontoFactura" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="EstadoFactura" ColumnName="EstadoFactura" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="IsTypeOf(AdministradorAzurModel.Roles)">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="RolId" ColumnName="RolId" />
+          <ScalarProperty Name="NombreRol" ColumnName="NombreRol" />
+          <ScalarProperty Name="EstadoRol" ColumnName="EstadoRol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="IsTypeOf(AdministradorAzurModel.Usuarios)">
+        <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+          <ScalarProperty Name="RolId" ColumnName="RolId" />
+          <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+          <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+          <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Contrasenna" ColumnName="Contrasenna" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Permisos">
+      <EntityTypeMapping TypeName="IsTypeOf(AdministradorAzurModel.Permisos)">
+        <MappingFragment StoreEntitySet="PermisosSet">
+          <ScalarProperty Name="PermisoId" ColumnName="PermisoId" />
+          <ScalarProperty Name="RolId" ColumnName="RolId" />
+          <ScalarProperty Name="Inicio" ColumnName="Inicio" />
+          <ScalarProperty Name="Proveedores" ColumnName="Proveedores" />
+          <ScalarProperty Name="Gastos" ColumnName="Gastos" />
+          <ScalarProperty Name="NotasCambio" ColumnName="NotasCambio" />
+          <ScalarProperty Name="Facturas" ColumnName="Facturas" />
+          <ScalarProperty Name="Usuarios" ColumnName="Usuarios" />
+          <ScalarProperty Name="Perfiles" ColumnName="Perfiles" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -707,7 +706,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
-        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
       </DesignerInfoPropertySet>
     </Options>
