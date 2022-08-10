@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.pnlFormularioUsuario = new System.Windows.Forms.Panel();
+            this.btnMostrarContraseña = new FontAwesome.Sharp.IconButton();
             this.cbxEstadoUsuario = new System.Windows.Forms.ComboBox();
             this.cbxRolUsuario = new System.Windows.Forms.ComboBox();
             this.txtContrasennaUsuario = new MaterialSkin.Controls.MaterialSingleLineTextField();
@@ -55,7 +56,7 @@
             this.lblPaginaUsuario = new System.Windows.Forms.Label();
             this.btnSiguiente = new FontAwesome.Sharp.IconButton();
             this.btnAtras = new FontAwesome.Sharp.IconButton();
-            this.btnMostrarContraseña = new FontAwesome.Sharp.IconButton();
+            this.lblIdUsuario = new System.Windows.Forms.Label();
             this.pnlFormularioUsuario.SuspendLayout();
             this.pnlVistaGridUsuarios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
@@ -65,6 +66,7 @@
             // pnlFormularioUsuario
             // 
             this.pnlFormularioUsuario.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pnlFormularioUsuario.Controls.Add(this.lblIdUsuario);
             this.pnlFormularioUsuario.Controls.Add(this.btnMostrarContraseña);
             this.pnlFormularioUsuario.Controls.Add(this.cbxEstadoUsuario);
             this.pnlFormularioUsuario.Controls.Add(this.cbxRolUsuario);
@@ -90,6 +92,22 @@
             this.pnlFormularioUsuario.Name = "pnlFormularioUsuario";
             this.pnlFormularioUsuario.Size = new System.Drawing.Size(679, 257);
             this.pnlFormularioUsuario.TabIndex = 0;
+            // 
+            // btnMostrarContraseña
+            // 
+            this.btnMostrarContraseña.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMostrarContraseña.FlatAppearance.BorderSize = 0;
+            this.btnMostrarContraseña.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMostrarContraseña.IconChar = FontAwesome.Sharp.IconChar.Eye;
+            this.btnMostrarContraseña.IconColor = System.Drawing.Color.Black;
+            this.btnMostrarContraseña.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnMostrarContraseña.IconSize = 20;
+            this.btnMostrarContraseña.Location = new System.Drawing.Point(641, 60);
+            this.btnMostrarContraseña.Name = "btnMostrarContraseña";
+            this.btnMostrarContraseña.Size = new System.Drawing.Size(35, 19);
+            this.btnMostrarContraseña.TabIndex = 24;
+            this.btnMostrarContraseña.UseVisualStyleBackColor = true;
+            this.btnMostrarContraseña.Click += new System.EventHandler(this.btnMostrarContraseña_Click);
             // 
             // cbxEstadoUsuario
             // 
@@ -387,8 +405,10 @@
             this.dgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUsuarios.Location = new System.Drawing.Point(3, 3);
             this.dgvUsuarios.Name = "dgvUsuarios";
+            this.dgvUsuarios.ShowEditingIcon = false;
             this.dgvUsuarios.Size = new System.Drawing.Size(673, 303);
             this.dgvUsuarios.TabIndex = 4;
+            this.dgvUsuarios.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SeleccionarRegistro);
             // 
             // panel3
             // 
@@ -442,21 +462,14 @@
             this.btnAtras.TabIndex = 0;
             this.btnAtras.UseVisualStyleBackColor = true;
             // 
-            // btnMostrarContraseña
+            // lblIdUsuario
             // 
-            this.btnMostrarContraseña.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMostrarContraseña.FlatAppearance.BorderSize = 0;
-            this.btnMostrarContraseña.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMostrarContraseña.IconChar = FontAwesome.Sharp.IconChar.Eye;
-            this.btnMostrarContraseña.IconColor = System.Drawing.Color.Black;
-            this.btnMostrarContraseña.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnMostrarContraseña.IconSize = 20;
-            this.btnMostrarContraseña.Location = new System.Drawing.Point(641, 60);
-            this.btnMostrarContraseña.Name = "btnMostrarContraseña";
-            this.btnMostrarContraseña.Size = new System.Drawing.Size(35, 19);
-            this.btnMostrarContraseña.TabIndex = 24;
-            this.btnMostrarContraseña.UseVisualStyleBackColor = true;
-            this.btnMostrarContraseña.Click += new System.EventHandler(this.btnMostrarContraseña_Click);
+            this.lblIdUsuario.AutoSize = true;
+            this.lblIdUsuario.Location = new System.Drawing.Point(369, 184);
+            this.lblIdUsuario.Name = "lblIdUsuario";
+            this.lblIdUsuario.Size = new System.Drawing.Size(0, 13);
+            this.lblIdUsuario.TabIndex = 25;
+            this.lblIdUsuario.Visible = false;
             // 
             // Usuarios
             // 
@@ -508,5 +521,6 @@
         private FontAwesome.Sharp.IconButton btnAtras;
         private System.Windows.Forms.DataGridView dgvUsuarios;
         private FontAwesome.Sharp.IconButton btnMostrarContraseña;
+        private System.Windows.Forms.Label lblIdUsuario;
     }
 }

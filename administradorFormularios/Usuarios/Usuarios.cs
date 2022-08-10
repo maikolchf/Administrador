@@ -20,6 +20,7 @@ namespace administradorFormularios.Usuarios
         private UsuarioBL usuarioBL = new UsuarioBL();
         private int paginaSeleccionada = 0;
         private decimal totalPaginas = 0;
+        private List<Usuario> ltsUsuarios;
         public Usuarios()
         {
             InitializeComponent();
@@ -35,31 +36,40 @@ namespace administradorFormularios.Usuarios
         {
             if (ValidarCamposVacios())
             {
-                Usuario usuario = new Usuario
+                if (!ltsUsuarios.Exists(x => x.UsuarioLogin.Equals(txtUsuario.Text) && x.EstadoUsuario.Equals(Constantes.EstadosDefaul.Activo) 
+                    && !x.UsuarioId.Equals(lblIdUsuario.Text.Equals("") ? 0 : Convert.ToInt32(lblIdUsuario.Text))))
                 {
-                    NombreUsuario = txtNombreUsuario.Text,
-                    PrimerApellido = txtApellidoUno.Text,
-                    SegundoApellido = txtApellidoDos.Text,
-                    Correo = txtCorreoUsuario.Text,
-                    Telefono = txtTelefonoUsuario.Text,
-                    UsuarioLogin = txtUsuario.Text,
-                    Contrasenna = txtContrasennaUsuario.Text,
-                    EstadoUsuario = cbxEstadoUsuario.SelectedValue.ToString(),
-                    RolId = (int)cbxRolUsuario.SelectedValue
-                };
+                    Usuario usuario = new Usuario
+                    {
+                        UsuarioId = lblIdUsuario.Text.Equals("") ? 0 : Convert.ToInt32(lblIdUsuario.Text),
+                        NombreUsuario = txtNombreUsuario.Text,
+                        PrimerApellido = txtApellidoUno.Text,
+                        SegundoApellido = txtApellidoDos.Text,
+                        Correo = txtCorreoUsuario.Text,
+                        Telefono = txtTelefonoUsuario.Text,
+                        UsuarioLogin = txtUsuario.Text,
+                        Contrasenna = txtContrasennaUsuario.Text,
+                        EstadoUsuario = cbxEstadoUsuario.SelectedValue.ToString(),
+                        RolId = (int)cbxRolUsuario.SelectedValue
+                    };
 
-                Respuesta<Usuario> respuesta = usuarioBL.InsertarModificar(usuario); // insertar o actualizar neuvo usuario
+                    Respuesta<Usuario> respuesta = usuarioBL.InsertarModificar(usuario); // insertar o actualizar neuvo usuario
 
-                if (!respuesta.HayError)
-                {
-                    MessageBox.Show(respuesta.Mensaje);
-                    LimpiarCampos();
-                    RellenarGrid(ref dgvUsuarios);
+                    if (!respuesta.HayError)
+                    {
+                        MessageBox.Show(respuesta.Mensaje);
+                        LimpiarCampos();
+                        RellenarGrid(ref dgvUsuarios);
+                    }
+                    else
+                    {
+                        LimpiarCampos();
+                        MessageBox.Show(respuesta.Mensaje);
+                    }
                 }
                 else
                 {
-                    LimpiarCampos();
-                    MessageBox.Show(respuesta.Mensaje);
+                    MessageBox.Show("Este nombre de usuario ya se encuentra registrado");
                 }
             }
             else
@@ -113,6 +123,7 @@ namespace administradorFormularios.Usuarios
 
         public void LimpiarCampos()
         {
+            lblIdUsuario.Text = string.Empty;
             txtNombreUsuario.Text = string.Empty;
             txtApellidoUno.Text = string.Empty;
             txtApellidoDos.Text = string.Empty;
@@ -129,13 +140,35 @@ namespace administradorFormularios.Usuarios
             LimpiarCampos();
         }
 
+        private void SeleccionarRegistro(object sender, DataGridViewCellEventArgs e)
+        {
+            int idUsuario = Convert.ToInt32(dgvUsuarios.CurrentRow.Cells[6].Value);
+
+            var usuario = ltsUsuarios.Find(x => x.UsuarioId.Equals(idUsuario));
+
+            if (usuario != null)
+            {
+                lblIdUsuario.Text = usuario.UsuarioId.ToString();
+                txtNombreUsuario.Text = usuario.NombreUsuario;
+                txtApellidoUno.Text = usuario.PrimerApellido;
+                txtApellidoDos.Text = usuario.SegundoApellido;
+                txtTelefonoUsuario.Text = usuario.Telefono;
+                txtCorreoUsuario.Text = usuario.Correo;
+                txtUsuario.Text = usuario.UsuarioLogin;
+                txtContrasennaUsuario.Text = usuario.Contrasenna;
+                cbxRolUsuario.SelectedValue = usuario.RolId;
+                cbxEstadoUsuario.SelectedValue = usuario.EstadoUsuario;
+            }
+
+        }
+
         private void RellenarGrid(ref DataGridView vista, int paginaSeleccionada = 0)
         {
 
             int CantidadRegistros = 25;
             List<Usuario> lista = usuarioBL.Obtener(new Usuario()).ObjetoRespuesta;
 
-            //lstUsuarios = lista;
+            ltsUsuarios = lista;
             decimal totalRegistro = lista.Count();
             totalPaginas = Math.Ceiling(totalRegistro / (decimal)CantidadRegistros);
 
