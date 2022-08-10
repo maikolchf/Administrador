@@ -13,10 +13,10 @@ namespace AdministradorEntidades.Modelo
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class AdministradorAzurEntities2 : DbContext
+    public partial class AdministradorAzurEntities : DbContext
     {
-        public AdministradorAzurEntities2()
-            : base("name=AdministradorAzurEntities2")
+        public AdministradorAzurEntities()
+            : base("name=AdministradorAzurEntities")
         {
         }
     
