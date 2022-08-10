@@ -60,7 +60,7 @@ namespace administradorDAL
             Respuesta<List<Usuario>> respuesta = new Respuesta<List<Usuario>>();
             try
             {
-                using (AdministradorAzurEntities dbContexto = new AdministradorAzurEntities())
+                using ( AdministradorAzurEntities dbContexto = new AdministradorAzurEntities())
                 {
                     respuesta.ObjetoRespuesta = (from U in dbContexto.Usuarios
                                                  join R in dbContexto.Roles

@@ -182,8 +182,8 @@ CREATE TABLE [dbo].[Usuarios] (
 );
 GO
 
--- Creating table 'PermisosSet'
-CREATE TABLE [dbo].[PermisosSet] (
+-- Creating table 'Permisos'
+CREATE TABLE [dbo].[Permisos] (
     [PermisoId] int IDENTITY(1,1) NOT NULL,
     [RolId] int  NOT NULL,
     [Inicio] bit  NOT NULL,
@@ -254,9 +254,9 @@ ADD CONSTRAINT [PK_Usuarios]
     PRIMARY KEY CLUSTERED ([UsuarioId] ASC);
 GO
 
--- Creating primary key on [PermisoId] in table 'PermisosSet'
-ALTER TABLE [dbo].[PermisosSet]
-ADD CONSTRAINT [PK_PermisosSet]
+-- Creating primary key on [PermisoId] in table 'Permisos'
+ALTER TABLE [dbo].[Permisos]
+ADD CONSTRAINT [PK_Permisos]
     PRIMARY KEY CLUSTERED ([PermisoId] ASC);
 GO
 
@@ -384,8 +384,8 @@ ON [dbo].[Usuarios]
     ([RolId]);
 GO
 
--- Creating foreign key on [RolId] in table 'PermisosSet'
-ALTER TABLE [dbo].[PermisosSet]
+-- Creating foreign key on [RolId] in table 'Permisos'
+ALTER TABLE [dbo].[Permisos]
 ADD CONSTRAINT [FK_Rol_FK_ermisos1]
     FOREIGN KEY ([RolId])
     REFERENCES [dbo].[Roles]
@@ -395,7 +395,7 @@ GO
 
 -- Creating non-clustered index for FOREIGN KEY 'FK_Rol_FK_ermisos1'
 CREATE INDEX [IX_FK_Rol_FK_ermisos1]
-ON [dbo].[PermisosSet]
+ON [dbo].[Permisos]
     ([RolId]);
 GO
 

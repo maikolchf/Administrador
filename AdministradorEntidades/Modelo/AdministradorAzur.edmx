@@ -15,7 +15,7 @@
     <EntitySet Name="Facturas" EntityType="AdministradorAzurModel.Store.Facturas" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Roles" EntityType="AdministradorAzurModel.Store.Roles" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Usuarios" EntityType="AdministradorAzurModel.Store.Usuarios" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="PermisosSet" EntityType="AdministradorAzurModel.Store.PermisosSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Permisos" EntityType="AdministradorAzurModel.Store.Permisos" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="Gasto_FK_Estado" Association="AdministradorAzurModel.Store.Gasto_FK_Estado">
       <End Role="Estados" EntitySet="Estados" />
       <End Role="Gastos" EntitySet="Gastos" />
@@ -50,7 +50,7 @@
     </AssociationSet>
     <AssociationSet Name="Rol_FK_ermisos1" Association="AdministradorAzurModel.Store.Rol_FK_ermisos1">
       <End Role="Roles" EntitySet="Roles" />
-      <End Role="Permisos" EntitySet="PermisosSet" />
+      <End Role="Permisos" EntitySet="Permisos" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Estados">
@@ -151,7 +151,7 @@
     <Property Name="Usuario" Type="varchar" Nullable="false" MaxLength="30" />
     <Property Name="Estado" Type="varchar" Nullable="false" MaxLength="1" />
   </EntityType>
-  <EntityType Name="PermisosSet">
+  <EntityType Name="Permisos">
     <Key>
       <PropertyRef Name="PermisoId" />
     </Key>
@@ -263,7 +263,7 @@
   </Association>
   <Association Name="Rol_FK_ermisos1">
     <End Role="Roles" Type="AdministradorAzurModel.Store.Roles" Multiplicity="1" />
-    <End Role="Permisos" Type="AdministradorAzurModel.Store.PermisosSet" Multiplicity="*" />
+    <End Role="Permisos" Type="AdministradorAzurModel.Store.Permisos" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Roles">
         <PropertyRef Name="RolId" />
@@ -678,7 +678,7 @@
     </EntitySetMapping>
     <EntitySetMapping Name="Permisos">
       <EntityTypeMapping TypeName="IsTypeOf(AdministradorAzurModel.Permisos)">
-        <MappingFragment StoreEntitySet="PermisosSet">
+        <MappingFragment StoreEntitySet="Permisos">
           <ScalarProperty Name="PermisoId" ColumnName="PermisoId" />
           <ScalarProperty Name="RolId" ColumnName="RolId" />
           <ScalarProperty Name="Inicio" ColumnName="Inicio" />
