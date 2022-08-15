@@ -126,6 +126,7 @@
     <Compile Include="EstadosDal.cs" />
     <Compile Include="FacturasDAL.cs" />
     <Compile Include="GastosDal.cs" />
+    <Compile Include="LoginDAL.cs" />
     <Compile Include="NotasCambioDal.cs" />
     <Compile Include="PermisoDAL.cs" />
     <Compile Include="ProductoBodegaDal.cs" />

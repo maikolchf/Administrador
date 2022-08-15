@@ -202,7 +202,7 @@ namespace administradorFormularios.Usuarios
         {
 
 
-            if (txtContrasennaUsuario.UseSystemPasswordChar)
+            if (txtContrasennaUsuario.UseSystemPasswordChar) 
             {
                 txtContrasennaUsuario.UseSystemPasswordChar = false;
                 btnMostrarContraseña.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;                

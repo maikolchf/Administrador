@@ -30,7 +30,7 @@
         {
             this.panelMenu = new System.Windows.Forms.Panel();
             this.btnPerfiles = new FontAwesome.Sharp.IconButton();
-            this.btlUsuarios = new FontAwesome.Sharp.IconButton();
+            this.btnUsuarios = new FontAwesome.Sharp.IconButton();
             this.btnProductosBodega = new FontAwesome.Sharp.IconButton();
             this.btnFacturas = new FontAwesome.Sharp.IconButton();
             this.btnNotasCambio = new FontAwesome.Sharp.IconButton();
@@ -39,6 +39,7 @@
             this.btnInicio = new FontAwesome.Sharp.IconButton();
             this.panelIcono = new System.Windows.Forms.Panel();
             this.panelFomularios = new System.Windows.Forms.Panel();
+            this.btnCerrarSesion = new FontAwesome.Sharp.IconButton();
             this.panelMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,8 +47,9 @@
             // 
             this.panelMenu.AutoScroll = true;
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(97)))), ((int)(((byte)(147)))));
+            this.panelMenu.Controls.Add(this.btnCerrarSesion);
             this.panelMenu.Controls.Add(this.btnPerfiles);
-            this.panelMenu.Controls.Add(this.btlUsuarios);
+            this.panelMenu.Controls.Add(this.btnUsuarios);
             this.panelMenu.Controls.Add(this.btnProductosBodega);
             this.panelMenu.Controls.Add(this.btnFacturas);
             this.panelMenu.Controls.Add(this.btnNotasCambio);
@@ -64,6 +66,7 @@
             // btnPerfiles
             // 
             this.btnPerfiles.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnPerfiles.Enabled = false;
             this.btnPerfiles.FlatAppearance.BorderSize = 0;
             this.btnPerfiles.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPerfiles.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -81,29 +84,31 @@
             this.btnPerfiles.UseVisualStyleBackColor = true;
             this.btnPerfiles.Click += new System.EventHandler(this.btnPerfiles_Click);
             // 
-            // btlUsuarios
+            // btnUsuarios
             // 
-            this.btlUsuarios.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btlUsuarios.FlatAppearance.BorderSize = 0;
-            this.btlUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btlUsuarios.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btlUsuarios.ForeColor = System.Drawing.Color.White;
-            this.btlUsuarios.IconChar = FontAwesome.Sharp.IconChar.User;
-            this.btlUsuarios.IconColor = System.Drawing.Color.White;
-            this.btlUsuarios.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btlUsuarios.IconSize = 35;
-            this.btlUsuarios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btlUsuarios.Location = new System.Drawing.Point(0, 407);
-            this.btlUsuarios.Name = "btlUsuarios";
-            this.btlUsuarios.Size = new System.Drawing.Size(238, 50);
-            this.btlUsuarios.TabIndex = 12;
-            this.btlUsuarios.Text = "Usuarios";
-            this.btlUsuarios.UseVisualStyleBackColor = true;
-            this.btlUsuarios.Click += new System.EventHandler(this.btlUsuarios_Click);
+            this.btnUsuarios.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnUsuarios.Enabled = false;
+            this.btnUsuarios.FlatAppearance.BorderSize = 0;
+            this.btnUsuarios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUsuarios.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUsuarios.ForeColor = System.Drawing.Color.White;
+            this.btnUsuarios.IconChar = FontAwesome.Sharp.IconChar.User;
+            this.btnUsuarios.IconColor = System.Drawing.Color.White;
+            this.btnUsuarios.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnUsuarios.IconSize = 35;
+            this.btnUsuarios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUsuarios.Location = new System.Drawing.Point(0, 407);
+            this.btnUsuarios.Name = "btnUsuarios";
+            this.btnUsuarios.Size = new System.Drawing.Size(238, 50);
+            this.btnUsuarios.TabIndex = 12;
+            this.btnUsuarios.Text = "Usuarios";
+            this.btnUsuarios.UseVisualStyleBackColor = true;
+            this.btnUsuarios.Click += new System.EventHandler(this.btlUsuarios_Click);
             // 
             // btnProductosBodega
             // 
             this.btnProductosBodega.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnProductosBodega.Enabled = false;
             this.btnProductosBodega.FlatAppearance.BorderSize = 0;
             this.btnProductosBodega.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProductosBodega.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -124,6 +129,7 @@
             // btnFacturas
             // 
             this.btnFacturas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnFacturas.Enabled = false;
             this.btnFacturas.FlatAppearance.BorderSize = 0;
             this.btnFacturas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFacturas.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -144,6 +150,7 @@
             // btnNotasCambio
             // 
             this.btnNotasCambio.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnNotasCambio.Enabled = false;
             this.btnNotasCambio.FlatAppearance.BorderSize = 0;
             this.btnNotasCambio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNotasCambio.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -164,6 +171,7 @@
             // btnGastos
             // 
             this.btnGastos.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnGastos.Enabled = false;
             this.btnGastos.FlatAppearance.BorderSize = 0;
             this.btnGastos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGastos.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -184,6 +192,7 @@
             // btnProveedores
             // 
             this.btnProveedores.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnProveedores.Enabled = false;
             this.btnProveedores.FlatAppearance.BorderSize = 0;
             this.btnProveedores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProveedores.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -237,6 +246,26 @@
             this.panelFomularios.Size = new System.Drawing.Size(719, 671);
             this.panelFomularios.TabIndex = 1;
             // 
+            // btnCerrarSesion
+            // 
+            this.btnCerrarSesion.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnCerrarSesion.FlatAppearance.BorderSize = 0;
+            this.btnCerrarSesion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCerrarSesion.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCerrarSesion.ForeColor = System.Drawing.Color.White;
+            this.btnCerrarSesion.IconChar = FontAwesome.Sharp.IconChar.SignOutAlt;
+            this.btnCerrarSesion.IconColor = System.Drawing.Color.White;
+            this.btnCerrarSesion.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnCerrarSesion.IconSize = 35;
+            this.btnCerrarSesion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCerrarSesion.Location = new System.Drawing.Point(0, 507);
+            this.btnCerrarSesion.Name = "btnCerrarSesion";
+            this.btnCerrarSesion.Size = new System.Drawing.Size(238, 50);
+            this.btnCerrarSesion.TabIndex = 14;
+            this.btnCerrarSesion.Text = "Cerrar Sesión";
+            this.btnCerrarSesion.UseVisualStyleBackColor = true;
+            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
+            // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -264,6 +293,7 @@
         private FontAwesome.Sharp.IconButton btnInicio;
         private FontAwesome.Sharp.IconButton btnProductosBodega;
         private FontAwesome.Sharp.IconButton btnPerfiles;
-        private FontAwesome.Sharp.IconButton btlUsuarios;
+        private FontAwesome.Sharp.IconButton btnUsuarios;
+        private FontAwesome.Sharp.IconButton btnCerrarSesion;
     }
 }

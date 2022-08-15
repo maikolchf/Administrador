@@ -1,4 +1,5 @@
-﻿using AdministradorEntidades.Entidades;
+﻿using administradorCompartidas;
+using AdministradorEntidades.Entidades;
 using AdministradorEntidades.Modelo;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ namespace administradorDAL
 {
     public class UsuarioDAL
     {
+        FuncionesCompartidas funcionesCompartidas = new FuncionesCompartidas();
         public Respuesta<Usuario> InsertarModificar(Usuario usuario)
         {
             Respuesta<Usuario> respuesta = new Respuesta<Usuario>();
@@ -25,7 +27,7 @@ namespace administradorDAL
                         Correo = usuario.Correo,
                         Telefono = usuario.Telefono,
                         Usuario = usuario.UsuarioLogin,
-                        Contrasenna = usuario.Contrasenna,
+                        Contrasenna = funcionesCompartidas.Encriptar(usuario.Contrasenna),
                         Estado = usuario.EstadoUsuario,
                         RolId = usuario.RolId
                     };
@@ -75,8 +77,7 @@ namespace administradorDAL
                                                      PrimerApellido = U.PrimerApellido,
                                                      SegundoApellido = U.SegundoApellido,
                                                      Telefono = U.Telefono,
-                                                     Correo = U.Correo,
-                                                     Contrasenna = U.Contrasenna,
+                                                     Correo = U.Correo,                                                     
                                                      UsuarioLogin = U.Usuario,
                                                      EstadoUsuario = U.Estado,
                                                      RolId = U.RolId,
@@ -158,6 +159,6 @@ namespace administradorDAL
                 throw oEx;
             }
             return respuesta;
-        }
+        }      
     }
 }

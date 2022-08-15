@@ -3,15 +3,17 @@
 using System.Windows.Forms;
 using AdministradorBL;
 using administradorCompartidas;
+using AdministradorEntidades.Entidades;
 
 namespace administradorFormularios
 {
     public partial class Inicio : Form
     {
         private EstadosBL estadosBL = new EstadosBL();
-        public Inicio()
+        public Inicio(Usuario usuario)
         {
             InitializeComponent();
+            Permisos(usuario);
             VariablesGlobales.estados = estadosBL.Obtener().ObjetoRespuesta;
         }       
         administradorCompartidas.LlamadosFormularios llamadosFormularios = new LlamadosFormularios();       
@@ -54,6 +56,25 @@ namespace administradorFormularios
         private void btlUsuarios_Click(object sender, EventArgs e)
         {
             llamadosFormularios.abrirFormularioHijo(new Usuarios.Usuarios(), ref panelFomularios);
+        }
+
+        private void Permisos(Usuario usuario)
+        {
+            if (usuario != null && usuario.Rol != null && usuario.Rol.Permisos != null)
+            {
+                btnProveedores.Enabled = usuario.Rol.Permisos.Proveedores;
+                btnGastos.Enabled = usuario.Rol.Permisos.Gastos;
+                btnNotasCambio.Enabled = usuario.Rol.Permisos.NotasCambio;
+                btnFacturas.Enabled = usuario.Rol.Permisos.Facturas;
+                btnProductosBodega.Enabled = usuario.Rol.Permisos.ProductosBodega;
+                btnUsuarios.Enabled = usuario.Rol.Permisos.Usuarios;
+                btnPerfiles.Enabled = usuario.Rol.Permisos.Perfiles;
+            }
+        }
+
+        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

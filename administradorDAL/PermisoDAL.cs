@@ -27,7 +27,7 @@ namespace administradorDAL
                         Perfiles = permiso.Perfiles,
                         Proveedores = permiso.Proveedores,
                         Usuarios = permiso.Usuarios,
-                        RolId = permiso.RolId,
+                        RolId = permiso.RolId,                        
                     };
 
                     if (permisos.PermisoId.Equals(0))
@@ -76,6 +76,7 @@ namespace administradorDAL
                         permisos.Perfiles = permiso.Perfiles;
                         permisos.Proveedores = permiso.Proveedores;
                         permisos.Usuarios = permiso.Usuarios;
+                        permisos.ProductosBodega = permiso.ProductosBodega;
 
                         dbContexto.Entry(permisos).CurrentValues.SetValues(permisos);
                         dbContexto.SaveChanges();

@@ -18,5 +18,7 @@ namespace AdministradorEntidades.Entidades
         public bool Usuarios { get; set; }
         public bool Perfiles { get; set; }
 
+        public bool ProductosBodega { get; set; }
+
     }
 }

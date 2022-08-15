@@ -55,6 +55,7 @@
     <Compile Include="EstadosBL.cs" />
     <Compile Include="FacturasBL.cs" />
     <Compile Include="GastosBL.cs" />
+    <Compile Include="LoginBL.cs" />
     <Compile Include="NotasCambioBL.cs" />
     <Compile Include="ProductoBodegaBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -63,6 +64,10 @@
     <Compile Include="UsuarioBL.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\administradorCompartidas\AdministradorCompartidas.csproj">
+      <Project>{500DD9DB-2759-4BC2-99E1-88E94BBBF54A}</Project>
+      <Name>AdministradorCompartidas</Name>
+    </ProjectReference>
     <ProjectReference Include="..\administradorDAL\AdministradorDAL.csproj">
       <Project>{96374609-45C9-49A9-B6D3-E4FFE320664B}</Project>
       <Name>AdministradorDAL</Name>

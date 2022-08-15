@@ -51,6 +51,7 @@
             this.lblPaginaPerfil = new System.Windows.Forms.Label();
             this.btnSiguiente = new FontAwesome.Sharp.IconButton();
             this.btnAtras = new FontAwesome.Sharp.IconButton();
+            this.chxProductosBodega = new MaterialSkin.Controls.MaterialCheckBox();
             this.pnlFormularioPerfiles.SuspendLayout();
             this.pnlPermisosPerfil.SuspendLayout();
             this.pnlVistaGrid.SuspendLayout();
@@ -154,6 +155,7 @@
             // pnlPermisosPerfil
             // 
             this.pnlPermisosPerfil.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.pnlPermisosPerfil.Controls.Add(this.chxProductosBodega);
             this.pnlPermisosPerfil.Controls.Add(this.materialLabel2);
             this.pnlPermisosPerfil.Controls.Add(this.chxPerfiles);
             this.pnlPermisosPerfil.Controls.Add(this.chxUsuarios);
@@ -185,7 +187,7 @@
             this.chxPerfiles.AutoSize = true;
             this.chxPerfiles.Depth = 0;
             this.chxPerfiles.Font = new System.Drawing.Font("Roboto", 10F);
-            this.chxPerfiles.Location = new System.Drawing.Point(13, 123);
+            this.chxPerfiles.Location = new System.Drawing.Point(271, 132);
             this.chxPerfiles.Margin = new System.Windows.Forms.Padding(0);
             this.chxPerfiles.MouseLocation = new System.Drawing.Point(-1, -1);
             this.chxPerfiles.MouseState = MaterialSkin.MouseState.HOVER;
@@ -201,7 +203,7 @@
             this.chxUsuarios.AutoSize = true;
             this.chxUsuarios.Depth = 0;
             this.chxUsuarios.Font = new System.Drawing.Font("Roboto", 10F);
-            this.chxUsuarios.Location = new System.Drawing.Point(544, 84);
+            this.chxUsuarios.Location = new System.Drawing.Point(13, 132);
             this.chxUsuarios.Margin = new System.Windows.Forms.Padding(0);
             this.chxUsuarios.MouseLocation = new System.Drawing.Point(-1, -1);
             this.chxUsuarios.MouseState = MaterialSkin.MouseState.HOVER;
@@ -217,7 +219,7 @@
             this.chxFacturas.AutoSize = true;
             this.chxFacturas.Depth = 0;
             this.chxFacturas.Font = new System.Drawing.Font("Roboto", 10F);
-            this.chxFacturas.Location = new System.Drawing.Point(271, 84);
+            this.chxFacturas.Location = new System.Drawing.Point(544, 84);
             this.chxFacturas.Margin = new System.Windows.Forms.Padding(0);
             this.chxFacturas.MouseLocation = new System.Drawing.Point(-1, -1);
             this.chxFacturas.MouseState = MaterialSkin.MouseState.HOVER;
@@ -390,6 +392,22 @@
             this.btnAtras.UseVisualStyleBackColor = true;
             this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
             // 
+            // chxProductosBodega
+            // 
+            this.chxProductosBodega.AutoSize = true;
+            this.chxProductosBodega.Depth = 0;
+            this.chxProductosBodega.Font = new System.Drawing.Font("Roboto", 10F);
+            this.chxProductosBodega.Location = new System.Drawing.Point(271, 84);
+            this.chxProductosBodega.Margin = new System.Windows.Forms.Padding(0);
+            this.chxProductosBodega.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.chxProductosBodega.MouseState = MaterialSkin.MouseState.HOVER;
+            this.chxProductosBodega.Name = "chxProductosBodega";
+            this.chxProductosBodega.Ripple = true;
+            this.chxProductosBodega.Size = new System.Drawing.Size(143, 30);
+            this.chxProductosBodega.TabIndex = 10;
+            this.chxProductosBodega.Text = "Productos bodega";
+            this.chxProductosBodega.UseVisualStyleBackColor = true;
+            // 
             // Perfiles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -437,5 +455,6 @@
         private System.Windows.Forms.ComboBox cbxEstadoPerfil;
         private MaterialSkin.Controls.MaterialLabel lblEstadoPerfil;
         private System.Windows.Forms.Label lblRolId;
+        private MaterialSkin.Controls.MaterialCheckBox chxProductosBodega;
     }
 }

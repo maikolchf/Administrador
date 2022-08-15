@@ -6,17 +6,36 @@ using System.Windows.Forms;
 
 namespace administradorFormularios
 {
-    internal static class Program
+    public class Program
     {
         /// <summary>
         /// Punto de entrada principal para la aplicación.
         /// </summary>
         [STAThread]
-        static void Main()
+        public static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Inicio());
+            InicioSistema();
+        }
+
+        public static void InicioSistema()
+        {
+            bool salir = false;
+            while (!salir)
+            {
+                Login login = new Login();
+                login.ShowDialog();
+
+                if (login.DialogResult.Equals(DialogResult.OK))
+                {
+                    Application.Run(new Inicio(login.usuarioSesion));
+                }
+                else if (login.DialogResult.Equals(DialogResult.Abort) || login.DialogResult.Equals(DialogResult.Cancel))
+                {
+                    salir = true;
+                }
+            }            
         }
     }
 }

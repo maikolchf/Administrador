@@ -48,6 +48,7 @@ namespace administradorFormularios.Perfiles
                         Perfiles = chxPerfiles.Checked,
                         Proveedores = chxProveedores.Checked,
                         Usuarios = chxUsuarios.Checked,
+                        ProductosBodega = chxProductosBodega.Checked,
                         PermisoId = ltsRoles?.Find(x => x.RolId.Equals(rolId))?.Permisos?.PermisoId ?? 0, 
                         RolId = rolId 
                     }
@@ -84,6 +85,7 @@ namespace administradorFormularios.Perfiles
             chxPerfiles.Checked = false;
             chxProveedores.Checked = false;
             chxUsuarios.Checked = false;
+            chxProductosBodega.Checked = false;
         }
 
         private bool ValidarCamposVacios()
