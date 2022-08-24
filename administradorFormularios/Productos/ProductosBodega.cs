@@ -1,5 +1,6 @@
 ﻿
 using AdministradorBL;
+using administradorCompartidas;
 using AdministradorEntidades.Entidades;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,7 @@ namespace administradorFormularios.Productos
     public partial class ProductosBodega : Form
     {
         private ProductoBodegaBL productosBL = new ProductoBodegaBL();
+        private FuncionesCompartidas funcionesCompartidas = new FuncionesCompartidas();
         private int paginaSeleccionada = 0;
         private decimal totalPaginas = 0;
         public ProductosBodega()
@@ -35,7 +37,7 @@ namespace administradorFormularios.Productos
 
             List<ProductoBodega> lista = productosBL.ObtenerProductos().ObjetoRespuesta;
 
-            lista = lista.Where(x => (filtro.CodigoProducto.Equals("") || x.CodigoProducto.Equals(filtro.CodigoProducto))
+            lista = lista.Where(x => (filtro.CodigoProducto.Equals("") || x.CodigoProducto.Contains(filtro.CodigoProducto))
                                     && (filtro.NombreProducto.Equals("") || x.NombreProducto.ToLower().Contains(filtro.NombreProducto.ToLower()))
             ).ToList();
 

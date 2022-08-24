@@ -110,7 +110,7 @@ namespace administradorFormularios.Perfiles
             totalPaginas = Math.Ceiling(totalRegistro / (decimal)CantidadRegistros);
 
             vista.Rows.Clear();
-            vista.ColumnCount = 5;
+            vista.ColumnCount = 4;
             vista.Columns[0].Name = "Nombre";
             vista.Columns[1].Name = "Estado";
 
@@ -157,24 +157,26 @@ namespace administradorFormularios.Perfiles
         }
 
         private void SeleccionarRegistro(object sender, DataGridViewCellEventArgs e)
-        {            
-            txtNombrePerfil.Text = dgvPerfiles.CurrentRow.Cells[0].Value.ToString();
-            cbxEstadoPerfil.SelectedValue = dgvPerfiles.CurrentRow.Cells[3].Value.ToString();
-            lblRolId.Text = dgvPerfiles.CurrentRow.Cells[2].Value.ToString();
-
-            Permiso permisos = ltsRoles.Find(item => item.RolId.Equals(int.Parse(dgvPerfiles.CurrentRow.Cells[2].Value.ToString())))?.Permisos;
-            if (permisos != null)
+        {
+            if (!e.RowIndex.Equals(-1))
             {
-                chxFacturas.Checked = permisos.Facturas ? true : false;
-                chxGastos.Checked = permisos.Gastos ? true : false;
-                chxInicio.Checked = permisos.Inicio ? true : false;
-                chxNotasCambio.Checked = permisos.NotasCambio ? true : false;
-                chxPerfiles.Checked = permisos.Perfiles ? true : false;
-                chxProveedores.Checked = permisos.Proveedores ? true : false;
-                chxUsuarios.Checked = permisos.Usuarios ? true : false;
-            }
-           
+                txtNombrePerfil.Text = dgvPerfiles.CurrentRow.Cells[0].Value.ToString();
+                cbxEstadoPerfil.SelectedValue = dgvPerfiles.CurrentRow.Cells[3].Value.ToString();
+                lblRolId.Text = dgvPerfiles.CurrentRow.Cells[2].Value.ToString();
 
+                Permiso permisos = ltsRoles.Find(item => item.RolId.Equals(int.Parse(dgvPerfiles.CurrentRow.Cells[2].Value.ToString())))?.Permisos;
+                if (permisos != null)
+                {
+                    chxFacturas.Checked = permisos.Facturas ? true : false;
+                    chxGastos.Checked = permisos.Gastos ? true : false;
+                    chxInicio.Checked = permisos.Inicio ? true : false;
+                    chxNotasCambio.Checked = permisos.NotasCambio ? true : false;
+                    chxPerfiles.Checked = permisos.Perfiles ? true : false;
+                    chxProveedores.Checked = permisos.Proveedores ? true : false;
+                    chxUsuarios.Checked = permisos.Usuarios ? true : false;
+                    chxProductosBodega.Checked = permisos.ProductosBodega ? true : false;
+                }
+            }                     
         }
 
         private void btnLimpiarPerfil_Click(object sender, EventArgs e)

@@ -117,14 +117,17 @@ namespace administradorFormularios.NotasCambio
 
         private void SeleccionarRegistro(object sender, DataGridViewCellEventArgs e)
         {
-            txtCodigoProducto.Text = dtProductos.CurrentRow.Cells[0].Value.ToString();
-            txtNombreProducto.Text = dtProductos.CurrentRow.Cells[1].Value.ToString();
-            txtPrecioProductos.Text = dtProductos.CurrentRow.Cells[2].Value.ToString();
-            txtCantidadProductos.Text = dtProductos.CurrentRow.Cells[3].Value.ToString();
-            txtDescripcionProducto.Text = dtProductos.CurrentRow.Cells[4].Value.ToString();
-            lblIdProductosNC.Text = dtProductos.CurrentRow.Cells[5].Value.ToString();
-            lblIdProductoNC.Text = dtProductos.CurrentRow.Cells[6].Value.ToString();
-            lblIdProducto.Text = dtProductos.CurrentRow.Cells[7].Value.ToString();
+            if (!e.RowIndex.Equals(-1))
+            {
+                txtCodigoProducto.Text = dtProductos.CurrentRow.Cells[0].Value.ToString();
+                txtNombreProducto.Text = dtProductos.CurrentRow.Cells[1].Value.ToString();
+                txtPrecioProductos.Text = dtProductos.CurrentRow.Cells[2].Value.ToString();
+                txtCantidadProductos.Text = dtProductos.CurrentRow.Cells[3].Value.ToString();
+                txtDescripcionProducto.Text = dtProductos.CurrentRow.Cells[4].Value.ToString();
+                lblIdProductosNC.Text = dtProductos.CurrentRow.Cells[5].Value.ToString();
+                lblIdProductoNC.Text = dtProductos.CurrentRow.Cells[6].Value.ToString();
+                lblIdProducto.Text = dtProductos.CurrentRow.Cells[7].Value.ToString();
+            }           
         }
 
         private void txtPrecioProductos_KeyPress(object sender, KeyPressEventArgs e)

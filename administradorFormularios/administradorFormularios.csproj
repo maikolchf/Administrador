@@ -110,6 +110,12 @@
     <Compile Include="Perfiles\Perfiles.Designer.cs">
       <DependentUpon>Perfiles.cs</DependentUpon>
     </Compile>
+    <Compile Include="Principal\Principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Principal\Principal.Designer.cs">
+      <DependentUpon>Principal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Productos\ProductosBodega.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Perfiles\Perfiles.resx">
       <DependentUpon>Perfiles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Principal\Principal.resx">
+      <DependentUpon>Principal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Productos\ProductosBodega.resx">
       <DependentUpon>ProductosBodega.cs</DependentUpon>

@@ -34,9 +34,10 @@ namespace administradorFormularios.Usuarios
 
         private void btnGuardarUsuario_Click(object sender, EventArgs e)
         {
-            if (ValidarCamposVacios())
+            var validarCampos = ValidarCamposVacios();
+            if (validarCampos.ObjetoRespuesta)
             {
-                if (!ltsUsuarios.Exists(x => x.UsuarioLogin.Equals(txtUsuario.Text) && x.EstadoUsuario.Equals(Constantes.EstadosDefaul.Activo) 
+                if (!ltsUsuarios.Exists(x => x.UsuarioLogin.Equals(txtUsuario.Text) && x.EstadoUsuario.Equals(Constantes.EstadosDefaul.Activo)
                     && !x.UsuarioId.Equals(lblIdUsuario.Text.Equals("") ? 0 : Convert.ToInt32(lblIdUsuario.Text))))
                 {
                     Usuario usuario = new Usuario
@@ -74,13 +75,13 @@ namespace administradorFormularios.Usuarios
             }
             else
             {
-                MessageBox.Show("Debe de rellenar todos los campos");
+                MessageBox.Show(validarCampos.Mensaje);
             }
         }
 
         private void txtTelefonoUsuario_KeyPress(object sender, KeyPressEventArgs e)
         {
-            funcionesCompartidas.TextBoxNumeros(ref e);
+            funcionesCompartidas.TextBoxTelefonos(ref e);
         }
 
         private void RellenarComboboxRoles()
@@ -100,7 +101,7 @@ namespace administradorFormularios.Usuarios
 
         }
 
-        private bool ValidarCamposVacios()
+        private Respuesta<bool> ValidarCamposVacios()
         {
             if (!txtNombreUsuario.Text.Trim().Equals(string.Empty) &&
                 !txtApellidoUno.Text.Trim().Equals(string.Empty) &&
@@ -110,14 +111,28 @@ namespace administradorFormularios.Usuarios
                 !txtUsuario.Text.Trim().Equals(string.Empty) &&
                 !txtContrasennaUsuario.Text.Trim().Equals(string.Empty) &&
                 !cbxEstadoUsuario.SelectedIndex.Equals(-1) &&
-                !cbxRolUsuario.SelectedIndex.Equals(-1)
+                !cbxRolUsuario.SelectedIndex.Equals(-1)                
                 )
             {
-                return true;
+                if (txtTelefonoUsuario.Text.Count() <= 8)
+                    return new Respuesta<bool>
+                    {
+                        ObjetoRespuesta = false,
+                        Mensaje = "Numero telefónico tiene que ser mínimo de 8 dígitos"
+                    };
+
+                return new Respuesta<bool>
+                {
+                    ObjetoRespuesta = true
+                };
             }
             else
             {
-                return false;
+                return new Respuesta<bool>
+                {
+                    ObjetoRespuesta = false,
+                    Mensaje = "Debe de rellenar todos los campos"
+                };
             }
         }
 
@@ -142,24 +157,26 @@ namespace administradorFormularios.Usuarios
 
         private void SeleccionarRegistro(object sender, DataGridViewCellEventArgs e)
         {
-            int idUsuario = Convert.ToInt32(dgvUsuarios.CurrentRow.Cells[6].Value);
-
-            var usuario = ltsUsuarios.Find(x => x.UsuarioId.Equals(idUsuario));
-
-            if (usuario != null)
+            if (!e.RowIndex.Equals(-1))
             {
-                lblIdUsuario.Text = usuario.UsuarioId.ToString();
-                txtNombreUsuario.Text = usuario.NombreUsuario;
-                txtApellidoUno.Text = usuario.PrimerApellido;
-                txtApellidoDos.Text = usuario.SegundoApellido;
-                txtTelefonoUsuario.Text = usuario.Telefono;
-                txtCorreoUsuario.Text = usuario.Correo;
-                txtUsuario.Text = usuario.UsuarioLogin;
-                txtContrasennaUsuario.Text = usuario.Contrasenna;
-                cbxRolUsuario.SelectedValue = usuario.RolId;
-                cbxEstadoUsuario.SelectedValue = usuario.EstadoUsuario;
-            }
+                int idUsuario = Convert.ToInt32(dgvUsuarios.CurrentRow.Cells[6].Value);
 
+                var usuario = ltsUsuarios.Find(x => x.UsuarioId.Equals(idUsuario));
+
+                if (usuario != null)
+                {
+                    lblIdUsuario.Text = usuario.UsuarioId.ToString();
+                    txtNombreUsuario.Text = usuario.NombreUsuario;
+                    txtApellidoUno.Text = usuario.PrimerApellido;
+                    txtApellidoDos.Text = usuario.SegundoApellido;
+                    txtTelefonoUsuario.Text = usuario.Telefono;
+                    txtCorreoUsuario.Text = usuario.Correo;
+                    txtUsuario.Text = usuario.UsuarioLogin;
+                    txtContrasennaUsuario.Text = usuario.Contrasenna;
+                    cbxRolUsuario.SelectedValue = usuario.RolId;
+                    cbxEstadoUsuario.SelectedValue = usuario.EstadoUsuario;
+                }
+            }            
         }
 
         private void RellenarGrid(ref DataGridView vista, int paginaSeleccionada = 0)
@@ -202,10 +219,10 @@ namespace administradorFormularios.Usuarios
         {
 
 
-            if (txtContrasennaUsuario.UseSystemPasswordChar) 
+            if (txtContrasennaUsuario.UseSystemPasswordChar)
             {
                 txtContrasennaUsuario.UseSystemPasswordChar = false;
-                btnMostrarContraseña.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;                
+                btnMostrarContraseña.IconChar = FontAwesome.Sharp.IconChar.EyeSlash;
             }
             else
             {

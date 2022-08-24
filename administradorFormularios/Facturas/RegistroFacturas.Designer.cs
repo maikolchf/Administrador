@@ -41,15 +41,15 @@
             this.lblProveedorFactura = new MaterialSkin.Controls.MaterialLabel();
             this.lblCOnsecutivoFactura = new MaterialSkin.Controls.MaterialLabel();
             this.pnGridFacturas = new System.Windows.Forms.Panel();
+            this.dgvFacturas = new System.Windows.Forms.DataGridView();
             this.pnlPaginado = new System.Windows.Forms.Panel();
             this.lblPaginaGasto = new System.Windows.Forms.Label();
             this.btnSiguiente = new FontAwesome.Sharp.IconButton();
             this.btnAtras = new FontAwesome.Sharp.IconButton();
-            this.dgvFacturas = new System.Windows.Forms.DataGridView();
             this.pnFormularioFactura.SuspendLayout();
             this.pnGridFacturas.SuspendLayout();
-            this.pnlPaginado.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).BeginInit();
+            this.pnlPaginado.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnFormularioFactura
@@ -223,6 +223,24 @@
             this.pnGridFacturas.Size = new System.Drawing.Size(678, 415);
             this.pnGridFacturas.TabIndex = 1;
             // 
+            // dgvFacturas
+            // 
+            this.dgvFacturas.AllowUserToAddRows = false;
+            this.dgvFacturas.AllowUserToDeleteRows = false;
+            this.dgvFacturas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvFacturas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvFacturas.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvFacturas.BackgroundColor = System.Drawing.Color.White;
+            this.dgvFacturas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvFacturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvFacturas.Location = new System.Drawing.Point(3, 3);
+            this.dgvFacturas.Name = "dgvFacturas";
+            this.dgvFacturas.Size = new System.Drawing.Size(672, 370);
+            this.dgvFacturas.TabIndex = 4;
+            this.dgvFacturas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SeleccionarRegistro);
+            // 
             // pnlPaginado
             // 
             this.pnlPaginado.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -277,23 +295,6 @@
             this.btnAtras.UseVisualStyleBackColor = true;
             this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
             // 
-            // dgvFacturas
-            // 
-            this.dgvFacturas.AllowUserToAddRows = false;
-            this.dgvFacturas.AllowUserToDeleteRows = false;
-            this.dgvFacturas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvFacturas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvFacturas.BackgroundColor = System.Drawing.Color.White;
-            this.dgvFacturas.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvFacturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvFacturas.Location = new System.Drawing.Point(3, 3);
-            this.dgvFacturas.Name = "dgvFacturas";
-            this.dgvFacturas.Size = new System.Drawing.Size(672, 370);
-            this.dgvFacturas.TabIndex = 4;
-            this.dgvFacturas.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SeleccionarRegistro);
-            // 
             // RegistroFacturas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -307,9 +308,9 @@
             this.pnFormularioFactura.ResumeLayout(false);
             this.pnFormularioFactura.PerformLayout();
             this.pnGridFacturas.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).EndInit();
             this.pnlPaginado.ResumeLayout(false);
             this.pnlPaginado.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvFacturas)).EndInit();
             this.ResumeLayout(false);
 
         }

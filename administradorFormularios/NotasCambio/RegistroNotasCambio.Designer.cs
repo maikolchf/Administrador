@@ -191,6 +191,7 @@
             // dtFechaEmisionNC
             // 
             this.dtFechaEmisionNC.Location = new System.Drawing.Point(520, 17);
+            this.dtFechaEmisionNC.MaxDate = new System.DateTime(2022, 8, 23, 18, 46, 35, 289);
             this.dtFechaEmisionNC.Name = "dtFechaEmisionNC";
             this.dtFechaEmisionNC.Size = new System.Drawing.Size(150, 20);
             this.dtFechaEmisionNC.TabIndex = 3;
@@ -364,7 +365,6 @@
             this.dtNotasCambio.BackgroundColor = System.Drawing.Color.White;
             this.dtNotasCambio.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtNotasCambio.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtNotasCambio.GridColor = System.Drawing.Color.White;
             this.dtNotasCambio.Location = new System.Drawing.Point(3, 3);
             this.dtNotasCambio.Name = "dtNotasCambio";
             this.dtNotasCambio.Size = new System.Drawing.Size(673, 325);

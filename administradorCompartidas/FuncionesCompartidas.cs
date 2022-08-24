@@ -51,6 +51,14 @@ namespace administradorCompartidas
             }
         }
 
+        public void TextBoxTelefonos(ref KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '+')
+            {
+                e.Handled = true;
+            }
+        }
+
         public void TextBoxNumerosDecimales(ref KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != ',')

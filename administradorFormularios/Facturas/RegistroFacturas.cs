@@ -149,11 +149,14 @@ namespace administradorFormularios.Facturas
 
         private void SeleccionarRegistro(object sender, DataGridViewCellEventArgs e)
         {
-            txtConsecutivoFactura.Text = dgvFacturas.CurrentRow.Cells[0].Value.ToString();
-            cbxProveedorFactura.SelectedValue = dgvFacturas.CurrentRow.Cells[6].Value.ToString();            
-            txtMontoFactura.Text = dgvFacturas.CurrentRow.Cells[3].Value.ToString();
-            cbxEstadoFactura.SelectedValue = dgvFacturas.CurrentRow.Cells[7].Value.ToString();
-            lblIdFactura.Text = dgvFacturas.CurrentRow.Cells[5].Value.ToString();           
+            if (!e.RowIndex.Equals(-1))
+            {
+                txtConsecutivoFactura.Text = dgvFacturas.CurrentRow.Cells[0].Value.ToString();
+                cbxProveedorFactura.SelectedValue = dgvFacturas.CurrentRow.Cells[6].Value.ToString();
+                txtMontoFactura.Text = dgvFacturas.CurrentRow.Cells[3].Value.ToString();
+                cbxEstadoFactura.SelectedValue = dgvFacturas.CurrentRow.Cells[7].Value.ToString();
+                lblIdFactura.Text = dgvFacturas.CurrentRow.Cells[5].Value.ToString();
+            }                      
         }
         private void btnSiguiente_Click(object sender, EventArgs e)
         {

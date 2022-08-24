@@ -36,6 +36,7 @@
             this.btnGuardarPerfil = new FontAwesome.Sharp.IconButton();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.pnlPermisosPerfil = new System.Windows.Forms.Panel();
+            this.chxProductosBodega = new MaterialSkin.Controls.MaterialCheckBox();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.chxPerfiles = new MaterialSkin.Controls.MaterialCheckBox();
             this.chxUsuarios = new MaterialSkin.Controls.MaterialCheckBox();
@@ -51,7 +52,6 @@
             this.lblPaginaPerfil = new System.Windows.Forms.Label();
             this.btnSiguiente = new FontAwesome.Sharp.IconButton();
             this.btnAtras = new FontAwesome.Sharp.IconButton();
-            this.chxProductosBodega = new MaterialSkin.Controls.MaterialCheckBox();
             this.pnlFormularioPerfiles.SuspendLayout();
             this.pnlPermisosPerfil.SuspendLayout();
             this.pnlVistaGrid.SuspendLayout();
@@ -168,6 +168,22 @@
             this.pnlPermisosPerfil.Name = "pnlPermisosPerfil";
             this.pnlPermisosPerfil.Size = new System.Drawing.Size(639, 162);
             this.pnlPermisosPerfil.TabIndex = 2;
+            // 
+            // chxProductosBodega
+            // 
+            this.chxProductosBodega.AutoSize = true;
+            this.chxProductosBodega.Depth = 0;
+            this.chxProductosBodega.Font = new System.Drawing.Font("Roboto", 10F);
+            this.chxProductosBodega.Location = new System.Drawing.Point(271, 84);
+            this.chxProductosBodega.Margin = new System.Windows.Forms.Padding(0);
+            this.chxProductosBodega.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.chxProductosBodega.MouseState = MaterialSkin.MouseState.HOVER;
+            this.chxProductosBodega.Name = "chxProductosBodega";
+            this.chxProductosBodega.Ripple = true;
+            this.chxProductosBodega.Size = new System.Drawing.Size(144, 30);
+            this.chxProductosBodega.TabIndex = 10;
+            this.chxProductosBodega.Text = "Productos Bodega";
+            this.chxProductosBodega.UseVisualStyleBackColor = true;
             // 
             // materialLabel2
             // 
@@ -331,7 +347,6 @@
             this.dgvPerfiles.BackgroundColor = System.Drawing.Color.White;
             this.dgvPerfiles.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvPerfiles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPerfiles.GridColor = System.Drawing.Color.White;
             this.dgvPerfiles.Location = new System.Drawing.Point(4, 3);
             this.dgvPerfiles.Name = "dgvPerfiles";
             this.dgvPerfiles.Size = new System.Drawing.Size(672, 281);
@@ -391,22 +406,6 @@
             this.btnAtras.TabIndex = 0;
             this.btnAtras.UseVisualStyleBackColor = true;
             this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
-            // 
-            // chxProductosBodega
-            // 
-            this.chxProductosBodega.AutoSize = true;
-            this.chxProductosBodega.Depth = 0;
-            this.chxProductosBodega.Font = new System.Drawing.Font("Roboto", 10F);
-            this.chxProductosBodega.Location = new System.Drawing.Point(271, 84);
-            this.chxProductosBodega.Margin = new System.Windows.Forms.Padding(0);
-            this.chxProductosBodega.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.chxProductosBodega.MouseState = MaterialSkin.MouseState.HOVER;
-            this.chxProductosBodega.Name = "chxProductosBodega";
-            this.chxProductosBodega.Ripple = true;
-            this.chxProductosBodega.Size = new System.Drawing.Size(143, 30);
-            this.chxProductosBodega.TabIndex = 10;
-            this.chxProductosBodega.Text = "Productos bodega";
-            this.chxProductosBodega.UseVisualStyleBackColor = true;
             // 
             // Perfiles
             // 

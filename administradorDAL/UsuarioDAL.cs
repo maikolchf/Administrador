@@ -139,7 +139,7 @@ namespace administradorDAL
                         usuarioMod.Correo = usuario.Correo;
                         usuarioMod.Telefono = usuario.Telefono;
                         usuarioMod.Usuario = usuario.UsuarioLogin;
-                        usuarioMod.Contrasenna = usuario.Contrasenna;
+                        usuarioMod.Contrasenna = funcionesCompartidas.Encriptar(usuario.Contrasenna);
                         usuarioMod.Estado = usuario.EstadoUsuario;
                         usuarioMod.RolId = usuario.RolId;
 
