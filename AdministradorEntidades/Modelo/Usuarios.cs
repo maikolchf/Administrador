@@ -24,6 +24,8 @@ namespace AdministradorEntidades.Modelo
         public string Contrasenna { get; set; }
         public string Usuario { get; set; }
         public string Estado { get; set; }
+        public System.DateTime FechaGeneraToken { get; set; }
+        public string Token { get; set; }
     
         public virtual Roles Roles { get; set; }
     }

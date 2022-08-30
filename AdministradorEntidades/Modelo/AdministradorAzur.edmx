@@ -117,6 +117,8 @@
           <Property Name="Contrasenna" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="Usuario" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Estado" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="FechaGeneraToken" Type="date" Nullable="false" />
+          <Property Name="Token" Type="varchar" MaxLength="250" Nullable="false" />
         </EntityType>
         <Association Name="Factura_FK_Estado">
           <End Role="Estados" Type="Self.Estados" Multiplicity="1" />
@@ -524,6 +526,8 @@
           <Property Name="Usuario" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Roles" Relationship="AdministradorAzurModel.Usuarios_FK_Roles" FromRole="Usuarios" ToRole="Roles" />
           <Property Name="Estado" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="FechaGeneraToken" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Token" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="Usuarios_FK_Roles">
           <End Type="AdministradorAzurModel.Roles" Role="Roles" Multiplicity="1" />
@@ -665,7 +669,9 @@
     <EntitySetMapping Name="Usuarios">
       <EntityTypeMapping TypeName="IsTypeOf(AdministradorAzurModel.Usuarios)">
         <MappingFragment StoreEntitySet="Usuarios">
-          <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+          <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="FechaGeneraToken" ColumnName="FechaGeneraToken" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
           <ScalarProperty Name="RolId" ColumnName="RolId" />
           <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
           <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />

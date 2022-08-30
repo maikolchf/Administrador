@@ -85,6 +85,7 @@ namespace administradorFormularios
             this.linklblOlvidoContrasenna.TabIndex = 7;
             this.linklblOlvidoContrasenna.TabStop = true;
             this.linklblOlvidoContrasenna.Text = "¿Olvido la contraseña?";
+            this.linklblOlvidoContrasenna.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklblOlvidoContrasenna_LinkClicked);
             // 
             // icnContrasenna
             // 

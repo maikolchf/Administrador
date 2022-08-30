@@ -27,7 +27,8 @@ namespace administradorDAL
                         Correo = usuario.Correo,
                         Telefono = usuario.Telefono,
                         Usuario = usuario.UsuarioLogin,
-                        Contrasenna = funcionesCompartidas.Encriptar(usuario.Contrasenna),
+                        Contrasenna = usuario.Contrasenna != null ? funcionesCompartidas.Encriptar(usuario.Contrasenna)
+                                                                   : null,
                         Estado = usuario.EstadoUsuario,
                         RolId = usuario.RolId
                     };
@@ -107,7 +108,9 @@ namespace administradorDAL
                                                          }
                                                      }
                                                  }).Where(e => (filtro.UsuarioId.Equals(0)
-                                                   || (e.RolId.Equals(filtro.RolId))))
+                                                   || (e.RolId.Equals(filtro.RolId))) && 
+                                                   ( string.IsNullOrEmpty(filtro.Correo)) ||
+                                                   e.Correo.Equals(filtro.Correo))
                                                  .ToList();
                 }
             }
@@ -139,9 +142,13 @@ namespace administradorDAL
                         usuarioMod.Correo = usuario.Correo;
                         usuarioMod.Telefono = usuario.Telefono;
                         usuarioMod.Usuario = usuario.UsuarioLogin;
-                        usuarioMod.Contrasenna = funcionesCompartidas.Encriptar(usuario.Contrasenna);
+                        usuarioMod.Contrasenna = usuario.Contrasenna != null ? funcionesCompartidas.Encriptar(usuario.Contrasenna) 
+                                                                             : usuarioMod.Contrasenna;
                         usuarioMod.Estado = usuario.EstadoUsuario;
                         usuarioMod.RolId = usuario.RolId;
+                        usuarioMod.Token = usuario.Token != null ? funcionesCompartidas.Encriptar(usuario.Token)
+                                                                 : string.Empty;
+                        usuarioMod.FechaGeneraToken = usuario.FechaGeneraToken;
 
                         dbContexto.Entry(usuarioMod).CurrentValues.SetValues(usuarioMod);
                         dbContexto.SaveChanges();
@@ -159,6 +166,6 @@ namespace administradorDAL
                 throw oEx;
             }
             return respuesta;
-        }      
+        }         
     }
 }

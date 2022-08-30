@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constantes.cs" />
+    <Compile Include="Correo.cs" />
     <Compile Include="FuncionesCompartidas.cs" />
     <Compile Include="LlamadosFormularios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

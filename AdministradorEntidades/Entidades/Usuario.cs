@@ -19,6 +19,10 @@ namespace AdministradorEntidades.Entidades
         public string UsuarioLogin { get; set; }
         public string EstadoUsuario { get; set; }
 
+        public DateTime FechaGeneraToken { get; set; }
+
+        public string Token { get; set; }
+
         public Estado Estado { get; set; }
 
         public Rol Rol { get; set; }

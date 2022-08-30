@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -107,6 +108,25 @@ namespace administradorCompartidas
             stream = sha256.ComputeHash(aSCIIEncoding.GetBytes(texto));
             for (int i = 0; i < stream.Length; i++) sb.AppendFormat("{0:x2}", stream[i]);
             return sb.ToString();
+        }
+
+        public string GenerarRandom(int minimo = 0, int maximo = 0)
+        {
+            Random random = new Random();
+            return random.Next(minimo, maximo).ToString();
+        }
+
+        public bool CorreoValido(string correo)
+        {
+            try
+            {
+                var email = new MailAddress(correo);
+                return email.Address == correo;
+            }
+            catch (Exception oEx)
+            {
+                return false;
+            }
         }
     }    
 }

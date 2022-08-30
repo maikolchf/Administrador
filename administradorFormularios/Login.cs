@@ -1,4 +1,5 @@
 ﻿using AdministradorBL;
+using administradorCompartidas;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -84,6 +85,12 @@ namespace administradorFormularios
         private void Login_FormClosing(object sender, FormClosingEventArgs e)
         {
             
+        }
+
+        private void linklblOlvidoContrasenna_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            CambioContrasenna.CambioContrasenna cambioContrasenna = new CambioContrasenna.CambioContrasenna();
+            cambioContrasenna.Show();
         }
     }
 }

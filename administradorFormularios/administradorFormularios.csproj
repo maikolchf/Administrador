@@ -68,6 +68,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CambioContrasenna\CambioContrasenna.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CambioContrasenna\CambioContrasenna.Designer.cs">
+      <DependentUpon>CambioContrasenna.cs</DependentUpon>
+    </Compile>
     <Compile Include="Facturas\RegistroFacturas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +142,9 @@
     <Compile Include="Usuarios\Usuarios.Designer.cs">
       <DependentUpon>Usuarios.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CambioContrasenna\CambioContrasenna.resx">
+      <DependentUpon>CambioContrasenna.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Facturas\RegistroFacturas.resx">
       <DependentUpon>RegistroFacturas.cs</DependentUpon>
     </EmbeddedResource>
