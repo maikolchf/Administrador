@@ -83,6 +83,7 @@ namespace administradorDAL
                                                      EstadoUsuario = U.Estado,
                                                      RolId = U.RolId,
                                                      UsuarioId = U.UsuarioId,
+                                                     Token = U.Token,
                                                      Estado = new Estado
                                                      {
                                                          EstadoCodigo = E.EstadoCodigo,
@@ -109,8 +110,10 @@ namespace administradorDAL
                                                      }
                                                  }).Where(e => (filtro.UsuarioId.Equals(0)
                                                    || (e.RolId.Equals(filtro.RolId))) && 
-                                                   ( string.IsNullOrEmpty(filtro.Correo)) ||
-                                                   e.Correo.Equals(filtro.Correo))
+                                                   ( string.IsNullOrEmpty(filtro.Correo) ||
+                                                   e.Correo.Equals(filtro.Correo)) &&
+                                                   (string.IsNullOrEmpty(filtro.Token) 
+                                                   || e.Token.Equals(filtro.Token)))
                                                  .ToList();
                 }
             }

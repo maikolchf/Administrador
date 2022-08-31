@@ -67,7 +67,7 @@ namespace administradorFormularios.CambioContrasenna
 
                             if (!respuesta.HayError)
                             {
-                                // abrimos form de cambiar contraseña
+                                MessageBox.Show("Se ah enviado un token al correo " +correoBuscar + ".");
                             }
                             else
                             {
@@ -87,7 +87,42 @@ namespace administradorFormularios.CambioContrasenna
             }
             catch (Exception oEx)
             {
+                MessageBox.Show(oEx.Message);
+            }
+        }
 
+        private void btnValidarToken_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var correoBuscar = txtCorreoValidar.Text;
+                var token = txtToken.Text;
+
+                if (string.IsNullOrEmpty(token))
+                {
+                    MessageBox.Show("Debe de ingresar el correo electrónico del usuario y el token enviado anteriormente.");
+                }
+                else
+                {
+                    token = funcionesCompartidas.Encriptar(txtToken.Text);
+                    var usuario = usuariosBL.Obtener(new AdministradorEntidades.Entidades.Usuario { Correo = correoBuscar, Token = token });
+
+                    if (usuario.ObjetoRespuesta.Count() > 0)
+                    {
+                        //abrimos form de cambio de contraseña
+                        NuevaContrasenna nuevaContrasenna = new NuevaContrasenna(usuario.ObjetoRespuesta.FirstOrDefault());
+                        nuevaContrasenna.Show();
+                        this.Dispose();
+                    }
+                    else
+                    {
+                        MessageBox.Show("El token ingresado no es correcto o ya fue utilizado.");
+                    }
+                }                
+            }
+            catch (Exception oEx)
+            {
+                MessageBox.Show(oEx.Message);
             }
         }
     }

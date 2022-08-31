@@ -74,6 +74,12 @@
     <Compile Include="CambioContrasenna\CambioContrasenna.Designer.cs">
       <DependentUpon>CambioContrasenna.cs</DependentUpon>
     </Compile>
+    <Compile Include="CambioContrasenna\NuevaContrasenna.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CambioContrasenna\NuevaContrasenna.Designer.cs">
+      <DependentUpon>NuevaContrasenna.cs</DependentUpon>
+    </Compile>
     <Compile Include="Facturas\RegistroFacturas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -144,6 +150,9 @@
     </Compile>
     <EmbeddedResource Include="CambioContrasenna\CambioContrasenna.resx">
       <DependentUpon>CambioContrasenna.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CambioContrasenna\NuevaContrasenna.resx">
+      <DependentUpon>NuevaContrasenna.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Facturas\RegistroFacturas.resx">
       <DependentUpon>RegistroFacturas.cs</DependentUpon>
