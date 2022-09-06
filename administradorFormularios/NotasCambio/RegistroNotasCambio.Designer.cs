@@ -191,7 +191,7 @@
             // dtFechaEmisionNC
             // 
             this.dtFechaEmisionNC.Location = new System.Drawing.Point(520, 17);
-            this.dtFechaEmisionNC.MaxDate = new System.DateTime(2022, 8, 23, 18, 46, 35, 289);
+            this.dtFechaEmisionNC.MaxDate = new System.DateTime(2022, 9, 5, 19, 29, 18, 423);
             this.dtFechaEmisionNC.Name = "dtFechaEmisionNC";
             this.dtFechaEmisionNC.Size = new System.Drawing.Size(150, 20);
             this.dtFechaEmisionNC.TabIndex = 3;

@@ -51,7 +51,10 @@ namespace administradorFormularios.Usuarios
                         UsuarioLogin = txtUsuario.Text,
                         Contrasenna = txtContrasennaUsuario.Text,
                         EstadoUsuario = cbxEstadoUsuario.SelectedValue.ToString(),
-                        RolId = (int)cbxRolUsuario.SelectedValue
+                        RolId = (int)cbxRolUsuario.SelectedValue,
+                        FechaGeneraToken = DateTime.Now,
+                        Token = string.Empty,
+                        modificarContrasenna = chkModificarContrasenna.Checked
                     };
 
                     Respuesta<Usuario> respuesta = usuarioBL.InsertarModificar(usuario); // insertar o actualizar neuvo usuario
@@ -108,18 +111,26 @@ namespace administradorFormularios.Usuarios
                 !txtApellidoDos.Text.Trim().Equals(string.Empty) &&
                 !txtCorreoUsuario.Text.Trim().Equals(string.Empty) &&
                 !txtTelefonoUsuario.Text.Trim().Equals(string.Empty) &&
-                !txtUsuario.Text.Trim().Equals(string.Empty) &&
-                !txtContrasennaUsuario.Text.Trim().Equals(string.Empty) &&
+                !txtUsuario.Text.Trim().Equals(string.Empty) &&                
                 !cbxEstadoUsuario.SelectedIndex.Equals(-1) &&
                 !cbxRolUsuario.SelectedIndex.Equals(-1)                
                 )
             {
-                if (txtTelefonoUsuario.Text.Count() <= 8)
+                if (txtTelefonoUsuario.Text.Count() <= 7)
                     return new Respuesta<bool>
                     {
                         ObjetoRespuesta = false,
-                        Mensaje = "Numero telefónico tiene que ser mínimo de 8 dígitos"
+                        Mensaje = "Numero telefónico tiene que ser mínimo de 8 dígitos."
                     };
+
+                if (txtContrasennaUsuario.Text.Trim().Equals(string.Empty) && chkModificarContrasenna.Checked)
+                {
+                    return new Respuesta<bool>
+                    {
+                        ObjetoRespuesta = false,
+                        Mensaje = "Debe de ingresar la nueva contraseña."
+                    };
+                }
 
                 return new Respuesta<bool>
                 {
@@ -131,13 +142,16 @@ namespace administradorFormularios.Usuarios
                 return new Respuesta<bool>
                 {
                     ObjetoRespuesta = false,
-                    Mensaje = "Debe de rellenar todos los campos"
+                    Mensaje = "Debe de rellenar todos los campos."
                 };
             }
         }
 
         public void LimpiarCampos()
         {
+            chkModificarContrasenna.Visible = false;
+            chkModificarContrasenna.Checked = false;
+            txtContrasennaUsuario.Enabled = true;
             lblIdUsuario.Text = string.Empty;
             txtNombreUsuario.Text = string.Empty;
             txtApellidoUno.Text = string.Empty;
@@ -159,6 +173,9 @@ namespace administradorFormularios.Usuarios
         {
             if (!e.RowIndex.Equals(-1))
             {
+                chkModificarContrasenna.Visible = true;
+                chkModificarContrasenna.Checked = false;
+                txtContrasennaUsuario.Enabled = false;
                 int idUsuario = Convert.ToInt32(dgvUsuarios.CurrentRow.Cells[6].Value);
 
                 var usuario = ltsUsuarios.Find(x => x.UsuarioId.Equals(idUsuario));
@@ -230,6 +247,14 @@ namespace administradorFormularios.Usuarios
                 btnMostrarContraseña.IconChar = FontAwesome.Sharp.IconChar.Eye;
             }
 
+        }
+
+        private void chkModificarContrasenna_CheckedChanged(object sender, EventArgs e)
+        {
+            if(chkModificarContrasenna.Checked)
+                txtContrasennaUsuario.Enabled = true;
+            else
+                txtContrasennaUsuario.Enabled = false;
         }
     }
 }

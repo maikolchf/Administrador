@@ -26,5 +26,7 @@ namespace AdministradorEntidades.Entidades
         public Estado Estado { get; set; }
 
         public Rol Rol { get; set; }
+
+        public bool modificarContrasenna { get; set; }
     }
 }

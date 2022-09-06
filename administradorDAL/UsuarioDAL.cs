@@ -30,7 +30,9 @@ namespace administradorDAL
                         Contrasenna = usuario.Contrasenna != null ? funcionesCompartidas.Encriptar(usuario.Contrasenna)
                                                                    : null,
                         Estado = usuario.EstadoUsuario,
-                        RolId = usuario.RolId
+                        RolId = usuario.RolId,
+                        FechaGeneraToken = usuario.FechaGeneraToken,
+                        Token = usuario.Token,
                     };
 
                     if (usuario.UsuarioId.Equals(0))
@@ -138,6 +140,8 @@ namespace administradorDAL
                                       select x).FirstOrDefault();
                     if (usuarioMod != null)
                     {
+                        if (!usuario.modificarContrasenna)
+                            usuario.Contrasenna = null;
 
                         usuarioMod.NombreUsuario = usuario.NombreUsuario;
                         usuarioMod.PrimerApellido = usuario.PrimerApellido;

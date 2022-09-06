@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.pnlFormularioUsuario = new System.Windows.Forms.Panel();
+            this.lblIdUsuario = new System.Windows.Forms.Label();
             this.btnMostrarContraseña = new FontAwesome.Sharp.IconButton();
             this.cbxEstadoUsuario = new System.Windows.Forms.ComboBox();
             this.cbxRolUsuario = new System.Windows.Forms.ComboBox();
@@ -56,7 +57,7 @@
             this.lblPaginaUsuario = new System.Windows.Forms.Label();
             this.btnSiguiente = new FontAwesome.Sharp.IconButton();
             this.btnAtras = new FontAwesome.Sharp.IconButton();
-            this.lblIdUsuario = new System.Windows.Forms.Label();
+            this.chkModificarContrasenna = new MaterialSkin.Controls.MaterialCheckBox();
             this.pnlFormularioUsuario.SuspendLayout();
             this.pnlVistaGridUsuarios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
@@ -66,6 +67,7 @@
             // pnlFormularioUsuario
             // 
             this.pnlFormularioUsuario.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pnlFormularioUsuario.Controls.Add(this.chkModificarContrasenna);
             this.pnlFormularioUsuario.Controls.Add(this.lblIdUsuario);
             this.pnlFormularioUsuario.Controls.Add(this.btnMostrarContraseña);
             this.pnlFormularioUsuario.Controls.Add(this.cbxEstadoUsuario);
@@ -93,6 +95,15 @@
             this.pnlFormularioUsuario.Size = new System.Drawing.Size(679, 257);
             this.pnlFormularioUsuario.TabIndex = 0;
             // 
+            // lblIdUsuario
+            // 
+            this.lblIdUsuario.AutoSize = true;
+            this.lblIdUsuario.Location = new System.Drawing.Point(369, 184);
+            this.lblIdUsuario.Name = "lblIdUsuario";
+            this.lblIdUsuario.Size = new System.Drawing.Size(0, 13);
+            this.lblIdUsuario.TabIndex = 25;
+            this.lblIdUsuario.Visible = false;
+            // 
             // btnMostrarContraseña
             // 
             this.btnMostrarContraseña.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -102,7 +113,7 @@
             this.btnMostrarContraseña.IconColor = System.Drawing.Color.Black;
             this.btnMostrarContraseña.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnMostrarContraseña.IconSize = 20;
-            this.btnMostrarContraseña.Location = new System.Drawing.Point(641, 60);
+            this.btnMostrarContraseña.Location = new System.Drawing.Point(644, 55);
             this.btnMostrarContraseña.Name = "btnMostrarContraseña";
             this.btnMostrarContraseña.Size = new System.Drawing.Size(35, 19);
             this.btnMostrarContraseña.TabIndex = 24;
@@ -114,7 +125,7 @@
             this.cbxEstadoUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxEstadoUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbxEstadoUsuario.FormattingEnabled = true;
-            this.cbxEstadoUsuario.Location = new System.Drawing.Point(489, 138);
+            this.cbxEstadoUsuario.Location = new System.Drawing.Point(489, 135);
             this.cbxEstadoUsuario.Name = "cbxEstadoUsuario";
             this.cbxEstadoUsuario.Size = new System.Drawing.Size(161, 21);
             this.cbxEstadoUsuario.TabIndex = 23;
@@ -244,7 +255,7 @@
             this.btnLimpiarUsuario.IconColor = System.Drawing.Color.Black;
             this.btnLimpiarUsuario.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnLimpiarUsuario.IconSize = 50;
-            this.btnLimpiarUsuario.Location = new System.Drawing.Point(588, 184);
+            this.btnLimpiarUsuario.Location = new System.Drawing.Point(588, 195);
             this.btnLimpiarUsuario.Name = "btnLimpiarUsuario";
             this.btnLimpiarUsuario.Size = new System.Drawing.Size(75, 59);
             this.btnLimpiarUsuario.TabIndex = 14;
@@ -260,7 +271,7 @@
             this.btnGuardarUsuario.IconColor = System.Drawing.Color.Black;
             this.btnGuardarUsuario.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnGuardarUsuario.IconSize = 50;
-            this.btnGuardarUsuario.Location = new System.Drawing.Point(507, 184);
+            this.btnGuardarUsuario.Location = new System.Drawing.Point(507, 195);
             this.btnGuardarUsuario.Name = "btnGuardarUsuario";
             this.btnGuardarUsuario.Size = new System.Drawing.Size(75, 59);
             this.btnGuardarUsuario.TabIndex = 13;
@@ -462,14 +473,24 @@
             this.btnAtras.TabIndex = 0;
             this.btnAtras.UseVisualStyleBackColor = true;
             // 
-            // lblIdUsuario
+            // chkModificarContrasenna
             // 
-            this.lblIdUsuario.AutoSize = true;
-            this.lblIdUsuario.Location = new System.Drawing.Point(369, 184);
-            this.lblIdUsuario.Name = "lblIdUsuario";
-            this.lblIdUsuario.Size = new System.Drawing.Size(0, 13);
-            this.lblIdUsuario.TabIndex = 25;
-            this.lblIdUsuario.Visible = false;
+            this.chkModificarContrasenna.AutoSize = true;
+            this.chkModificarContrasenna.Depth = 0;
+            this.chkModificarContrasenna.Font = new System.Drawing.Font("Roboto", 10F);
+            this.chkModificarContrasenna.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.chkModificarContrasenna.Location = new System.Drawing.Point(372, 170);
+            this.chkModificarContrasenna.Margin = new System.Windows.Forms.Padding(0);
+            this.chkModificarContrasenna.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.chkModificarContrasenna.MouseState = MaterialSkin.MouseState.HOVER;
+            this.chkModificarContrasenna.Name = "chkModificarContrasenna";
+            this.chkModificarContrasenna.Ripple = true;
+            this.chkModificarContrasenna.Size = new System.Drawing.Size(175, 30);
+            this.chkModificarContrasenna.TabIndex = 27;
+            this.chkModificarContrasenna.Text = "¿Modificar contraseña?";
+            this.chkModificarContrasenna.UseVisualStyleBackColor = true;
+            this.chkModificarContrasenna.Visible = false;
+            this.chkModificarContrasenna.CheckedChanged += new System.EventHandler(this.chkModificarContrasenna_CheckedChanged);
             // 
             // Usuarios
             // 
@@ -522,5 +543,6 @@
         private System.Windows.Forms.DataGridView dgvUsuarios;
         private FontAwesome.Sharp.IconButton btnMostrarContraseña;
         private System.Windows.Forms.Label lblIdUsuario;
+        private MaterialSkin.Controls.MaterialCheckBox chkModificarContrasenna;
     }
 }

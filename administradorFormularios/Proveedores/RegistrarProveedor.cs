@@ -140,7 +140,7 @@ namespace administradorFormularios.Proveedores
                 txtTelefonoProveedor.Text.Trim() != "" &&
                 cbxEstadoProveedor.SelectedIndex != -1)
             {
-                if (txtTelefonoProveedor.Text.Count() <= 8)
+                if (txtTelefonoProveedor.Text.Count() <= 7)
                     return new Respuesta<bool>
                     {
                         ObjetoRespuesta = false,

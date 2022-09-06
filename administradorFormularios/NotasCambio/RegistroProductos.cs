@@ -208,5 +208,10 @@ namespace administradorFormularios.NotasCambio
             RellenarGrid(ref dtProductos, paginaSeleccionada);
             lblPaginaGasto.Text = (int.Parse(lblPaginaGasto.Text) - 1).ToString();
         }
+
+        private void btnRegresarNC_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
     }
 }
