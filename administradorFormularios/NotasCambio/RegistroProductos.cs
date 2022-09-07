@@ -213,5 +213,10 @@ namespace administradorFormularios.NotasCambio
         {
             this.Dispose();
         }
+
+        private void RegistroProductos_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            MessageBox.Show("Productos guardados correctamente.");
+        }
     }
 }

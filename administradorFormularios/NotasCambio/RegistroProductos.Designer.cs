@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.PnlFormularioProductos = new System.Windows.Forms.Panel();
+            this.btnRegresarNC = new FontAwesome.Sharp.IconButton();
             this.lblIdProducto = new System.Windows.Forms.Label();
             this.lblIdProductoNC = new System.Windows.Forms.Label();
             this.lblIdProductosNC = new System.Windows.Forms.Label();
@@ -50,7 +51,6 @@
             this.btnSiguiente = new FontAwesome.Sharp.IconButton();
             this.btnAtras = new FontAwesome.Sharp.IconButton();
             this.dtProductos = new System.Windows.Forms.DataGridView();
-            this.btnRegresarNC = new FontAwesome.Sharp.IconButton();
             this.PnlFormularioProductos.SuspendLayout();
             this.pnlGripProductos.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -81,6 +81,26 @@
             this.PnlFormularioProductos.Name = "PnlFormularioProductos";
             this.PnlFormularioProductos.Size = new System.Drawing.Size(679, 265);
             this.PnlFormularioProductos.TabIndex = 0;
+            // 
+            // btnRegresarNC
+            // 
+            this.btnRegresarNC.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRegresarNC.FlatAppearance.BorderSize = 0;
+            this.btnRegresarNC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegresarNC.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegresarNC.IconChar = FontAwesome.Sharp.IconChar.ArrowLeft;
+            this.btnRegresarNC.IconColor = System.Drawing.Color.Black;
+            this.btnRegresarNC.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnRegresarNC.IconSize = 35;
+            this.btnRegresarNC.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.btnRegresarNC.Location = new System.Drawing.Point(18, 212);
+            this.btnRegresarNC.Name = "btnRegresarNC";
+            this.btnRegresarNC.Size = new System.Drawing.Size(232, 50);
+            this.btnRegresarNC.TabIndex = 16;
+            this.btnRegresarNC.Text = "Regresar Notas Cambio";
+            this.btnRegresarNC.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnRegresarNC.UseVisualStyleBackColor = true;
+            this.btnRegresarNC.Click += new System.EventHandler(this.btnRegresarNC_Click);
             // 
             // lblIdProducto
             // 
@@ -355,26 +375,6 @@
             this.dtProductos.TabIndex = 0;
             this.dtProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SeleccionarRegistro);
             // 
-            // btnRegresarNC
-            // 
-            this.btnRegresarNC.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRegresarNC.FlatAppearance.BorderSize = 0;
-            this.btnRegresarNC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegresarNC.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegresarNC.IconChar = FontAwesome.Sharp.IconChar.ArrowLeft;
-            this.btnRegresarNC.IconColor = System.Drawing.Color.Black;
-            this.btnRegresarNC.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnRegresarNC.IconSize = 35;
-            this.btnRegresarNC.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.btnRegresarNC.Location = new System.Drawing.Point(18, 212);
-            this.btnRegresarNC.Name = "btnRegresarNC";
-            this.btnRegresarNC.Size = new System.Drawing.Size(232, 50);
-            this.btnRegresarNC.TabIndex = 16;
-            this.btnRegresarNC.Text = "Regresar Notas Cambio";
-            this.btnRegresarNC.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnRegresarNC.UseVisualStyleBackColor = true;
-            this.btnRegresarNC.Click += new System.EventHandler(this.btnRegresarNC_Click);
-            // 
             // RegistroProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -385,6 +385,7 @@
             this.Controls.Add(this.PnlFormularioProductos);
             this.Name = "RegistroProductos";
             this.Text = "RegistroProductos";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.RegistroProductos_FormClosed);
             this.PnlFormularioProductos.ResumeLayout(false);
             this.PnlFormularioProductos.PerformLayout();
             this.pnlGripProductos.ResumeLayout(false);

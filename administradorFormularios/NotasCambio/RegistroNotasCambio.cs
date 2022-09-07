@@ -162,11 +162,16 @@ namespace administradorFormularios.NotasCambio
             LimpiarCampos();
         }
 
-        private void RellenarGrid(ref DataGridView vista, int paginaSeleccionada = 0)
+        private void RellenarGrid(ref DataGridView vista, int paginaSeleccionada = 0, string consecutivoBuscar = "")
         {
             int CantidadRegistros = 25;
 
             List<NotaCambio> lista = notasCambioBL.Obtener().ObjetoRespuesta;
+
+            if (!string.IsNullOrEmpty(consecutivoBuscar))
+            {
+                lista = lista.Where(item => item.ConsecutivoNC.Contains(consecutivoBuscar)).ToList();
+            }
 
             decimal totalRegistro = lista.Count();
             totalPaginas = Math.Ceiling(totalRegistro / (decimal)CantidadRegistros);
@@ -281,6 +286,16 @@ namespace administradorFormularios.NotasCambio
             }
             RellenarGrid(ref dtNotasCambio, paginaSeleccionada);
             lblPaginaGasto.Text = (int.Parse(lblPaginaGasto.Text) - 1).ToString();
+        }
+
+        private void buscarConsecutivoNC(object sender, EventArgs e)
+        {
+            string consecutivoBuscar = txtConsecutivoFiltrar.Text;
+
+            if (!string.IsNullOrEmpty(consecutivoBuscar))
+            {
+                RellenarGrid(ref dtNotasCambio, paginaSeleccionada, consecutivoBuscar);
+            }
         }
     }
 }
