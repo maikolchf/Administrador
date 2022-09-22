@@ -132,6 +132,7 @@
     <Compile Include="Entidades\ProductoBodega.cs" />
     <Compile Include="Entidades\ProductoNC.cs" />
     <Compile Include="Entidades\Proveedor.cs" />
+    <Compile Include="Entidades\Reportes\NotasCambioReporte.cs" />
     <Compile Include="Entidades\Respuesta.cs" />
     <Compile Include="Entidades\Rol.cs" />
     <Compile Include="Entidades\Usuario.cs" />

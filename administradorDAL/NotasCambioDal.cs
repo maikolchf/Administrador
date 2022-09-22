@@ -1,9 +1,10 @@
 ﻿using AdministradorEntidades.Entidades;
+using AdministradorEntidades.Entidades.Reportes;
 using AdministradorEntidades.Modelo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using System.Security.Cryptography;
 
 namespace administradorDAL
 {
@@ -155,6 +156,51 @@ namespace administradorDAL
                 respuesta.HayError = true;
                 respuesta.Mensaje = oEx.Message;
                 respuesta.ObjetoRespuesta = new List<NotaCambio>();
+            }
+            return respuesta;
+        }
+
+        public Respuesta<List<NotasCambioReporte>> DatosReporte(string estado, DateTime fechaInicio, DateTime fechaFinal)
+        {
+            Respuesta<List<NotasCambioReporte>> respuesta = new Respuesta<List<NotasCambioReporte>>();
+            try
+            {
+                using (AdministradorAzurEntities dbContexto = new AdministradorAzurEntities())
+                {
+                    respuesta.ObjetoRespuesta = (from NC in dbContexto.NotasCambio
+                                                 join PNC in dbContexto.ProductosNC
+                                                     on NC.IdNC equals PNC.IdNC
+                                                 join P in dbContexto.ProductosBodega
+                                                     on PNC.IdProducto equals P.IdProducto
+                                                 join PRO in dbContexto.Proveedores
+                                                     on NC.CodProveedorNC equals PRO.ProveedorCodigo
+                                                 join E in dbContexto.Estados
+                                                     on NC.EstadoNC equals E.EstadoCodigo
+                                                 where (NC.EstadoNC.Equals(estado)
+                                                       && (NC.FechaEmisionNC >= fechaInicio
+                                                       && NC.FechaEmisionNC <= fechaFinal))
+                                                select new NotasCambioReporte
+                                                {
+                                                    Consecutivo = NC.ConsecutivoNC,
+                                                    Proveedor = PRO.ProveedorNombre,
+                                                    Monto = NC.MontoNC,
+                                                    Estado = E.EstadoDescripcion,
+                                                    CodigoProducto = P.CodigoProducto,
+                                                    NombreProducto = P.NombreProducto,
+                                                    Precio = PNC.PrecioProdNC,
+                                                    Cantidad = PNC.CantidadProdNC
+                                                }
+                                                     ).ToList();
+
+                    respuesta.HayError = false;
+                    respuesta.Mensaje = "Exito";
+                }
+            }
+            catch (Exception oEx)
+            {
+                respuesta.HayError = true;
+                respuesta.Mensaje = oEx.Message;
+                respuesta.ObjetoRespuesta = new List<NotasCambioReporte>();
             }
             return respuesta;
         }
