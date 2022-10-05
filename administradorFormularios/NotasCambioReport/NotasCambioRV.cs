@@ -1,4 +1,5 @@
 ﻿using AdministradorBL;
+using administradorCompartidas;
 using AdministradorEntidades.Entidades.Reportes;
 using Microsoft.Reporting.WinForms;
 using System;
@@ -15,34 +16,47 @@ namespace administradorFormularios.NotasCambioReport
 {
     public partial class NotasCambioRV : Form
     {
+        FuncionesCompartidas funcionesCompartidas = new FuncionesCompartidas();
         public NotasCambioRV()
         {
             InitializeComponent();
+            funcionesCompartidas.RellenarComboboxEstados(ref cbxEstado, VariablesGlobales.estados.Where(x =>
+                                                           x.EstadoCodigo == Constantes.EstadosNC.No_Aplicada ||
+                                                           x.EstadoCodigo == Constantes.EstadosNC.Aplicada).ToList());
         }
 
         private readonly NotasCambioBL notasCambioBL = new NotasCambioBL();
-        private void NotasCambioRV_Load(object sender, EventArgs e)
+
+        private void btnBuscar_Click(object sender, EventArgs e)
         {
-            string estado = "NP";
-            DateTime fechaInicio = new DateTime(2022,09,01);
-            DateTime fechaFinal = new DateTime(2022,09,30);
+            
 
-            var datos = notasCambioBL.DatosReporte(estado, fechaInicio, fechaFinal);
-            List<NotasCambioReporte> notasCambioReporte = new List<NotasCambioReporte>();           
-            List<ReportParameter> reportParameters = new List<ReportParameter>();
-            ReportDataSource reportDataSource = new ReportDataSource
+            if (cbxEstado.SelectedValue != null)
             {
-                Value = datos.ObjetoRespuesta,
-                Name = "NotasCambioDS"
-            };
+                string estado = cbxEstado.SelectedValue.ToString();
+                DateTime fechaInicio = dtpFechaInicio.Value;
+                DateTime fechaFinal = dtpFechaFinal.Value;
+                var datos = notasCambioBL.DatosReporte(estado, fechaInicio, fechaFinal);
+                List<NotasCambioReporte> notasCambioReporte = new List<NotasCambioReporte>();
+                List<ReportParameter> reportParameters = new List<ReportParameter>();
+                ReportDataSource reportDataSource = new ReportDataSource
+                {
+                    Value = datos.ObjetoRespuesta,
+                    Name = "NotasCambioDS"
+                };
 
-            reportParameters.Add(new ReportParameter("fechaInicio", fechaInicio.ToString("dd/mm/yyyy")));
-            reportParameters.Add(new ReportParameter("fechaFinal", fechaFinal.ToString("dd/mm/yyyy")));
-
-
-            this.reportViewer1.LocalReport.SetParameters(reportParameters);
-            this.reportViewer1.LocalReport.DataSources.Add(reportDataSource);
-            this.reportViewer1.RefreshReport();
+                reportParameters.Add(new ReportParameter("fechaInicio", fechaInicio.ToString("dd/MM/yyyy")));
+                reportParameters.Add(new ReportParameter("fechaFinal", fechaFinal.ToString("dd/MM/yyyy")));
+                this.reportViewer1.LocalReport.DataSources.Clear();
+                this.reportViewer1.LocalReport.SetParameters(reportParameters);
+                this.reportViewer1.LocalReport.DataSources.Add(reportDataSource);
+                this.reportViewer1.RefreshReport();
+            }
+            else
+            {
+                MessageBox.Show("Debe seleccionar un estado.");
+            }
+            
         }
     }
 }

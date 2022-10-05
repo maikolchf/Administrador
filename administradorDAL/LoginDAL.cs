@@ -52,7 +52,8 @@ namespace administradorDAL
                                                              Perfiles = P.Perfiles,
                                                              Proveedores = P.Proveedores,
                                                              Usuarios = P.Usuarios,
-                                                             ProductosBodega = P.ProductosBodega
+                                                             ProductosBodega = P.ProductosBodega,
+                                                             ReporteNC = P.ReporteNC
                                                          }
                                                      }
 

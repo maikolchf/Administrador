@@ -80,6 +80,7 @@ namespace administradorFormularios
                 btnProductosBodega.Enabled = usuario.Rol.Permisos.ProductosBodega;
                 btnUsuarios.Enabled = usuario.Rol.Permisos.Usuarios;
                 btnPerfiles.Enabled = usuario.Rol.Permisos.Perfiles;
+                btnReporteNC.Enabled = usuario.Rol.Permisos.ReporteNC;
             }
         }
 
@@ -100,6 +101,41 @@ namespace administradorFormularios
         private void Inicio_Load(object sender, EventArgs e)
         {
             btnActivo = btnInicio;
+        }
+
+        private void btnReportes_Click(object sender, EventArgs e)
+        {
+            btnFocus(btnReporteNC);
+            llamadosFormularios.abrirFormularioHijo(new NotasCambioReport.NotasCambioRV(), ref panelFomularios);
+        }
+
+        private void btnFacturas_Click_1(object sender, EventArgs e)
+        {
+            btnFocus(btnFacturas);
+            llamadosFormularios.abrirFormularioHijo(new Facturas.RegistroFacturas(), ref panelFomularios);
+        }
+
+        private void btnProductosBodega_Click_1(object sender, EventArgs e)
+        {
+            btnFocus(btnProductosBodega);
+            llamadosFormularios.abrirFormularioHijo(new Productos.ProductosBodega(), ref panelFomularios);
+        }
+
+        private void btnUsuarios_Click(object sender, EventArgs e)
+        {
+            btnFocus(btnUsuarios);
+            llamadosFormularios.abrirFormularioHijo(new Usuarios.Usuarios(), ref panelFomularios);
+        }
+
+        private void btnPerfiles_Click_1(object sender, EventArgs e)
+        {
+            btnFocus(btnPerfiles);
+            llamadosFormularios.abrirFormularioHijo(new Perfiles.Perfiles(), ref panelFomularios);
+        }
+
+        private void btnCerrarSesion_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -62,6 +62,7 @@
           <Property Name="Usuarios" Type="bit" Nullable="false" />
           <Property Name="Perfiles" Type="bit" Nullable="false" />
           <Property Name="ProductosBodega" Type="bit" Nullable="false" />
+          <Property Name="ReporteNC" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductosBodega">
           <Key>
@@ -556,6 +557,7 @@
           <Property Name="Perfiles" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Roles" Relationship="AdministradorAzurModel.Rol_FK_ermisos1" FromRole="Permisos" ToRole="Roles" />
           <Property Name="ProductosBodega" Type="Boolean" Nullable="false" />
+          <Property Name="ReporteNC" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="Rol_FK_ermisos1">
           <End Type="AdministradorAzurModel.Roles" Role="Roles" Multiplicity="1" />
@@ -687,7 +689,8 @@
     <EntitySetMapping Name="Permisos">
       <EntityTypeMapping TypeName="IsTypeOf(AdministradorAzurModel.Permisos)">
         <MappingFragment StoreEntitySet="Permisos">
-          <ScalarProperty Name="ProductosBodega" ColumnName="ProductosBodega" />
+          <ScalarProperty Name="ReporteNC" ColumnName="ReporteNC" />
+                <ScalarProperty Name="ProductosBodega" ColumnName="ProductosBodega" />
                 <ScalarProperty Name="PermisoId" ColumnName="PermisoId" />
           <ScalarProperty Name="RolId" ColumnName="RolId" />
           <ScalarProperty Name="Inicio" ColumnName="Inicio" />

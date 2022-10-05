@@ -24,6 +24,7 @@ namespace AdministradorEntidades.Modelo
         public bool Usuarios { get; set; }
         public bool Perfiles { get; set; }
         public bool ProductosBodega { get; set; }
+        public bool ReporteNC { get; set; }
     
         public virtual Roles Roles { get; set; }
     }
