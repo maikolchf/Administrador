@@ -1,4 +1,5 @@
 ﻿using AdministradorEntidades.Entidades;
+using AdministradorEntidades.Entidades.Reportes;
 using AdministradorEntidades.Modelo;
 using System;
 using System.Collections.Generic;
@@ -132,6 +133,42 @@ namespace administradorDAL
                 respuesta.HayError = true;
                 respuesta.Mensaje = oEx.Message;
                 respuesta.ObjetoRespuesta = new Gasto();
+            }
+            return respuesta;
+        }
+
+        public Respuesta<List<GastoReporte>> ObtenerDatosReporte(string estado, DateTime fechaInicio, DateTime fechaFinal)
+        {
+            Respuesta<List<GastoReporte>> respuesta = new Respuesta<List<GastoReporte>>();
+            try
+            {
+                using (AdministradorAzurEntities dbContexto = new AdministradorAzurEntities())
+                {
+                    respuesta.ObjetoRespuesta = (from G in dbContexto.Gastos
+                                                 join E in dbContexto.Estados
+                                                 on G.Estado equals E.EstadoCodigo
+                                                 join P in dbContexto.Proveedores
+                                                 on G.Proveedor equals P.ProveedorCodigo
+                                                 where (G.Estado.Equals(estado)
+                                                      && (G.FechaVencimiento >= fechaInicio
+                                                      && G.FechaVencimiento <= fechaFinal))
+                                                select new GastoReporte
+                                                {
+                                                    Consecutivo = G.Consecutivo,
+                                                    Proveedor = P.ProveedorNombre,
+                                                    FechaRegistro = G.FechaVencimiento,
+                                                    Descriptcion = G.Descripcion,
+                                                    Estado = E.EstadoDescripcion,
+                                                    Monto = G.Monto
+                                                }).ToList();
+                    respuesta.HayError = false;
+                }
+            }
+            catch (Exception oEx)
+            {
+                respuesta.HayError= true;
+                respuesta.Mensaje = oEx.Message;
+                respuesta.ObjetoRespuesta = new List<GastoReporte>();
             }
             return respuesta;
         }

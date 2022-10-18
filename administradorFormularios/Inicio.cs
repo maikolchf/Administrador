@@ -81,6 +81,7 @@ namespace administradorFormularios
                 btnUsuarios.Enabled = usuario.Rol.Permisos.Usuarios;
                 btnPerfiles.Enabled = usuario.Rol.Permisos.Perfiles;
                 btnReporteNC.Enabled = usuario.Rol.Permisos.ReporteNC;
+                btnReporteGatos.Enabled = true;
             }
         }
 
@@ -136,6 +137,12 @@ namespace administradorFormularios
         private void btnCerrarSesion_Click_1(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnReporteGatos_Click(object sender, EventArgs e)
+        {
+            btnFocus(btnReporteNC);
+            llamadosFormularios.abrirFormularioHijo(new GastosReport.GastosRv(), ref panelFomularios);
         }
     }
 }

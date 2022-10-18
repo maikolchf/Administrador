@@ -1,6 +1,6 @@
-﻿namespace administradorFormularios.NotasCambioReport
+﻿namespace administradorFormularios.GastosReport
 {
-    partial class NotasCambioRV
+    partial class GastosRv
     {
         /// <summary>
         /// Required designer variable.
@@ -28,8 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.pnlFiltros = new System.Windows.Forms.Panel();
+            this.pnlFormulario = new System.Windows.Forms.Panel();
             this.btnBuscar = new FontAwesome.Sharp.IconButton();
             this.cbxEstado = new System.Windows.Forms.ComboBox();
             this.lblEstado = new MaterialSkin.Controls.MaterialLabel();
@@ -37,37 +36,26 @@
             this.lblFechaFinal = new MaterialSkin.Controls.MaterialLabel();
             this.dtpFechaInicio = new System.Windows.Forms.DateTimePicker();
             this.lblFechaInicio = new MaterialSkin.Controls.MaterialLabel();
+            this.rptGastos = new Microsoft.Reporting.WinForms.ReportViewer();
             this.pnlReporte = new System.Windows.Forms.Panel();
-            this.pnlFiltros.SuspendLayout();
+            this.pnlFormulario.SuspendLayout();
             this.pnlReporte.SuspendLayout();
             this.SuspendLayout();
             // 
-            // reportViewer1
+            // pnlFormulario
             // 
-            this.reportViewer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.reportViewer1.LocalReport.ReportEmbeddedResource = "administradorFormularios.NotasCambioReport.NotasCambioRpt.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(3, 3);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(694, 470);
-            this.reportViewer1.TabIndex = 0;
-            // 
-            // pnlFiltros
-            // 
-            this.pnlFiltros.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pnlFiltros.Controls.Add(this.btnBuscar);
-            this.pnlFiltros.Controls.Add(this.cbxEstado);
-            this.pnlFiltros.Controls.Add(this.lblEstado);
-            this.pnlFiltros.Controls.Add(this.dtpFechaFinal);
-            this.pnlFiltros.Controls.Add(this.lblFechaFinal);
-            this.pnlFiltros.Controls.Add(this.dtpFechaInicio);
-            this.pnlFiltros.Controls.Add(this.lblFechaInicio);
-            this.pnlFiltros.Location = new System.Drawing.Point(12, 12);
-            this.pnlFiltros.Name = "pnlFiltros";
-            this.pnlFiltros.Size = new System.Drawing.Size(679, 125);
-            this.pnlFiltros.TabIndex = 1;
+            this.pnlFormulario.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pnlFormulario.Controls.Add(this.btnBuscar);
+            this.pnlFormulario.Controls.Add(this.cbxEstado);
+            this.pnlFormulario.Controls.Add(this.lblEstado);
+            this.pnlFormulario.Controls.Add(this.dtpFechaFinal);
+            this.pnlFormulario.Controls.Add(this.lblFechaFinal);
+            this.pnlFormulario.Controls.Add(this.dtpFechaInicio);
+            this.pnlFormulario.Controls.Add(this.lblFechaInicio);
+            this.pnlFormulario.Location = new System.Drawing.Point(12, 12);
+            this.pnlFormulario.Name = "pnlFormulario";
+            this.pnlFormulario.Size = new System.Drawing.Size(679, 120);
+            this.pnlFormulario.TabIndex = 0;
             // 
             // btnBuscar
             // 
@@ -77,10 +65,10 @@
             this.btnBuscar.IconColor = System.Drawing.Color.Black;
             this.btnBuscar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnBuscar.IconSize = 40;
-            this.btnBuscar.Location = new System.Drawing.Point(570, 71);
+            this.btnBuscar.Location = new System.Drawing.Point(574, 65);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(75, 51);
-            this.btnBuscar.TabIndex = 6;
+            this.btnBuscar.TabIndex = 13;
             this.btnBuscar.UseVisualStyleBackColor = true;
             this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
@@ -89,10 +77,10 @@
             this.cbxEstado.BackColor = System.Drawing.Color.White;
             this.cbxEstado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbxEstado.FormattingEnabled = true;
-            this.cbxEstado.Location = new System.Drawing.Point(454, 26);
+            this.cbxEstado.Location = new System.Drawing.Point(458, 20);
             this.cbxEstado.Name = "cbxEstado";
             this.cbxEstado.Size = new System.Drawing.Size(200, 21);
-            this.cbxEstado.TabIndex = 5;
+            this.cbxEstado.TabIndex = 12;
             // 
             // lblEstado
             // 
@@ -100,19 +88,19 @@
             this.lblEstado.Depth = 0;
             this.lblEstado.Font = new System.Drawing.Font("Roboto", 11F);
             this.lblEstado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblEstado.Location = new System.Drawing.Point(373, 26);
+            this.lblEstado.Location = new System.Drawing.Point(377, 20);
             this.lblEstado.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblEstado.Name = "lblEstado";
             this.lblEstado.Size = new System.Drawing.Size(60, 19);
-            this.lblEstado.TabIndex = 4;
+            this.lblEstado.TabIndex = 11;
             this.lblEstado.Text = "Estado:";
             // 
             // dtpFechaFinal
             // 
-            this.dtpFechaFinal.Location = new System.Drawing.Point(122, 79);
+            this.dtpFechaFinal.Location = new System.Drawing.Point(126, 73);
             this.dtpFechaFinal.Name = "dtpFechaFinal";
             this.dtpFechaFinal.Size = new System.Drawing.Size(200, 20);
-            this.dtpFechaFinal.TabIndex = 3;
+            this.dtpFechaFinal.TabIndex = 10;
             // 
             // lblFechaFinal
             // 
@@ -120,20 +108,20 @@
             this.lblFechaFinal.Depth = 0;
             this.lblFechaFinal.Font = new System.Drawing.Font("Roboto", 11F);
             this.lblFechaFinal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblFechaFinal.Location = new System.Drawing.Point(22, 79);
+            this.lblFechaFinal.Location = new System.Drawing.Point(26, 73);
             this.lblFechaFinal.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblFechaFinal.Name = "lblFechaFinal";
             this.lblFechaFinal.Size = new System.Drawing.Size(86, 19);
-            this.lblFechaFinal.TabIndex = 2;
+            this.lblFechaFinal.TabIndex = 9;
             this.lblFechaFinal.Text = "Fecha final:";
             // 
             // dtpFechaInicio
             // 
             this.dtpFechaInicio.CustomFormat = "dd.MM.yyyy";
-            this.dtpFechaInicio.Location = new System.Drawing.Point(122, 24);
+            this.dtpFechaInicio.Location = new System.Drawing.Point(126, 18);
             this.dtpFechaInicio.Name = "dtpFechaInicio";
             this.dtpFechaInicio.Size = new System.Drawing.Size(200, 20);
-            this.dtpFechaInicio.TabIndex = 1;
+            this.dtpFechaInicio.TabIndex = 8;
             // 
             // lblFechaInicio
             // 
@@ -141,34 +129,47 @@
             this.lblFechaInicio.Depth = 0;
             this.lblFechaInicio.Font = new System.Drawing.Font("Roboto", 11F);
             this.lblFechaInicio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblFechaInicio.Location = new System.Drawing.Point(22, 24);
+            this.lblFechaInicio.Location = new System.Drawing.Point(26, 18);
             this.lblFechaInicio.MouseState = MaterialSkin.MouseState.HOVER;
             this.lblFechaInicio.Name = "lblFechaInicio";
             this.lblFechaInicio.Size = new System.Drawing.Size(94, 19);
-            this.lblFechaInicio.TabIndex = 0;
+            this.lblFechaInicio.TabIndex = 7;
             this.lblFechaInicio.Text = "Fecha inicio:";
+            // 
+            // rptGastos
+            // 
+            this.rptGastos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rptGastos.LocalReport.ReportEmbeddedResource = "administradorFormularios.GastosReport.GastosRpt.rdlc";
+            this.rptGastos.Location = new System.Drawing.Point(3, 3);
+            this.rptGastos.Name = "rptGastos";
+            this.rptGastos.ServerReport.BearerToken = null;
+            this.rptGastos.Size = new System.Drawing.Size(694, 470);
+            this.rptGastos.TabIndex = 0;
             // 
             // pnlReporte
             // 
             this.pnlReporte.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.pnlReporte.Controls.Add(this.reportViewer1);
-            this.pnlReporte.Location = new System.Drawing.Point(1, 144);
+            this.pnlReporte.Controls.Add(this.rptGastos);
+            this.pnlReporte.Location = new System.Drawing.Point(2, 138);
             this.pnlReporte.Name = "pnlReporte";
             this.pnlReporte.Size = new System.Drawing.Size(700, 476);
-            this.pnlReporte.TabIndex = 2;
+            this.pnlReporte.TabIndex = 3;
             // 
-            // NotasCambioRV
+            // GastosRv
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(703, 632);
             this.Controls.Add(this.pnlReporte);
-            this.Controls.Add(this.pnlFiltros);
-            this.Name = "NotasCambioRV";
-            this.Text = "NotasCambioRV";
-            this.pnlFiltros.ResumeLayout(false);
-            this.pnlFiltros.PerformLayout();
+            this.Controls.Add(this.pnlFormulario);
+            this.Name = "GastosRv";
+            this.Text = "GastosRv";
+            this.Load += new System.EventHandler(this.GastosRv_Load);
+            this.pnlFormulario.ResumeLayout(false);
+            this.pnlFormulario.PerformLayout();
             this.pnlReporte.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -176,15 +177,15 @@
 
         #endregion
 
-        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        private System.Windows.Forms.Panel pnlFiltros;
-        private System.Windows.Forms.Panel pnlReporte;
-        private MaterialSkin.Controls.MaterialLabel lblFechaInicio;
+        private System.Windows.Forms.Panel pnlFormulario;
+        private FontAwesome.Sharp.IconButton btnBuscar;
+        private System.Windows.Forms.ComboBox cbxEstado;
+        private MaterialSkin.Controls.MaterialLabel lblEstado;
         private System.Windows.Forms.DateTimePicker dtpFechaFinal;
         private MaterialSkin.Controls.MaterialLabel lblFechaFinal;
         private System.Windows.Forms.DateTimePicker dtpFechaInicio;
-        private System.Windows.Forms.ComboBox cbxEstado;
-        private MaterialSkin.Controls.MaterialLabel lblEstado;
-        private FontAwesome.Sharp.IconButton btnBuscar;
+        private MaterialSkin.Controls.MaterialLabel lblFechaInicio;
+        private Microsoft.Reporting.WinForms.ReportViewer rptGastos;
+        private System.Windows.Forms.Panel pnlReporte;
     }
 }

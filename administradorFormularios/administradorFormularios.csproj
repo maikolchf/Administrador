@@ -104,6 +104,12 @@
     <Compile Include="Facturas\RegistroFacturas.Designer.cs">
       <DependentUpon>RegistroFacturas.cs</DependentUpon>
     </Compile>
+    <Compile Include="GastosReport\GastosRv.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GastosReport\GastosRv.Designer.cs">
+      <DependentUpon>GastosRv.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gastos\RegistrarGastos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,6 +188,10 @@
     <EmbeddedResource Include="Facturas\RegistroFacturas.resx">
       <DependentUpon>RegistroFacturas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GastosReport\GastosRpt.rdlc" />
+    <EmbeddedResource Include="GastosReport\GastosRv.resx">
+      <DependentUpon>GastosRv.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Gastos\RegistrarGastos.resx">
       <DependentUpon>RegistrarGastos.cs</DependentUpon>
     </EmbeddedResource>
@@ -228,6 +238,7 @@
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\AdministradorEntidades.Entidades.NotaCambio.datasource" />
+    <None Include="Properties\DataSources\AdministradorEntidades.Entidades.Reportes.GastoReporte.datasource" />
     <None Include="Properties\DataSources\AdministradorEntidades.Entidades.Reportes.NotasCambioReporte.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

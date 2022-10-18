@@ -36,8 +36,7 @@ namespace administradorFormularios.NotasCambioReport
                 string estado = cbxEstado.SelectedValue.ToString();
                 DateTime fechaInicio = dtpFechaInicio.Value;
                 DateTime fechaFinal = dtpFechaFinal.Value;
-                var datos = notasCambioBL.DatosReporte(estado, fechaInicio, fechaFinal);
-                List<NotasCambioReporte> notasCambioReporte = new List<NotasCambioReporte>();
+                var datos = notasCambioBL.DatosReporte(estado, fechaInicio, fechaFinal);                
                 List<ReportParameter> reportParameters = new List<ReportParameter>();
                 ReportDataSource reportDataSource = new ReportDataSource
                 {

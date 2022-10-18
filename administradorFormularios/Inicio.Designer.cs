@@ -41,6 +41,7 @@
             this.btnInicio = new FontAwesome.Sharp.IconButton();
             this.panelIcono = new System.Windows.Forms.Panel();
             this.panelFomularios = new System.Windows.Forms.Panel();
+            this.btnReporteGatos = new FontAwesome.Sharp.IconButton();
             this.panelMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,6 +49,7 @@
             // 
             this.panelMenu.AutoScroll = true;
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(97)))), ((int)(((byte)(147)))));
+            this.panelMenu.Controls.Add(this.btnReporteGatos);
             this.panelMenu.Controls.Add(this.btnCerrarSesion);
             this.panelMenu.Controls.Add(this.btnPerfiles);
             this.panelMenu.Controls.Add(this.btnUsuarios);
@@ -290,6 +292,27 @@
             this.panelFomularios.Size = new System.Drawing.Size(719, 671);
             this.panelFomularios.TabIndex = 1;
             // 
+            // btnReporteGatos
+            // 
+            this.btnReporteGatos.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnReporteGatos.Enabled = false;
+            this.btnReporteGatos.FlatAppearance.BorderSize = 0;
+            this.btnReporteGatos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReporteGatos.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReporteGatos.ForeColor = System.Drawing.Color.White;
+            this.btnReporteGatos.IconChar = FontAwesome.Sharp.IconChar.FilePdf;
+            this.btnReporteGatos.IconColor = System.Drawing.Color.White;
+            this.btnReporteGatos.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnReporteGatos.IconSize = 35;
+            this.btnReporteGatos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReporteGatos.Location = new System.Drawing.Point(0, 607);
+            this.btnReporteGatos.Name = "btnReporteGatos";
+            this.btnReporteGatos.Size = new System.Drawing.Size(238, 50);
+            this.btnReporteGatos.TabIndex = 23;
+            this.btnReporteGatos.Text = "  Reporte Gastos";
+            this.btnReporteGatos.UseVisualStyleBackColor = true;
+            this.btnReporteGatos.Click += new System.EventHandler(this.btnReporteGatos_Click);
+            // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -321,5 +344,6 @@
         private FontAwesome.Sharp.IconButton btnProductosBodega;
         private FontAwesome.Sharp.IconButton btnFacturas;
         private FontAwesome.Sharp.IconButton btnReporteNC;
+        private FontAwesome.Sharp.IconButton btnReporteGatos;
     }
 }

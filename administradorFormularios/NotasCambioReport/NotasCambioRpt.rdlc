@@ -366,7 +366,9 @@
                                   <TextRuns>
                                     <TextRun>
                                       <Value>=Fields!Precio.Value</Value>
-                                      <Style />
+                                      <Style>
+                                        <Format>#,0.00;(#,0.00)</Format>
+                                      </Style>
                                     </TextRun>
                                   </TextRuns>
                                   <Style />
@@ -385,6 +387,7 @@
                                 <PaddingBottom>2pt</PaddingBottom>
                               </Style>
                             </Textbox>
+                            <rd:Selected>true</rd:Selected>
                           </CellContents>
                         </TablixCell>
                         <TablixCell>
@@ -642,7 +645,9 @@
                                         <TextRuns>
                                           <TextRun>
                                             <Value>=Fields!Monto.Value</Value>
-                                            <Style />
+                                            <Style>
+                                              <Format>#,0.00;(#,0.00)</Format>
+                                            </Style>
                                           </TextRun>
                                         </TextRuns>
                                         <Style />
@@ -778,6 +783,7 @@
       </CellDefinitions>
     </GridLayoutDefinition>
   </ReportParametersLayout>
+  <Language>es-CR</Language>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>c33872c1-d5a2-4b52-b7e4-7a78eee2cbc5</rd:ReportID>
 </Report>
