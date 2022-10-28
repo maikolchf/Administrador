@@ -30,18 +30,18 @@
         {
             this.panelMenu = new System.Windows.Forms.Panel();
             this.btnCerrarSesion = new FontAwesome.Sharp.IconButton();
+            this.btnReporteNC = new FontAwesome.Sharp.IconButton();
+            this.btnReporteGatos = new FontAwesome.Sharp.IconButton();
             this.btnPerfiles = new FontAwesome.Sharp.IconButton();
             this.btnUsuarios = new FontAwesome.Sharp.IconButton();
             this.btnProductosBodega = new FontAwesome.Sharp.IconButton();
             this.btnFacturas = new FontAwesome.Sharp.IconButton();
-            this.btnReporteNC = new FontAwesome.Sharp.IconButton();
             this.btnNotasCambio = new FontAwesome.Sharp.IconButton();
             this.btnGastos = new FontAwesome.Sharp.IconButton();
             this.btnProveedores = new FontAwesome.Sharp.IconButton();
             this.btnInicio = new FontAwesome.Sharp.IconButton();
             this.panelIcono = new System.Windows.Forms.Panel();
             this.panelFomularios = new System.Windows.Forms.Panel();
-            this.btnReporteGatos = new FontAwesome.Sharp.IconButton();
             this.panelMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,13 +49,13 @@
             // 
             this.panelMenu.AutoScroll = true;
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(97)))), ((int)(((byte)(147)))));
-            this.panelMenu.Controls.Add(this.btnReporteGatos);
             this.panelMenu.Controls.Add(this.btnCerrarSesion);
+            this.panelMenu.Controls.Add(this.btnReporteNC);
+            this.panelMenu.Controls.Add(this.btnReporteGatos);
             this.panelMenu.Controls.Add(this.btnPerfiles);
             this.panelMenu.Controls.Add(this.btnUsuarios);
             this.panelMenu.Controls.Add(this.btnProductosBodega);
             this.panelMenu.Controls.Add(this.btnFacturas);
-            this.panelMenu.Controls.Add(this.btnReporteNC);
             this.panelMenu.Controls.Add(this.btnNotasCambio);
             this.panelMenu.Controls.Add(this.btnGastos);
             this.panelMenu.Controls.Add(this.btnProveedores);
@@ -79,13 +79,55 @@
             this.btnCerrarSesion.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnCerrarSesion.IconSize = 35;
             this.btnCerrarSesion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCerrarSesion.Location = new System.Drawing.Point(0, 557);
+            this.btnCerrarSesion.Location = new System.Drawing.Point(0, 607);
             this.btnCerrarSesion.Name = "btnCerrarSesion";
             this.btnCerrarSesion.Size = new System.Drawing.Size(238, 50);
-            this.btnCerrarSesion.TabIndex = 22;
+            this.btnCerrarSesion.TabIndex = 25;
             this.btnCerrarSesion.Text = "Cerrar Sesión";
             this.btnCerrarSesion.UseVisualStyleBackColor = true;
-            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click_1);
+            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
+            // 
+            // btnReporteNC
+            // 
+            this.btnReporteNC.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnReporteNC.Enabled = false;
+            this.btnReporteNC.FlatAppearance.BorderSize = 0;
+            this.btnReporteNC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReporteNC.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReporteNC.ForeColor = System.Drawing.Color.White;
+            this.btnReporteNC.IconChar = FontAwesome.Sharp.IconChar.FilePdf;
+            this.btnReporteNC.IconColor = System.Drawing.Color.White;
+            this.btnReporteNC.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnReporteNC.IconSize = 35;
+            this.btnReporteNC.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReporteNC.Location = new System.Drawing.Point(0, 557);
+            this.btnReporteNC.Name = "btnReporteNC";
+            this.btnReporteNC.Size = new System.Drawing.Size(238, 50);
+            this.btnReporteNC.TabIndex = 24;
+            this.btnReporteNC.Text = "  Reporte notas cambio";
+            this.btnReporteNC.UseVisualStyleBackColor = true;
+            this.btnReporteNC.Click += new System.EventHandler(this.btnReporteNC_Click);
+            // 
+            // btnReporteGatos
+            // 
+            this.btnReporteGatos.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnReporteGatos.Enabled = false;
+            this.btnReporteGatos.FlatAppearance.BorderSize = 0;
+            this.btnReporteGatos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReporteGatos.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReporteGatos.ForeColor = System.Drawing.Color.White;
+            this.btnReporteGatos.IconChar = FontAwesome.Sharp.IconChar.FilePdf;
+            this.btnReporteGatos.IconColor = System.Drawing.Color.White;
+            this.btnReporteGatos.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnReporteGatos.IconSize = 35;
+            this.btnReporteGatos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReporteGatos.Location = new System.Drawing.Point(0, 507);
+            this.btnReporteGatos.Name = "btnReporteGatos";
+            this.btnReporteGatos.Size = new System.Drawing.Size(238, 50);
+            this.btnReporteGatos.TabIndex = 23;
+            this.btnReporteGatos.Text = "  Reporte Gastos";
+            this.btnReporteGatos.UseVisualStyleBackColor = true;
+            this.btnReporteGatos.Click += new System.EventHandler(this.btnReporteGatos_Click);
             // 
             // btnPerfiles
             // 
@@ -100,7 +142,7 @@
             this.btnPerfiles.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnPerfiles.IconSize = 35;
             this.btnPerfiles.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPerfiles.Location = new System.Drawing.Point(0, 507);
+            this.btnPerfiles.Location = new System.Drawing.Point(0, 457);
             this.btnPerfiles.Name = "btnPerfiles";
             this.btnPerfiles.Size = new System.Drawing.Size(238, 50);
             this.btnPerfiles.TabIndex = 21;
@@ -121,7 +163,7 @@
             this.btnUsuarios.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnUsuarios.IconSize = 35;
             this.btnUsuarios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUsuarios.Location = new System.Drawing.Point(0, 457);
+            this.btnUsuarios.Location = new System.Drawing.Point(0, 407);
             this.btnUsuarios.Name = "btnUsuarios";
             this.btnUsuarios.Size = new System.Drawing.Size(238, 50);
             this.btnUsuarios.TabIndex = 20;
@@ -142,7 +184,7 @@
             this.btnProductosBodega.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnProductosBodega.IconSize = 35;
             this.btnProductosBodega.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProductosBodega.Location = new System.Drawing.Point(0, 407);
+            this.btnProductosBodega.Location = new System.Drawing.Point(0, 357);
             this.btnProductosBodega.Name = "btnProductosBodega";
             this.btnProductosBodega.Size = new System.Drawing.Size(238, 50);
             this.btnProductosBodega.TabIndex = 19;
@@ -163,34 +205,13 @@
             this.btnFacturas.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnFacturas.IconSize = 35;
             this.btnFacturas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFacturas.Location = new System.Drawing.Point(0, 357);
+            this.btnFacturas.Location = new System.Drawing.Point(0, 307);
             this.btnFacturas.Name = "btnFacturas";
             this.btnFacturas.Size = new System.Drawing.Size(238, 50);
             this.btnFacturas.TabIndex = 18;
             this.btnFacturas.Text = "Facturas";
             this.btnFacturas.UseVisualStyleBackColor = true;
             this.btnFacturas.Click += new System.EventHandler(this.btnFacturas_Click_1);
-            // 
-            // btnReporteNC
-            // 
-            this.btnReporteNC.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnReporteNC.Enabled = false;
-            this.btnReporteNC.FlatAppearance.BorderSize = 0;
-            this.btnReporteNC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReporteNC.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReporteNC.ForeColor = System.Drawing.Color.White;
-            this.btnReporteNC.IconChar = FontAwesome.Sharp.IconChar.FilePdf;
-            this.btnReporteNC.IconColor = System.Drawing.Color.White;
-            this.btnReporteNC.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnReporteNC.IconSize = 35;
-            this.btnReporteNC.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReporteNC.Location = new System.Drawing.Point(0, 307);
-            this.btnReporteNC.Name = "btnReporteNC";
-            this.btnReporteNC.Size = new System.Drawing.Size(238, 50);
-            this.btnReporteNC.TabIndex = 17;
-            this.btnReporteNC.Text = "  Reporte notas cambio";
-            this.btnReporteNC.UseVisualStyleBackColor = true;
-            this.btnReporteNC.Click += new System.EventHandler(this.btnReportes_Click);
             // 
             // btnNotasCambio
             // 
@@ -292,27 +313,6 @@
             this.panelFomularios.Size = new System.Drawing.Size(719, 671);
             this.panelFomularios.TabIndex = 1;
             // 
-            // btnReporteGatos
-            // 
-            this.btnReporteGatos.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnReporteGatos.Enabled = false;
-            this.btnReporteGatos.FlatAppearance.BorderSize = 0;
-            this.btnReporteGatos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReporteGatos.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnReporteGatos.ForeColor = System.Drawing.Color.White;
-            this.btnReporteGatos.IconChar = FontAwesome.Sharp.IconChar.FilePdf;
-            this.btnReporteGatos.IconColor = System.Drawing.Color.White;
-            this.btnReporteGatos.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnReporteGatos.IconSize = 35;
-            this.btnReporteGatos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReporteGatos.Location = new System.Drawing.Point(0, 607);
-            this.btnReporteGatos.Name = "btnReporteGatos";
-            this.btnReporteGatos.Size = new System.Drawing.Size(238, 50);
-            this.btnReporteGatos.TabIndex = 23;
-            this.btnReporteGatos.Text = "  Reporte Gastos";
-            this.btnReporteGatos.UseVisualStyleBackColor = true;
-            this.btnReporteGatos.Click += new System.EventHandler(this.btnReporteGatos_Click);
-            // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -338,12 +338,12 @@
         private FontAwesome.Sharp.IconButton btnGastos;
         private FontAwesome.Sharp.IconButton btnProveedores;
         private FontAwesome.Sharp.IconButton btnInicio;
-        private FontAwesome.Sharp.IconButton btnCerrarSesion;
         private FontAwesome.Sharp.IconButton btnPerfiles;
         private FontAwesome.Sharp.IconButton btnUsuarios;
         private FontAwesome.Sharp.IconButton btnProductosBodega;
         private FontAwesome.Sharp.IconButton btnFacturas;
-        private FontAwesome.Sharp.IconButton btnReporteNC;
         private FontAwesome.Sharp.IconButton btnReporteGatos;
+        private FontAwesome.Sharp.IconButton btnCerrarSesion;
+        private FontAwesome.Sharp.IconButton btnReporteNC;
     }
 }

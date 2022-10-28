@@ -134,15 +134,16 @@ namespace administradorFormularios
             llamadosFormularios.abrirFormularioHijo(new Perfiles.Perfiles(), ref panelFomularios);
         }
 
-        private void btnCerrarSesion_Click_1(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void btnReporteGatos_Click(object sender, EventArgs e)
         {
             btnFocus(btnReporteNC);
             llamadosFormularios.abrirFormularioHijo(new GastosReport.GastosRv(), ref panelFomularios);
+        }
+
+        private void btnReporteNC_Click(object sender, EventArgs e)
+        {
+            btnFocus(btnReporteNC);
+            llamadosFormularios.abrirFormularioHijo(new NotasCambioReport.NotasCambioRV(), ref panelFomularios);
         }
     }
 }
