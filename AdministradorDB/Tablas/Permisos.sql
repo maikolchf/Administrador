@@ -11,6 +11,7 @@
 	Perfiles BIT NOT NULL,	
 	ProductosBodega BIT NOT NULL,
 	ReporteNC BIT NOT NULL DEFAULT(0),
+	ReporteGT BIT NOT NULL DEFAULT(0),
 	CONSTRAINT Rol_FK_ermisos 
 	FOREIGN KEY (RolId) REFERENCES Roles(RolId)
 )

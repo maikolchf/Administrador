@@ -20,6 +20,7 @@ namespace AdministradorEntidades.Entidades
 
         public bool ProductosBodega { get; set; }
         public bool ReporteNC { get; set; }
+        public bool ReporteGT { get; set; }
 
     }
 }

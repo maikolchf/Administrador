@@ -36,6 +36,7 @@
             this.btnGuardarPerfil = new FontAwesome.Sharp.IconButton();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.pnlPermisosPerfil = new System.Windows.Forms.Panel();
+            this.chxReporteNC = new MaterialSkin.Controls.MaterialCheckBox();
             this.chxProductosBodega = new MaterialSkin.Controls.MaterialCheckBox();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.chxPerfiles = new MaterialSkin.Controls.MaterialCheckBox();
@@ -52,7 +53,7 @@
             this.lblPaginaPerfil = new System.Windows.Forms.Label();
             this.btnSiguiente = new FontAwesome.Sharp.IconButton();
             this.btnAtras = new FontAwesome.Sharp.IconButton();
-            this.chxReporteNC = new MaterialSkin.Controls.MaterialCheckBox();
+            this.chxReporteGastos = new MaterialSkin.Controls.MaterialCheckBox();
             this.pnlFormularioPerfiles.SuspendLayout();
             this.pnlPermisosPerfil.SuspendLayout();
             this.pnlVistaGrid.SuspendLayout();
@@ -156,6 +157,7 @@
             // pnlPermisosPerfil
             // 
             this.pnlPermisosPerfil.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.pnlPermisosPerfil.Controls.Add(this.chxReporteGastos);
             this.pnlPermisosPerfil.Controls.Add(this.chxReporteNC);
             this.pnlPermisosPerfil.Controls.Add(this.chxProductosBodega);
             this.pnlPermisosPerfil.Controls.Add(this.materialLabel2);
@@ -170,6 +172,22 @@
             this.pnlPermisosPerfil.Name = "pnlPermisosPerfil";
             this.pnlPermisosPerfil.Size = new System.Drawing.Size(639, 222);
             this.pnlPermisosPerfil.TabIndex = 2;
+            // 
+            // chxReporteNC
+            // 
+            this.chxReporteNC.AutoSize = true;
+            this.chxReporteNC.Depth = 0;
+            this.chxReporteNC.Font = new System.Drawing.Font("Roboto", 10F);
+            this.chxReporteNC.Location = new System.Drawing.Point(13, 126);
+            this.chxReporteNC.Margin = new System.Windows.Forms.Padding(0);
+            this.chxReporteNC.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.chxReporteNC.MouseState = MaterialSkin.MouseState.HOVER;
+            this.chxReporteNC.Name = "chxReporteNC";
+            this.chxReporteNC.Ripple = true;
+            this.chxReporteNC.Size = new System.Drawing.Size(184, 30);
+            this.chxReporteNC.TabIndex = 11;
+            this.chxReporteNC.Text = "Reporte notas de cambio";
+            this.chxReporteNC.UseVisualStyleBackColor = true;
             // 
             // chxProductosBodega
             // 
@@ -409,21 +427,21 @@
             this.btnAtras.UseVisualStyleBackColor = true;
             this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
             // 
-            // chxReporteNC
+            // chxReporteGastos
             // 
-            this.chxReporteNC.AutoSize = true;
-            this.chxReporteNC.Depth = 0;
-            this.chxReporteNC.Font = new System.Drawing.Font("Roboto", 10F);
-            this.chxReporteNC.Location = new System.Drawing.Point(13, 126);
-            this.chxReporteNC.Margin = new System.Windows.Forms.Padding(0);
-            this.chxReporteNC.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.chxReporteNC.MouseState = MaterialSkin.MouseState.HOVER;
-            this.chxReporteNC.Name = "chxReporteNC";
-            this.chxReporteNC.Ripple = true;
-            this.chxReporteNC.Size = new System.Drawing.Size(184, 30);
-            this.chxReporteNC.TabIndex = 11;
-            this.chxReporteNC.Text = "Reporte notas de cambio";
-            this.chxReporteNC.UseVisualStyleBackColor = true;
+            this.chxReporteGastos.AutoSize = true;
+            this.chxReporteGastos.Depth = 0;
+            this.chxReporteGastos.Font = new System.Drawing.Font("Roboto", 10F);
+            this.chxReporteGastos.Location = new System.Drawing.Point(13, 172);
+            this.chxReporteGastos.Margin = new System.Windows.Forms.Padding(0);
+            this.chxReporteGastos.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.chxReporteGastos.MouseState = MaterialSkin.MouseState.HOVER;
+            this.chxReporteGastos.Name = "chxReporteGastos";
+            this.chxReporteGastos.Ripple = true;
+            this.chxReporteGastos.Size = new System.Drawing.Size(123, 30);
+            this.chxReporteGastos.TabIndex = 12;
+            this.chxReporteGastos.Text = "Reporte gastos";
+            this.chxReporteGastos.UseVisualStyleBackColor = true;
             // 
             // Perfiles
             // 
@@ -474,5 +492,6 @@
         private System.Windows.Forms.Label lblRolId;
         private MaterialSkin.Controls.MaterialCheckBox chxProductosBodega;
         private MaterialSkin.Controls.MaterialCheckBox chxReporteNC;
+        private MaterialSkin.Controls.MaterialCheckBox chxReporteGastos;
     }
 }

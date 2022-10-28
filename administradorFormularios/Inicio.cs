@@ -81,7 +81,7 @@ namespace administradorFormularios
                 btnUsuarios.Enabled = usuario.Rol.Permisos.Usuarios;
                 btnPerfiles.Enabled = usuario.Rol.Permisos.Perfiles;
                 btnReporteNC.Enabled = usuario.Rol.Permisos.ReporteNC;
-                btnReporteGatos.Enabled = true;
+                btnReporteGatos.Enabled = usuario.Rol.Permisos.ReporteGT;
             }
         }
 

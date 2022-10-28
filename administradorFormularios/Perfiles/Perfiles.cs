@@ -50,6 +50,7 @@ namespace administradorFormularios.Perfiles
                         Usuarios = chxUsuarios.Checked,
                         ProductosBodega = chxProductosBodega.Checked,
                         ReporteNC = chxReporteNC.Checked,
+                        ReporteGT = chxReporteGastos.Checked,
                         PermisoId = ltsRoles?.Find(x => x.RolId.Equals(rolId))?.Permisos?.PermisoId ?? 0, 
                         RolId = rolId 
                     }
@@ -178,6 +179,7 @@ namespace administradorFormularios.Perfiles
                     chxUsuarios.Checked = permisos.Usuarios ? true : false;
                     chxProductosBodega.Checked = permisos.ProductosBodega ? true : false;
                     chxReporteNC.Checked = permisos.ReporteNC ? true : false;
+                    chxReporteGastos.Checked = permisos.ReporteGT ? true : false;
                 }
             }                     
         }
