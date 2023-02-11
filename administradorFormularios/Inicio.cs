@@ -136,7 +136,7 @@ namespace administradorFormularios
 
         private void btnReporteGatos_Click(object sender, EventArgs e)
         {
-            btnFocus(btnReporteNC);
+            btnFocus(btnReporteGatos);
             llamadosFormularios.abrirFormularioHijo(new GastosReport.GastosRv(), ref panelFomularios);
         }
 
