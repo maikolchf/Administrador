@@ -28,7 +28,8 @@ namespace administradorFormularios.Proveedores
 
         private void btnGuardarProveedor_Click(object sender, EventArgs e)
         {
-            if (ValidarCamposVacios())
+            var validarCampos = ValidarCamposVacios();
+            if (validarCampos.ObjetoRespuesta)
             {
                 Proveedor proveedor = new Proveedor()
                 {
@@ -57,7 +58,7 @@ namespace administradorFormularios.Proveedores
             }
             else
             {
-                MessageBox.Show("Debe de rellenar todos los campos");
+                MessageBox.Show(validarCampos.Mensaje);
             }
             
         }        
@@ -119,26 +120,43 @@ namespace administradorFormularios.Proveedores
 
         private void SeleccionarRegistro(object sender, DataGridViewCellEventArgs e)
         {
-            txtProveedorCodigo.Enabled = false;
-            txtNombreProveedor.Text = dtProveedores.CurrentRow.Cells[0].Value.ToString();
-            txtTelefonoProveedor.Text = dtProveedores.CurrentRow.Cells[1].Value.ToString();
-            txtCedulaProveedor.Text = dtProveedores.CurrentRow.Cells[2].Value.ToString();
-            chkGastosFijo.Checked = dtProveedores.CurrentRow.Cells[3].Value.ToString() == Constantes.valores.Si ? true : false;
-            cbxEstadoProveedor.Text = dtProveedores.CurrentRow.Cells[4].Value.ToString();
-            lblProveedorId.Text = dtProveedores.CurrentRow.Cells[5].Value.ToString();
-            txtProveedorCodigo.Text = dtProveedores.CurrentRow.Cells[6].Value.ToString();
+            if (!e.RowIndex.Equals(-1))
+            {
+                txtProveedorCodigo.Enabled = false;
+                txtNombreProveedor.Text = dtProveedores.CurrentRow.Cells[0].Value.ToString();
+                txtTelefonoProveedor.Text = dtProveedores.CurrentRow.Cells[1].Value.ToString();
+                txtCedulaProveedor.Text = dtProveedores.CurrentRow.Cells[2].Value.ToString();
+                chkGastosFijo.Checked = dtProveedores.CurrentRow.Cells[3].Value.ToString() == Constantes.valores.Si ? true : false;
+                cbxEstadoProveedor.Text = dtProveedores.CurrentRow.Cells[4].Value.ToString();
+                lblProveedorId.Text = dtProveedores.CurrentRow.Cells[5].Value.ToString();
+                txtProveedorCodigo.Text = dtProveedores.CurrentRow.Cells[6].Value.ToString();
+            }            
         }
 
-        private bool ValidarCamposVacios()
+        private Respuesta<bool> ValidarCamposVacios()
         {
             if (txtNombreProveedor.Text.Trim() != "" &&
                 txtCedulaProveedor.Text.Trim() != "" &&
                 txtTelefonoProveedor.Text.Trim() != "" &&
                 cbxEstadoProveedor.SelectedIndex != -1)
             {
-                return true;
+                if (txtTelefonoProveedor.Text.Count() <= 7)
+                    return new Respuesta<bool>
+                    {
+                        ObjetoRespuesta = false,
+                        Mensaje = "Numero telefónico tiene que ser mínimo de 8 dígitos"
+                    };
+
+                return new Respuesta<bool>
+                {
+                    ObjetoRespuesta = true
+                };
             }
-            return false;
+            return new Respuesta<bool>
+            {
+                ObjetoRespuesta = false,
+                Mensaje = "Debe de rellenar todos los campos"
+            };
         }
 
         private void txtCedulaProveedor_KeyPress(object sender, KeyPressEventArgs e)
@@ -148,7 +166,7 @@ namespace administradorFormularios.Proveedores
 
         private void txtTelefonoProveedor_KeyPress(object sender, KeyPressEventArgs e)
         {
-            funcionesCompartidas.TextBoxNumeros(ref e);
+            funcionesCompartidas.TextBoxTelefonos(ref e);
         }
 
         private void btnSiguiente_Click(object sender, EventArgs e)

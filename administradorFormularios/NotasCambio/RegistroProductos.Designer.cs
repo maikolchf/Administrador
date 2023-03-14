@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.PnlFormularioProductos = new System.Windows.Forms.Panel();
+            this.btnRegresarNC = new FontAwesome.Sharp.IconButton();
             this.lblIdProducto = new System.Windows.Forms.Label();
             this.lblIdProductoNC = new System.Windows.Forms.Label();
             this.lblIdProductosNC = new System.Windows.Forms.Label();
@@ -45,21 +46,22 @@
             this.txtCodigoProducto = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.lblCodigoProducto = new MaterialSkin.Controls.MaterialLabel();
             this.pnlGripProductos = new System.Windows.Forms.Panel();
-            this.dtProductos = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblPaginaGasto = new System.Windows.Forms.Label();
             this.btnSiguiente = new FontAwesome.Sharp.IconButton();
             this.btnAtras = new FontAwesome.Sharp.IconButton();
+            this.dtProductos = new System.Windows.Forms.DataGridView();
             this.PnlFormularioProductos.SuspendLayout();
             this.pnlGripProductos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dtProductos)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtProductos)).BeginInit();
             this.SuspendLayout();
             // 
             // PnlFormularioProductos
             // 
             this.PnlFormularioProductos.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.PnlFormularioProductos.BackColor = System.Drawing.Color.White;
+            this.PnlFormularioProductos.Controls.Add(this.btnRegresarNC);
             this.PnlFormularioProductos.Controls.Add(this.lblIdProducto);
             this.PnlFormularioProductos.Controls.Add(this.lblIdProductoNC);
             this.PnlFormularioProductos.Controls.Add(this.lblIdProductosNC);
@@ -79,6 +81,26 @@
             this.PnlFormularioProductos.Name = "PnlFormularioProductos";
             this.PnlFormularioProductos.Size = new System.Drawing.Size(679, 265);
             this.PnlFormularioProductos.TabIndex = 0;
+            // 
+            // btnRegresarNC
+            // 
+            this.btnRegresarNC.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRegresarNC.FlatAppearance.BorderSize = 0;
+            this.btnRegresarNC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegresarNC.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegresarNC.IconChar = FontAwesome.Sharp.IconChar.ArrowLeft;
+            this.btnRegresarNC.IconColor = System.Drawing.Color.Black;
+            this.btnRegresarNC.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnRegresarNC.IconSize = 35;
+            this.btnRegresarNC.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.btnRegresarNC.Location = new System.Drawing.Point(18, 212);
+            this.btnRegresarNC.Name = "btnRegresarNC";
+            this.btnRegresarNC.Size = new System.Drawing.Size(232, 50);
+            this.btnRegresarNC.TabIndex = 16;
+            this.btnRegresarNC.Text = "Regresar Notas Cambio";
+            this.btnRegresarNC.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnRegresarNC.UseVisualStyleBackColor = true;
+            this.btnRegresarNC.Click += new System.EventHandler(this.btnRegresarNC_Click);
             // 
             // lblIdProducto
             // 
@@ -281,25 +303,6 @@
             this.pnlGripProductos.Size = new System.Drawing.Size(678, 336);
             this.pnlGripProductos.TabIndex = 1;
             // 
-            // dtProductos
-            // 
-            this.dtProductos.AllowUserToAddRows = false;
-            this.dtProductos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dtProductos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dtProductos.BackgroundColor = System.Drawing.Color.White;
-            this.dtProductos.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dtProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtProductos.GridColor = System.Drawing.Color.White;
-            this.dtProductos.Location = new System.Drawing.Point(3, 3);
-            this.dtProductos.MultiSelect = false;
-            this.dtProductos.Name = "dtProductos";
-            this.dtProductos.Size = new System.Drawing.Size(672, 291);
-            this.dtProductos.TabIndex = 0;
-            this.dtProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SeleccionarRegistro);
-            // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -354,6 +357,24 @@
             this.btnAtras.UseVisualStyleBackColor = true;
             this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
             // 
+            // dtProductos
+            // 
+            this.dtProductos.AllowUserToAddRows = false;
+            this.dtProductos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dtProductos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtProductos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dtProductos.BackgroundColor = System.Drawing.Color.White;
+            this.dtProductos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dtProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtProductos.Location = new System.Drawing.Point(3, 3);
+            this.dtProductos.MultiSelect = false;
+            this.dtProductos.Name = "dtProductos";
+            this.dtProductos.Size = new System.Drawing.Size(672, 291);
+            this.dtProductos.TabIndex = 0;
+            this.dtProductos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SeleccionarRegistro);
+            // 
             // RegistroProductos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -364,12 +385,13 @@
             this.Controls.Add(this.PnlFormularioProductos);
             this.Name = "RegistroProductos";
             this.Text = "RegistroProductos";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.RegistroProductos_FormClosed);
             this.PnlFormularioProductos.ResumeLayout(false);
             this.PnlFormularioProductos.PerformLayout();
             this.pnlGripProductos.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dtProductos)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtProductos)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -398,5 +420,6 @@
         private System.Windows.Forms.Label lblPaginaGasto;
         private FontAwesome.Sharp.IconButton btnSiguiente;
         private FontAwesome.Sharp.IconButton btnAtras;
+        private FontAwesome.Sharp.IconButton btnRegresarNC;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using administradorDAL;
 using AdministradorEntidades.Entidades;
+using AdministradorEntidades.Entidades.Reportes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AdministradorBL
 {
-    public  class GastosBL
+    public class GastosBL
     {
         private GastosDal gastosDal;
         public Respuesta<Gasto> Insertar(Gasto gasto)
@@ -43,6 +44,11 @@ namespace AdministradorBL
                 respuesta.ObjetoRespuesta = new List<Gasto>();
             }
             return respuesta;
+        }
+        public Respuesta<List<GastoReporte>> ObtenerDatosReporte(string estado, DateTime fechaInicio, DateTime fechaFinal)
+        {
+            gastosDal = new GastosDal();
+            return gastosDal.ObtenerDatosReporte(estado, fechaInicio, fechaFinal);
         }
     }
 }

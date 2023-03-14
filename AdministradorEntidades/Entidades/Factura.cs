@@ -34,7 +34,7 @@ namespace AdministradorEntidades.Entidades
                 vFactura.FechaRegistro = factura.FechaRegistro;
 
             }
-            catch (Exception oEx)
+            catch (Exception)
             {
                 vFactura = new Facturas();
             }

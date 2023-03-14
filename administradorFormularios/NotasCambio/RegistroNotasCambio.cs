@@ -95,7 +95,7 @@ namespace administradorFormularios.NotasCambio
             txtConsecutivoNC.Text = string.Empty;
             txtMontoNC.Text = string.Empty;
             cbxProveedorNC.SelectedValue = string.Empty;
-            dtFechaEmisionNC.Value = DateTime.Now;
+            dtFechaEmisionNC.Value = dtFechaEmisionNC.MaxDate;
             cbxEstado.SelectedValue = string.Empty;
             cbxFacturaAplicada.SelectedValue = string.Empty;
             ltsProductos = new List<Producto>();
@@ -162,11 +162,16 @@ namespace administradorFormularios.NotasCambio
             LimpiarCampos();
         }
 
-        private void RellenarGrid(ref DataGridView vista, int paginaSeleccionada = 0)
+        private void RellenarGrid(ref DataGridView vista, int paginaSeleccionada = 0, string consecutivoBuscar = "")
         {
             int CantidadRegistros = 25;
 
             List<NotaCambio> lista = notasCambioBL.Obtener().ObjetoRespuesta;
+
+            if (!string.IsNullOrEmpty(consecutivoBuscar))
+            {
+                lista = lista.Where(item => item.ConsecutivoNC.Contains(consecutivoBuscar)).ToList();
+            }
 
             decimal totalRegistro = lista.Count();
             totalPaginas = Math.Ceiling(totalRegistro / (decimal)CantidadRegistros);
@@ -208,33 +213,36 @@ namespace administradorFormularios.NotasCambio
 
         private void SeleccionarRegistro(object sender, DataGridViewCellEventArgs e)
         {
-            txtConsecutivoNC.Text = dtNotasCambio.CurrentRow.Cells[0].Value.ToString();
-            cbxProveedorNC.SelectedValue = dtNotasCambio.CurrentRow.Cells[6].Value.ToString();
-            dtFechaEmisionNC.Value = Convert.ToDateTime(dtNotasCambio.CurrentRow.Cells[2].Value.ToString());
-            txtMontoNC.Text = dtNotasCambio.CurrentRow.Cells[3].Value.ToString();
-            cbxEstado.SelectedValue = dtNotasCambio.CurrentRow.Cells[7].Value.ToString();            
-            cbxFacturaAplicada.SelectedValue = Convert.ToInt32(dtNotasCambio.CurrentRow.Cells[8].Value);
-            lblIdNC.Text = dtNotasCambio.CurrentRow.Cells[9].Value.ToString();
-
-            if (!string.IsNullOrEmpty(lblIdNC.Text))
+            if (!e.RowIndex.Equals(-1))
             {
-                List<ProductoNC> productoNCs = lstNotacambios.Find(item => item.IdNC == Convert.ToInt32(lblIdNC.Text)).ltsProductoNC;
-                ltsProductos.Clear();
-                productoNCs.ForEach(item => {
-                    Producto producto = new Producto
-                    {
-                        idProductoNC = item.IdProductoNC,
-                        idProducto = item.IdProducto,
-                        Cantidad = item.CantidadProdNC,
-                        Codigo = item.ProductoBodega.CodigoProducto,
-                        Destalle = item.DescripcionProdNC,
-                        Nombre = item.ProductoBodega.NombreProducto,
-                        IdNC = item.IdNC,
-                        Precio = item.PrecioProdNC
-                    };
-                    ltsProductos.Add(producto);
-                });
-            }
+                txtConsecutivoNC.Text = dtNotasCambio.CurrentRow.Cells[0].Value.ToString();
+                cbxProveedorNC.SelectedValue = dtNotasCambio.CurrentRow.Cells[6].Value.ToString();
+                dtFechaEmisionNC.Value = Convert.ToDateTime(dtNotasCambio.CurrentRow.Cells[2].Value.ToString());
+                txtMontoNC.Text = dtNotasCambio.CurrentRow.Cells[3].Value.ToString();
+                cbxEstado.SelectedValue = dtNotasCambio.CurrentRow.Cells[7].Value.ToString();
+                cbxFacturaAplicada.SelectedValue = Convert.ToInt32(dtNotasCambio.CurrentRow.Cells[8].Value);
+                lblIdNC.Text = dtNotasCambio.CurrentRow.Cells[9].Value.ToString();
+
+                if (!string.IsNullOrEmpty(lblIdNC.Text))
+                {
+                    List<ProductoNC> productoNCs = lstNotacambios.Find(item => item.IdNC == Convert.ToInt32(lblIdNC.Text)).ltsProductoNC;
+                    ltsProductos.Clear();
+                    productoNCs.ForEach(item => {
+                        Producto producto = new Producto
+                        {
+                            idProductoNC = item.IdProductoNC,
+                            idProducto = item.IdProducto,
+                            Cantidad = item.CantidadProdNC,
+                            Codigo = item.ProductoBodega.CodigoProducto,
+                            Destalle = item.DescripcionProdNC,
+                            Nombre = item.ProductoBodega.NombreProducto,
+                            IdNC = item.IdNC,
+                            Precio = item.PrecioProdNC
+                        };
+                        ltsProductos.Add(producto);
+                    });
+                }
+            }            
         }
 
         private void AplicarNotaCambio(object sender, EventArgs e)
@@ -278,6 +286,16 @@ namespace administradorFormularios.NotasCambio
             }
             RellenarGrid(ref dtNotasCambio, paginaSeleccionada);
             lblPaginaGasto.Text = (int.Parse(lblPaginaGasto.Text) - 1).ToString();
+        }
+
+        private void buscarConsecutivoNC(object sender, EventArgs e)
+        {
+            string consecutivoBuscar = txtConsecutivoFiltrar.Text;
+
+            if (!string.IsNullOrEmpty(consecutivoBuscar))
+            {
+                RellenarGrid(ref dtNotasCambio, paginaSeleccionada, consecutivoBuscar);
+            }
         }
     }
 }

@@ -51,6 +51,8 @@
             this.btnSiguiente = new FontAwesome.Sharp.IconButton();
             this.btnAtras = new FontAwesome.Sharp.IconButton();
             this.dtNotasCambio = new System.Windows.Forms.DataGridView();
+            this.lblConsecutivoFiltrar = new MaterialSkin.Controls.MaterialLabel();
+            this.txtConsecutivoFiltrar = new MaterialSkin.Controls.MaterialSingleLineTextField();
             this.pnlFormularioRegistroNC.SuspendLayout();
             this.pnGridNC.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -191,9 +193,11 @@
             // dtFechaEmisionNC
             // 
             this.dtFechaEmisionNC.Location = new System.Drawing.Point(520, 17);
+            this.dtFechaEmisionNC.MaxDate = new System.DateTime(2022, 9, 5, 19, 29, 18, 423);
             this.dtFechaEmisionNC.Name = "dtFechaEmisionNC";
             this.dtFechaEmisionNC.Size = new System.Drawing.Size(150, 20);
             this.dtFechaEmisionNC.TabIndex = 3;
+            this.dtFechaEmisionNC.Value = new System.DateTime(2022, 9, 5, 19, 29, 18, 423);
             // 
             // cbxProveedorNC
             // 
@@ -291,6 +295,8 @@
             // pnGridNC
             // 
             this.pnGridNC.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.pnGridNC.Controls.Add(this.txtConsecutivoFiltrar);
+            this.pnGridNC.Controls.Add(this.lblConsecutivoFiltrar);
             this.pnGridNC.Controls.Add(this.panel1);
             this.pnGridNC.Controls.Add(this.dtNotasCambio);
             this.pnGridNC.Location = new System.Drawing.Point(12, 253);
@@ -364,12 +370,40 @@
             this.dtNotasCambio.BackgroundColor = System.Drawing.Color.White;
             this.dtNotasCambio.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dtNotasCambio.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dtNotasCambio.GridColor = System.Drawing.Color.White;
-            this.dtNotasCambio.Location = new System.Drawing.Point(3, 3);
+            this.dtNotasCambio.Location = new System.Drawing.Point(3, 36);
             this.dtNotasCambio.Name = "dtNotasCambio";
-            this.dtNotasCambio.Size = new System.Drawing.Size(673, 325);
+            this.dtNotasCambio.Size = new System.Drawing.Size(673, 292);
             this.dtNotasCambio.TabIndex = 0;
             this.dtNotasCambio.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SeleccionarRegistro);
+            // 
+            // lblConsecutivoFiltrar
+            // 
+            this.lblConsecutivoFiltrar.AutoSize = true;
+            this.lblConsecutivoFiltrar.Depth = 0;
+            this.lblConsecutivoFiltrar.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblConsecutivoFiltrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblConsecutivoFiltrar.Location = new System.Drawing.Point(12, 11);
+            this.lblConsecutivoFiltrar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblConsecutivoFiltrar.Name = "lblConsecutivoFiltrar";
+            this.lblConsecutivoFiltrar.Size = new System.Drawing.Size(158, 19);
+            this.lblConsecutivoFiltrar.TabIndex = 3;
+            this.lblConsecutivoFiltrar.Text = "Consecutivo a buscar:";
+            // 
+            // txtConsecutivoFiltrar
+            // 
+            this.txtConsecutivoFiltrar.Depth = 0;
+            this.txtConsecutivoFiltrar.Hint = "";
+            this.txtConsecutivoFiltrar.Location = new System.Drawing.Point(176, 7);
+            this.txtConsecutivoFiltrar.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtConsecutivoFiltrar.Name = "txtConsecutivoFiltrar";
+            this.txtConsecutivoFiltrar.PasswordChar = '\0';
+            this.txtConsecutivoFiltrar.SelectedText = "";
+            this.txtConsecutivoFiltrar.SelectionLength = 0;
+            this.txtConsecutivoFiltrar.SelectionStart = 0;
+            this.txtConsecutivoFiltrar.Size = new System.Drawing.Size(216, 23);
+            this.txtConsecutivoFiltrar.TabIndex = 4;
+            this.txtConsecutivoFiltrar.UseSystemPasswordChar = false;
+            this.txtConsecutivoFiltrar.TextChanged += new System.EventHandler(this.buscarConsecutivoNC);
             // 
             // RegistroNotasCambio
             // 
@@ -384,6 +418,7 @@
             this.pnlFormularioRegistroNC.ResumeLayout(false);
             this.pnlFormularioRegistroNC.PerformLayout();
             this.pnGridNC.ResumeLayout(false);
+            this.pnGridNC.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtNotasCambio)).EndInit();
@@ -416,5 +451,7 @@
         private System.Windows.Forms.Label lblPaginaGasto;
         private FontAwesome.Sharp.IconButton btnSiguiente;
         private FontAwesome.Sharp.IconButton btnAtras;
+        private MaterialSkin.Controls.MaterialSingleLineTextField txtConsecutivoFiltrar;
+        private MaterialSkin.Controls.MaterialLabel lblConsecutivoFiltrar;
     }
 }

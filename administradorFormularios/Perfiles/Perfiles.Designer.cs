@@ -36,6 +36,8 @@
             this.btnGuardarPerfil = new FontAwesome.Sharp.IconButton();
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.pnlPermisosPerfil = new System.Windows.Forms.Panel();
+            this.chxReporteNC = new MaterialSkin.Controls.MaterialCheckBox();
+            this.chxProductosBodega = new MaterialSkin.Controls.MaterialCheckBox();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.chxPerfiles = new MaterialSkin.Controls.MaterialCheckBox();
             this.chxUsuarios = new MaterialSkin.Controls.MaterialCheckBox();
@@ -51,6 +53,7 @@
             this.lblPaginaPerfil = new System.Windows.Forms.Label();
             this.btnSiguiente = new FontAwesome.Sharp.IconButton();
             this.btnAtras = new FontAwesome.Sharp.IconButton();
+            this.chxReporteGastos = new MaterialSkin.Controls.MaterialCheckBox();
             this.pnlFormularioPerfiles.SuspendLayout();
             this.pnlPermisosPerfil.SuspendLayout();
             this.pnlVistaGrid.SuspendLayout();
@@ -71,7 +74,7 @@
             this.pnlFormularioPerfiles.Controls.Add(this.txtNombrePerfil);
             this.pnlFormularioPerfiles.Location = new System.Drawing.Point(12, 12);
             this.pnlFormularioPerfiles.Name = "pnlFormularioPerfiles";
-            this.pnlFormularioPerfiles.Size = new System.Drawing.Size(679, 276);
+            this.pnlFormularioPerfiles.Size = new System.Drawing.Size(679, 336);
             this.pnlFormularioPerfiles.TabIndex = 0;
             // 
             // lblRolId
@@ -115,7 +118,7 @@
             this.btnLimpiarPerfil.IconColor = System.Drawing.Color.Black;
             this.btnLimpiarPerfil.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnLimpiarPerfil.IconSize = 50;
-            this.btnLimpiarPerfil.Location = new System.Drawing.Point(583, 202);
+            this.btnLimpiarPerfil.Location = new System.Drawing.Point(581, 274);
             this.btnLimpiarPerfil.Name = "btnLimpiarPerfil";
             this.btnLimpiarPerfil.Size = new System.Drawing.Size(75, 59);
             this.btnLimpiarPerfil.TabIndex = 12;
@@ -131,7 +134,7 @@
             this.btnGuardarPerfil.IconColor = System.Drawing.Color.Black;
             this.btnGuardarPerfil.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnGuardarPerfil.IconSize = 50;
-            this.btnGuardarPerfil.Location = new System.Drawing.Point(502, 202);
+            this.btnGuardarPerfil.Location = new System.Drawing.Point(509, 274);
             this.btnGuardarPerfil.Name = "btnGuardarPerfil";
             this.btnGuardarPerfil.Size = new System.Drawing.Size(75, 59);
             this.btnGuardarPerfil.TabIndex = 11;
@@ -154,6 +157,9 @@
             // pnlPermisosPerfil
             // 
             this.pnlPermisosPerfil.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.pnlPermisosPerfil.Controls.Add(this.chxReporteGastos);
+            this.pnlPermisosPerfil.Controls.Add(this.chxReporteNC);
+            this.pnlPermisosPerfil.Controls.Add(this.chxProductosBodega);
             this.pnlPermisosPerfil.Controls.Add(this.materialLabel2);
             this.pnlPermisosPerfil.Controls.Add(this.chxPerfiles);
             this.pnlPermisosPerfil.Controls.Add(this.chxUsuarios);
@@ -164,8 +170,40 @@
             this.pnlPermisosPerfil.Controls.Add(this.chxInicio);
             this.pnlPermisosPerfil.Location = new System.Drawing.Point(20, 58);
             this.pnlPermisosPerfil.Name = "pnlPermisosPerfil";
-            this.pnlPermisosPerfil.Size = new System.Drawing.Size(639, 162);
+            this.pnlPermisosPerfil.Size = new System.Drawing.Size(639, 222);
             this.pnlPermisosPerfil.TabIndex = 2;
+            // 
+            // chxReporteNC
+            // 
+            this.chxReporteNC.AutoSize = true;
+            this.chxReporteNC.Depth = 0;
+            this.chxReporteNC.Font = new System.Drawing.Font("Roboto", 10F);
+            this.chxReporteNC.Location = new System.Drawing.Point(13, 126);
+            this.chxReporteNC.Margin = new System.Windows.Forms.Padding(0);
+            this.chxReporteNC.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.chxReporteNC.MouseState = MaterialSkin.MouseState.HOVER;
+            this.chxReporteNC.Name = "chxReporteNC";
+            this.chxReporteNC.Ripple = true;
+            this.chxReporteNC.Size = new System.Drawing.Size(184, 30);
+            this.chxReporteNC.TabIndex = 11;
+            this.chxReporteNC.Text = "Reporte notas de cambio";
+            this.chxReporteNC.UseVisualStyleBackColor = true;
+            // 
+            // chxProductosBodega
+            // 
+            this.chxProductosBodega.AutoSize = true;
+            this.chxProductosBodega.Depth = 0;
+            this.chxProductosBodega.Font = new System.Drawing.Font("Roboto", 10F);
+            this.chxProductosBodega.Location = new System.Drawing.Point(271, 84);
+            this.chxProductosBodega.Margin = new System.Windows.Forms.Padding(0);
+            this.chxProductosBodega.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.chxProductosBodega.MouseState = MaterialSkin.MouseState.HOVER;
+            this.chxProductosBodega.Name = "chxProductosBodega";
+            this.chxProductosBodega.Ripple = true;
+            this.chxProductosBodega.Size = new System.Drawing.Size(144, 30);
+            this.chxProductosBodega.TabIndex = 10;
+            this.chxProductosBodega.Text = "Productos Bodega";
+            this.chxProductosBodega.UseVisualStyleBackColor = true;
             // 
             // materialLabel2
             // 
@@ -185,7 +223,7 @@
             this.chxPerfiles.AutoSize = true;
             this.chxPerfiles.Depth = 0;
             this.chxPerfiles.Font = new System.Drawing.Font("Roboto", 10F);
-            this.chxPerfiles.Location = new System.Drawing.Point(13, 123);
+            this.chxPerfiles.Location = new System.Drawing.Point(544, 126);
             this.chxPerfiles.Margin = new System.Windows.Forms.Padding(0);
             this.chxPerfiles.MouseLocation = new System.Drawing.Point(-1, -1);
             this.chxPerfiles.MouseState = MaterialSkin.MouseState.HOVER;
@@ -201,7 +239,7 @@
             this.chxUsuarios.AutoSize = true;
             this.chxUsuarios.Depth = 0;
             this.chxUsuarios.Font = new System.Drawing.Font("Roboto", 10F);
-            this.chxUsuarios.Location = new System.Drawing.Point(544, 84);
+            this.chxUsuarios.Location = new System.Drawing.Point(271, 126);
             this.chxUsuarios.Margin = new System.Windows.Forms.Padding(0);
             this.chxUsuarios.MouseLocation = new System.Drawing.Point(-1, -1);
             this.chxUsuarios.MouseState = MaterialSkin.MouseState.HOVER;
@@ -217,7 +255,7 @@
             this.chxFacturas.AutoSize = true;
             this.chxFacturas.Depth = 0;
             this.chxFacturas.Font = new System.Drawing.Font("Roboto", 10F);
-            this.chxFacturas.Location = new System.Drawing.Point(271, 84);
+            this.chxFacturas.Location = new System.Drawing.Point(544, 84);
             this.chxFacturas.Margin = new System.Windows.Forms.Padding(0);
             this.chxFacturas.MouseLocation = new System.Drawing.Point(-1, -1);
             this.chxFacturas.MouseState = MaterialSkin.MouseState.HOVER;
@@ -312,9 +350,9 @@
             this.pnlVistaGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.pnlVistaGrid.Controls.Add(this.dgvPerfiles);
             this.pnlVistaGrid.Controls.Add(this.panel2);
-            this.pnlVistaGrid.Location = new System.Drawing.Point(12, 294);
+            this.pnlVistaGrid.Location = new System.Drawing.Point(12, 376);
             this.pnlVistaGrid.Name = "pnlVistaGrid";
-            this.pnlVistaGrid.Size = new System.Drawing.Size(679, 326);
+            this.pnlVistaGrid.Size = new System.Drawing.Size(679, 244);
             this.pnlVistaGrid.TabIndex = 1;
             // 
             // dgvPerfiles
@@ -329,10 +367,9 @@
             this.dgvPerfiles.BackgroundColor = System.Drawing.Color.White;
             this.dgvPerfiles.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvPerfiles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPerfiles.GridColor = System.Drawing.Color.White;
-            this.dgvPerfiles.Location = new System.Drawing.Point(4, 3);
+            this.dgvPerfiles.Location = new System.Drawing.Point(4, 12);
             this.dgvPerfiles.Name = "dgvPerfiles";
-            this.dgvPerfiles.Size = new System.Drawing.Size(672, 281);
+            this.dgvPerfiles.Size = new System.Drawing.Size(672, 190);
             this.dgvPerfiles.TabIndex = 3;
             this.dgvPerfiles.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SeleccionarRegistro);
             // 
@@ -343,7 +380,7 @@
             this.panel2.Controls.Add(this.lblPaginaPerfil);
             this.panel2.Controls.Add(this.btnSiguiente);
             this.panel2.Controls.Add(this.btnAtras);
-            this.panel2.Location = new System.Drawing.Point(4, 290);
+            this.panel2.Location = new System.Drawing.Point(4, 208);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(672, 33);
             this.panel2.TabIndex = 2;
@@ -389,6 +426,22 @@
             this.btnAtras.TabIndex = 0;
             this.btnAtras.UseVisualStyleBackColor = true;
             this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
+            // 
+            // chxReporteGastos
+            // 
+            this.chxReporteGastos.AutoSize = true;
+            this.chxReporteGastos.Depth = 0;
+            this.chxReporteGastos.Font = new System.Drawing.Font("Roboto", 10F);
+            this.chxReporteGastos.Location = new System.Drawing.Point(13, 172);
+            this.chxReporteGastos.Margin = new System.Windows.Forms.Padding(0);
+            this.chxReporteGastos.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.chxReporteGastos.MouseState = MaterialSkin.MouseState.HOVER;
+            this.chxReporteGastos.Name = "chxReporteGastos";
+            this.chxReporteGastos.Ripple = true;
+            this.chxReporteGastos.Size = new System.Drawing.Size(123, 30);
+            this.chxReporteGastos.TabIndex = 12;
+            this.chxReporteGastos.Text = "Reporte gastos";
+            this.chxReporteGastos.UseVisualStyleBackColor = true;
             // 
             // Perfiles
             // 
@@ -437,5 +490,8 @@
         private System.Windows.Forms.ComboBox cbxEstadoPerfil;
         private MaterialSkin.Controls.MaterialLabel lblEstadoPerfil;
         private System.Windows.Forms.Label lblRolId;
+        private MaterialSkin.Controls.MaterialCheckBox chxProductosBodega;
+        private MaterialSkin.Controls.MaterialCheckBox chxReporteNC;
+        private MaterialSkin.Controls.MaterialCheckBox chxReporteGastos;
     }
 }

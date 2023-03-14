@@ -29,20 +29,20 @@
         private void InitializeComponent()
         {
             this.pnlFiltro = new System.Windows.Forms.Panel();
+            this.txtNombreProducto = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.lblNombreProducto = new MaterialSkin.Controls.MaterialLabel();
+            this.txtCodigoProducto = new MaterialSkin.Controls.MaterialSingleLineTextField();
+            this.lblCodigo = new MaterialSkin.Controls.MaterialLabel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.dgvProductosBodega = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblPaginaGasto = new System.Windows.Forms.Label();
             this.btnSiguiente = new FontAwesome.Sharp.IconButton();
             this.btnAtras = new FontAwesome.Sharp.IconButton();
-            this.lblCodigo = new MaterialSkin.Controls.MaterialLabel();
-            this.txtCodigoProducto = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.txtNombreProducto = new MaterialSkin.Controls.MaterialSingleLineTextField();
-            this.lblNombreProducto = new MaterialSkin.Controls.MaterialLabel();
-            this.dgvProductosBodega = new System.Windows.Forms.DataGridView();
             this.pnlFiltro.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductosBodega)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlFiltro
@@ -57,6 +57,64 @@
             this.pnlFiltro.Size = new System.Drawing.Size(679, 71);
             this.pnlFiltro.TabIndex = 0;
             // 
+            // txtNombreProducto
+            // 
+            this.txtNombreProducto.Depth = 0;
+            this.txtNombreProducto.Hint = "";
+            this.txtNombreProducto.Location = new System.Drawing.Point(473, 23);
+            this.txtNombreProducto.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtNombreProducto.Name = "txtNombreProducto";
+            this.txtNombreProducto.PasswordChar = '\0';
+            this.txtNombreProducto.SelectedText = "";
+            this.txtNombreProducto.SelectionLength = 0;
+            this.txtNombreProducto.SelectionStart = 0;
+            this.txtNombreProducto.Size = new System.Drawing.Size(199, 23);
+            this.txtNombreProducto.TabIndex = 3;
+            this.txtNombreProducto.UseSystemPasswordChar = false;
+            this.txtNombreProducto.TextChanged += new System.EventHandler(this.txtNombreProducto_TextChanged);
+            // 
+            // lblNombreProducto
+            // 
+            this.lblNombreProducto.AutoSize = true;
+            this.lblNombreProducto.Depth = 0;
+            this.lblNombreProducto.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblNombreProducto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblNombreProducto.Location = new System.Drawing.Point(354, 23);
+            this.lblNombreProducto.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblNombreProducto.Name = "lblNombreProducto";
+            this.lblNombreProducto.Size = new System.Drawing.Size(67, 19);
+            this.lblNombreProducto.TabIndex = 2;
+            this.lblNombreProducto.Text = "Nombre:";
+            // 
+            // txtCodigoProducto
+            // 
+            this.txtCodigoProducto.Depth = 0;
+            this.txtCodigoProducto.Hint = "";
+            this.txtCodigoProducto.Location = new System.Drawing.Point(134, 23);
+            this.txtCodigoProducto.MouseState = MaterialSkin.MouseState.HOVER;
+            this.txtCodigoProducto.Name = "txtCodigoProducto";
+            this.txtCodigoProducto.PasswordChar = '\0';
+            this.txtCodigoProducto.SelectedText = "";
+            this.txtCodigoProducto.SelectionLength = 0;
+            this.txtCodigoProducto.SelectionStart = 0;
+            this.txtCodigoProducto.Size = new System.Drawing.Size(199, 23);
+            this.txtCodigoProducto.TabIndex = 1;
+            this.txtCodigoProducto.UseSystemPasswordChar = false;
+            this.txtCodigoProducto.TextChanged += new System.EventHandler(this.txtCodigoProducto_TextChanged);
+            // 
+            // lblCodigo
+            // 
+            this.lblCodigo.AutoSize = true;
+            this.lblCodigo.Depth = 0;
+            this.lblCodigo.Font = new System.Drawing.Font("Roboto", 11F);
+            this.lblCodigo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblCodigo.Location = new System.Drawing.Point(3, 23);
+            this.lblCodigo.MouseState = MaterialSkin.MouseState.HOVER;
+            this.lblCodigo.Name = "lblCodigo";
+            this.lblCodigo.Size = new System.Drawing.Size(61, 19);
+            this.lblCodigo.TabIndex = 0;
+            this.lblCodigo.Text = "Codigo:";
+            // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
@@ -66,6 +124,23 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(679, 531);
             this.panel1.TabIndex = 1;
+            // 
+            // dgvProductosBodega
+            // 
+            this.dgvProductosBodega.AllowUserToAddRows = false;
+            this.dgvProductosBodega.AllowUserToDeleteRows = false;
+            this.dgvProductosBodega.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvProductosBodega.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvProductosBodega.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvProductosBodega.BackgroundColor = System.Drawing.Color.White;
+            this.dgvProductosBodega.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvProductosBodega.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProductosBodega.Location = new System.Drawing.Point(3, 3);
+            this.dgvProductosBodega.Name = "dgvProductosBodega";
+            this.dgvProductosBodega.Size = new System.Drawing.Size(672, 486);
+            this.dgvProductosBodega.TabIndex = 4;
             // 
             // panel2
             // 
@@ -119,82 +194,6 @@
             this.btnAtras.TabIndex = 0;
             this.btnAtras.UseVisualStyleBackColor = true;
             // 
-            // lblCodigo
-            // 
-            this.lblCodigo.AutoSize = true;
-            this.lblCodigo.Depth = 0;
-            this.lblCodigo.Font = new System.Drawing.Font("Roboto", 11F);
-            this.lblCodigo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblCodigo.Location = new System.Drawing.Point(3, 23);
-            this.lblCodigo.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblCodigo.Name = "lblCodigo";
-            this.lblCodigo.Size = new System.Drawing.Size(61, 19);
-            this.lblCodigo.TabIndex = 0;
-            this.lblCodigo.Text = "Codigo:";
-            // 
-            // txtCodigoProducto
-            // 
-            this.txtCodigoProducto.Depth = 0;
-            this.txtCodigoProducto.Hint = "";
-            this.txtCodigoProducto.Location = new System.Drawing.Point(134, 23);
-            this.txtCodigoProducto.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtCodigoProducto.Name = "txtCodigoProducto";
-            this.txtCodigoProducto.PasswordChar = '\0';
-            this.txtCodigoProducto.SelectedText = "";
-            this.txtCodigoProducto.SelectionLength = 0;
-            this.txtCodigoProducto.SelectionStart = 0;
-            this.txtCodigoProducto.Size = new System.Drawing.Size(199, 23);
-            this.txtCodigoProducto.TabIndex = 1;
-            this.txtCodigoProducto.UseSystemPasswordChar = false;
-            this.txtCodigoProducto.TextChanged += new System.EventHandler(this.txtCodigoProducto_TextChanged);
-            // 
-            // txtNombreProducto
-            // 
-            this.txtNombreProducto.Depth = 0;
-            this.txtNombreProducto.Hint = "";
-            this.txtNombreProducto.Location = new System.Drawing.Point(473, 23);
-            this.txtNombreProducto.MouseState = MaterialSkin.MouseState.HOVER;
-            this.txtNombreProducto.Name = "txtNombreProducto";
-            this.txtNombreProducto.PasswordChar = '\0';
-            this.txtNombreProducto.SelectedText = "";
-            this.txtNombreProducto.SelectionLength = 0;
-            this.txtNombreProducto.SelectionStart = 0;
-            this.txtNombreProducto.Size = new System.Drawing.Size(199, 23);
-            this.txtNombreProducto.TabIndex = 3;
-            this.txtNombreProducto.UseSystemPasswordChar = false;
-            this.txtNombreProducto.TextChanged += new System.EventHandler(this.txtNombreProducto_TextChanged);
-            // 
-            // lblNombreProducto
-            // 
-            this.lblNombreProducto.AutoSize = true;
-            this.lblNombreProducto.Depth = 0;
-            this.lblNombreProducto.Font = new System.Drawing.Font("Roboto", 11F);
-            this.lblNombreProducto.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblNombreProducto.Location = new System.Drawing.Point(354, 23);
-            this.lblNombreProducto.MouseState = MaterialSkin.MouseState.HOVER;
-            this.lblNombreProducto.Name = "lblNombreProducto";
-            this.lblNombreProducto.Size = new System.Drawing.Size(67, 19);
-            this.lblNombreProducto.TabIndex = 2;
-            this.lblNombreProducto.Text = "Nombre:";
-            // 
-            // dgvProductosBodega
-            // 
-            this.dgvProductosBodega.AllowUserToAddRows = false;
-            this.dgvProductosBodega.AllowUserToDeleteRows = false;
-            this.dgvProductosBodega.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvProductosBodega.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvProductosBodega.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgvProductosBodega.BackgroundColor = System.Drawing.Color.White;
-            this.dgvProductosBodega.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvProductosBodega.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProductosBodega.GridColor = System.Drawing.Color.White;
-            this.dgvProductosBodega.Location = new System.Drawing.Point(3, 3);
-            this.dgvProductosBodega.Name = "dgvProductosBodega";
-            this.dgvProductosBodega.Size = new System.Drawing.Size(672, 486);
-            this.dgvProductosBodega.TabIndex = 4;
-            // 
             // ProductosBodega
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -208,9 +207,9 @@
             this.pnlFiltro.ResumeLayout(false);
             this.pnlFiltro.PerformLayout();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProductosBodega)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvProductosBodega)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -61,6 +61,9 @@
           <Property Name="Facturas" Type="bit" Nullable="false" />
           <Property Name="Usuarios" Type="bit" Nullable="false" />
           <Property Name="Perfiles" Type="bit" Nullable="false" />
+          <Property Name="ProductosBodega" Type="bit" Nullable="false" />
+          <Property Name="ReporteNC" Type="bit" Nullable="false" />
+          <Property Name="ReporteGT" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="ProductosBodega">
           <Key>
@@ -116,6 +119,8 @@
           <Property Name="Contrasenna" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="Usuario" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Estado" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="FechaGeneraToken" Type="date" Nullable="false" />
+          <Property Name="Token" Type="varchar" MaxLength="250" Nullable="false" />
         </EntityType>
         <Association Name="Factura_FK_Estado">
           <End Role="Estados" Type="Self.Estados" Multiplicity="1" />
@@ -413,7 +418,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="AdministradorAzurEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="AdministradorAzurEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Estados" EntityType="Self.Estados" />
           <EntitySet Name="Gastos" EntityType="Self.Gastos" />
           <EntitySet Name="NotasCambio" EntityType="Self.NotasCambio" />
@@ -455,10 +460,10 @@
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Usuarios" EntitySet="Usuarios" />
           </AssociationSet>
-          <EntitySet Name="PermisosSet" EntityType="AdministradorAzurModel.Permisos" />
+          <EntitySet Name="Permisos" EntityType="AdministradorAzurModel.Permisos" />
           <AssociationSet Name="Rol_FK_ermisos1" Association="AdministradorAzurModel.Rol_FK_ermisos1">
             <End Role="Roles" EntitySet="Roles" />
-            <End Role="Permisos" EntitySet="PermisosSet" />
+            <End Role="Permisos" EntitySet="Permisos" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Facturas">
@@ -523,6 +528,8 @@
           <Property Name="Usuario" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Roles" Relationship="AdministradorAzurModel.Usuarios_FK_Roles" FromRole="Usuarios" ToRole="Roles" />
           <Property Name="Estado" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="FechaGeneraToken" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Token" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="Usuarios_FK_Roles">
           <End Type="AdministradorAzurModel.Roles" Role="Roles" Multiplicity="1" />
@@ -550,6 +557,9 @@
           <Property Name="Usuarios" Type="Boolean" Nullable="false" />
           <Property Name="Perfiles" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Roles" Relationship="AdministradorAzurModel.Rol_FK_ermisos1" FromRole="Permisos" ToRole="Roles" />
+          <Property Name="ProductosBodega" Type="Boolean" Nullable="false" />
+          <Property Name="ReporteNC" Type="Boolean" Nullable="false" />
+          <Property Name="ReporteGT" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="Rol_FK_ermisos1">
           <End Type="AdministradorAzurModel.Roles" Role="Roles" Multiplicity="1" />
@@ -567,133 +577,137 @@
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="AdministradorAzurModelStoreContainer" CdmEntityContainer="AdministradorAzurEntities2">
-          <EntitySetMapping Name="Estados">
-            <EntityTypeMapping TypeName="AdministradorAzurModel.Estados">
-              <MappingFragment StoreEntitySet="Estados">
-                <ScalarProperty Name="EstadoId" ColumnName="EstadoId" />
-                <ScalarProperty Name="EstadoCodigo" ColumnName="EstadoCodigo" />
-                <ScalarProperty Name="EstadoDescripcion" ColumnName="EstadoDescripcion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Gastos">
-            <EntityTypeMapping TypeName="AdministradorAzurModel.Gastos">
-              <MappingFragment StoreEntitySet="Gastos">
-                <ScalarProperty Name="GastoId" ColumnName="GastoId" />
-                <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
-                <ScalarProperty Name="Consecutivo" ColumnName="Consecutivo" />
-                <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
-                <ScalarProperty Name="Monto" ColumnName="Monto" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="NotasCambio">
-            <EntityTypeMapping TypeName="AdministradorAzurModel.NotasCambio">
-              <MappingFragment StoreEntitySet="NotasCambio">
-                <ScalarProperty Name="IdNC" ColumnName="IdNC" />
-                <ScalarProperty Name="ConsecutivoNC" ColumnName="ConsecutivoNC" />
-                <ScalarProperty Name="FechaEmisionNC" ColumnName="FechaEmisionNC" />
-                <ScalarProperty Name="CodProveedorNC" ColumnName="CodProveedorNC" />
-                <ScalarProperty Name="MontoNC" ColumnName="MontoNC" />
-                <ScalarProperty Name="IdFacturaAplicada" ColumnName="IdFacturaAplicada" />
-                <ScalarProperty Name="EstadoNC" ColumnName="EstadoNC" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ProductosBodega">
-            <EntityTypeMapping TypeName="AdministradorAzurModel.ProductosBodega">
-              <MappingFragment StoreEntitySet="ProductosBodega">
-                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
-                <ScalarProperty Name="CodigoProducto" ColumnName="CodigoProducto" />
-                <ScalarProperty Name="NombreProducto" ColumnName="NombreProducto" />
-                <ScalarProperty Name="CantidadProducto" ColumnName="CantidadProducto" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ProductosNC">
-            <EntityTypeMapping TypeName="AdministradorAzurModel.ProductosNC">
-              <MappingFragment StoreEntitySet="ProductosNC">
-                <ScalarProperty Name="IdProductoNC" ColumnName="IdProductoNC" />
-                <ScalarProperty Name="IdNC" ColumnName="IdNC" />
-                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
-                <ScalarProperty Name="CantidadProdNC" ColumnName="CantidadProdNC" />
-                <ScalarProperty Name="DescripcionProdNC" ColumnName="DescripcionProdNC" />
-                <ScalarProperty Name="PrecioProdNC" ColumnName="PrecioProdNC" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Proveedores">
-            <EntityTypeMapping TypeName="AdministradorAzurModel.Proveedores">
-              <MappingFragment StoreEntitySet="Proveedores">
-                <ScalarProperty Name="ProveedorId" ColumnName="ProveedorId" />
-                <ScalarProperty Name="ProveedorNombre" ColumnName="ProveedorNombre" />
-                <ScalarProperty Name="ProveedorCodigo" ColumnName="ProveedorCodigo" />
-                <ScalarProperty Name="ProveedorCedula" ColumnName="ProveedorCedula" />
-                <ScalarProperty Name="ProveedorTelefono" ColumnName="ProveedorTelefono" />
-                <ScalarProperty Name="ProveedorGastoFijo" ColumnName="ProveedorGastoFijo" />
-                <ScalarProperty Name="ProveedorEstado" ColumnName="ProveedorEstado" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Facturas">
-            <EntityTypeMapping TypeName="AdministradorAzurModel.Facturas">
-              <MappingFragment StoreEntitySet="Facturas">
-                <ScalarProperty Name="EstadoFactura" ColumnName="EstadoFactura" />
-                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
-                <ScalarProperty Name="MontoFactura" ColumnName="MontoFactura" />
-                <ScalarProperty Name="ConsecutivoFactura" ColumnName="ConsecutivoFactura" />
-                <ScalarProperty Name="ProveedorFactura" ColumnName="ProveedorFactura" />
-                <ScalarProperty Name="FacturaId" ColumnName="FacturaId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Roles">
-            <EntityTypeMapping TypeName="AdministradorAzurModel.Roles">
-              <MappingFragment StoreEntitySet="Roles">
-                <ScalarProperty Name="EstadoRol" ColumnName="EstadoRol" />
-                <ScalarProperty Name="NombreRol" ColumnName="NombreRol" />
-                <ScalarProperty Name="RolId" ColumnName="RolId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Usuarios">
-            <EntityTypeMapping TypeName="AdministradorAzurModel.Usuarios">
-              <MappingFragment StoreEntitySet="Usuarios">
-                <ScalarProperty Name="Estado" ColumnName="Estado" />
-                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
-                <ScalarProperty Name="Contrasenna" ColumnName="Contrasenna" />
-                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
-                <ScalarProperty Name="Correo" ColumnName="Correo" />
-                <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
-                <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
-                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
-                <ScalarProperty Name="RolId" ColumnName="RolId" />
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AdministradorAzurModelStoreContainer" CdmEntityContainer="AdministradorAzurEntities">
+    <EntitySetMapping Name="Estados">
+      <EntityTypeMapping TypeName="IsTypeOf(AdministradorAzurModel.Estados)">
+        <MappingFragment StoreEntitySet="Estados">
+          <ScalarProperty Name="EstadoCodigo" ColumnName="EstadoCodigo" />
+          <ScalarProperty Name="EstadoId" ColumnName="EstadoId" />
+          <ScalarProperty Name="EstadoDescripcion" ColumnName="EstadoDescripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Gastos">
+      <EntityTypeMapping TypeName="IsTypeOf(AdministradorAzurModel.Gastos)">
+        <MappingFragment StoreEntitySet="Gastos">
+          <ScalarProperty Name="GastoId" ColumnName="GastoId" />
+          <ScalarProperty Name="Proveedor" ColumnName="Proveedor" />
+          <ScalarProperty Name="Consecutivo" ColumnName="Consecutivo" />
+          <ScalarProperty Name="FechaVencimiento" ColumnName="FechaVencimiento" />
+          <ScalarProperty Name="Monto" ColumnName="Monto" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NotasCambio">
+      <EntityTypeMapping TypeName="IsTypeOf(AdministradorAzurModel.NotasCambio)">
+        <MappingFragment StoreEntitySet="NotasCambio">
+          <ScalarProperty Name="IdNC" ColumnName="IdNC" />
+          <ScalarProperty Name="ConsecutivoNC" ColumnName="ConsecutivoNC" />
+          <ScalarProperty Name="FechaEmisionNC" ColumnName="FechaEmisionNC" />
+          <ScalarProperty Name="CodProveedorNC" ColumnName="CodProveedorNC" />
+          <ScalarProperty Name="MontoNC" ColumnName="MontoNC" />
+          <ScalarProperty Name="IdFacturaAplicada" ColumnName="IdFacturaAplicada" />
+          <ScalarProperty Name="EstadoNC" ColumnName="EstadoNC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductosBodega">
+      <EntityTypeMapping TypeName="IsTypeOf(AdministradorAzurModel.ProductosBodega)">
+        <MappingFragment StoreEntitySet="ProductosBodega">
+          <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+          <ScalarProperty Name="CodigoProducto" ColumnName="CodigoProducto" />
+          <ScalarProperty Name="NombreProducto" ColumnName="NombreProducto" />
+          <ScalarProperty Name="CantidadProducto" ColumnName="CantidadProducto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductosNC">
+      <EntityTypeMapping TypeName="IsTypeOf(AdministradorAzurModel.ProductosNC)">
+        <MappingFragment StoreEntitySet="ProductosNC">
+          <ScalarProperty Name="IdProductoNC" ColumnName="IdProductoNC" />
+          <ScalarProperty Name="IdNC" ColumnName="IdNC" />
+          <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+          <ScalarProperty Name="CantidadProdNC" ColumnName="CantidadProdNC" />
+          <ScalarProperty Name="DescripcionProdNC" ColumnName="DescripcionProdNC" />
+          <ScalarProperty Name="PrecioProdNC" ColumnName="PrecioProdNC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Proveedores">
+      <EntityTypeMapping TypeName="IsTypeOf(AdministradorAzurModel.Proveedores)">
+        <MappingFragment StoreEntitySet="Proveedores">
+          <ScalarProperty Name="ProveedorCodigo" ColumnName="ProveedorCodigo" />
+          <ScalarProperty Name="ProveedorId" ColumnName="ProveedorId" />
+          <ScalarProperty Name="ProveedorNombre" ColumnName="ProveedorNombre" />
+          <ScalarProperty Name="ProveedorCedula" ColumnName="ProveedorCedula" />
+          <ScalarProperty Name="ProveedorTelefono" ColumnName="ProveedorTelefono" />
+          <ScalarProperty Name="ProveedorGastoFijo" ColumnName="ProveedorGastoFijo" />
+          <ScalarProperty Name="ProveedorEstado" ColumnName="ProveedorEstado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Facturas">
+      <EntityTypeMapping TypeName="IsTypeOf(AdministradorAzurModel.Facturas)">
+        <MappingFragment StoreEntitySet="Facturas">
+          <ScalarProperty Name="FacturaId" ColumnName="FacturaId" />
+          <ScalarProperty Name="ProveedorFactura" ColumnName="ProveedorFactura" />
+          <ScalarProperty Name="ConsecutivoFactura" ColumnName="ConsecutivoFactura" />
+          <ScalarProperty Name="MontoFactura" ColumnName="MontoFactura" />
+          <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+          <ScalarProperty Name="EstadoFactura" ColumnName="EstadoFactura" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="IsTypeOf(AdministradorAzurModel.Roles)">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="RolId" ColumnName="RolId" />
+          <ScalarProperty Name="NombreRol" ColumnName="NombreRol" />
+          <ScalarProperty Name="EstadoRol" ColumnName="EstadoRol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="IsTypeOf(AdministradorAzurModel.Usuarios)">
+        <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="Token" ColumnName="Token" />
+                <ScalarProperty Name="FechaGeneraToken" ColumnName="FechaGeneraToken" />
                 <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PermisosSet">
-            <EntityTypeMapping TypeName="AdministradorAzurModel.Permisos">
-              <MappingFragment StoreEntitySet="Permisos">
-                <ScalarProperty Name="Perfiles" ColumnName="Perfiles" />
-                <ScalarProperty Name="Usuarios" ColumnName="Usuarios" />
-                <ScalarProperty Name="Facturas" ColumnName="Facturas" />
-                <ScalarProperty Name="NotasCambio" ColumnName="NotasCambio" />
-                <ScalarProperty Name="Gastos" ColumnName="Gastos" />
-                <ScalarProperty Name="Proveedores" ColumnName="Proveedores" />
-                <ScalarProperty Name="Inicio" ColumnName="Inicio" />
-                <ScalarProperty Name="RolId" ColumnName="RolId" />
+          <ScalarProperty Name="RolId" ColumnName="RolId" />
+          <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+          <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+          <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Contrasenna" ColumnName="Contrasenna" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Permisos">
+      <EntityTypeMapping TypeName="IsTypeOf(AdministradorAzurModel.Permisos)">
+        <MappingFragment StoreEntitySet="Permisos">
+          <ScalarProperty Name="ReporteGT" ColumnName="ReporteGT" />
+                <ScalarProperty Name="ReporteNC" ColumnName="ReporteNC" />
+                <ScalarProperty Name="ProductosBodega" ColumnName="ProductosBodega" />
                 <ScalarProperty Name="PermisoId" ColumnName="PermisoId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+          <ScalarProperty Name="RolId" ColumnName="RolId" />
+          <ScalarProperty Name="Inicio" ColumnName="Inicio" />
+          <ScalarProperty Name="Proveedores" ColumnName="Proveedores" />
+          <ScalarProperty Name="Gastos" ColumnName="Gastos" />
+          <ScalarProperty Name="NotasCambio" ColumnName="NotasCambio" />
+          <ScalarProperty Name="Facturas" ColumnName="Facturas" />
+          <ScalarProperty Name="Usuarios" ColumnName="Usuarios" />
+          <ScalarProperty Name="Perfiles" ColumnName="Perfiles" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -707,7 +721,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
-        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
       </DesignerInfoPropertySet>
     </Options>

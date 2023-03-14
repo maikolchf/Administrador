@@ -184,22 +184,25 @@ namespace administradorFormularios.Gastos
 
         private void SeleccionarRegistro(object sender, DataGridViewCellEventArgs e)
         {
-            btnHabilitarCons.Visible = true;
-            txtConsecutivoGasto.Enabled = false;
+            if (!e.RowIndex.Equals(-1))
+            {
+                btnHabilitarCons.Visible = true;
+                txtConsecutivoGasto.Enabled = false;
 
-            var ss = Convert.ToDateTime(dtGastos.CurrentRow.Cells[2].Value.ToString());
-            txtConsecutivoGasto.Text = dtGastos.CurrentRow.Cells[0].Value.ToString();
-            dtpFechaVenciGasto.Value = Convert.ToDateTime(dtGastos.CurrentRow.Cells[2].Value.ToString());
-            txtMontoGasto.Text = dtGastos.CurrentRow.Cells[3].Value.ToString();
-            txtDetalleGasto.Text = dtGastos.CurrentRow.Cells[4].Value.ToString();
-            lblIdGasto.Text = dtGastos.CurrentRow.Cells[6].Value.ToString();
-            cbxProveedorGasto.SelectedValue = dtGastos.CurrentRow.Cells[7].Value.ToString();
-            cbxGastoEstado.SelectedValue = dtGastos.CurrentRow.Cells[8].Value.ToString();
+                var ss = Convert.ToDateTime(dtGastos.CurrentRow.Cells[2].Value.ToString());
+                txtConsecutivoGasto.Text = dtGastos.CurrentRow.Cells[0].Value.ToString();
+                dtpFechaVenciGasto.Value = Convert.ToDateTime(dtGastos.CurrentRow.Cells[2].Value.ToString());
+                txtMontoGasto.Text = dtGastos.CurrentRow.Cells[3].Value.ToString();
+                txtDetalleGasto.Text = dtGastos.CurrentRow.Cells[4].Value.ToString();
+                lblIdGasto.Text = dtGastos.CurrentRow.Cells[6].Value.ToString();
+                cbxProveedorGasto.SelectedValue = dtGastos.CurrentRow.Cells[7].Value.ToString();
+                cbxGastoEstado.SelectedValue = dtGastos.CurrentRow.Cells[8].Value.ToString();
+            }            
         }
 
         private void btnHabilitarCons_Click(object sender, EventArgs e)
         {
-            const string message = "¿Desea modificar el consecutivo?"           ;           
+            const string message = "¿Desea modificar el consecutivo?";           
             var result = MessageBox.Show(message,"Aviso",
                                          MessageBoxButtons.YesNo,
                                          MessageBoxIcon.Question);

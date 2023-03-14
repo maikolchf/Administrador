@@ -74,7 +74,10 @@ namespace administradorDAL
                                                                      NotasCambio = P.NotasCambio,
                                                                      Perfiles = P.Perfiles,
                                                                      Proveedores = P.Proveedores,
-                                                                     Usuarios = P.Usuarios
+                                                                     Usuarios = P.Usuarios,
+                                                                     ReporteNC = P.ReporteNC,
+                                                                     ProductosBodega = P.ProductosBodega,
+                                                                     ReporteGT = P.ReporteGT
                                                                  }).Where(i => i.RolId.Equals(R.RolId)).FirstOrDefault(),
                                                      Estado = (from E in dbContexto.Estados
                                                                select new Estado

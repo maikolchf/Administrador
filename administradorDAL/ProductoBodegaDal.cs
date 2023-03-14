@@ -3,9 +3,7 @@ using AdministradorEntidades.Modelo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+using administradorCompartidas;
 
 namespace administradorDAL
 {
@@ -51,7 +49,9 @@ namespace administradorDAL
                     if (productosActualizar.Count > 0)
                     {
                         List<ProductosNC> lstProductosNC = (from PNC in dbContexto.ProductosNC
-                                                            where PNC.IdNC != notaCambio.IdNC
+                                                            join NC in dbContexto.NotasCambio 
+                                                            on PNC.IdNC equals NC.IdNC
+                                                            where PNC.IdNC != notaCambio.IdNC && NC.EstadoNC.Equals(Constantes.EstadosNC.No_Aplicada)
                                                             select PNC).ToList();
 
                         ActualizarCantidadesProductos(ltsProductoBodega,

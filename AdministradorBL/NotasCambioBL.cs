@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Transactions;
 using administradorDAL;
 using AdministradorEntidades.Entidades;
+using AdministradorEntidades.Entidades.Reportes;
 
 namespace AdministradorBL
 {
@@ -72,6 +73,23 @@ namespace AdministradorBL
                 respuesta.HayError = true;
                 respuesta.Mensaje = oEx.Message;
                 respuesta.ObjetoRespuesta = new List<NotaCambio>();
+            }
+            return respuesta;
+        }
+
+        public Respuesta<List<NotasCambioReporte>> DatosReporte(string estado, DateTime fechaInicio, DateTime fechaFinal)
+        {
+            Respuesta<List<NotasCambioReporte>> respuesta = new Respuesta<List<NotasCambioReporte>>();
+            try
+            {
+                notasCambioDal = new NotasCambioDal();
+                respuesta = notasCambioDal.DatosReporte(estado,fechaInicio,fechaFinal);
+            }
+            catch (Exception oEx)
+            {
+                respuesta.HayError = true;
+                respuesta.Mensaje = oEx.Message;
+                respuesta.ObjetoRespuesta = new List<NotasCambioReporte>();
             }
             return respuesta;
         }
