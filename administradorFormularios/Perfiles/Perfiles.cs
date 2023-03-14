@@ -89,6 +89,7 @@ namespace administradorFormularios.Perfiles
             chxUsuarios.Checked = false;
             chxProductosBodega.Checked = false;
             chxReporteNC.Checked = false;
+            chxReporteGastos.Checked = false;
         }
 
         private bool ValidarCamposVacios()

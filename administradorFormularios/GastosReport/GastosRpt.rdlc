@@ -63,7 +63,7 @@
                   <Width>2.91604cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.91604cm</Width>
+                  <Width>3.31289cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>2.91604cm</Width>
@@ -154,7 +154,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Fecha Registro</Value>
+                                  <Value>Fecha Vencimiento</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -406,7 +406,6 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -499,7 +498,7 @@
             <Top>2.19287cm</Top>
             <Left>0.34396cm</Left>
             <Height>1.2cm</Height>
-            <Width>17.49621cm</Width>
+            <Width>17.89309cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>

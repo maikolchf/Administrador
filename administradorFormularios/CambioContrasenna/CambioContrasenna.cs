@@ -67,7 +67,7 @@ namespace administradorFormularios.CambioContrasenna
 
                             if (!respuesta.HayError)
                             {
-                                MessageBox.Show("Se ah enviado un token al correo " +correoBuscar + ".");
+                                MessageBox.Show("Se ha enviado un token al correo " +correoBuscar + ".");
                             }
                             else
                             {
